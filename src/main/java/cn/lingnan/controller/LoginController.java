@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
@@ -46,14 +47,14 @@ public class LoginController {
 //        return "index";
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(String email,String phone,String name,String customerPassword2){
-        System.out.println("login:::email:::" + email + ", password: " + customerPassword2+",phone: "+phone+",name: "+name);
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String register(String Email,String Phone,String customerName,String customerPassword2){
+        System.out.println("login:::email:::" + Email + ", password: " + customerPassword2+",phone: "+Phone+",name: "+customerName);
         Customer bean=new Customer();
-        bean.setRegisterTime(new Date());
-        bean.setCustomerName(name);
-        bean.setEmail(email);
-        bean.setPhone(phone);
+        bean.setRegisterTime(new java.sql.Date(new Date().getTime()));
+        bean.setCustomerName(customerName);
+        bean.setEmail(Email);
+        bean.setPhone(Phone);
         bean.setCustomerPassword(customerPassword2);
         if(customerService.register(bean)){
             return "success";

@@ -16,6 +16,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class AppTest01 {
     public SqlSessionFactory getSqlSessionFactory () throws IOException {
@@ -47,8 +49,12 @@ public class AppTest01 {
         customer.setCustomerPassword("123");
         customer.setEmail("111");
         customer.setPhone("111");
+        customer.setRegisterTime(new java.sql.Date(new Date().getTime()));
+        System.out.println(customer.toString());
         System.out.println(customerMapper.register(customer));
+        sqlSession.commit();
         System.out.println(customerMapper.queryAll());
+        sqlSession.close();
     }
 
     @Test

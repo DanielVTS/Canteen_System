@@ -41,7 +41,7 @@ insert into customer
             email,
         </if>
                 
-        <if test="loginTime!=null">
+        <if test="registerTime!=null">
             register_time,
         </if>
         <if test="loginTime!=null">
@@ -64,7 +64,7 @@ insert into customer
         <if test="email!=null">
             #{email},
         </if>
-        <if test="loginTime!=null">
+        <if test="registerTime!=null">
             #{registerTime},
         </if>
         <if test="loginTime!=null">
