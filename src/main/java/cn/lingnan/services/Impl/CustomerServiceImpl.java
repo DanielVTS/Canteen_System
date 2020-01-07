@@ -26,8 +26,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> QueryAll() {
-        return customerMapper.QueryAll();
+    public List<Customer> queryAll() {
+        return customerMapper.queryAll();
     }
 
     @Override
@@ -36,8 +36,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer loginByEmail(String customerEmail, String customerPassword) {
-        return customerMapper.loginByEmail(customerEmail,customerPassword);
+    public Customer loginByEmail(String email, String customerPassword) {
+        return customerMapper.loginByEmail(email,customerPassword);
     }
 
     @Override
@@ -51,13 +51,13 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer getByEmail(String customerEmail) {
-        return customerMapper.getByEmail(customerEmail);
+    public Customer getByEmail(String email) {
+        return customerMapper.getByEmail(email);
     }
 
     @Override
-    public Customer getByPhone(String customerPhone) {
-        return customerMapper.getByPhone(customerPhone);
+    public Customer getByPhone(String phone) {
+        return customerMapper.getByPhone(phone);
     }
 
     @Override

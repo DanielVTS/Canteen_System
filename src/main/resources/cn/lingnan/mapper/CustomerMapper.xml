@@ -8,18 +8,18 @@
         select * from customer where customer_id= #{customerId};
     </select>
     <select id="getByEmail" resultType="Customer">
-        select * from customer where customer_email= #{customerEmail};
+        select * from customer where email= #{email};
     </select>
     <select id="getByPhone" resultType="Customer">
-        select * from customer where customer_phone= #{customerPhone};
+        select * from customer where phone= #{phone};
     </select>
     <select id="loginById" resultType="Customer">
         select * from customer where customer_id= #{customerId} and customer_password=#{customerPassword};
     </select>
     <select id="loginByEmail" resultType="Customer">
-        select * from customer where customer_email= #{customerEmail} and customer_password=#{customerPassword};
+        select * from customer where email= #{email} and customer_password=#{customerPassword};
     </select>
-    <select id="QueryAll" resultType="Customer">
+    <select id="queryAll" resultType="Customer">
         select * from customer;
     </select>
 
@@ -27,75 +27,48 @@
 insert into customer
     <trim prefix="(" suffix=")" suffixOverrides=",">
         <if test="customerName!=null">
-            #{customerName},
+            customer_name,
         </if>
-        <if test="customerPhone!=null">
-            #{customerPhone},
+        <if test="phone!=null">
+            phone,
         </if>
-        <if test="customerBrithday!=null">
-            #{customerBrithday},
+
+        <if test="birthday!=null">
+            birthday,
         </if>
-        <if test="customerAge!=null">
-            #{customerAge},
+        
+        <if test="email!=null">
+            email,
         </if>
-        <if test="customerGender!=null">
-            #{customerGender},
+                
+        <if test="loginTime!=null">
+            register_time,
         </if>
-        <if test="customerEmail!=null">
-            #{customerEmail},
-        </if>
-        <if test="customerLocation!=null">
-            #{customerLocation},
-        </if>
-        <if test="customerIntegrate!=null">
-            #{customerIntegrate},
-        </if>
-        <if test="customerRank!=null">
-            #{customerRank},
-        </if>
-        <if test="customerRegister!=null">
-            #{customerRegister},
-        </if>
-        <if test="customerLastLogin!=null">
-            #{customerLastLogin},
+        <if test="loginTime!=null">
+            login_time,
         </if>
         <if test="customerPassword!=null">
-            #{customerPassword},
+            customer_password,
         </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
         <if test="customerName!=null">
             #{customerName},
         </if>
-        <if test="customerPhone!=null">
-            #{customerPhone},
+        <if test="phone!=null">
+            #{phone},
         </if>
-        <if test="customerBrithday!=null">
-            #{customerBrithday},
+        <if test="birthday!=null">
+            #{birthday},
+        </if>       
+        <if test="email!=null">
+            #{email},
         </if>
-        <if test="customerAge!=null">
-            #{customerAge},
+        <if test="loginTime!=null">
+            #{registerTime},
         </if>
-        <if test="customerGender!=null">
-            #{customerGender},
-        </if>
-        <if test="customerEmail!=null">
-            #{customerEmail},
-        </if>
-        <if test="customerLocation!=null">
-            #{customerLocation},
-        </if>
-        <if test="customerIntegrate!=null">
-            #{customerIntegrate},
-        </if>
-        <if test="customerRank!=null">
-            #{customerRank},
-        </if>
-        <if test="customerRegister!=null">
-            #{customerRegister},
-        </if>
-        <if test="customerLastLogin!=null">
-            #{customerLastLogin},
+        <if test="loginTime!=null">
+            #{loginTime},
         </if>
         <if test="customerPassword!=null">
             #{customerPassword},
@@ -110,34 +83,20 @@ insert into customer
                 customer_name=#{customerName},
             </if>
             <if test="customerPhone!=null">
-                customer_phone=#{customerPhone},
+              phone=#{phone},
             </if>
             <if test="customerBirthday!=null">
-                customer_birthday=#{customerBirthday},
+                birthday=#{birthday},
             </if>
-            <if test="customerAge!=null">
-                customer_age=#{customerAge},
-            </if>
-            <if test="customerGender!=null">
-                customer_gender=#{customerGender},
-            </if>
+
             <if test="customerEmail!=null">
-                customer_email=#{customerEmail},
+                email=#{email},
             </if>
-            <if test="customerLocation!=null">
-                customer_location=#{customerLocation},
-            </if>
-            <if test="customerIntegrate!=null">
-                customer_integrate=#{customerIntegrate},
-            </if>
-            <if test="customerRank!=null">
-                customer_rank=#{customerRank},
-            </if>
-            <if test="customerRegister!=null">
-                customer_register=#{customerRegister},
+            <if test="registerTime!=null">
+                register_time=#{registerTime},
             </if>
             <if test="customerLastLogin!=null">
-                customer_last_login=#{customerLastLogin},
+                login_time=#{loginTime},
             </if>
             <if test="customerPassword!=null">
                 customer_password=#{customerPassword},

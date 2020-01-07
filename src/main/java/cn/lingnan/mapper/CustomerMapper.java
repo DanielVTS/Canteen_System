@@ -11,12 +11,12 @@ import java.util.List;
 public interface CustomerMapper {
     boolean update(Customer customer);
     boolean delete(Integer customerId);
-    List<Customer> QueryAll();
+    List<Customer> queryAll();
     Customer loginById(@Param("customerId") Integer customerId,@Param("customerPassword") String customerPassword);
-    Customer loginByEmail(@Param("customerEmail") String customerEmail,@Param("customerPassword") String customerPassword);
+    Customer loginByEmail(@Param("email") String email,@Param("customerPassword") String customerPassword);
     Customer getByName(String customerName);
     Customer getById(Integer customerId);
-    Customer getByEmail(String customerEmail);
-    Customer getByPhone(String customerPhone);
+    Customer getByEmail(String email);
+    Customer getByPhone(String phone);
     boolean register (Customer customer);
 }

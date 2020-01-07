@@ -30,7 +30,23 @@ public class AppTest01 {
         Staff staff = ctx.getBean(Staff.class);
         staff.setStaffName("1");
         staff.setStaffPassword("123");
+        System.out.println(staffMapper.add(staff));
         System.out.println(staffMapper.queryAll());
+    }
+
+    @Test
+    public void t02() throws IOException {
+        SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        CustomerMapper customerMapper = sqlSession.getMapper(CustomerMapper.class);
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("application-context.xml");
+        Customer customer = ctx.getBean(Customer.class);
+        customer.setCustomerName("1");
+        customer.setCustomerPassword("123");
+        customer.setEmail("111");
+        customer.setPhone("111");
+        System.out.println(customerMapper.register(customer));
+        System.out.println(customerMapper.queryAll());
     }
 
 }

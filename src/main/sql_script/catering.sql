@@ -1,4 +1,4 @@
-drop database if exists catering;
+drop database catering;
 create database catering;
 use catering;
 
@@ -43,7 +43,7 @@ phone varchar(15) default null,
 table_id int(5),
 table_name varchar(30) default null,
 order_status int(3) default null,
-order_price int(10) default null,
+order_price double(10,2) default null,
 table_time date default null,
 end_time date default null,
 ps varchar(50) default null
@@ -57,7 +57,7 @@ menu_id int(5),
 menu_name varchar(30) default null,
 price int(10) default null,
 quantity int(5) default null,
-total_price int(10) default null,
+total_price double(10,2) default null,
 table_time date default null,
 end_time date default null
 );

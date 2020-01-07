@@ -1,150 +1,156 @@
 package cn.lingnan.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 public class OrderList {
-    private Integer order_id;
-    private String order_no;
-    private Integer customer_id;
-    private String customer_name;
-    private String customer_phone;
-    private String customer_location;
-    private Integer order_postage;
-    private Double order_pay;
-    private Integer order_status;
-    private Date order_paytime;
-    private Date order_opentime;
-    private Date order_closetime;
+    private Integer orderId;
+    private String orderNo;
+    private Integer customerId;
+    private String customerName;
+    @Pattern(regexp = "^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$", message = "手机号码不正确")
+    private String phone;
+    private Integer tableId;
+    private Integer tableName;
+    private Integer orderStatus;
+    private double orderPrice;
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private Date tableTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    private Date endTime;
+    private String ps;
 
     public OrderList() {
     }
 
-    public OrderList(Integer order_id, String order_no, Integer customer_id, String customer_name, String customer_phone, String customer_location, Integer order_postage, Double order_pay, Integer order_status, Date order_paytime, Date order_opentime, Date order_closetime) {
-        this.order_id = order_id;
-        this.order_no = order_no;
-        this.customer_id = customer_id;
-        this.customer_name = customer_name;
-        this.customer_phone = customer_phone;
-        this.customer_location = customer_location;
-        this.order_postage = order_postage;
-        this.order_pay = order_pay;
-        this.order_status = order_status;
-        this.order_paytime = order_paytime;
-        this.order_opentime = order_opentime;
-        this.order_closetime = order_closetime;
+    public OrderList(Integer orderId, String orderNo, Integer customerId, String customerName, @Pattern(regexp = "^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$", message = "手机号码不正确") String phone, Integer tableId, Integer tableName, Integer orderStatus, double orderPrice, Date tableTime, Date endTime, String ps) {
+        this.orderId = orderId;
+        this.orderNo = orderNo;
+        this.customerId = customerId;
+        this.customerName = customerName;
+        this.phone = phone;
+        this.tableId = tableId;
+        this.tableName = tableName;
+        this.orderStatus = orderStatus;
+        this.orderPrice = orderPrice;
+        this.tableTime = tableTime;
+        this.endTime = endTime;
+        this.ps = ps;
     }
 
-    public Integer getOrder_id() {
-        return order_id;
+    public Integer getOrderId() {
+        return orderId;
     }
 
-    public void setOrder_id(Integer order_id) {
-        this.order_id = order_id;
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 
-    public String getOrder_no() {
-        return order_no;
+    public String getOrderNo() {
+        return orderNo;
     }
 
-    public void setOrder_no(String order_no) {
-        this.order_no = order_no;
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo;
     }
 
-    public Integer getCustomer_id() {
-        return customer_id;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(Integer customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
 
-    public String getCustomer_name() {
-        return customer_name;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setCustomer_name(String customer_name) {
-        this.customer_name = customer_name;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
-    public String getCustomer_phone() {
-        return customer_phone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setCustomer_phone(String customer_phone) {
-        this.customer_phone = customer_phone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getCustomer_location() {
-        return customer_location;
+    public Integer getTableId() {
+        return tableId;
     }
 
-    public void setCustomer_location(String customer_location) {
-        this.customer_location = customer_location;
+    public void setTableId(Integer tableId) {
+        this.tableId = tableId;
     }
 
-    public Integer getOrder_postage() {
-        return order_postage;
+    public Integer getTableName() {
+        return tableName;
     }
 
-    public void setOrder_postage(Integer order_postage) {
-        this.order_postage = order_postage;
+    public void setTableName(Integer tableName) {
+        this.tableName = tableName;
     }
 
-    public Double getOrder_pay() {
-        return order_pay;
+    public Integer getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setOrder_pay(Double order_pay) {
-        this.order_pay = order_pay;
+    public void setOrderStatus(Integer orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
-    public Integer getOrder_status() {
-        return order_status;
+    public double getOrderPrice() {
+        return orderPrice;
     }
 
-    public void setOrder_status(Integer order_status) {
-        this.order_status = order_status;
+    public void setOrderPrice(double orderPrice) {
+        this.orderPrice = orderPrice;
     }
 
-    public Date getOrder_paytime() {
-        return order_paytime;
+    public Date getTableTime() {
+        return tableTime;
     }
 
-    public void setOrder_paytime(Date order_paytime) {
-        this.order_paytime = order_paytime;
+    public void setTableTime(Date tableTime) {
+        this.tableTime = tableTime;
     }
 
-    public Date getOrder_opentime() {
-        return order_opentime;
+    public Date getEndTime() {
+        return endTime;
     }
 
-    public void setOrder_opentime(Date order_opentime) {
-        this.order_opentime = order_opentime;
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
-    public Date getOrder_closetime() {
-        return order_closetime;
+    public String getPs() {
+        return ps;
     }
 
-    public void setOrder_closetime(Date order_closetime) {
-        this.order_closetime = order_closetime;
+    public void setPs(String ps) {
+        this.ps = ps;
     }
 
     @Override
     public String toString() {
         return "OrderList{" +
-                "order_id=" + order_id +
-                ", order_no='" + order_no + '\'' +
-                ", customer_id=" + customer_id +
-                ", customer_name='" + customer_name + '\'' +
-                ", customer_phone='" + customer_phone + '\'' +
-                ", customer_location='" + customer_location + '\'' +
-                ", order_postage=" + order_postage +
-                ", order_pay=" + order_pay +
-                ", order_status=" + order_status +
-                ", order_paytime=" + order_paytime +
-                ", order_opentime=" + order_opentime +
-                ", order_closetime=" + order_closetime +
+                "orderId=" + orderId +
+                ", orderNo='" + orderNo + '\'' +
+                ", customerId=" + customerId +
+                ", customerName='" + customerName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", tableId=" + tableId +
+                ", tableName=" + tableName +
+                ", orderStatus=" + orderStatus +
+                ", orderPrice=" + orderPrice +
+                ", tableTime=" + tableTime +
+                ", endTime=" + endTime +
+                ", ps='" + ps + '\'' +
                 '}';
     }
 }
