@@ -1,7 +1,9 @@
-drop database catering;
 create database catering;
 use catering;
 
+drop table order_item;
+
+drop table customer;
 
 create table menu(
 menu_id int(5) primary key auto_increment,
@@ -27,7 +29,7 @@ create table customer
 customer_id  int(5) primary key auto_increment,
 customer_name varchar(30) default null,
 phone varchar(15) default null,
-email varchar(30) default null,
+customer_email varchar(30) default null,
 birthday date default null,
 register_time date default null,
 login_time date default null,
