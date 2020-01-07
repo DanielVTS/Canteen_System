@@ -22,7 +22,6 @@
     <select id="queryAll" resultType="Customer">
         select * from customer;
     </select>
-
     <select id="query" resultType="customer">
         select * from customer where
         <trim suffixOverrides="and">
@@ -49,6 +48,36 @@
             </if>
             <if test="customerPassword!=null">
                 customer_password=#{customerPassword} and
+            </if>
+        </trim>
+    </select>
+
+    <select id="check" resultType="customer">
+        select * from customer where
+        <trim suffixOverrides="and">
+            <if test="customerId!=null">
+                customer_id=#{customerId} or
+            </if>
+            <if test="customerName!=null">
+                customer_name=#{customerName} or
+            </if>
+            <if test="phone!=null">
+                phone=#{phone} or
+            </if>
+            <if test="email!=null">
+                email=#{email} or
+            </if>
+            <if test="birthday!=null">
+                birthday=#{birthday} or
+            </if>
+            <if test="registerTime!=null">
+                register_time=#{registerTime} or
+            </if>
+            <if test="loginTime!=null">
+                login_time=#{loginTime} or
+            </if>
+            <if test="customerPassword!=null">
+                customer_password=#{customerPassword} or
             </if>
         </trim>
     </select>

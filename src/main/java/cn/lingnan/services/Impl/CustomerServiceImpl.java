@@ -36,6 +36,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public List<Customer> check(Customer customer) {
+        return customerMapper.check(customer);
+    }
+
+    @Override
     public Customer loginById(Integer customerId, String customerPassword) {
         return customerMapper.loginById(customerId,customerPassword);
     }

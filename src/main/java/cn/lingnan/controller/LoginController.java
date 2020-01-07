@@ -27,10 +27,11 @@ public class LoginController {
 
         System.out.println("login:::name:::" + email + ", password" + password);
         Customer bean = customerService.loginByEmail(email, password);
-
         if (bean != null) {
             //登录成功
             //session保存
+            bean.setLoginTime(new java.sql.Date(new Date().getTime()));
+            customerService.update(bean);
             session.setAttribute("loginUser", bean);
             System.out.println("登陆成功");
             return "success";
@@ -55,8 +56,11 @@ public class LoginController {
         bean.setEmail(Email);
         bean.setPhone(Phone);
         bean.setCustomerPassword(customerPassword2);
-        if(customerService.register(bean)){
-            return "success";
+        if(customerService.check(bean)!=null) {
+            if (customerService.register(bean)) {
+                return "success";
+            }
+            else return "forward:../login.jsp";
         }
         else return "forward:../login.jsp";
     }

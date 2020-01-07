@@ -12,6 +12,7 @@ public interface CustomerMapper {
     boolean update(Customer customer);
     boolean delete(Integer customerId);
     List<Customer> queryAll();
+    List<Customer> check(Customer customer);
     List<Customer> query(Customer customer);
     Customer loginById(@Param("customerId") Integer customerId,@Param("customerPassword") String customerPassword);
     Customer loginByEmail(@Param("email") String email,@Param("customerPassword") String customerPassword);
@@ -20,4 +21,5 @@ public interface CustomerMapper {
     Customer getByEmail(String email);
     Customer getByPhone(String phone);
     boolean register (Customer customer);
+
 }
