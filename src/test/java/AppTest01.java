@@ -1,8 +1,10 @@
 import cn.lingnan.mapper.CustomerMapper;
 
+import cn.lingnan.mapper.OrderListMapper;
 import cn.lingnan.mapper.StaffMapper;
 import cn.lingnan.pojo.Customer;
 
+import cn.lingnan.pojo.OrderList;
 import cn.lingnan.pojo.Staff;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -47,6 +49,20 @@ public class AppTest01 {
         customer.setPhone("111");
         System.out.println(customerMapper.register(customer));
         System.out.println(customerMapper.queryAll());
+    }
+
+    @Test
+    public void t03() throws IOException {
+        SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        OrderListMapper orderListMapper = sqlSession.getMapper(OrderListMapper.class);
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("application-context.xml");
+        OrderList orderList = ctx.getBean(OrderList.class);
+        orderList.setOrderNo("01");
+//        orderList.setOrderStatus(1);
+        System.out.println(orderListMapper.query(orderList));
+//        System.out.println(orderListMapper.queryAll());
+//        System.out.println(customerMapper.queryAll());
     }
 
 }
