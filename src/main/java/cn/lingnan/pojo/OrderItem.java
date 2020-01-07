@@ -1,9 +1,10 @@
 package cn.lingnan.pojo;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
-
+@Component("orderItem")
 public class OrderItem {
     private  Integer id;
     private  String orderNo;

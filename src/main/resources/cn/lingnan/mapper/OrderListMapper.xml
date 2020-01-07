@@ -13,8 +13,8 @@
     <if test="customerId!=null">
         customer_id=#{customerId} and
     </if>
-    <if test="orderId!=null">
-        customer_name=#{orderId} and
+    <if test="customerName!=null">
+        customer_name=#{customerName} and
     </if>
     <if test="phone!=null">
         phone=#{phone} and
@@ -25,11 +25,20 @@
     <if test="tableName!=null">
         table_name=#{tableName} and
     </if>
+    <if test="orderPrice!=null">
+        order_price=#{orderPrice} and
+    </if>
     <if test="orderStatus!=null">
         order_status=#{orderStatus} and
     </if>
     <if test="tableTime!=null">
         table_time=#{tableTime} and
+    </if>
+    <if test="endTime!=null">
+        end_time=#{endTime} and
+    </if>
+    <if test="ps!=null">
+        ps=#{ps} and
     </if>
 </trim>
     </select>
@@ -115,6 +124,46 @@
         </trim>
     </insert>
 
+    <update id="update">
+        update order_list set
+        <trim suffixOverrides=",">
+            <if test="orderNo!=null">
+                order_no=#{orderNo},
+            </if>
+            <if test="customerId!=null">
+                customer_id=#{customerId},
+            </if>
+            <if test="customerName!=null">
+                customer_name=#{customerName},
+            </if>
+            <if test="phone!=null">
+                phone=#{phone},
+            </if>
+            <if test="tableId!=null">
+                table_id=#{tableId},
+            </if>
+            <if test="tableName!=null">
+                table_name=#{tableName},
+            </if>
+            <if test="orderStatus!=null">
+                order_status=#{orderStatus},
+            </if>
+            <if test="orderPrice!=null">
+                order_price=#{orderPrice},
+            </if>
+
+            <if test="tableTime!=null">
+                table_time=#{tableTime},
+            </if>
+            <if test="endTime!=null">
+                end_time=#{endTime},
+            </if>
+            <if test="ps!=null">
+                ps=#{ps},
+            </if>
+        </trim>
+                where  order_id=#{orderId}
+    </update>
     <delete id="delete">
         delete from order_list where order_id=#{orderId}
     </delete>

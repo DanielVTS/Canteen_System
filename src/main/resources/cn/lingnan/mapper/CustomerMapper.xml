@@ -23,6 +23,36 @@
         select * from customer;
     </select>
 
+    <select id="query" resultType="customer">
+        select * from customer where
+        <trim suffixOverrides="and">
+            <if test="customerId!=null">
+                customer_id=#{customerId} and
+            </if>
+            <if test="customerName!=null">
+                customer_name=#{customerName} and
+            </if>
+            <if test="phone!=null">
+                phone=#{phone} and
+            </if>
+            <if test="email!=null">
+                email=#{email} and
+            </if>
+            <if test="birthday!=null">
+                birthday=#{birthday} and
+            </if>
+            <if test="registerTime!=null">
+                register_time=#{registerTime} and
+            </if>
+            <if test="loginTime!=null">
+                login_time=#{loginTime} and
+            </if>
+            <if test="customerPassword!=null">
+                customer_password=#{customerPassword} and
+            </if>
+        </trim>
+    </select>
+
 <insert id="register">
 insert into customer
     <trim prefix="(" suffix=")" suffixOverrides=",">

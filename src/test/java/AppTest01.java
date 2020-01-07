@@ -70,5 +70,18 @@ public class AppTest01 {
 //        System.out.println(orderListMapper.queryAll());
 //        System.out.println(customerMapper.queryAll());
     }
+    @Test
+    public void t04() throws IOException {
+        SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        OrderListMapper orderListMapper = sqlSession.getMapper(OrderListMapper.class);
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("application-context.xml");
+        OrderList orderList = ctx.getBean(OrderList.class);
+        orderList.setOrderNo("01");
+        orderList.setOrderStatus(2);
+        orderList.setOrderId(2);
 
+        System.out.println(orderListMapper.delete(2));
+
+    }
 }

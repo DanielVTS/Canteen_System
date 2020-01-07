@@ -9,6 +9,7 @@ public interface CustomerService {
     boolean update(Customer customer);
     boolean delete(Integer customerId);
     List<Customer> queryAll();
+    List<Customer> query(Customer customer);
     Customer loginById(Integer customerId,String customerPassword);
     Customer loginByEmail(String email,String customerPassword);
     Customer getByName(String customerName);
