@@ -34,7 +34,6 @@ public class LoginController {
             session.setAttribute("loginUser", bean);
             System.out.println("登陆成功");
             return "success";
-
             //记住密码，使用Cookie
 
         }else {
@@ -47,7 +46,7 @@ public class LoginController {
 //        return "index";
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(String Email,String Phone,String customerName,String customerPassword2){
         System.out.println("login:::email:::" + Email + ", password: " + customerPassword2+",phone: "+Phone+",name: "+customerName);
         Customer bean=new Customer();
