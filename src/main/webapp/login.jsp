@@ -174,7 +174,7 @@
 	</div>
 </div>
 <!-- //register form js-->
-<script type="text/javascript" src="${ctx}/js/register1.js"></script>
+<script type="text/javascript" src="${ctx}/js/register.js"></script>
 <!-- //register form popup-->
 
 <!-- js -->
