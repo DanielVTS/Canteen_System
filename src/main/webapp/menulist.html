@@ -246,12 +246,12 @@
 				iG["order"] = iG["order"]||{};
 				var index = $(this).attr("data_id");
 				
-				if(iG.order[index]){
-					iG.order[index].counter = iG.order[index].counter + 1;
+				if(iG.order[menulist]){
+					iG.order[menulist].counter = iG.order[menulist].counter + 1;
 				}else{
-					var obj = getIndex(index);
-					iG.order[index] = obj;
-					iG.order[index].counter = 1;
+					var obj = getIndex(menulist);
+					iG.order[menulist] = obj;
+					iG.order[menulist].counter = 1;
 				}
 				if(window.localStorage){
                     localStorage["zaiG"] = JSON.stringify(iG);
@@ -301,14 +301,14 @@
 				iG["order"] = iG["order"]||{};
 				var index = $(this).attr("data_id");
 				
-				if(iG.order[index]){
-					iG.order[index].counter = iG.order[index].counter + 1;
+				if(iG.order[menulist]){
+					iG.order[menulist].counter = iG.order[menulist].counter + 1;
 				}else{
-					var obj = getIndex(index);
-					iG.order[index] = obj;
-					iG.order[index].counter = 1;
+					var obj = getIndex(menulist);
+					iG.order[menulist] = obj;
+					iG.order[menulist].counter = 1;
 				}
-				$(this).siblings(".nocounter").html(iG.order[index].counter);
+				$(this).siblings(".nocounter").html(iG.order[menulist].counter);
 				$("#price_txt").html(countPrice() + "元");
                 if(window.localStorage){
                     localStorage["zaiG"] = JSON.stringify(iG);
@@ -318,15 +318,15 @@
 			$("body").on("click",".counter_minus",function(){
 				iG["order"] = iG["order"]||{};
 				var index = $(this).attr("data_id");
-				if(iG.order[index].counter === 0)return;
-				if(iG.order[index]){
-					iG.order[index].counter = iG.order[index].counter - 1;
+				if(iG.order[menulist].counter === 0)return;
+				if(iG.order[menulist]){
+					iG.order[menulist].counter = iG.order[menulist].counter - 1;
 				}else{
-					var obj = getIndex(index);
-					iG.order[index] = obj;
-					iG.order[index].counter = 1;
+					var obj = getIndex(menulist);
+					iG.order[menulist] = obj;
+					iG.order[menulist].counter = 1;
 				}
-				$(this).siblings(".nocounter").html(iG.order[index].counter);
+				$(this).siblings(".nocounter").html(iG.order[menulist].counter);
 				$("#price_txt").html(countPrice() + "元");
                 if(window.localStorage){
                     localStorage["zaiG"] = JSON.stringify(iG);
