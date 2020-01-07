@@ -25,16 +25,16 @@
             <if test="totalPrice!=null">
                 total_price=#{totalPrice} and
             </if>
-            <if test="orderStatus!=null">
+            <if test="tableTime!=null">
                 table_time=#{tableTime} and
             </if>
-            <if test="tableTime!=null">
-                end_time=#{tableTime} and
+            <if test="endTime!=null">
+                end_time=#{endTime} and
             </if>
         </trim>
     </select>
     <select id="queryAll" resultType="OrderList">
-        select * from order_list
+        select * from order_item
     </select>
 
     <insert id="add">
@@ -62,10 +62,10 @@
                 <if test="totalPrice!=null">
                     total_price,
                 </if>
-                <if test="orderStatus!=null">
+                <if test="tableTime!=null">
                     table_time,
                 </if>
-                <if test="tableTime!=null">
+                <if test="endTime!=null">
                     end_time,
                 </if>
             </trim>
@@ -94,11 +94,11 @@
                 <if test="totalPrice!=null">
                     #{totalPrice},
                 </if>
-                <if test="orderStatus!=null">
-                    #{tableTime},
-                </if>
                 <if test="tableTime!=null">
                     #{tableTime},
+                </if>
+                <if test="endTime!=null">
+                    #{endTime},
                 </if>
             </trim>
 
@@ -106,7 +106,7 @@
     </insert>
 <update id="update">
     update order_item set
-    <trim suffixOverrides="and">
+    <trim suffixOverrides=",">
         <if test="id!=null">
             id=#{id},
         </if>
@@ -128,14 +128,14 @@
         <if test="totalPrice!=null">
             total_price=#{totalPrice},
         </if>
-        <if test="orderStatus!=null">
+        <if test="tableTime!=null">
             table_time=#{tableTime},
         </if>
-        <if test="tableTime!=null">
-            end_time=#{tableTime},
+        <if test="endTime!=null">
+            end_time=#{endTime},
         </if>
-            where id=#{id}
     </trim>
+            where id=#{id}
 </update>
     <delete id="delete">
         delete from order_item where id=#{id}
