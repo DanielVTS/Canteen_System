@@ -154,7 +154,7 @@
 					<form action="${ctx}/customer/register" name="form">
 						<input type="text" class="email" name="Email" id="Email" Placeholder="Email" required=""/>
 						<input type="text" class="phone" name="Phone" id="Phone" Placeholder="Phone" />
-						<input type="text" class="name" name="customerName" id="customerName" Placeholder="Name" />		<!-- <input type="password" class="password" name="spassword1" id="sPassword1" Placeholder="Password" required=""/>	 -->
+						<input type="text" class="name" name="customerName" id="customerName" Placeholder="UserName" />		<!-- <input type="password" class="password" name="spassword1" id="sPassword1" Placeholder="Password" required=""/>	 -->
 						<input type="password" class="password" name="customerPassword1" id="customerPassword1" Placeholder="Password" />
 						<input type="password" class="password" name="customerPassword2" id="customerPassword2" Placeholder="Comfirm Password" />
 <%--						<select name="sSuper" id="sSuper">--%>
