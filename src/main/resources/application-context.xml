@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        				   https://www.springframework.org/schema/beans/spring-beans.xsd
+        				   http://www.springframework.org/schema/context
+        				   https://www.springframework.org/schema/context/spring-context.xsd
+        				   http://mybatis.org/schema/mybatis-spring
+        				   http://mybatis.org/schema/mybatis-spring.xsd
+        				   http://www.springframework.org/schema/mvc
+                           https://www.springframework.org/schema/mvc/spring-mvc.xsd
+">
+    <!--引入jdbc.properties-->
+    <context:property-placeholder location="classpath:jdbc.properties" />
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${driver}" />
+        <property name="url" value="${url}" />
+        <property name="username" value="${user}" />
+        <property name="password" value="${password}" />
+    </bean>
+    <!--添加注解支持-->
+    <context:annotation-config />
+    <context:component-scan base-package="cn.lingnan" />
+
+    <!--配置数据源
+    1.spring自带
+    2.c3p0
+    3.DBCP
+    4.JNDI：如果应用配置在高性能的应用服务器（如WebLogic或Websphere等）上，
+    我们可能更希望使用应用服务器本身提供的数据源。应用服务器的数据源 使用JNDI开放调用
+    者使用，
+    Spring为此专门提供引用JNDI资源的JndiObjectFactoryBean类
+    5.druid
+    -->
+
+
+    <!--整合mybatis
+    1.使用spring管理mybatis所有组件，比如mapper接口
+    记住SqlSessionFactoryBean这个类
+    2.使用spring事务处理
+    -->
+
+
+    <!--告诉springmvc，自己映射的请求就自己处理，不能处理的请求就交给tomcat-->
+    <mvc:default-servlet-handler />
+    <!--扫描mapper接口，注意引入命名空间-->
+    <mybatis:scan base-package="cn.lingnan.mapper"/>
+
+    <import resource="spring-mybatis.xml"/>
+    <import resource="spring-mvc.xml"/>
+    <import resource="spring-tx.xml"/>
+</beans>

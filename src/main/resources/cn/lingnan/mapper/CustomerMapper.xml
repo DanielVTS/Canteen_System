@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lingnan.mapper.CustomerMapper">
+    <select id="getByName" resultType="Customer">
+        select * from customer where customer_name like '%${customerName}%';
+    </select>
+    <select id="getById" resultType="Customer">
+        select * from customer where customer_id= #{customerId};
+    </select>
+    <select id="getByEmail" resultType="Customer">
+        select * from customer where customer_email= #{customerEmail};
+    </select>
+    <select id="getByPhone" resultType="Customer">
+        select * from customer where customer_phone= #{customerPhone};
+    </select>
+    <select id="loginById" resultType="Customer">
+        select * from customer where customer_id= #{customerId} and customer_password=#{customerPassword};
+    </select>
+    <select id="loginByEmail" resultType="Customer">
+        select * from customer where customer_email= #{customerEmail} and customer_password=#{customerPassword};
+    </select>
+    <select id="QueryAll" resultType="Customer">
+        select * from customer;
+    </select>
+
+<insert id="register">
+insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="customerName!=null">
+            #{customerName},
+        </if>
+        <if test="customerPhone!=null">
+            #{customerPhone},
+        </if>
+        <if test="customerBrithday!=null">
+            #{customerBrithday},
+        </if>
+        <if test="customerAge!=null">
+            #{customerAge},
+        </if>
+        <if test="customerGender!=null">
+            #{customerGender},
+        </if>
+        <if test="customerEmail!=null">
+            #{customerEmail},
+        </if>
+        <if test="customerLocation!=null">
+            #{customerLocation},
+        </if>
+        <if test="customerIntegrate!=null">
+            #{customerIntegrate},
+        </if>
+        <if test="customerRank!=null">
+            #{customerRank},
+        </if>
+        <if test="customerRegister!=null">
+            #{customerRegister},
+        </if>
+        <if test="customerLastLogin!=null">
+            #{customerLastLogin},
+        </if>
+        <if test="customerPassword!=null">
+            #{customerPassword},
+        </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+        <if test="customerName!=null">
+            #{customerName},
+        </if>
+        <if test="customerPhone!=null">
+            #{customerPhone},
+        </if>
+        <if test="customerBrithday!=null">
+            #{customerBrithday},
+        </if>
+        <if test="customerAge!=null">
+            #{customerAge},
+        </if>
+        <if test="customerGender!=null">
+            #{customerGender},
+        </if>
+        <if test="customerEmail!=null">
+            #{customerEmail},
+        </if>
+        <if test="customerLocation!=null">
+            #{customerLocation},
+        </if>
+        <if test="customerIntegrate!=null">
+            #{customerIntegrate},
+        </if>
+        <if test="customerRank!=null">
+            #{customerRank},
+        </if>
+        <if test="customerRegister!=null">
+            #{customerRegister},
+        </if>
+        <if test="customerLastLogin!=null">
+            #{customerLastLogin},
+        </if>
+        <if test="customerPassword!=null">
+            #{customerPassword},
+        </if>
+    </trim>
+
+</insert>
+    <update id="update">
+        update  customer set
+        <trim suffixOverrides=",">
+            <if test="customerName!=null">
+                customer_name=#{customerName},
+            </if>
+            <if test="customerPhone!=null">
+                customer_phone=#{customerPhone},
+            </if>
+            <if test="customerBirthday!=null">
+                customer_birthday=#{customerBirthday},
+            </if>
+            <if test="customerAge!=null">
+                customer_age=#{customerAge},
+            </if>
+            <if test="customerGender!=null">
+                customer_gender=#{customerGender},
+            </if>
+            <if test="customerEmail!=null">
+                customer_email=#{customerEmail},
+            </if>
+            <if test="customerLocation!=null">
+                customer_location=#{customerLocation},
+            </if>
+            <if test="customerIntegrate!=null">
+                customer_integrate=#{customerIntegrate},
+            </if>
+            <if test="customerRank!=null">
+                customer_rank=#{customerRank},
+            </if>
+            <if test="customerRegister!=null">
+                customer_register=#{customerRegister},
+            </if>
+            <if test="customerLastLogin!=null">
+                customer_last_login=#{customerLastLogin},
+            </if>
+            <if test="customerPassword!=null">
+                customer_password=#{customerPassword},
+            </if>
+        </trim>
+            where customer_id=#{customerId};
+    </update>
+    <delete id="delete">
+        delete from customer where customer_id=#{customerId};
+    </delete>
+</mapper>
