@@ -81,6 +81,35 @@
             </if>
         </trim>
     </select>
+    <select id="login" resultType="customer">
+        select * from customer where
+        <trim suffixOverrides="and">
+            <if test="customerId!=null">
+                customer_id=#{customerId} or
+            </if>
+            <if test="customerName!=null">
+                customer_name=#{customerName} or
+            </if>
+            <if test="phone!=null">
+                phone=#{phone} or
+            </if>
+            <if test="email!=null">
+                email=#{email} or
+            </if>
+            <if test="birthday!=null">
+                birthday=#{birthday} or
+            </if>
+            <if test="registerTime!=null">
+                register_time=#{registerTime} or
+            </if>
+            <if test="loginTime!=null">
+                login_time=#{loginTime} or
+            </if>
+
+             and  customer_password=#{customerPassword}
+
+        </trim>
+    </select>
 
 <insert id="register">
 insert into customer

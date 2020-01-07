@@ -41,6 +41,11 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Customer login(Customer customer) {
+        return customerMapper.login(customer);
+    }
+
+    @Override
     public Customer loginById(Integer customerId, String customerPassword) {
         return customerMapper.loginById(customerId,customerPassword);
     }

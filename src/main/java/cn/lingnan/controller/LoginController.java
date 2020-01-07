@@ -23,10 +23,15 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(String email, String password, Model model, HttpSession session){
+    public String login(String loginname, String password, Model model, HttpSession session){
 
-        System.out.println("login:::name:::" + email + ", password" + password);
-        Customer bean = customerService.loginByEmail(email, password);
+        System.out.println("login:::name:::" + loginname + ", password" + password);
+        Customer bean=new Customer();
+        bean.setEmail(loginname);
+        bean.setCustomerName(loginname);
+        bean.setPhone(loginname);
+        bean.setCustomerPassword(password);
+        bean = customerService.login(bean);
         if (bean != null) {
             //登录成功
             //session保存
@@ -48,7 +53,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(String Email,String Phone,String customerName,String customerPassword2){
+    public String register(String Email,String Phone,String customerName,String customerPassword2,Model model){
         System.out.println("login:::email:::" + Email + ", password: " + customerPassword2+",phone: "+Phone+",name: "+customerName);
         Customer bean=new Customer();
         bean.setRegisterTime(new java.sql.Date(new Date().getTime()));
@@ -60,8 +65,15 @@ public class LoginController {
             if (customerService.register(bean)) {
                 return "success";
             }
-            else return "forward:../login.jsp";
+            else {
+                model.addAttribute("msg", "注册失败");
+                return "forward:../login.jsp";
+            }
+
         }
-        else return "forward:../login.jsp";
+        else {
+            model.addAttribute("msg", "注册失败，该用户名或邮箱，电话已经被使用");
+            return "forward:../login.jsp";
+        }
     }
 }

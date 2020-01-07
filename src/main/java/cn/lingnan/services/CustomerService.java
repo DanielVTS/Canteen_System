@@ -11,6 +11,7 @@ public interface CustomerService {
     List<Customer> queryAll();
     List<Customer> query(Customer customer);
     List<Customer> check(Customer customer);
+    Customer login(Customer customer);
     Customer loginById(Integer customerId,String customerPassword);
     Customer loginByEmail(String email,String customerPassword);
     Customer getByName(String customerName);

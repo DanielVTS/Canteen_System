@@ -105,7 +105,7 @@
 				<div class="clear"></div>
 				<div class="login-agileits-top"> 	
 					<form action="${ctx}/customer/login" method="post">
-						<input type="text" class="name" name="email" Placeholder="Email" required=""/>
+						<input type="text" class="name" name="loginname" Placeholder="Email" required=""/>
 						<input type="password" class="password" name="password" Placeholder="Password" required=""/>
 						<input type="submit" name="login" value="Login"> 
 					</form> 	
