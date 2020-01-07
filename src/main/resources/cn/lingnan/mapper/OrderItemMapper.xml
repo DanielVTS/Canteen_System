@@ -104,7 +104,39 @@
 
         </trim>
     </insert>
-
+<update id="update">
+    update order_item set
+    <trim suffixOverrides="and">
+        <if test="id!=null">
+            id=#{id},
+        </if>
+        <if test="orderNo!=null">
+            order_no=#{orderNo},
+        </if>
+        <if test="menuId!=null">
+            menu_id=#{menuId},
+        </if>
+        <if test="menuName!=null">
+            menu_name=#{menuName},
+        </if>
+        <if test="price!=null">
+            price=#{price},
+        </if>
+        <if test="quantity!=null">
+            quantity=#{quantity},
+        </if>
+        <if test="totalPrice!=null">
+            total_price=#{totalPrice},
+        </if>
+        <if test="orderStatus!=null">
+            table_time=#{tableTime},
+        </if>
+        <if test="tableTime!=null">
+            end_time=#{tableTime},
+        </if>
+            where id=#{id}
+    </trim>
+</update>
     <delete id="delete">
         delete from order_item where id=#{id}
     </delete>
