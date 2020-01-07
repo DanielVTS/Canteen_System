@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lingnan.mapper.TableMapper">
+
+    <select id="queryAll" resultType="Table">
+        select * from table_information
+    </select>
+
+    <select id="query" resultType="Table">
+        select * from table_information where
+        <trim suffixOverrides="and">
+            <if test="tableId!=null">
+                table_id=#{tableId} and
+            </if>
+            <if test="tableName!=null">
+                table_name=#{tableName} and
+            </if>
+            <if test="tableSeat!=null">
+                table_seat=#{tableSeat} and
+            </if>
+            <if test="tableStaus!=null">
+                table_staus=#{tableStaus} and
+            </if>
+            <if test="phone!=null">
+                phone=#{phone} and
+            </if>
+            <if test="tableTime!=null">
+                table_time=#{tableTime} and
+            </if>
+
+        </trim>
+    </select>
+
+
+    <update id="update">
+        update table_information set
+        <trim suffixOverrides=",">
+            <if test="tableName!=null">
+                table_name=#{tableName},
+            </if>
+            <if test="tableSeat!=null">
+                table_seat=#{tableSeat},
+            </if>
+            <if test="tableStaus!=null">
+                table_staus=#{tableStaus},
+            </if>
+            <if test="phone!=null">
+                phone=#{phone},
+            </if>
+            <if test="tableTime!=null">
+                table_time=#{tableTime},
+            </if>
+
+        </trim>
+        where table_id=#{tableId}
+    </update>
+
+    <insert id="add">
+        insert into table_information
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="tableName!=null">
+                table_name,
+            </if>
+            <if test="tableSeat!=null">
+                table_seat,
+            </if>
+            <if test="tableStaus!=null">
+                table_staus,
+            </if>
+            <if test="phone!=null">
+                phone,
+            </if>
+            <if test="tableTime!=null">
+                table_time,
+            </if>
+
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="tableName!=null">
+                #{tableName},
+            </if>
+            <if test="tableSeat!=null">
+                #{tableSeat},
+            </if>
+            <if test="tableStaus!=null">
+                #{tableStaus},
+            </if>
+            <if test="phone!=null">
+                #{phone},
+            </if>
+            <if test="tableTime!=null">
+                #{tableTime},
+            </if>
+
+        </trim>
+    </insert>
+
+    <delete id="delete">
+        delete from table_information where table_id=#{tableId}
+    </delete>
+
+</mapper>
