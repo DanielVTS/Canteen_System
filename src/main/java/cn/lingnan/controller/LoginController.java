@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/customer")
@@ -45,5 +46,18 @@ public class LoginController {
 //        return "index";
     }
 
-
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(String email,String phone,String name,String customerPassword2){
+        System.out.println("login:::email:::" + email + ", password: " + customerPassword2+",phone: "+phone+",name: "+name);
+        Customer bean=new Customer();
+        bean.setRegisterTime(new Date());
+        bean.setCustomerName(name);
+        bean.setEmail(email);
+        bean.setPhone(phone);
+        bean.setCustomerPassword(customerPassword2);
+        if(customerService.register(bean)){
+            return "success";
+        }
+        else return "forward:../login.jsp";
+    }
 }

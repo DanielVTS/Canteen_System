@@ -1,12 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=GBK"
-    pageEncoding="GBK"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" isErrorPage="true" %>
+<% pageContext.setAttribute("ctx",request.getContextPath());%>
+<% System.out.println(request.getContextPath()); %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <title>Home</title>
 <!-- custom-theme -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html" charset="GBK" />
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 <meta name="keywords" content="" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -18,12 +19,12 @@
 <!-- Google fonts -->
 
 <!-- css files -->
-<link href="css/style.css" type="text/css" rel="stylesheet" media="all">   
+<link href="${ctx}/css/style.css" type="text/css" rel="stylesheet" media="all">
 <!-- //css files -->
 
-<link rel="stylesheet" href="css/font-awesome.css"> <!-- Font-Awesome-Icons-CSS -->
+<link rel="stylesheet" href="${ctx}/css/font-awesome.css"> <!-- Font-Awesome-Icons-CSS -->
 
-<link href="css/popup-box.css" rel="stylesheet" type="text/css" media="all" /> <!-- popup box css -->
+<link href="${ctx}/css/popup-box.css" rel="stylesheet" type="text/css" media="all" /> <!-- popup box css -->
 
 </head>
 <!-- body starts -->
@@ -33,7 +34,7 @@
 <section class="register">
 	<div class="header">
 		<div class="logo">
-			<a href="#">ÉçÍÅºóÌ¨¹ÜÀíÏµÍ³</a>
+			<a href="#">é¤å…ç®¡ç†ç³»ç»Ÿ</a>
 		</div>
 	<div class="social">
 			<li><a href="#"><span class="fa fa-facebook"></span></a></li>
@@ -43,14 +44,14 @@
 	</div>
 		<div class="clear"></div>
 	</div>
-	<div class="tlinks">Collect from <a href="http://www.cssmoban.com/"  title="ÍøÕ¾Ä£°å">ÍøÕ¾Ä£°å</a></div>
+	<div class="tlinks">Collect from <a href="http://www.cssmoban.com/"  title="ç½‘ç«™æ¨¡æ¿">ç½‘ç«™æ¨¡æ¿</a></div>
 	<div class="register-full">
 		<div class="register-left">
 			<div class="register">
-				<p>½ñÈÕ¹«¸æ</p>
-				<h1>½ñÌìÒ²ÊÇÆ½°²ÎŞÊÂµÄÒ»ÌìÄØ</h1>
+				<p>ä»Šæ—¥å…¬å‘Š</p>
+				<h1>ä»Šå¤©ä¹Ÿæ˜¯å¹³å®‰æ— äº‹çš„ä¸€å¤©å‘¢</h1>
 				<!-- <h2>Aenean in est pretium</h2> -->
-				<p>´ó¸Å</p>
+				<p>å¤§æ¦‚</p>
 				<div class="content3">
 					<ul>
 						<!-- <li><a class="" href="#"> New Project</a></li> -->
@@ -63,30 +64,30 @@
 		<div class="register-right">
 
 			<!-- <div class="register-in">
-				<a class="book popup-with-zoom-anim button-isi zoomIn animated" data-wow-delay=".5s" href="#small-dialog2">register here ¡·</a>
+				<a class="book popup-with-zoom-anim button-isi zoomIn animated" data-wow-delay=".5s" href="#small-dialog2">register here ã€‹</a>
 			</div>
 			<div class="register-in middle">
-				<a class="book popup-with-zoom-anim button-isi zoomIn animated" data-wow-delay=".5s" href="#small-dialog">³£ÓÃÍøÖ·1 ¡·</a>
+				<a class="book popup-with-zoom-anim button-isi zoomIn animated" data-wow-delay=".5s" href="#small-dialog">å¸¸ç”¨ç½‘å€1 ã€‹</a>
 			</div>
 			<div class="register-in">
-				<a class="book popup-with-zoom-anim button-isi zoomIn animated" data-wow-delay=".5s" href="#small-dialog1">³£ÓÃÍøÖ·2 ¡·</a>
+				<a class="book popup-with-zoom-anim button-isi zoomIn animated" data-wow-delay=".5s" href="#small-dialog1">å¸¸ç”¨ç½‘å€2 ã€‹</a>
 			</div> -->
 
 			<div class="register-in">
-				<a class="" href="#">³£ÓÃÍøÖ·1 ¡·</a>
+				<a class="" href="#">å¸¸ç”¨ç½‘å€1 ã€‹</a>
 			</div>
 			<div class="register-in middle">
-				<a class="" href="#">³£ÓÃÍøÖ·2 ¡·</a>
+				<a class="" href="#">å¸¸ç”¨ç½‘å€2 ã€‹</a>
 			</div>
 			<div class="register-in">
-				<a class="" href="#">³£ÓÃÍøÖ·3 ¡·</a>
+				<a class="" href="#">å¸¸ç”¨ç½‘å€3 ã€‹</a>
 			</div>
 			<div class="clear"> </div>
 		</div>
 	<div class="clear"> </div>
 	</div>
 	<!-- copyright -->
-	<p class="agile-copyright">Copyright &copy; 2018.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="Ä£°åÖ®¼Ò">Ä£°åÖ®¼Ò</a> - Collect from <a href="http://www.cssmoban.com/" title="ÍøÒ³Ä£°å" target="_blank">ÍøÒ³Ä£°å</a></p>
+	<p class="agile-copyright">Copyright &copy; 2018.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="æ¨¡æ¿ä¹‹å®¶">æ¨¡æ¿ä¹‹å®¶</a> - Collect from <a href="http://www.cssmoban.com/" title="ç½‘é¡µæ¨¡æ¿" target="_blank">ç½‘é¡µæ¨¡æ¿</a></p>
 	<!-- //copyright -->
 </section>
 <!-- //section -->
@@ -103,7 +104,7 @@
 				<span class="fa fa-lock"></span>
 				<div class="clear"></div>
 				<div class="login-agileits-top"> 	
-					<form action="login"> 
+					<form action="${ctx}/customer/login">
 						<input type="text" class="name" name="username" Placeholder="Username" required=""/>
 						<input type="password" class="password" name="password" Placeholder="Password" required=""/>
 						<input type="submit" name="login" value="Login"> 
@@ -148,18 +149,18 @@
 	
 		<div class="login-form login-form-left"> 
 			<div class="agile-row">
-				<h3>×¢²á</h3>
+				<h3>æ³¨å†Œ</h3>
 				<div class="login-agileits-top"> 	
 					<form action="register" name="form"> 
-						<!-- <input type="text" class="email" name="email" Placeholder="Email" required=""/> -->
-						<input type="text" class="" name="sId" id="sId" Placeholder="ID" />
-						<input type="text" class="name" name="sName" id="sName" Placeholder="Full Name" />		<!-- <input type="password" class="password" name="spassword1" id="sPassword1" Placeholder="Password" required=""/>	 -->	
-						<input type="password" class="password" name="sPassword1" id="sPassword1" Placeholder="Password" />
-						<input type="password" class="password" name="sPassword2" id="sPassword2" Placeholder="Comfirm Password" />
-						<select name="sSuper" id="sSuper">
-					         <option class="black" Selected value="1">¹ÜÀíÔ±</option>
-					         <option class="black" value="2">ÆÕÍ¨ÓÃ»§</option>
-				       </select>
+						<input type="text" class="email" name="Email" id="Email" Placeholder="Email" required=""/>
+						<input type="text" class="phone" name="Phone" id="Phone" Placeholder="Phone" />
+						<input type="text" class="name" name="customerName" id="customerName" Placeholder="Name" />		<!-- <input type="password" class="password" name="spassword1" id="sPassword1" Placeholder="Password" required=""/>	 -->
+						<input type="password" class="password" name="customerPassword1" id="customerPassword1" Placeholder="Password" />
+						<input type="password" class="password" name="customerPassword2" id="customerPassword2" Placeholder="Comfirm Password" />
+<%--						<select name="sSuper" id="sSuper">--%>
+<%--					         <option class="black" Selected value="1">ç®¡ç†å‘˜</option>--%>
+<%--					         <option class="black" value="2">æ™®é€šç”¨æˆ·</option>--%>
+<%--				       </select>--%>
 						<div class="login-check">
 							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i> I Accept to the <a href="#">Terms &amp; Conditions</a></label>
 						</div>
@@ -173,7 +174,7 @@
 	</div>
 </div>
 <!-- //register form js-->
-<script type="text/javascript" src="js/register.js"></script>
+<script type="text/javascript" src="js/register1.js"></script>
 <!-- //register form popup-->
 
 <!-- js -->
