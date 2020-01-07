@@ -10,7 +10,6 @@ import java.util.List;
 public interface StaffMapper {
     Staff getById(Integer staffId);
     Staff getByName(String staffName);
-    Staff getByGender(String staffGender);
     List<Staff> queryAll();
     boolean add(Staff staff);
     boolean delete(Staff staff);

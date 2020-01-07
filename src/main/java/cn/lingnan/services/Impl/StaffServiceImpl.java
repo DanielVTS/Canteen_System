@@ -29,11 +29,6 @@ public class StaffServiceImpl implements StaffService {
     }
 
     @Override
-    public Staff getByGender(String staffGender) {
-        return staffMapper.getByGender(staffGender);
-    }
-
-    @Override
     public List<Staff> queryAll() {
         return staffMapper.queryAll();
     }
