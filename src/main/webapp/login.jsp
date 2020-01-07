@@ -104,8 +104,8 @@
 				<span class="fa fa-lock"></span>
 				<div class="clear"></div>
 				<div class="login-agileits-top"> 	
-					<form action="${ctx}/customer/login">
-						<input type="text" class="name" name="username" Placeholder="Username" required=""/>
+					<form action="${ctx}/customer/login" method="post">
+						<input type="text" class="name" name="email" Placeholder="Email" required=""/>
 						<input type="password" class="password" name="password" Placeholder="Password" required=""/>
 						<input type="submit" name="login" value="Login"> 
 					</form> 	
@@ -151,10 +151,10 @@
 			<div class="agile-row">
 				<h3>注册</h3>
 				<div class="login-agileits-top"> 	
-					<form action="${ctx}/customer/register" name="form">
+					<form action="${ctx}/customer/register" name="form" method="post">
 						<input type="text" class="email" name="Email" id="Email" Placeholder="Email" required=""/>
 						<input type="text" class="phone" name="Phone" id="Phone" Placeholder="Phone" />
-						<input type="text" class="name" name="customerName" id="customerName" Placeholder="Name" />		<!-- <input type="password" class="password" name="spassword1" id="sPassword1" Placeholder="Password" required=""/>	 -->
+						<input type="text" class="name" name="customerName" id="customerName" Placeholder="UserName" />		<!-- <input type="password" class="password" name="spassword1" id="sPassword1" Placeholder="Password" required=""/>	 -->
 						<input type="password" class="password" name="customerPassword1" id="customerPassword1" Placeholder="Password" />
 						<input type="password" class="password" name="customerPassword2" id="customerPassword2" Placeholder="Comfirm Password" />
 <%--						<select name="sSuper" id="sSuper">--%>
@@ -174,15 +174,15 @@
 	</div>
 </div>
 <!-- //register form js-->
-<script type="text/javascript" src="js/register1.js"></script>
+<script type="text/javascript" src="${ctx}/js/register1.js"></script>
 <!-- //register form popup-->
 
 <!-- js -->
-<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="${ctx}/js/jquery-2.1.4.min.js"></script>
 <!-- //js -->
 
 <!--popup-js-->
-<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
+<script src="${ctx}/js/jquery.magnific-popup.js" type="text/javascript"></script>
  <script>
 	$(document).ready(function() {
 	$('.popup-with-zoom-anim').magnificPopup({
