@@ -74,7 +74,7 @@
 			</div> -->
 
 			<div class="register-in">
-				<a class="" href="#">常用网址1 》</a>
+				<a class="" href="${ctx}/CustomerListTest.jsp">常用网址1 》</a>
 			</div>
 			<div class="register-in middle">
 				<a class="" href="#">常用网址2 》</a>

@@ -5,16 +5,19 @@ import cn.lingnan.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/customer")
-public class LoginController {
+public class CustomerController {
 
     private CustomerService customerService;
     @Autowired
@@ -60,4 +63,13 @@ public class LoginController {
         }
         else return "forward:../login.jsp";
     }
+
+    @GetMapping("/getListJson")
+    @ResponseBody
+    public List<Customer> getListJson(){
+        System.out.println("getListJson");
+        return customerService.queryAll();
+    }
+
+
 }
