@@ -36,4 +36,86 @@
     <select id="queryAll" resultType="OrderList">
         select * from order_list
     </select>
+
+    <insert id="add">
+        insert into order_list
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderNo!=null">
+                order_no,
+            </if>
+
+            <if test="customerId!=null">
+                customer_id,
+            </if>
+            <if test="customerName!=null">
+                customer_name,
+            </if>
+            <if test="phone!=null">
+                phone,
+            </if>
+            <if test="tableId!=null">
+                table_id,
+            </if>
+            <if test="tableName!=null">
+                table_name,
+            </if>
+            <if test="orderStatus!=null">
+                order_status,
+            </if>
+            <if test="orderPrice!=null">
+                order_price,
+            </if>
+            <if test="tableTime!=null">
+                table_time,
+            </if>
+            <if test="endTime!=null">
+                end_time,
+            </if>
+            <if test="ps!=null">
+                ps,
+            </if>
+
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="orderNo!=null">
+                #{order_no},
+            </if>
+
+            <if test="customerId!=null">
+                #{customerId},
+            </if>
+            <if test="customerName!=null">
+                #{customerName},
+            </if>
+            <if test="phone!=null">
+                #{phone},
+            </if>
+            <if test="tableId!=null">
+                #{tableId},
+            </if>
+            <if test="tableName!=null">
+                #{tableName},
+            </if>
+            <if test="orderStatus!=null">
+                #{orderStatus},
+            </if>
+            <if test="orderPrice!=null">
+                #{orderPrice},
+            </if>
+            <if test="tableTime!=null">
+                #{tableTime},
+            </if>
+            <if test="endTime!=null">
+                #{endTime},
+            </if>
+            <if test="ps!=null">
+                #{ps},
+            </if>
+
+        </trim>
+    </insert>
+
+    <delete id="delete">
+        delete from order_list where order_id=#{orderId}
+    </delete>
 </mapper>

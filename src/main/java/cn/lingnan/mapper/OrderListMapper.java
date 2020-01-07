@@ -16,11 +16,7 @@ public interface OrderListMapper {
     boolean delete(Integer orderId);
     boolean add (OrderList orderList);
     List<OrderList> queryAll();
-    List<OrderList> getByNo(String orderNo);
-    List<OrderList> getByCustomerId(Integer customerId);
-    List<OrderList> getByTableId(Integer tableId);
-    List<OrderList> getByStatus(Integer orderStatus);
     List<OrderList> query(OrderList orderList);
-    List<OrderList> queryAll(OrderList orderList);
+
 
 }

@@ -59,7 +59,7 @@ public class AppTest01 {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("application-context.xml");
         OrderList orderList = ctx.getBean(OrderList.class);
         orderList.setOrderNo("01");
-//        orderList.setOrderStatus(1);
+        orderList.setOrderStatus(1);
         System.out.println(orderListMapper.query(orderList));
 //        System.out.println(orderListMapper.queryAll());
 //        System.out.println(customerMapper.queryAll());

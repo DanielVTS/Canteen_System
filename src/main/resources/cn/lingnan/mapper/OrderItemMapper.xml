@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lingnan.mapper.OrderItemMapper">
+    <select id="query" resultType="OrderItem">
+        select * from order_item where
+        <trim suffixOverrides="and">
+            <if test="id!=null">
+                id=#{id} and
+            </if>
+            <if test="orderNo!=null">
+                order_no=#{orderNo} and
+            </if>
+            <if test="menuId!=null">
+                menu_id=#{menuId} and
+            </if>
+            <if test="menuName!=null">
+                menu_name=#{menuName} and
+            </if>
+            <if test="price!=null">
+                price=#{price} and
+            </if>
+            <if test="quantity!=null">
+                quantity=#{quantity} and
+            </if>
+            <if test="totalPrice!=null">
+                total_price=#{totalPrice} and
+            </if>
+            <if test="orderStatus!=null">
+                table_time=#{tableTime} and
+            </if>
+            <if test="tableTime!=null">
+                end_time=#{tableTime} and
+            </if>
+        </trim>
+    </select>
+    <select id="queryAll" resultType="OrderList">
+        select * from order_list
+    </select>
+
+    <insert id="add">
+        insert into order_item
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <trim suffixOverrides="and">
+                <if test="id!=null">
+                    id,
+                </if>
+                <if test="orderNo!=null">
+                    order_no,
+                </if>
+                <if test="menuId!=null">
+                    menu_id,
+                </if>
+                <if test="menuName!=null">
+                    menu_name,
+                </if>
+                <if test="price!=null">
+                    price,
+                </if>
+                <if test="quantity!=null">
+                    quantity,
+                </if>
+                <if test="totalPrice!=null">
+                    total_price,
+                </if>
+                <if test="orderStatus!=null">
+                    table_time,
+                </if>
+                <if test="tableTime!=null">
+                    end_time,
+                </if>
+            </trim>
+
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <trim suffixOverrides="and">
+                <if test="id!=null">
+                    #{id},
+                </if>
+                <if test="orderNo!=null">
+                    #{orderNo},
+                </if>
+                <if test="menuId!=null">
+                    #{menuId},
+                </if>
+                <if test="menuName!=null">
+                    #{menuName},
+                </if>
+                <if test="price!=null">
+                    #{price},
+                </if>
+                <if test="quantity!=null">
+                    #{quantity},
+                </if>
+                <if test="totalPrice!=null">
+                    #{totalPrice},
+                </if>
+                <if test="orderStatus!=null">
+                    #{tableTime},
+                </if>
+                <if test="tableTime!=null">
+                    #{tableTime},
+                </if>
+            </trim>
+
+        </trim>
+    </insert>
+
+    <delete id="delete">
+        delete from order_item where id=#{id}
+    </delete>
+</mapper>

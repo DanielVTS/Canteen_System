@@ -11,9 +11,30 @@ import java.util.List;
 @Service("orderListService")
 public class OrderListServiceImpl implements OrderListService {
     @Autowired
-    private OrderListMapper orderListMpeer;
+    private OrderListMapper orderListMapper;
+
+    @Override
+    public boolean update(OrderList orderList) {
+        return orderListMapper.add(orderList);
+    }
+
+    @Override
+    public boolean delete(Integer orderId) {
+        return orderListMapper.delete(orderId);
+    }
+
+    @Override
+    public boolean add(OrderList orderList) {
+        return orderListMapper.add(orderList);
+    }
+
+    @Override
+    public List<OrderList> queryAll() {
+        return null;
+    }
+
     @Override
     public List<OrderList> query(OrderList orderList) {
-        return orderListMpeer.query(orderList);
+        return orderListMapper.query(orderList);
     }
 }
