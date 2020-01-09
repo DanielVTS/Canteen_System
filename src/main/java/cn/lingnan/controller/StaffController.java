@@ -1,6 +1,7 @@
 package cn.lingnan.controller;
 
 
+import cn.lingnan.pojo.Customer;
 import cn.lingnan.pojo.Staff;
 import cn.lingnan.services.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class StaffController {
 
     private StaffService staffService;
     @Autowired
-    public void setCustomerService(StaffService customerService) {
+    public void setStaffService(StaffService staffService) {
         this.staffService = staffService;
     }
 
@@ -62,5 +63,12 @@ public class StaffController {
 //        System.out.println("queryAll staff");
 //        staffService.queryAll();
 //    }
+
+    @GetMapping("/getListJson")
+    @ResponseBody
+    public List<Staff> getListJson () {
+        System.out.println("getListJson");
+        return staffService.queryAll();
+    }
 
 }
