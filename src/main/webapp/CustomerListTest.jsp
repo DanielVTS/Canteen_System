@@ -32,12 +32,12 @@
         </tbody>
     </table>
 </div>
-<%--<script src="${ctx}/js/jquery-2.1.4.min.js"></script>--%>
+
 <script type="text/javascript" src="${ctx}/js/jquery-2.1.4.min.js"></script>
 <script>
     //jquery代码都必须写在ready方法中
     $(document).ready(function () {
-        $.get("${ctx}/customer/getListJson",function(data,status){
+        $.get("${ctx}/customer/getCustomerList",function(data,status){
             console.log(data);
             console.log("数据: " + data + "\n状态: " + status);
             $.each(data, function (index, item) {

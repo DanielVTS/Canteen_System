@@ -25,12 +25,7 @@
             <if test="totalPrice!=null">
                 total_price=#{totalPrice} and
             </if>
-            <if test="tableTime!=null">
-                table_time=#{tableTime} and
-            </if>
-            <if test="endTime!=null">
-                end_time=#{endTime} and
-            </if>
+
         </trim>
     </select>
     <select id="queryAll" resultType="OrderList">
@@ -62,12 +57,7 @@
                 <if test="totalPrice!=null">
                     total_price,
                 </if>
-                <if test="tableTime!=null">
-                    table_time,
-                </if>
-                <if test="endTime!=null">
-                    end_time,
-                </if>
+
             </trim>
 
         </trim>
@@ -94,12 +84,7 @@
                 <if test="totalPrice!=null">
                     #{totalPrice},
                 </if>
-                <if test="tableTime!=null">
-                    #{tableTime},
-                </if>
-                <if test="endTime!=null">
-                    #{endTime},
-                </if>
+
             </trim>
 
         </trim>
@@ -128,12 +113,7 @@
         <if test="totalPrice!=null">
             total_price=#{totalPrice},
         </if>
-        <if test="tableTime!=null">
-            table_time=#{tableTime},
-        </if>
-        <if test="endTime!=null">
-            end_time=#{endTime},
-        </if>
+
     </trim>
             where id=#{id}
 </update>

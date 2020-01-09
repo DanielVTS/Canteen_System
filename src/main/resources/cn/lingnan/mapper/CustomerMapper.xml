@@ -22,7 +22,6 @@
     <select id="queryAll" resultType="Customer">
         select * from customer;
     </select>
-
     <select id="query" resultType="customer">
         select * from customer where
         <trim suffixOverrides="and">
@@ -51,6 +50,60 @@
                 customer_password=#{customerPassword} and
             </if>
         </trim>
+    </select>
+
+    <select id="check" resultType="customer">
+        select * from customer where
+        <trim suffixOverrides="or">
+            <if test="customerId!=null">
+                customer_id=#{customerId} or
+            </if>
+            <if test="customerName!=null">
+                customer_name=#{customerName} or
+            </if>
+            <if test="phone!=null">
+                phone=#{phone} or
+            </if>
+            <if test="email!=null">
+                email=#{email} or
+            </if>
+            <if test="birthday!=null">
+                birthday=#{birthday} or
+            </if>
+            <if test="registerTime!=null">
+                register_time=#{registerTime} or
+            </if>
+            <if test="loginTime!=null">
+                login_time=#{loginTime} or
+            </if>
+        </trim>
+    </select>
+    <select id="login" resultType="customer">
+select * from customer where
+        <trim suffixOverrides="or">
+            <if test="customerId!=null">
+                customer_id=#{customerId} or
+            </if>
+            <if test="customerName!=null">
+                customer_name=#{customerName} or
+            </if>
+            <if test="phone!=null">
+                phone=#{phone} or
+            </if>
+            <if test="email!=null">
+                email=#{email} or
+            </if>
+            <if test="birthday!=null">
+                birthday=#{birthday} or
+            </if>
+            <if test="registerTime!=null">
+                register_time=#{registerTime} or
+            </if>
+            <if test="loginTime!=null">
+                login_time=#{loginTime} or
+            </if>
+        </trim>
+        and customer_password=#{customerPassword}
     </select>
 
 <insert id="register">
@@ -112,20 +165,20 @@ insert into customer
             <if test="customerName!=null">
                 customer_name=#{customerName},
             </if>
-            <if test="customerPhone!=null">
+            <if test="phone!=null">
               phone=#{phone},
             </if>
-            <if test="customerBirthday!=null">
+            <if test="birthday!=null">
                 birthday=#{birthday},
             </if>
 
-            <if test="customerEmail!=null">
+            <if test="email!=null">
                 email=#{email},
             </if>
             <if test="registerTime!=null">
                 register_time=#{registerTime},
             </if>
-            <if test="customerLastLogin!=null">
+            <if test="loginTime!=null">
                 login_time=#{loginTime},
             </if>
             <if test="customerPassword!=null">

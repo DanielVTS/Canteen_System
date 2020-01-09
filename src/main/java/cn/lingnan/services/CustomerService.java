@@ -10,6 +10,9 @@ public interface CustomerService {
     boolean delete(Integer customerId);
     List<Customer> queryAll();
     List<Customer> query(Customer customer);
+    List<Customer> check(Customer customer);
+    Customer login(Customer customer);
+//    Customer login(String loginname,String password);
     Customer loginById(Integer customerId,String customerPassword);
     Customer loginByEmail(String email,String customerPassword);
     Customer getByName(String customerName);

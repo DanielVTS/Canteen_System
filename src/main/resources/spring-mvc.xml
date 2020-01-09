@@ -18,16 +18,16 @@
     <mvc:default-servlet-handler />
 
     <!--将springmvc，功能全开-->
-    <mvc:annotation-driven conversion-service="convertService" />
+    <mvc:annotation-driven conversion-service="convertService"  validator="validator"/>
     <bean id="convertService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
 <!--    <mvc:annotation-driven conversion-service="conversionService">-->
 
 <!--    </mvc:annotation-driven>-->
 
-<!--    <mvc:annotation-driven validator="validator" />-->
-<!--    <bean id = "validator" class = "org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">-->
-<!--        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>-->
-<!--    </bean>-->
+    <mvc:annotation-driven validator="validator" />
+    <bean id = "validator" class = "org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+    </bean>
 
 
 
