@@ -30,7 +30,7 @@ create table customer
     customer_id  int(5) primary key auto_increment,
     customer_name varchar(30) default null,
     phone varchar(15) default null,
-    customer_email varchar(30) default null,
+    email varchar(30) default null,
     birthday date default null,
     register_time datetime default null,
     login_time datetime default null,
