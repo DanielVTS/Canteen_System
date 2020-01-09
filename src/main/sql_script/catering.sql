@@ -1,3 +1,4 @@
+drop database catering;
 create database catering;
 use catering;
 
@@ -19,9 +20,9 @@ create table table_information
     table_id int(5) primary key auto_increment,
     table_name varchar(30) default null,
     table_seat varchar(5) default null,
-    table_staus int(3) default null,
+    table_status int(3) default null,
     phone varchar(20) default null,
-    table_time date default null)
+    table_time datetime default null)
 ;
 
 create table customer
@@ -31,8 +32,8 @@ create table customer
     phone varchar(15) default null,
     customer_email varchar(30) default null,
     birthday date default null,
-    register_time date default null,
-    login_time date default null,
+    register_time datetime default null,
+    login_time datetime default null,
     customer_password varchar(30) default null
 );
 
@@ -46,8 +47,8 @@ create table order_list(
                            table_name varchar(30) default null,
                            order_status int(3) default null,
                            order_price double(10,2) default null,
-                           table_time date default null,
-                           end_time date default null,
+                           table_time datetime default null,
+                           end_time datetime default null,
                            ps varchar(50) default null
 );
 

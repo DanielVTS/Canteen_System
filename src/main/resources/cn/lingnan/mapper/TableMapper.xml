@@ -18,8 +18,8 @@
             <if test="tableSeat!=null">
                 table_seat=#{tableSeat} and
             </if>
-            <if test="tableStaus!=null">
-                table_staus=#{tableStaus} and
+            <if test="tableStatus!=null">
+                table_status=#{tableStatus} and
             </if>
             <if test="phone!=null">
                 phone=#{phone} and
@@ -41,8 +41,8 @@
             <if test="tableSeat!=null">
                 table_seat=#{tableSeat},
             </if>
-            <if test="tableStaus!=null">
-                table_staus=#{tableStaus},
+            <if test="tableStatus!=null">
+                table_status=#{tableStatus},
             </if>
             <if test="phone!=null">
                 phone=#{phone},
@@ -64,8 +64,8 @@
             <if test="tableSeat!=null">
                 table_seat,
             </if>
-            <if test="tableStaus!=null">
-                table_staus,
+            <if test="tableStatus!=null">
+                table_status,
             </if>
             <if test="phone!=null">
                 phone,
@@ -82,8 +82,8 @@
             <if test="tableSeat!=null">
                 #{tableSeat},
             </if>
-            <if test="tableStaus!=null">
-                #{tableStaus},
+            <if test="tableStatus!=null">
+                #{tableStatus},
             </if>
             <if test="phone!=null">
                 #{phone},

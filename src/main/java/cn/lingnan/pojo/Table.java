@@ -11,7 +11,7 @@ public class Table {
     private Integer tableId;
     private String tableName;
     private String tableSeat;
-    private Integer tableStaus;
+    private Integer tableStatus;
     @Pattern(regexp = "^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$", message = "手机号码不正确")
     private String phone;
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
@@ -21,11 +21,11 @@ public class Table {
 
     }
 
-    public Table(Integer tableId, String tableName, String tableSeat, Integer tableStaus, @Pattern(regexp = "^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$", message = "手机号码不正确") String phone, Date tableTime) {
+    public Table(Integer tableId, String tableName, String tableSeat, Integer tableStatus, @Pattern(regexp = "^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$", message = "手机号码不正确") String phone, Date tableTime) {
         this.tableId = tableId;
         this.tableName = tableName;
         this.tableSeat = tableSeat;
-        this.tableStaus = tableStaus;
+        this.tableStatus = tableStatus;
         this.phone = phone;
         this.tableTime = tableTime;
     }
@@ -54,12 +54,12 @@ public class Table {
         this.tableSeat = tableSeat;
     }
 
-    public Integer getTableStaus() {
-        return tableStaus;
+    public Integer getTableStatus() {
+        return tableStatus;
     }
 
-    public void setTableStaus(Integer tableStaus) {
-        this.tableStaus = tableStaus;
+    public void setTableStatus(Integer tableStatus) {
+        this.tableStatus = tableStatus;
     }
 
     public String getPhone() {
