@@ -15,7 +15,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/staff")
+@RequestMapping("/menu")
 public class MenuController {
 
     private MenuService menuService;
