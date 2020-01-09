@@ -32,6 +32,7 @@ public class Customer {
     private String customerPassword;
 
     public Customer() {
+
     }
 
     public Customer(Integer customerId, @NotNull(message = "用户名不能为空") @Length(message = "用户名长度必须{min}-{max}在之间", max = 20, min = 4) String customerName, @Pattern(regexp = "^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$", message = "手机号码不正确") String phone, @Past(message = "生日日期不对") Date birthday, @Email(message = "邮箱格式不对") String email, Date registerTime, Date loginTime, @NotNull(message = "密码不能为空") @Size(min = 6, message = "密码长度不能小于{min}") String customerPassword) {

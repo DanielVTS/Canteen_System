@@ -151,7 +151,7 @@
 			<div class="agile-row">
 				<h3>注册</h3>
 				<div class="login-agileits-top"> 	
-					<form action="${ctx}/customer/register" name="form">
+					<form action="#" name="form" onsubmit="false" method="post">
 						<input type="text" class="email" name="Email" id="Email" Placeholder="Email" required=""/>
 						<input type="text" class="phone" name="Phone" id="Phone" Placeholder="Phone" />
 						<input type="text" class="name" name="customerName" id="customerName" Placeholder="Name" />		<!-- <input type="password" class="password" name="spassword1" id="sPassword1" Placeholder="Password" required=""/>	 -->
@@ -185,6 +185,7 @@
 <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
  <script>
 	$(document).ready(function() {
+
 	$('.popup-with-zoom-anim').magnificPopup({
 		type: 'inline',
 		fixedContentPos: false,
@@ -200,6 +201,8 @@
 	});
 </script>
 <!--//popup-js-->
+
+
 
 </body>	
 <!-- //body ends -->

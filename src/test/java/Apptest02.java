@@ -54,7 +54,8 @@ public class Apptest02 {
         menu.setMenuId(1);
         menu.setMenuName("1");
         menu.setMenuCategory("1");
-        menu.setMenuStaus(1);
+
+        menu.setMenuStatus(1);
         menu.setPrice(1);
         menu.setPicture("1");
         System.out.println(menuMapper.query(menu));
@@ -70,7 +71,7 @@ public class Apptest02 {
         table.setTableId(1);
         table.setTableName("2");
         table.setTableSeat("2");
-        table.setTableStaus(2);
+        table.setTableStatus(2);
         table.setPhone("2");
         System.out.println(tableMapper.update(table));
         System.out.println(tableMapper.queryAll());

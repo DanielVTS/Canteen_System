@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/customer")
@@ -50,8 +52,10 @@ public class CustomerController {
 
         } else {
             //登录失败
-            model.addAttribute("msg", "用户名或密码错误");
+            //model.addAttribute("msg", "用户名或密码错误");
             System.out.println("登陆失败");
+
+            session.setAttribute("error", "登陆失败！");
             //return "forward:login.jsp";//http://localhost:8080/ssm-02/user/login.jsp
             return "forward:../login.jsp";
         }
@@ -59,9 +63,10 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(String Email, String Phone, String customerName, String customerPassword2, Model model) {
-        System.out.println("login:::email:::" + Email + ", password: " + customerPassword2 + ",phone: " + Phone + ",name: " + customerName);
+    public Map<String, String> register(String Email, String Phone, String customerName, String customerPassword2, Model model) {
+        System.out.println("register:::email:::" + Email + ", password: " + customerPassword2 + ",phone: " + Phone + ",name: " + customerName);
         Customer bean = new Customer();
+        Map<String, String> map = new HashMap<String, String>();
         bean.setCustomerName(customerName);
         bean.setEmail(Email);
         bean.setPhone(Phone);
@@ -69,18 +74,22 @@ public class CustomerController {
         if (customerService.check(bean).isEmpty()) {
             bean.setRegisterTime(new java.sql.Date(new Date().getTime()));
             if (customerService.register(bean)) {
-                return "success";
+                model.addAttribute("result", "success");
+                map.put("result", "success");
             } else {
-                model.addAttribute("msg", "注册失败");
-                return "forward:../login.jsp";
+                model.addAttribute("result", "error");
+                map.put("result", "error");
             }
         }
         else{
-                model.addAttribute("msg", "注册失败，该用户名或邮箱，电话已经被使用");
-                return "forward:../login.jsp";
+                model.addAttribute("result", "error");
+            map.put("result", "information error");
             }
+        return map;
 
     }
+
+
 
     @GetMapping("/getListJson")
     @ResponseBody
@@ -88,4 +97,7 @@ public class CustomerController {
         System.out.println("getListJson");
         return customerService.queryAll();
     }
+
+
+
 }

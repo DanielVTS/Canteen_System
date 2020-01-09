@@ -31,5 +31,24 @@ function check(){
         form.customerPassword2.focus();
         return false;
     }
+    $.ajax({
+        type: "POST",
+        url: "/customer/register",
+        data: form,
+        // data: $('#addProductForm').serialize(),
+        processData:false,
+        contentType:false,
+        success: function (result) {
+            console.log(result);
+            if (result.result == "success") {
+                alert("注册成功！");
+                window.location.href = "${ctx}/login.jsp";
+            }
+        },
+        error: function() {
+
+            alert("注册失败！请重试");
+        }
+    });
 
 }
