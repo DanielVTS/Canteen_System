@@ -112,10 +112,10 @@ public class CustomerController {
 
     }
 
-    @GetMapping("/getListJson")
+    @GetMapping("/getCustomerList")
     @ResponseBody
-    public List<Customer> getListJson () {
-        System.out.println("getListJson");
+    public List<Customer> getCustomerList () {
+        System.out.println("getCustomerList");
         return customerService.queryAll();
     }
 

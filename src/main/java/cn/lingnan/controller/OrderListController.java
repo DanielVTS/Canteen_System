@@ -76,10 +76,10 @@ public class OrderListController {
         else return "forward:../update.jsp";
     }
 
-    @GetMapping("/getListJson")
+    @GetMapping("/getOrderList")
     @ResponseBody
-    public List<OrderList> getListJson () {
-        System.out.println("getListJson");
+    public List<OrderList> getOrderList () {
+        System.out.println("getOrderList");
         return orderListService.queryAll();
     }
 
