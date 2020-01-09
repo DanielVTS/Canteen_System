@@ -7,18 +7,18 @@ public class Menu {
     private Integer menuId;
     private String menuName;
     private String menuCategory;
-    private Integer menuStaus;
+    private Integer menuStatus;
     private Integer price;
     private String picture;
 
     public Menu(){
 
     }
-    public Menu(Integer menuId, String menuName, String menuCategory, Integer menuStaus, Integer price, String picture){
+    public Menu(Integer menuId, String menuName, String menuCategory, Integer menuStatus, Integer price, String picture){
         this.menuId = menuId;
         this.menuName = menuName;
         this.menuCategory = menuCategory;
-        this.menuStaus = menuStaus;
+        this.menuStatus = menuStatus;
         this.price = price;
         this.picture = picture;
     }
@@ -47,12 +47,12 @@ public class Menu {
         this.menuCategory = menuCategory;
     }
 
-    public Integer getMenuStaus() {
-        return menuStaus;
+    public Integer getMenuStatus() {
+        return menuStatus;
     }
 
-    public void setMenuStaus(Integer menuStaus) {
-        this.menuStaus = menuStaus;
+    public void setMenuStatus(Integer menuStatus) {
+        this.menuStatus = menuStatus;
     }
 
     public Integer getPrice() {
@@ -77,7 +77,7 @@ public class Menu {
                 "menuId=" + menuId +
                 ", menuName='" + menuName + '\'' +
                 ", menuCategory='" + menuCategory + '\'' +
-                ", menuStaus=" + menuStaus +
+                ", menuStatus=" + menuStatus +
                 ", price=" + price +
                 ", picture='" + picture + '\'' +
                 '}';

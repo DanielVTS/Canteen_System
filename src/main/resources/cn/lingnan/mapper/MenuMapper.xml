@@ -26,8 +26,8 @@
             <if test="menuCategory!=null">
                 menu_category=#{menuCategory} and
             </if>
-            <if test="menuStaus!=null">
-                menu_staus=#{menuStaus} and
+            <if test="menuStatus!=null">
+                menu_status=#{menuStatus} and
             </if>
             <if test="price!=null">
                 price=#{price} and
@@ -47,8 +47,8 @@
                 menu_category=#{menuCategory},
             </if>
 
-            <if test="menuStaus!=null">
-                menu_staus=#{menuStaus},
+            <if test="menuStatus!=null">
+                menu_status=#{menuStatus},
             </if>
 
             <if test="price!=null">
@@ -73,8 +73,8 @@
                 menu_category,
             </if>
 
-            <if test="menuStaus!=null">
-                menu_staus,
+            <if test="menuStatus!=null">
+                menu_status,
             </if>
 
             <if test="price!=null">
@@ -94,8 +94,8 @@
                 #{menuCategory},
             </if>
 
-            <if test="menuStaus!=null">
-                #{menuStaus},
+            <if test="menuStatus!=null">
+                #{menuStatus},
             </if>
 
             <if test="price!=null">

@@ -9,7 +9,7 @@ create table menu(
                      menu_id int(5) primary key auto_increment,
                      menu_name varchar(30) default null,
                      menu_category varchar(30) default null,
-                     menu_staus int(3) default null,
+                     menu_status int(3) default null,
                      price double(10,2) default null,
                      picture varchar(50) default null
 );
