@@ -28,7 +28,7 @@
 
 </head>
 <!-- body starts -->
-<body>
+<body onload="PopUpMsg()">
 
 <!-- section -->
 <section class="register">
@@ -74,7 +74,7 @@
 			</div> -->
 
 			<div class="register-in">
-				<a class="" href="${ctx}/CustomerListTest.jsp">常用网址1 》</a>
+				<a class="" href="#">常用网址1 》</a>
 			</div>
 			<div class="register-in middle">
 				<a class="" href="#">常用网址2 》</a>
@@ -104,8 +104,8 @@
 				<span class="fa fa-lock"></span>
 				<div class="clear"></div>
 				<div class="login-agileits-top"> 	
-					<form action="${ctx}/customer/login" method="post">
-						<input type="text" class="loginname" name="loginname" Placeholder="Email" required=""/>
+					<form action="${ctx}/customer/login">
+						<input type="text" class="name" name="username" Placeholder="Username" required=""/>
 						<input type="password" class="password" name="password" Placeholder="Password" required=""/>
 						<input type="submit" name="login" value="Login"> 
 					</form> 	
@@ -150,17 +150,12 @@
 		<div class="login-form login-form-left"> 
 			<div class="agile-row">
 				<h3>注册</h3>
-				<div class="login-agileits-top">
-					${requestScope.msg}<br>
-					<form action="${ctx}/customer/register" name="form" method="post">
+				<div class="login-agileits-top"> 	
+					<form action="${ctx}/customer/register" name="form"  method="post">
 						<input type="text" class="email" name="Email" id="Email" Placeholder="Email" required=""/>
-						<span style="color: red;">${requestScope.errors.email}</span><br>
 						<input type="text" class="phone" name="Phone" id="Phone" Placeholder="Phone" />
-						<span style="color: red;">${requestScope.errors.phone}</span><br>
-						<input type="text" class="name" name="customerName" id="customerName" Placeholder="UserName" />
-						<span style="color: red;">${requestScope.errors.name}</span><br>
+						<input type="text" class="name" name="customerName" id="customerName" Placeholder="Name" />		<!-- <input type="password" class="password" name="spassword1" id="sPassword1" Placeholder="Password" required=""/>	 -->
 						<input type="password" class="password" name="customerPassword1" id="customerPassword1" Placeholder="Password" />
-						<span style="color: red;">${requestScope.errors.password}</span><br>
 						<input type="password" class="password" name="customerPassword2" id="customerPassword2" Placeholder="Comfirm Password" />
 <%--						<select name="sSuper" id="sSuper">--%>
 <%--					         <option class="black" Selected value="1">管理员</option>--%>
@@ -179,17 +174,19 @@
 	</div>
 </div>
 <!-- //register form js-->
-<script type="text/javascript" src="${ctx}/js/register.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
 <!-- //register form popup-->
 
 <!-- js -->
-<script type="text/javascript" src="${ctx}/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <!-- //js -->
 
 <!--popup-js-->
-<script src="${ctx}/js/jquery.magnific-popup.js" type="text/javascript"></script>
+<script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
  <script>
 	$(document).ready(function() {
+
+
 	$('.popup-with-zoom-anim').magnificPopup({
 		type: 'inline',
 		fixedContentPos: false,
@@ -201,10 +198,17 @@
 		removalDelay: 300,
 		mainClass: 'my-mfp-zoom-in'
 	});
-																	
+
 	});
 </script>
 <!--//popup-js-->
+<!-- test -->
+<script>
+	function PopUpMsg(requestScope){
+		console.log(requestScope);
+	}
+</script>
+
 
 </body>	
 <!-- //body ends -->

@@ -28,7 +28,7 @@
 
 </head>
 <!-- body starts -->
-<body>
+<body onload="PopUpMsg()">
 
 <!-- section -->
 <section class="register">
@@ -151,7 +151,7 @@
 			<div class="agile-row">
 				<h3>注册</h3>
 				<div class="login-agileits-top"> 	
-					<form action="#" name="form" onsubmit="false" method="post">
+					<form action="${ctx}/customer/register" name="form" method="post">
 						<input type="text" class="email" name="Email" id="Email" Placeholder="Email" required=""/>
 						<input type="text" class="phone" name="Phone" id="Phone" Placeholder="Phone" />
 						<input type="text" class="name" name="customerName" id="customerName" Placeholder="Name" />		<!-- <input type="password" class="password" name="spassword1" id="sPassword1" Placeholder="Password" required=""/>	 -->
@@ -186,6 +186,7 @@
  <script>
 	$(document).ready(function() {
 
+
 	$('.popup-with-zoom-anim').magnificPopup({
 		type: 'inline',
 		fixedContentPos: false,
@@ -197,11 +198,16 @@
 		removalDelay: 300,
 		mainClass: 'my-mfp-zoom-in'
 	});
-																	
+
 	});
 </script>
 <!--//popup-js-->
-
+<!-- test -->
+<script>
+	function PopUpMsg(requestScope){
+		console.log(requestScope);
+	}
+</script>
 
 
 </body>	

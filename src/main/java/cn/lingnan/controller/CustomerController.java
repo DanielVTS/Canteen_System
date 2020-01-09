@@ -63,10 +63,11 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public Map<String, String> register(String Email, String Phone, String customerName, String customerPassword2, Model model) {
+
+    public String register(String Email, String Phone, String customerName, String customerPassword2, Model model) {
         System.out.println("register:::email:::" + Email + ", password: " + customerPassword2 + ",phone: " + Phone + ",name: " + customerName);
         Customer bean = new Customer();
-        Map<String, String> map = new HashMap<String, String>();
+
         bean.setCustomerName(customerName);
         bean.setEmail(Email);
         bean.setPhone(Phone);
@@ -74,18 +75,18 @@ public class CustomerController {
         if (customerService.check(bean).isEmpty()) {
             bean.setRegisterTime(new java.sql.Date(new Date().getTime()));
             if (customerService.register(bean)) {
-                model.addAttribute("result", "success");
-                map.put("result", "success");
+                model.addAttribute("msg", "success");
+                return "success";
             } else {
-                model.addAttribute("result", "error");
-                map.put("result", "error");
+                model.addAttribute("msg", "server error!");
+                return "error";
             }
         }
         else{
-                model.addAttribute("result", "error");
-            map.put("result", "information error");
+                model.addAttribute("msg", "information error!");
+                return "error";
             }
-        return map;
+
 
     }
 

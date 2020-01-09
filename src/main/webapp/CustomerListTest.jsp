@@ -70,6 +70,7 @@
                 var td8 = document.createElement("td");
                 td8.innerText = item.customerPassword;
                 tr.append(td8);
+
                 table.append(tr);
             })
         });
