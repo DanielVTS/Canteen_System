@@ -16,7 +16,7 @@ public class OrderList {
     @Pattern(regexp = "^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$", message = "手机号码不正确")
     private String phone;
     private Integer tableId;
-    private Integer tableName;
+    private String tableName;
     private Integer orderStatus;
     private double orderPrice;
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
@@ -30,7 +30,7 @@ public class OrderList {
     public OrderList() {
     }
 
-    public OrderList(Integer orderId, String orderNo, Integer customerId, String customerName, @Pattern(regexp = "^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$", message = "手机号码不正确") String phone, Integer tableId, Integer tableName, Integer orderStatus, double orderPrice, Date tableTime, Date endTime, String ps) {
+    public OrderList(Integer orderId, String orderNo, Integer customerId, String customerName, @Pattern(regexp = "^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$", message = "手机号码不正确") String phone, Integer tableId, String tableName, Integer orderStatus, double orderPrice, Date tableTime, Date endTime, String ps) {
         this.orderId = orderId;
         this.orderNo = orderNo;
         this.customerId = customerId;
@@ -93,11 +93,11 @@ public class OrderList {
         this.tableId = tableId;
     }
 
-    public Integer getTableName() {
+    public String getTableName() {
         return tableName;
     }
 
-    public void setTableName(Integer tableName) {
+    public void setTableName(String tableName) {
         this.tableName = tableName;
     }
 
