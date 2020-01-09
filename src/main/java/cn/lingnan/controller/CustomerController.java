@@ -64,14 +64,36 @@ public class CustomerController {
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
 
-    public String register(String Email, String Phone, String customerName, String customerPassword2, Model model) {
-        System.out.println("register:::email:::" + Email + ", password: " + customerPassword2 + ",phone: " + Phone + ",name: " + customerName);
-        Customer bean = new Customer();
+//    public String register(String Email, String Phone, String customerName, String customerPassword2, Model model) {
+//        System.out.println("register:::email:::" + Email + ", password: " + customerPassword2 + ",phone: " + Phone + ",name: " + customerName);
+//        Customer bean = new Customer();
+//
+//        bean.setCustomerName(customerName);
+//        bean.setEmail(Email);
+//        bean.setPhone(Phone);
+//        bean.setCustomerPassword(customerPassword2);
+//        if (customerService.check(bean).isEmpty()) {
+//            bean.setRegisterTime(new java.sql.Date(new Date().getTime()));
+//            if (customerService.register(bean)) {
+//                model.addAttribute("msg", "success");
+//                return "success";
+//            } else {
+//                model.addAttribute("msg", "server error!");
+//                return "error";
+//            }
+//        }
+//        else{
+//                model.addAttribute("msg", "information error!");
+//                return "error";
+//            }
+//
+//
+//    }
 
-        bean.setCustomerName(customerName);
-        bean.setEmail(Email);
-        bean.setPhone(Phone);
-        bean.setCustomerPassword(customerPassword2);
+
+    public String register(Customer bean,String customerPassword1,Model model) {
+        bean.setCustomerPassword(customerPassword1);
+        System.out.println(bean.toString());
         if (customerService.check(bean).isEmpty()) {
             bean.setRegisterTime(new java.sql.Date(new Date().getTime()));
             if (customerService.register(bean)) {
@@ -83,14 +105,12 @@ public class CustomerController {
             }
         }
         else{
-                model.addAttribute("msg", "information error!");
-                return "error";
-            }
+            model.addAttribute("msg", "information error!");
+            return "error";
+        }
 
 
     }
-
-
 
     @GetMapping("/getListJson")
     @ResponseBody
