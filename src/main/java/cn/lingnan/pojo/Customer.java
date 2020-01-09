@@ -1,6 +1,7 @@
 package cn.lingnan.pojo;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -21,8 +22,10 @@ public class Customer {
     @Email(message = "邮箱格式不对")
     private String email;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     private Date registerTime;
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd hh:mm:ss",timezone = "GMT+8")
     private Date loginTime;
     @NotNull(message = "密码不能为空")
     @Size(min = 6, message = "密码长度不能小于{min}")
