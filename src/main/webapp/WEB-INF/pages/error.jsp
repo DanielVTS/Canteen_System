@@ -24,6 +24,9 @@
         if(msg=="server error!") {
             alert("error!")
         }
+        if(msg=="login error!") {
+            alert("用户名或密码有误!请确认信息！")
+        }
         window.history.back(-1);
     }
 </script>

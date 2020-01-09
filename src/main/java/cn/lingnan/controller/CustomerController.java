@@ -30,13 +30,12 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(String loginname, String password, Model model, HttpSession session) {
-
-        System.out.println("login:::name:::" + loginname + ", password" + password);
+    public String login(String username, String password, Model model, HttpSession session) {
+        System.out.println("login:::name:::" + username + ", password:" + password);
         Customer bean = new Customer();
-        bean.setEmail(loginname);
-        bean.setCustomerName(loginname);
-        bean.setPhone(loginname);
+        bean.setEmail(username);
+        bean.setCustomerName(username);
+        bean.setPhone(username);
         bean.setCustomerPassword(password);
 //        bean = customerService.login(loginname, password);
         bean = customerService.login(bean);
@@ -54,43 +53,14 @@ public class CustomerController {
             //登录失败
             //model.addAttribute("msg", "用户名或密码错误");
             System.out.println("登陆失败");
-
-            session.setAttribute("error", "登陆失败！");
+            model.addAttribute("msg", "login error!");
             //return "forward:login.jsp";//http://localhost:8080/ssm-02/user/login.jsp
-            return "forward:../login.jsp";
+            return "error";
         }
 //        return "index";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-
-//    public String register(String Email, String Phone, String customerName, String customerPassword2, Model model) {
-//        System.out.println("register:::email:::" + Email + ", password: " + customerPassword2 + ",phone: " + Phone + ",name: " + customerName);
-//        Customer bean = new Customer();
-//
-//        bean.setCustomerName(customerName);
-//        bean.setEmail(Email);
-//        bean.setPhone(Phone);
-//        bean.setCustomerPassword(customerPassword2);
-//        if (customerService.check(bean).isEmpty()) {
-//            bean.setRegisterTime(new java.sql.Date(new Date().getTime()));
-//            if (customerService.register(bean)) {
-//                model.addAttribute("msg", "success");
-//                return "success";
-//            } else {
-//                model.addAttribute("msg", "server error!");
-//                return "error";
-//            }
-//        }
-//        else{
-//                model.addAttribute("msg", "information error!");
-//                return "error";
-//            }
-//
-//
-//    }
-
-
     public String register(Customer bean,String customerPassword1,Model model) {
         bean.setCustomerPassword(customerPassword1);
         System.out.println(bean.toString());
