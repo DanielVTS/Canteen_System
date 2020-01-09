@@ -64,12 +64,22 @@ public class CustomerController {
         else return "forward:../login.jsp";
     }
 
-    @GetMapping("/getListJson")
+    @GetMapping("/getCustomerList")
     @ResponseBody
-    public List<Customer> getListJson(){
+    public List<Customer> getCustomerList(){
         System.out.println("getListJson");
         return customerService.queryAll();
     }
+
+    public String editCustomer(){
+        return null;
+    }
+
+    public String deleteCustomer(){
+        return null;
+    }
+
+
 
 
 }
