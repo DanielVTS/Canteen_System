@@ -40,6 +40,10 @@ public class CustomerServiceImpl implements CustomerService {
         return customerMapper.check(customer);
     }
 
+//    @Override
+//    public Customer login(String loginname,String password) {
+//        return customerMapper.login(loginname,password);
+//    }
     @Override
     public Customer login(Customer customer) {
         return customerMapper.login(customer);

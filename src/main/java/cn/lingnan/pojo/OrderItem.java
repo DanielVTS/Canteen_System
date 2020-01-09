@@ -14,17 +14,11 @@ public class OrderItem {
     private  Integer price;
     private  Integer quantity;
     private  Double totalPrice;
-    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-    @JsonFormat(pattern="yyyy-MM-dd hh:mm:ss",timezone = "GMT+8")
-    private Date tableTime;
-    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
-    @JsonFormat(pattern="yyyy-MM-dd hh:mm:ss",timezone = "GMT+8")
-    private Date endTime;
 
     public OrderItem() {
     }
 
-    public OrderItem(Integer id, String orderNo, Integer menuId, String menuName, Integer price, Integer quantity, Double totalPrice, Date tableTime, Date endTime) {
+    public OrderItem(Integer id, String orderNo, Integer menuId, String menuName, Integer price, Integer quantity, Double totalPrice) {
         this.id = id;
         this.orderNo = orderNo;
         this.menuId = menuId;
@@ -32,8 +26,6 @@ public class OrderItem {
         this.price = price;
         this.quantity = quantity;
         this.totalPrice = totalPrice;
-        this.tableTime = tableTime;
-        this.endTime = endTime;
     }
 
     public Integer getId() {
@@ -92,22 +84,6 @@ public class OrderItem {
         this.totalPrice = totalPrice;
     }
 
-    public Date getTableTime() {
-        return tableTime;
-    }
-
-    public void setTableTime(Date tableTime) {
-        this.tableTime = tableTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
-    }
-
     @Override
     public String toString() {
         return "OrderItem{" +
@@ -118,8 +94,6 @@ public class OrderItem {
                 ", price=" + price +
                 ", quantity=" + quantity +
                 ", totalPrice=" + totalPrice +
-                ", tableTime=" + tableTime +
-                ", endTime=" + endTime +
                 '}';
     }
 }

@@ -105,7 +105,7 @@
 				<div class="clear"></div>
 				<div class="login-agileits-top"> 	
 					<form action="${ctx}/customer/login" method="post">
-						<input type="text" class="name" name="loginname" Placeholder="Email" required=""/>
+						<input type="text" class="loginname" name="loginname" Placeholder="Email" required=""/>
 						<input type="password" class="password" name="password" Placeholder="Password" required=""/>
 						<input type="submit" name="login" value="Login"> 
 					</form> 	
@@ -150,12 +150,17 @@
 		<div class="login-form login-form-left"> 
 			<div class="agile-row">
 				<h3>注册</h3>
-				<div class="login-agileits-top"> 	
+				<div class="login-agileits-top">
+					${requestScope.msg}<br>
 					<form action="${ctx}/customer/register" name="form" method="post">
 						<input type="text" class="email" name="Email" id="Email" Placeholder="Email" required=""/>
+						<span style="color: red;">${requestScope.errors.email}</span><br>
 						<input type="text" class="phone" name="Phone" id="Phone" Placeholder="Phone" />
-						<input type="text" class="name" name="customerName" id="customerName" Placeholder="UserName" />		<!-- <input type="password" class="password" name="spassword1" id="sPassword1" Placeholder="Password" required=""/>	 -->
+						<span style="color: red;">${requestScope.errors.phone}</span><br>
+						<input type="text" class="name" name="customerName" id="customerName" Placeholder="UserName" />
+						<span style="color: red;">${requestScope.errors.name}</span><br>
 						<input type="password" class="password" name="customerPassword1" id="customerPassword1" Placeholder="Password" />
+						<span style="color: red;">${requestScope.errors.password}</span><br>
 						<input type="password" class="password" name="customerPassword2" id="customerPassword2" Placeholder="Comfirm Password" />
 <%--						<select name="sSuper" id="sSuper">--%>
 <%--					         <option class="black" Selected value="1">管理员</option>--%>

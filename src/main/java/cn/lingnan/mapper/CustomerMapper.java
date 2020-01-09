@@ -13,6 +13,7 @@ public interface CustomerMapper {
     boolean delete(Integer customerId);
     List<Customer> queryAll();
     List<Customer> check(Customer customer);
+//    Customer login(@Param("loginname") String loginname,@Param("password") String password);
     Customer login(Customer customer);
     List<Customer> query(Customer customer);
     Customer loginById(@Param("customerId") Integer customerId,@Param("customerPassword") String customerPassword);
