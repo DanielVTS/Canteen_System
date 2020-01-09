@@ -71,8 +71,8 @@
                 var td9 = document.createElement("td");
                 td9.innerText = item.endTime;
                 tr.append(td9);
-                // var td10=document.writeln("<button class=\'layui-btn layui-btn-xs\'>修改</button>");
-                // tr.append(td10);
+                var td10=document.writeln("<button class=\'layui-btn layui-btn-xs\'>修改</button>")
+                tr.append(td10);
 
 
 

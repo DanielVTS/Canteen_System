@@ -26,7 +26,10 @@
     <script src="../../framework/jquery.mCustomScrollbar.min.js"></script>
     <script src="../../framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
     <!-- 公共样式 结束 -->
+    <style type="text/css">
+        td{text-align: center;vertical-align:middle;}
 
+    </style>
 </head>
 
 <body>
@@ -71,65 +74,69 @@
         </thead>
         <tbody>
 
+        <script>
+            //jquery代码都必须写在ready方法中
+            $(document).ready(function () {
+                $.get("${ctx}/orderList/getOrderList",function(data,status){
+                    console.log(data);
+                    console.log("数据: " + data + "\n状态: " + status);
+                    $.each(data, function (index, item) {
+                        console.log(index);
+                        console.log(item);
+                        var table = $("table");
+                        var tr = document.createElement("tr");
+                        var td1 = document.createElement("td");
+                        td1.innerText = item.orderNo;
+                        tr.append(td1);
+                        var td2 = document.createElement("td");
+                        td2.innerText = item.customerName;
+                        tr.append(td2);
+                        var td3 = document.createElement("td");
+                        td3.innerText = item.phone;
+                        tr.append(td3);
+                        var td4 = document.createElement("td");
+                        td4.innerText = item.tableId;
+                        tr.append(td4);
+                        var td5 = document.createElement("td");
+                        td5.innerText = item.tableName;
+                        tr.append(td5);
+                        var td6 = document.createElement("td");
+                        td6.innerText = item.orderStatus;
+                        tr.append(td6);
+                        var td7 = document.createElement("td");
+                        td7.innerText = item.orderPrice;
+                        tr.append(td7);
+                        var td8 = document.createElement("td");
+                        td8.innerText = item.tableTime;
+                        tr.append(td8);
+                        var td9 = document.createElement("td");
+                        td9.innerText = item.endTime;
+                        tr.append(td9);
+
+                        var btn1=document.createElement("input");
+                        btn1.setAttribute("type","submit");
+                        btn1.setAttribute("name","update");
+                        btn1.setAttribute("value","更新");
+                        btn1.setAttribute("class","layui-btn layui-btn-sm");
+
+
+                        var btn2=document.createElement("input");
+                        btn2.setAttribute("type","submit");
+                        btn2.setAttribute("name","more");
+                        btn2.setAttribute("value","基本信息");
+                        btn2.setAttribute("class","layui-btn layui-btn-sm");
+                        tr.append(btn1,btn2);
+
+                        table.append(tr);
+
+                    })
+                });
+            });
+
+        </script>
         </tbody>
     </table>
     <script type="text/javascript" src="${ctx}/js/jquery-2.1.4.min.js"></script>
-    <script>
-        //jquery代码都必须写在ready方法中
-        $(document).ready(function () {
-            $.get("${ctx}/orderList/getOrderList",function(data,status){
-                console.log(data);
-                console.log("数据: " + data + "\n状态: " + status);
-                $.each(data, function (index, item) {
-                    console.log(index);
-                    console.log(item);
-                    var table = $("table");
-                    var tr = document.createElement("tr");
-                    var td1 = document.createElement("td");
-                    td1.innerText = item.orderNo;
-                    tr.append(td1);
-                    var td2 = document.createElement("td");
-                    td2.innerText = item.customerName;
-                    tr.append(td2);
-                    var td3 = document.createElement("td");
-                    td3.innerText = item.phone;
-                    tr.append(td3);
-                    var td4 = document.createElement("td");
-                    td4.innerText = item.tableId;
-                    tr.append(td4);
-                    var td5 = document.createElement("td");
-                    td5.innerText = item.tableName;
-                    tr.append(td5);
-                    var td6 = document.createElement("td");
-                    td6.innerText = item.orderStatus;
-                    tr.append(td6);
-                    var td7 = document.createElement("td");
-                    td7.innerText = item.orderPrice;
-                    tr.append(td7);
-                    var td8 = document.createElement("td");
-                    td8.innerText = item.tableTime;
-                    tr.append(td8);
-                    var td9 = document.createElement("td");
-                    td9.innerText = item.endTime;
-                    tr.append(td9);
-                    var btn1=document.createElement("input");
-                    btn1.setAttribute("type","submit");
-                    btn1.setAttribute("name","update");
-                    btn1.setAttribute("name","update");
-
-                    btn2.setAttribute("type","submit");
-                    btn2.setAttribute("name","more");
-                    btn2.setAttribute("name","more");
-                    tr.append(btn1);
-                    tr.append(btn2);
-
-                    table.append(tr);
-
-                })
-            });
-        });
-
-    </script>
 
     <!-- layUI 分页模块 -->
     <div id="pages"></div>
