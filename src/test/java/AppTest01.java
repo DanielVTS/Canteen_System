@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -136,5 +137,20 @@ public class AppTest01 {
         sqlSession.close();
 
 
+    }
+
+    @Test
+    public void t07() throws IOException {
+        SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        CustomerMapper customerMapper = sqlSession.getMapper(CustomerMapper.class);
+        System.out.println(customerMapper.queryAll());
+    }
+    @Test
+    public void t08() throws IOException {
+        SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        OrderListMapper orderListMapper = sqlSession.getMapper(OrderListMapper.class);
+        System.out.println(orderListMapper.queryAll());
     }
 }
