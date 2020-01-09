@@ -79,7 +79,7 @@
         </trim>
     </select>
     <select id="login" resultType="customer">
-select * from customer where
+        select * from customer where customer_password=(select customer_password from customer where
         <trim suffixOverrides="or">
             <if test="customerId!=null">
                 customer_id=#{customerId} or
@@ -103,7 +103,7 @@ select * from customer where
                 login_time=#{loginTime} or
             </if>
         </trim>
-        and customer_password=#{customerPassword}
+        )and customer_password=#{customerPassword}
     </select>
 
 <insert id="register">

@@ -30,7 +30,7 @@ public class OrderListServiceImpl implements OrderListService {
 
     @Override
     public List<OrderList> queryAll() {
-        return null;
+        return orderListMapper.queryAll();
     }
 
     @Override

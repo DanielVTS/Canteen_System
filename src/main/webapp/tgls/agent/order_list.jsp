@@ -101,7 +101,6 @@
                     td5.innerText = item.tableName;
                     tr.append(td5);
                     var td6 = document.createElement("td");
-
                     td6.innerText = item.orderStatus;
                     tr.append(td6);
                     var td7 = document.createElement("td");
@@ -111,13 +110,21 @@
                     td8.innerText = item.tableTime;
                     tr.append(td8);
                     var td9 = document.createElement("td");
-                    td8.innerText = item.endTime;
+                    td9.innerText = item.endTime;
                     tr.append(td9);
-                    var td10=document.writeln("<button class=\'layui-btn layui-btn-xs\'>修改</button>")
+                    var btn1=document.createElement("input");
+                    btn1.setAttribute("type","submit");
+                    btn1.setAttribute("name","update");
+                    btn1.setAttribute("name","update");
 
-
+                    btn2.setAttribute("type","submit");
+                    btn2.setAttribute("name","more");
+                    btn2.setAttribute("name","more");
+                    tr.append(btn1);
+                    tr.append(btn2);
 
                     table.append(tr);
+
                 })
             });
         });
