@@ -1,3 +1,4 @@
+<%@ page import="cn.lingnan.pojo.OrderList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" isErrorPage="true" %>
 <% pageContext.setAttribute("ctx", request.getContextPath()); %>
 <!DOCTYPE html>
@@ -43,23 +44,23 @@
 
 <body>
 <div class="cBody">
-    <form id="${ctx}/orderList/updateForm" class="layui-form" action="">
+    <form id="updateForm" class="layui-form" action="${ctx}/orderList/updateForm" method="get">
         <div class="layui-form-item">
             <label class="layui-form-label">订单号</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" name="orderNo" autocomplete="off" class="layui-input" readonly="readonly">
+                <input type="text" id="orderNo" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">客户名</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" name="CustomerId"  autocomplete="off" class="layui-input">
+                <input type="text" id="customerName"  autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">电话</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" name="phone" autocomplete="off" class="layui-input">
+                <input type="text" id="phone" autocomplete="off" class="layui-input" value="112233">
             </div>
             <i class="iconfont icon-huaban bt"></i>
         </div>
@@ -67,42 +68,42 @@
             <label class="layui-form-label">台号</label>
             <div class="layui-input-inline">
                 <select name="tableId" id="tableId" lay-filter="orderStatus">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
                 </select>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">台号名</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" name="tableName" autocomplete="off" class="layui-input">
+                <input type="text" id="tableName" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">订单状态</label>
             <div class="layui-input-inline">
                 <select name="orderStatus" id="orderStatus" lay-filter="orderStatus">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
                 </select>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">订单金额</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" name="orderPrice" autocomplete="off" class="layui-input">
+                <input type="text" id="orderPrice" autocomplete="off" class="layui-input" >
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">备注</label>
             <div class="layui-input-block">
-                <textarea name="ps" placeholder="请输入内容" class="layui-textarea"></textarea>
+                <textarea id="ps" placeholder="请输入内容" class="layui-textarea"></textarea>
             </div>
         </div>
 
@@ -115,9 +116,44 @@
     </form>
 
     <!-- 三级省市 插件 -->
-    <script src="../../framework/area.js"></script>
-    <script src="../../framework/province.js"></script>
+<%--    <script src="../../framework/area.js"></script>--%>
+<%--    <script src="../../framework/province.js"></script>--%>
 </div>
+
+
+
 </body>
+
+<script>
+
+    $(document).ready(function () {
+            let orderNo = "${requestScope.orderNo}";
+
+            $.get("${ctx}/orderList/getOrderList", function (data, status) {
+                // console.log(data);
+                // console.log("数据: " + data + "\n状态: " + status);
+                $.each(data, function (index, item) {
+                    // console.log(index);
+                    // console.log(item);
+
+                    if (item.orderNo != orderNo) return true;
+                    console.log(item);
+
+                    //$("#orderNo").prop("value",orderNo);
+                    $("#orderNo").prop("readonly",orderNo);
+                    $("#orderNo").prop("value",orderNo);
+                    $("#customerName").prop("value",item.customerName);
+                    $("#phone").prop("value",item.phone);
+                    $("#tableId").prop("value",item.tableId);
+                    $("#tableName").prop("value",item.tableName);
+                    $("#orderStatus").prop("value",item.orderStatus);
+                    $("#orderPrice").prop("value",item.orderPrice);
+                    $("#ps").prop("value",item.ps);
+                });
+            });
+            // Map data-->
+
+    });
+</script>
 
 </html>

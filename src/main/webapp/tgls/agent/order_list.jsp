@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" isErrorPage="true" %>
-<% pageContext.setAttribute("ctx", request.getContextPath()); %>
+<% pageContext.setAttribute("ctx", request.getContextPath());
+
+%>
 <!DOCTYPE html>
 <html>
 
@@ -75,18 +77,22 @@
         <tbody>
 
         <script>
+            let id = 0;
             //jquery代码都必须写在ready方法中
             $(document).ready(function () {
                 $.get("${ctx}/orderList/getOrderList",function(data,status){
                     console.log(data);
                     console.log("数据: " + data + "\n状态: " + status);
+                    var id=0
                     $.each(data, function (index, item) {
                         console.log(index);
                         console.log(item);
+
                         var table = $("table");
                         var tr = document.createElement("tr");
                         var td1 = document.createElement("td");
                         td1.innerText = item.orderNo;
+                        id=item.orderNo;
                         tr.append(td1);
                         var td2 = document.createElement("td");
                         td2.innerText = item.customerName;
@@ -113,12 +119,16 @@
                         td9.innerText = item.endTime;
                         tr.append(td9);
 
+                        const url = "window.location.href='${ctx}/orderList/update?orderNo=" +item.orderNo+"'";
+                        console.log(url);
+
                         var btn1=document.createElement("input");
                         btn1.setAttribute("type","button");
                         btn1.setAttribute("name","update");
+                        // btn1.setAttribute("id","btn"+id.toString());
                         btn1.setAttribute("value","更新");
                         btn1.setAttribute("class","layui-btn layui-btn-sm");
-                        btn1.setAttribute("onclick","window.location.href='${ctx}/orderList/update'");
+                        btn1.setAttribute("onclick",url);
 
 
                         var btn2=document.createElement("input");
@@ -165,6 +175,70 @@
             });
         });
     </script>
+
+<%--    <script>--%>
+<%--        function update(){--%>
+<%--        $.ajax({--%>
+<%--            type: "POST",--%>
+<%--            url: "/customer/register",--%>
+<%--            data: form,--%>
+<%--            // data: $('#addProductForm').serialize(),--%>
+<%--            processData:false,--%>
+<%--            contentType:false,--%>
+<%--            success: function (result) {--%>
+<%--                console.log(result);--%>
+<%--                if (result.result == "success") {--%>
+<%--                    alert("注册成功！");--%>
+<%--                    window.location.href = "${ctx}/login.jsp";--%>
+<%--                }--%>
+<%--            },--%>
+<%--            error: function() {--%>
+
+<%--                alert("注册失败！请重试");--%>
+<%--            }--%>
+<%--        });--%>
+<%--        }--%>
+<%--    </script>--%>
+<%--    <script>--%>
+<%--        function btn(id) {--%>
+
+
+<%--                $.ajax({--%>
+<%--                    url: "/customer/update",--%>
+<%--                    type: 'POST',--%>
+<%--                    data: {--%>
+<%--                        'orderId':id--%>
+<%--                    },--%>
+<%--                    success: function (arg) {--%>
+<%--                    }--%>
+<%--                })--%>
+
+
+<%--        }--%>
+<%--    </script>--%>
+<%--    <script>--%>
+<%--        function bt1(value, id) {--%>
+<%--            //判断点击的按钮的id是否存在,不存在则创建,存在则alert--%>
+<%--            if(!document.getElementById(id)) {--%>
+<%--                //创建input元素--%>
+<%--                var inp = document.createElement("input");--%>
+<%--                inp.type = "button";--%>
+<%--                //传入点击按钮的value值到新的按钮--%>
+<%--                inp.value = value;--%>
+<%--                //传入点击按钮的id到新的按钮(传入是id+1防止重复)--%>
+<%--                inp.id = id;--%>
+<%--                //当方法有参数时，用onclick = 方法名(参数)时就有错了，需要在方法名前面加function()--%>
+<%--                inp.onclick = function() {--%>
+<%--                    b1(id);--%>
+<%--                };--%>
+<%--                document.getElementById("div").appendChild(inp);--%>
+<%--            } else {--%>
+<%--                alert("已存在")--%>
+<%--            }--%>
+<%--        }--%>
+
+<%--    </script>--%>
+
 </div>
 </body>
 

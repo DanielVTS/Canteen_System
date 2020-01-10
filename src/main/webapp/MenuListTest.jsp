@@ -16,16 +16,12 @@
 <table class="layui-table">
     <thead>
     <tr>
-        <th>订单号</th>
-        <th>客户名</th>
-        <th>客户电话</th>
-        <th>台号</th>
-        <th>台名</th>
-        <th>订单状态</th>
-        <th>订单价格</th>
-        <th>订台时间</th>
-        <th>结束时间</th>
-        <th>操作</th>
+        <th>id</th>
+        <th>菜名</th>
+        <th>菜类</th>
+        <th>状态</th>
+        <th>价格</th>
+        <th>图片位置</th>
     </tr>
     </thead>
     <tbody>
@@ -35,43 +31,35 @@
 <script type="text/javascript" src="${ctx}/js/jquery-2.1.4.min.js"></script>
 <script>
     //jquery代码都必须写在ready方法中
-    var iG = iG||{};
+    var obj;
     $(document).ready(function () {
-        $.get("${ctx}/orderList/getOrderList",function(data,status){
-            console.log(data);
-            console.log("数据: " + data + "\n状态: " + status);
+        $.get("${ctx}/menu/getMenuList",function(data,status){
+            // console.log(data);
+            // console.log("数据: " + data + "\n状态: " + status);
             $.each(data, function (index, item) {
-                console.log(index);
-                console.log(item);
+                // console.log(index);
+                // console.log(item);
                 var table = $("table");
                 var tr = document.createElement("tr");
                 var td1 = document.createElement("td");
-                td1.innerText = item.orderNo;
+                td1.innerText = item.menuId;
                 tr.append(td1);
                 var td2 = document.createElement("td");
-                td2.innerText = item.customerName;
+                td2.innerText = item.menuName;
                 tr.append(td2);
                 var td3 = document.createElement("td");
-                td3.innerText = item.phone;
+                td3.innerText = item.menuCategory;
                 tr.append(td3);
                 var td4 = document.createElement("td");
-                td4.innerText = item.tableId;
+                td4.innerText = item.menuStatus;
                 tr.append(td4);
                 var td5 = document.createElement("td");
-                td5.innerText = item.tableName;
+                td5.innerText = item.price;
                 tr.append(td5);
                 var td6 = document.createElement("td");
-                td6.innerText = item.orderStatus;
+                td6.innerText = item.picture;
                 tr.append(td6);
-                var td7 = document.createElement("td");
-                td7.innerText = item.orderPrice;
-                tr.append(td7);
-                var td8 = document.createElement("td");
-                td8.innerText = item.tableTime;
-                tr.append(td8);
-                var td9 = document.createElement("td");
-                td9.innerText = item.endTime;
-                tr.append(td9);
+
                 // var td10=document.writeln("<button class=\'layui-btn layui-btn-xs\'>修改</button>");
                 // tr.append(td10);
 
@@ -85,10 +73,12 @@
                 {
                     type:"get",
                     dataType:"json",
-                    url:"${ctx}/orderList/getOrderList",
+                    url:"${ctx}/menu/getMenuList",
                     success:function(result){
                         //alert(result);
-                        iG.items = result;
+                        //iG.items = result;
+                        obj = eval(result);
+                        alert(obj.constructor);
                         //init();//ajax成功后执行init();
                     }
                 }
@@ -96,11 +86,13 @@
 
             setTimeout(function () {
 
-                // console.log(iG);
-                for(var key in iG){
-                    console.log("属性：" + key + ",值：" + iG.items[key]);
-                }
+                //console.log(iG);
+                // for(var key in iG){
+                //     console.log("属性：" + key + ",值：" + iG.items[key]);
+                // }
 
+                // alert(obj.constructor);
+                console.log(obj);
 
 
                 //init();//ajax成功后执行init();
