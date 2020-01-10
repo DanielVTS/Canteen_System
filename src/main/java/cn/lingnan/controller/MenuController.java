@@ -65,7 +65,7 @@ public class MenuController {
         else return "forward:../update.jsp";
     }
 
-    @GetMapping("/getMenu")
+    @GetMapping("/getMenuList")
     @ResponseBody
     public List<Menu> getListJson () {
         System.out.println("getListJson");

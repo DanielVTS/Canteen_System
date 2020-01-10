@@ -51,73 +51,73 @@
 <div class="cBody">
     <form id="addForm" class="layui-form" action="">
         <div class="layui-form-item">
-            <label class="layui-form-label">菜号</label>
+            <label class="layui-form-label">员工号</label>
             <div class="layui-input-block">
                 <input type="text" name="menuId" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
+<%--        <div class="layui-form-item">--%>
+<%--            <label class="layui-form-label">菜品图片</label>--%>
+<%--            <div class="layui-upload-drag" id="goodsPic">--%>
+<%--                <i class="layui-icon"></i>--%>
+<%--                <p>点击上传，或将文件拖拽到此处</p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
         <div class="layui-form-item">
-            <label class="layui-form-label">菜品图片</label>
-            <div class="layui-upload-drag" id="goodsPic">
-                <i class="layui-icon"></i>
-                <p>点击上传，或将文件拖拽到此处</p>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">菜名</label>
+            <label class="layui-form-label">员工名</label>
             <div class="layui-input-block">
                 <input type="text" name="menuName" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">单价</label>
+            <label class="layui-form-label">员工密码</label>
             <div class="layui-input-block">
                 <input type="text" name="price" required lay-verify="required|number" autocomplete="off" class="layui-input">
             </div>
         </div>
+        <%--        <div class="layui-form-item">--%>
+        <%--            <label class="layui-form-label">种类</label>--%>
+        <%--            <div class="layui-input-block">--%>
+        <%--                <input type="password" name="password" autocomplete="off" class="layui-input">--%>
+        <%--            </div>--%>
+        <%--        </div>--%>
+<%--        <div class="layui-form-item">--%>
+<%--            <label class="layui-form-label">状态（库存）</label>--%>
+<%--            <div class="layui-input-block">--%>
+<%--                <input type="password" name="password2" autocomplete="off" class="layui-input">--%>
+<%--            </div>--%>
+<%--        </div>--%>
 <%--        <div class="layui-form-item">--%>
 <%--            <label class="layui-form-label">种类</label>--%>
-<%--            <div class="layui-input-block">--%>
-<%--                <input type="password" name="password" autocomplete="off" class="layui-input">--%>
-<%--            </div>--%>
-<%--        </div>--%>
-        <div class="layui-form-item">
-            <label class="layui-form-label">状态（库存）</label>
-            <div class="layui-input-block">
-                <input type="password" name="password2" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">种类</label>
-            <div class="layui-input-inline">
-                <select name="provid" id="provid" lay-filter="provid">
-                    <option value="">种类</option>
-                    <option value="0">荤菜</option>
-                    <option value="1">素菜</option>
-                    <option value="2">水果</option>
-                    <option value="3">汤类</option>
-                    <option value="4">火锅</option>
-                    <option value="4">饮品</option>
-                </select>
-            </div>
 <%--            <div class="layui-input-inline">--%>
-<%--                <select name="cityid" id="cityid" lay-filter="cityid">--%>
-<%--                    <option value="">二级分类</option>--%>
-<%--                    <option value="0">北京</option>--%>
-<%--                    <option value="1">上海</option>--%>
-<%--                    <option value="2">广州</option>--%>
-<%--                    <option value="3">深圳</option>--%>
-<%--                    <option value="4">杭州</option>--%>
+<%--                <select name="provid" id="provid" lay-filter="provid">--%>
+<%--                    <option value="">种类</option>--%>
+<%--                    <option value="0">荤菜</option>--%>
+<%--                    <option value="1">素菜</option>--%>
+<%--                    <option value="2">水果</option>--%>
+<%--                    <option value="3">汤类</option>--%>
+<%--                    <option value="4">火锅</option>--%>
+<%--                    <option value="4">饮品</option>--%>
 <%--                </select>--%>
 <%--            </div>--%>
-        </div>
-<%--        <div class="layui-form-item">--%>
-<%--            <label class="layui-form-label">状态</label>--%>
-<%--            <div class="layui-input-block">--%>
-<%--                <input type="radio" name="sex" value="nan" title="启用">--%>
-<%--                <input type="radio" name="sex" value="nv" title="禁用" checked>--%>
-<%--            </div>--%>
+            <%--            <div class="layui-input-inline">--%>
+            <%--                <select name="cityid" id="cityid" lay-filter="cityid">--%>
+            <%--                    <option value="">二级分类</option>--%>
+            <%--                    <option value="0">北京</option>--%>
+            <%--                    <option value="1">上海</option>--%>
+            <%--                    <option value="2">广州</option>--%>
+            <%--                    <option value="3">深圳</option>--%>
+            <%--                    <option value="4">杭州</option>--%>
+            <%--                </select>--%>
+            <%--            </div>--%>
 <%--        </div>--%>
+        <%--        <div class="layui-form-item">--%>
+        <%--            <label class="layui-form-label">状态</label>--%>
+        <%--            <div class="layui-input-block">--%>
+        <%--                <input type="radio" name="sex" value="nan" title="启用">--%>
+        <%--                <input type="radio" name="sex" value="nv" title="禁用" checked>--%>
+        <%--            </div>--%>
+        <%--        </div>--%>
 
         <div class="layui-form-item">
             <div class="layui-input-block">
@@ -145,13 +145,13 @@
                 ]
             });
             //拖拽上传
-            upload.render({
-                elem: '#goodsPic',
-                url: '/upload/',
-                done: function(res) {
-                    console.log(res)
-                }
-            });
+            // upload.render({
+            //     elem: '#goodsPic',
+            //     url: '/upload/',
+            //     done: function(res) {
+            //         console.log(res)
+            //     }
+            // });
         });
     </script>
 
@@ -159,3 +159,4 @@
 </body>
 
 </html>
+

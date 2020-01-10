@@ -110,9 +110,9 @@
 						<input type="submit" name="login" value="Login"> 
 					</form> 	
 				</div> 
-				<div class="login-agileits-bottom"> 
-					<h6><a href="#">Forgot password?</a></h6>
-				</div> 
+<%--				<div class="login-agileits-bottom"> --%>
+<%--					<h6><a href="#">Forgot password?</a></h6>--%>
+<%--				</div> --%>
 			</div>  
 		</div> 
 		
@@ -203,11 +203,7 @@
 </script>
 <!--//popup-js-->
 <!-- test -->
-<script>
-	function PopUpMsg(requestScope){
-		console.log(requestScope);
-	}
-</script>
+
 
 
 </body>	
