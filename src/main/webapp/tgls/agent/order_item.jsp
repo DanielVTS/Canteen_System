@@ -74,9 +74,13 @@
         <script>
             //jquery代码都必须写在ready方法中
             $(document).ready(function () {
+                let orderNo = "${requestScope.orderNo}";
                 $.get("${ctx}/orderItem/getOrderItem",function(data,status){
                     console.log(data);
                     console.log("数据: " + data + "\n状态: " + status);
+                    var id=0;
+                        if(orderNo!=orderNo) return true;
+
                     $.each(data, function (index, item) {
                         console.log(index);
                         console.log(item);
@@ -124,13 +128,126 @@
 
                         table.append(tr);
 
+
                     })
                 });
             });
+        <%--<script>--%>
+        <%--    //jquery代码都必须写在ready方法中--%>
+        <%--    $(document).ready(function () {--%>
+        <%--        let orderNo = "${requestScope.orderNo}";--%>
+        <%--        $.get("${ctx}/orderItem/getOrderItem",function(data,status){--%>
+        <%--            console.log(data);--%>
+        <%--            console.log("数据: " + data + "\n状态: " + status);--%>
+        <%--            var id=0;--%>
+        <%--            if(item.orderNo==null)--%>
+        <%--            {--%>
+        <%--            $.each(data, function (index, item) {--%>
+        <%--                console.log(index);--%>
+        <%--                console.log(item);--%>
+        <%--                var table = $("table");--%>
+        <%--                var tr = document.createElement("tr");--%>
+        <%--                var td1 = document.createElement("td");--%>
+        <%--                td1.innerText = item.orderNo;--%>
+        <%--                tr.append(td1);--%>
+        <%--                var td2 = document.createElement("td");--%>
+        <%--                td2.innerText = item.menuId;--%>
+        <%--                tr.append(td2);--%>
+        <%--                var td3 = document.createElement("td");--%>
+        <%--                td3.innerText = item.menuName;--%>
+        <%--                tr.append(td3);--%>
+        <%--                var td4 = document.createElement("td");--%>
+        <%--                td4.innerText = item.price;--%>
+        <%--                tr.append(td4);--%>
+        <%--                var td5 = document.createElement("td");--%>
+        <%--                td5.innerText = item.quantity;--%>
+        <%--                tr.append(td5);--%>
+        <%--                var td6 = document.createElement("td");--%>
+        <%--                td6.innerText = item.totalPrice;--%>
+        <%--                tr.append(td6);--%>
+
+        <%--                var btn1=document.createElement("input");--%>
+        <%--                btn1.setAttribute("type","button");--%>
+        <%--                btn1.setAttribute("name","update");--%>
+        <%--                btn1.setAttribute("value","更新");--%>
+        <%--                btn1.setAttribute("class","layui-btn layui-btn-sm");--%>
+        <%--                btn1.setAttribute("onclick","window.location.href='${ctx}/orderItem/update'");--%>
+
+
+        <%--                var btn2=document.createElement("input");--%>
+        <%--                btn2.setAttribute("type","button");--%>
+        <%--                btn2.setAttribute("name","more");--%>
+        <%--                btn2.setAttribute("value","基本信息");--%>
+        <%--                btn2.setAttribute("class","layui-btn layui-btn-sm");--%>
+
+        <%--                var btn3=document.createElement("input");--%>
+        <%--                btn3.setAttribute("type","button");--%>
+        <%--                btn3.setAttribute("name","over");--%>
+        <%--                btn3.setAttribute("value","订单完成");--%>
+        <%--                btn3.setAttribute("class","layui-btn layui-btn-sm");--%>
+        <%--                tr.append(btn1,btn2,btn3);--%>
+
+        <%--                table.append(tr);--%>
+
+
+        <%--            })}--%>
+        <%--            else--%>
+        <%--            {--%>
+        <%--                if(item.orderNo != orderNo) return true;--%>
+        <%--                $.each(data, function (index, item) {--%>
+        <%--                    console.log(index);--%>
+        <%--                    console.log(item);--%>
+        <%--                    var table = $("table");--%>
+        <%--                    var tr = document.createElement("tr");--%>
+        <%--                    var td1 = document.createElement("td");--%>
+        <%--                    td1.innerText = item.orderNo;--%>
+        <%--                    tr.append(td1);--%>
+        <%--                    var td2 = document.createElement("td");--%>
+        <%--                    td2.innerText = item.menuId;--%>
+        <%--                    tr.append(td2);--%>
+        <%--                    var td3 = document.createElement("td");--%>
+        <%--                    td3.innerText = item.menuName;--%>
+        <%--                    tr.append(td3);--%>
+        <%--                    var td4 = document.createElement("td");--%>
+        <%--                    td4.innerText = item.price;--%>
+        <%--                    tr.append(td4);--%>
+        <%--                    var td5 = document.createElement("td");--%>
+        <%--                    td5.innerText = item.quantity;--%>
+        <%--                    tr.append(td5);--%>
+        <%--                    var td6 = document.createElement("td");--%>
+        <%--                    td6.innerText = item.totalPrice;--%>
+        <%--                    tr.append(td6);--%>
+
+        <%--                    var btn1=document.createElement("input");--%>
+        <%--                    btn1.setAttribute("type","button");--%>
+        <%--                    btn1.setAttribute("name","update");--%>
+        <%--                    btn1.setAttribute("value","更新");--%>
+        <%--                    btn1.setAttribute("class","layui-btn layui-btn-sm");--%>
+        <%--                    btn1.setAttribute("onclick","window.location.href='${ctx}/orderItem/update'");--%>
+
+
+        <%--                    var btn2=document.createElement("input");--%>
+        <%--                    btn2.setAttribute("type","button");--%>
+        <%--                    btn2.setAttribute("name","more");--%>
+        <%--                    btn2.setAttribute("value","基本信息");--%>
+        <%--                    btn2.setAttribute("class","layui-btn layui-btn-sm");--%>
+
+        <%--                    var btn3=document.createElement("input");--%>
+        <%--                    btn3.setAttribute("type","button");--%>
+        <%--                    btn3.setAttribute("name","over");--%>
+        <%--                    btn3.setAttribute("value","订单完成");--%>
+        <%--                    btn3.setAttribute("class","layui-btn layui-btn-sm");--%>
+        <%--                    tr.append(btn1,btn2,btn3);--%>
+
+        <%--                    table.append(tr);--%>
+        <%--                })}--%>
+        <%--        });--%>
+        <%--    });--%>
 
 
 
         </script>
+
         </tbody>
     </table>
     <script type="text/javascript" src="${ctx}/js/jquery-2.1.4.min.js"></script>
@@ -155,5 +272,28 @@
     </script>
 </div>
 </body>
+
+<%--<script>--%>
+<%--    $(document).ready(function () {--%>
+<%--        let orderNo = "${requestScope.orderNo}";--%>
+<%--        $.get("${ctx}/orderItem/getOrderItem", function (data, status) {--%>
+
+<%--            $.each(data, function (index, item) {--%>
+<%--                if (item.orderNo != orderNo) return true;--%>
+<%--                console.log(item);--%>
+<%--                $("#orderNo").prop("readonly",orderNo);--%>
+<%--                $("#orderNo").prop("value",orderNo);--%>
+<%--                $("#menuId").prop("value",item.menuId);--%>
+<%--                $("#menuName").prop("value",item.menuName);--%>
+<%--                $("#tableId").prop("value",item.tableId);--%>
+<%--                $("#price").prop("value",item.price);--%>
+<%--                $("#quantity").prop("value",item.quantity);--%>
+<%--                $("#totalPrice").prop("value",item.totalPrice);--%>
+<%--            });--%>
+<%--        });--%>
+<%--        // Map data-->--%>
+
+<%--    });--%>
+<%--</script>--%>
 
 </html>

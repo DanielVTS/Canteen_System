@@ -29,7 +29,7 @@
         </trim>
     </select>
     <select id="queryAll" resultType="OrderItem">
-        select * from order_item
+        select * from order_item;
     </select>
 
     <insert id="add">

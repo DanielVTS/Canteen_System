@@ -4,8 +4,10 @@ import cn.lingnan.pojo.OrderItem;
 import cn.lingnan.pojo.OrderList;
 import cn.lingnan.services.OrderItemService;
 import cn.lingnan.services.OrderListService;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,53 +25,31 @@ public class OrderItemController {
         this.orderItemService = orderItemService;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addOrderItem(String orderNo, Integer menuId, String menuName, Integer price, Integer quantity){
-        System.out.println("add a orderList:::orderNo:::" + orderNo + ", menuId" + menuId + ", menuName" + menuName + ", price" + price + ", quantity" + quantity);
-        OrderItem orderItem=new OrderItem();
-        orderItem.setOrderNo(orderNo);
-        orderItem.setMenuId(menuId);
-        orderItem.setMenuName(menuName);
-        orderItem.setPrice(price);
-        orderItem.setQuantity(quantity);
-        orderItem.setTotalPrice((double) (quantity*price));
 
 
-        if(orderItemService.add(orderItem)){
-            return "success";
-        }
-        else return "forward:../add.jsp";
-    }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public String deleteOrderItem(Integer id){
-        System.out.println("delete a orderItem:::id:::" + id);
-        if(orderItemService.delete(id)){
-            return "success";
-        }
-        else return "forward:../delete.jsp";
-    }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String updateOrderItem(String orderNo, Integer menuId, String menuName, Integer price, Integer quantity){
-        System.out.println("update a orderList:::orderNo:::" + orderNo + ", menuId" + menuId + ", menuName" + menuName + ", price" + price + ", quantity" + quantity);
-        OrderItem orderItem=new OrderItem();
-        orderItem.setOrderNo(orderNo);
-        orderItem.setMenuId(menuId);
-        orderItem.setMenuName(menuName);
-        orderItem.setPrice(price);
-        orderItem.setQuantity(quantity);
-        orderItem.setTotalPrice((double) (quantity*price));
-        if(orderItemService.update(orderItem)){
-            return "success";
-        }
-        else return "forward:../update.jsp";
-    }
 
     @GetMapping("/getOrderItem")
     @ResponseBody
     public List<OrderItem> getOrderItem () {
         System.out.println("getOrderItem");
+        System.out.println(orderItemService.queryAll());
         return orderItemService.queryAll();
     }
+
+
+    @GetMapping("/showOrderItem")
+    @ResponseBody
+    public List<OrderItem> showOrderItem (String orderNo, Model model) {
+        System.out.println("showOrderItem");
+        System.out.println(orderNo);
+        model.addAttribute("orderNo", orderNo);
+        OrderItem orderItem=new OrderItem();
+        orderItem.setOrderNo(orderNo);
+        System.out.println(orderItem);
+        return orderItemService.query(orderItem);
+    }
+
+
 }

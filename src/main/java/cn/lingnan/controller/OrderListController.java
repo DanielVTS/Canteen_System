@@ -4,6 +4,7 @@ import cn.lingnan.pojo.Menu;
 import cn.lingnan.pojo.OrderList;
 import cn.lingnan.services.MenuService;
 import cn.lingnan.services.OrderListService;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -111,16 +112,16 @@ public class OrderListController {
         System.out.println(orderListService.update(orderList));
         return "forward:../tgls/agent/order_list.jsp";
     }
+
+
     @GetMapping("/showList")
 //    @ResponseBody
     public String showList (String orderNo,Model model) {
         System.out.println("orderList,orderNo:"+orderNo);
         model.addAttribute("orderNo", orderNo);
-        OrderList orderList=new OrderList();
-        orderList=orderListService.queryNo(orderNo);
-        orderList.setOrderStatus(2);
-        System.out.println(orderListService.update(orderList));
-        return "forward:../tgls/agent/order_list.jsp";
+        System.out.println(orderNo);
+        String url="forward:../tgls/agent/order_item.jsp";
+        return url;
     }
 
     @RequestMapping(value = "/updateForm", method = RequestMethod.GET)

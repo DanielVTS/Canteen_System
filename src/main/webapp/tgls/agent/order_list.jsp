@@ -1,7 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" isErrorPage="true" %>
-<% pageContext.setAttribute("ctx", request.getContextPath());
-
-%>
+<% pageContext.setAttribute("ctx", request.getContextPath()); %>
 <!DOCTYPE html>
 <html>
 
@@ -131,12 +129,15 @@
                         btn1.setAttribute("onclick",url1);
 
 
-
+                        const url2 = "window.location.href='${ctx}/orderList/showList?orderNo=" +item.orderNo+"'";
+                        console.log(url2);
                         var btn2=document.createElement("input");
                         btn2.setAttribute("type","button");
                         btn2.setAttribute("name","more");
                         btn2.setAttribute("value","基本信息");
                         btn2.setAttribute("class","layui-btn layui-btn-sm");
+                        btn2.setAttribute("onclick",url2);
+
 
                         const url3 = "window.location.href='${ctx}/orderList/finish?orderNo=" +item.orderNo+"'";
                         console.log(url3);
