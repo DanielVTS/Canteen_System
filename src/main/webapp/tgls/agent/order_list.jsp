@@ -14,17 +14,17 @@
     <title>混吃等死</title>
 
     <!-- 公共样式 开始 -->
-    <link rel="stylesheet" type="text/css" href="../../css/base.css">
-    <link rel="stylesheet" type="text/css" href="../../css/iconfont.css">
-    <script type="text/javascript" src="../../framework/jquery-1.11.3.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
-    <script type="text/javascript" src="../../layui/layui.js"></script>
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/base.css">
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/iconfont.css">
+    <script type="text/javascript" src="${ctx}/framework/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="${ctx}/layui/css/layui.css">
+    <script type="text/javascript" src="${ctx}/layui/layui.js"></script>
     <!-- 滚动条插件 -->
-    <link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.css">
-    <script src="../../framework/jquery-ui-1.10.4.min.js"></script>
-    <script src="../../framework/jquery.mousewheel.min.js"></script>
-    <script src="../../framework/jquery.mCustomScrollbar.min.js"></script>
-    <script src="../../framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/jquery.mCustomScrollbar.css">
+    <script src="${ctx}/framework/jquery-ui-1.10.4.min.js"></script>
+    <script src="${ctx}/framework/jquery.mousewheel.min.js"></script>
+    <script src="${ctx}/framework/jquery.mCustomScrollbar.min.js"></script>
+    <script src="${ctx}/framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
     <!-- 公共样式 结束 -->
     <style type="text/css">
         td{text-align: center;vertical-align:middle;}
@@ -114,24 +114,33 @@
                         tr.append(td9);
 
                         var btn1=document.createElement("input");
-                        btn1.setAttribute("type","submit");
+                        btn1.setAttribute("type","button");
                         btn1.setAttribute("name","update");
                         btn1.setAttribute("value","更新");
                         btn1.setAttribute("class","layui-btn layui-btn-sm");
+                        btn1.setAttribute("onclick","window.location.href='${ctx}/orderList/update'");
 
 
                         var btn2=document.createElement("input");
-                        btn2.setAttribute("type","submit");
+                        btn2.setAttribute("type","button");
                         btn2.setAttribute("name","more");
                         btn2.setAttribute("value","基本信息");
                         btn2.setAttribute("class","layui-btn layui-btn-sm");
-                        tr.append(btn1,btn2);
+
+                        var btn3=document.createElement("input");
+                        btn3.setAttribute("type","button");
+                        btn3.setAttribute("name","over");
+                        btn3.setAttribute("value","订单完成");
+                        btn3.setAttribute("class","layui-btn layui-btn-sm");
+                        tr.append(btn1,btn2,btn3);
 
                         table.append(tr);
 
                     })
                 });
             });
+
+
 
         </script>
         </tbody>

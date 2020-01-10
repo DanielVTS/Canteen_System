@@ -20,17 +20,17 @@
     <title>穷在闹市出品</title>
 
     <!-- 公共样式 开始 -->
-    <link rel="stylesheet" type="text/css" href="../../css/base.css">
-    <link rel="stylesheet" type="text/css" href="../../css/iconfont.css">
-    <script type="text/javascript" src="../../framework/jquery-1.11.3.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../layui/css/layui.css">
-    <script type="text/javascript" src="../../layui/layui.js"></script>
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/base.css">
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/iconfont.css">
+    <script type="text/javascript" src="${ctx}/framework/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="${ctx}/layui/css/layui.css">
+    <script type="text/javascript" src="${ctx}/layui/layui.js"></script>
     <!-- 滚动条插件 -->
-    <link rel="stylesheet" type="text/css" href="../../css/jquery.mCustomScrollbar.css">
-    <script src="../../framework/jquery-ui-1.10.4.min.js"></script>
-    <script src="../../framework/jquery.mousewheel.min.js"></script>
-    <script src="../../framework/jquery.mCustomScrollbar.min.js"></script>
-    <script src="../../framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/jquery.mCustomScrollbar.css">
+    <script src="${ctx}/framework/jquery-ui-1.10.4.min.js"></script>
+    <script src="${ctx}/framework/jquery.mousewheel.min.js"></script>
+    <script src="${ctx}/framework/jquery.mCustomScrollbar.min.js"></script>
+    <script src="${ctx}/framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
     <!-- 公共样式 结束 -->
 
     <style>
@@ -43,7 +43,7 @@
 
 <body>
 <div class="cBody">
-    <form id="addForm" class="layui-form" action="">
+    <form id="${ctx}/orderList/updateForm" class="layui-form" action="">
         <div class="layui-form-item">
             <label class="layui-form-label">订单号</label>
             <div class="layui-input-inline shortInput">

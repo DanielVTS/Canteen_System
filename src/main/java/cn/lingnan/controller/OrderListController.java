@@ -6,11 +6,13 @@ import cn.lingnan.services.MenuService;
 import cn.lingnan.services.OrderListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 
@@ -82,5 +84,29 @@ public class OrderListController {
         System.out.println("getOrderList");
         return orderListService.queryAll();
     }
+
+    @GetMapping("/getStatus")
+    @ResponseBody
+    public List<OrderList> getStatus (OrderList orderList) {
+        System.out.println("getStatus");
+        return orderListService.query(orderList);
+    }
+
+    @GetMapping("/update")
+//    @ResponseBody
+    public String update () {
+        System.out.println("orderList");
+        return "forward:../tgls/agent/orderlist_add.jsp";
+    }
+    @RequestMapping(value = "/updateForm", method = RequestMethod.POST)
+    public String updateForm (OrderList orderList, Model model) {
+        System.out.println("orderList");
+        System.out.println(orderList.toString());
+        orderListService.update(orderList);
+        return "error";
+    }
+
+
+
 
 }
