@@ -54,9 +54,9 @@
     <div class="menu">
         <ul>
             <li>
-                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-liuliangyunpingtaitubiao03 left"></i>分管管理<i class="iconfont icon-dajiantouyou right"></i></a>
+                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-liuliangyunpingtaitubiao03 left"></i>订单管理<i class="iconfont icon-dajiantouyou right"></i></a>
                 <dl>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/orderlist_add.jsp',this)">添加分管</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/orderlist_add.jsp',this)">添加订单</a></dt>
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/order_list.jsp',this)">订单总表</a></dt>
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/order_item.jsp',this)">订单明细</a></dt>
                 </dl>
@@ -64,37 +64,38 @@
             <li>
                 <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-shangpin left"></i>菜品管理<i class="iconfont icon-dajiantouyou right"></i></a>
                 <dl>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/goodsManage/goodsType_list.html',this)">分类列表</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/goodsManage/menuType_list.jsp',this)">分类列表</a></dt>
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/goodsManage/menu_list.jsp',this)">菜品库</a></dt>
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/goodsManage/menu_add.jsp',this)">添加菜色</a></dt>
                 </dl>
             </li>
+<%--            <li>--%>
+<%--                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-yunying left"></i>基础库内容<i class="iconfont icon-dajiantouyou right"></i></a>--%>
+<%--                <dl>--%>
+<%--                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/base_add.html',this)">表单含编辑器</a></dt>--%>
+<%--                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/base_list.html',this)">常用列表</a></dt>--%>
+<%--                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/base_customList.html',this)">可新增的列表</a></dt>--%>
+<%--                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/base_customNewList.html',this)">可新增的列表(手写)</a></dt>--%>
+<%--                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/pages.html',this)">页签切换Table</a></dt>--%>
+<%--                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/maintain.html',this)">维护中页面</a></dt>--%>
+<%--                </dl>--%>
+<%--            </li>--%>
             <li>
-                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-yunying left"></i>基础库内容<i class="iconfont icon-dajiantouyou right"></i></a>
+                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-icon left"></i>员工管理<i class="iconfont icon-dajiantouyou right"></i></a>
                 <dl>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/base_add.html',this)">表单含编辑器</a></dt>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/base_list.html',this)">常用列表</a></dt>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/base_customList.html',this)">可新增的列表</a></dt>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/base_customNewList.html',this)">可新增的列表(手写)</a></dt>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/pages.html',this)">页签切换Table</a></dt>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/base/maintain.html',this)">维护中页面</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/staff/staff_list.jsp',this)">员工信息</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/staff/staff_add.jsp',this)">添加新苦力</a></dt>
                 </dl>
             </li>
-            <li>
-                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-icon left"></i>打印模板<i class="iconfont icon-dajiantouyou right"></i></a>
-                <dl>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/print/outPrintData.html',this)">入库单打印模版</a></dt>
-                </dl>
-            </li>
-            <li>
-                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-caiwu left"></i>财务管理</a>
-            </li>
-            <li>
-                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-icon left"></i>报表模块<i class="iconfont icon-dajiantouyou right"></i></a>
-                <dl>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/reportForm/reportForm1.html',this)">订单统计报表</a></dt>
-                </dl>
-            </li>
+<%--            <li>--%>
+<%--                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-caiwu left"></i>财务管理</a>--%>
+<%--            </li>--%>
+<%--            <li>--%>
+<%--                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-icon left"></i>报表模块<i class="iconfont icon-dajiantouyou right"></i></a>--%>
+<%--                <dl>--%>
+<%--                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/reportForm/reportForm1.html',this)">订单统计报表</a></dt>--%>
+<%--                </dl>--%>
+<%--            </li>--%>
         </ul>
     </div>
 </div>
@@ -108,7 +109,7 @@
             <ul>
                 <li><a href="javascript:void(0)" onclick="menuCAClick('tgls/modify_password.html',this)"><i class="iconfont icon-yonghu1"></i>管理员</a></li>
                 <li><a href="javascript:void(0)" onclick="menuCAClick('tgls/modify_password.html',this)"><i class="iconfont icon-xiugaimima"></i>修改密码</a></li>
-                <li><a href="out_dated/login.html"><i class="iconfont icon-084tuichu"></i>注销</a></li>
+                <li><a href="login.jsp"><i class="iconfont icon-084tuichu"></i>注销</a></li>
             </ul>
         </div>
     </div>

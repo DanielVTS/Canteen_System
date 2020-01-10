@@ -64,10 +64,10 @@ public class StaffController {
 //        staffService.queryAll();
 //    }
 
-    @GetMapping("/getListJson")
+    @GetMapping("/getStaff")
     @ResponseBody
-    public List<Staff> getListJson () {
-        System.out.println("getListJson");
+    public List<Staff> getStaff () {
+        System.out.println("getStaff");
         return staffService.queryAll();
     }
 
