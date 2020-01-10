@@ -15,5 +15,6 @@ public interface StaffMapper {
     boolean add(Staff staff);
     boolean delete(Staff staff);
     boolean update(Staff staff);
+    Staff login(Staff staff);
 
 }

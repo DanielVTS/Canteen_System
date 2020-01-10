@@ -8,6 +8,12 @@
     select * from staff where staff_name =#{staffName}
 </select>
 
+<select id="login" resultType="Staff">
+    select * from staff where staff_name =#{staffName} and staff_password=#{staffPassword}
+</select>
+
+
+
 <select id="query" resultType="Staff">
     select * from staff where
     <trim suffixOverrides="and">

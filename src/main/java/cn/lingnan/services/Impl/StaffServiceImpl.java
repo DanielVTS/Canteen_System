@@ -24,6 +24,11 @@ public class StaffServiceImpl implements StaffService {
     }
 
     @Override
+    public Staff login(Staff staff) {
+        return staffMapper.login(staff);
+    }
+
+    @Override
     public Staff getByName(String staffName) {
         return staffMapper.getByName(staffName);
     }

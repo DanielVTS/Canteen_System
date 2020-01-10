@@ -1,7 +1,9 @@
 package cn.lingnan.controller;
 
 import cn.lingnan.pojo.Customer;
+import cn.lingnan.pojo.Staff;
 import cn.lingnan.services.CustomerService;
+import cn.lingnan.services.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,8 @@ import java.util.Map;
 public class CustomerController {
 
     private CustomerService customerService;
+    @Autowired
+    private StaffService staffService;
 
     @Autowired
     public void setCustomerService(CustomerService customerService) {
@@ -31,33 +35,54 @@ public class CustomerController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(String username, String password, Model model, HttpSession session) {
-        System.out.println("login:::name:::" + username + ", password:" + password);
-        Customer bean = new Customer();
-        bean.setEmail(username);
-        bean.setCustomerName(username);
-        bean.setPhone(username);
-        bean.setCustomerPassword(password);
-//        bean = customerService.login(loginname, password);
-        bean = customerService.login(bean);
-        if (bean != null) {
-            //登录成功
-            //session保存
-            bean.setLoginTime(new java.sql.Date(new Date().getTime()));
-            customerService.update(bean);
-            session.setAttribute("loginUser", bean);
-            System.out.println("登陆成功");
-            return "success";
-            //记住密码，使用Cookie
+        if (username.equals("admin")) {
+            System.out.println("login:::name:::" + username + ", password:" + password);
+            Staff bean = new Staff();
+            bean.setStaffPassword(password);
+            bean.setStaffName(username);
+            bean = staffService.login(bean);
+            if (bean != null) {
+                System.out.println("管理员登陆成功");
+                return "success";
 
-        } else {
-            //登录失败
-            //model.addAttribute("msg", "用户名或密码错误");
-            System.out.println("登陆失败");
-            model.addAttribute("msg", "login error!");
-            //return "forward:login.jsp";//http://localhost:8080/ssm-02/user/login.jsp
-            return "error";
+            } else {
+
+                System.out.println("管理员登陆失败");
+                model.addAttribute("msg", "login error!");
+                //return "forward:login.jsp";//http://localhost:8080/ssm-02/user/login.jsp
+                return "error";
+            }
+
         }
+        else {
+            System.out.println("login:::name:::" + username + ", password:" + password);
+            Customer bean = new Customer();
+            bean.setEmail(username);
+            bean.setCustomerName(username);
+            bean.setPhone(username);
+            bean.setCustomerPassword(password);
+//        bean = customerService.login(loginname, password);
+            bean = customerService.login(bean);
+            if (bean != null) {
+                //登录成功
+                //session保存
+                bean.setLoginTime(new java.sql.Date(new Date().getTime()));
+                customerService.update(bean);
+                session.setAttribute("loginUser", bean);
+                System.out.println("登陆成功");
+                return "success";
+                //记住密码，使用Cookie
+
+            } else {
+                //登录失败
+                //model.addAttribute("msg", "用户名或密码错误");
+                System.out.println("登陆失败");
+                model.addAttribute("msg", "login error!");
+                //return "forward:login.jsp";//http://localhost:8080/ssm-02/user/login.jsp
+                return "error";
+            }
 //        return "index";
+        }
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
