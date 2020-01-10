@@ -89,7 +89,7 @@
             </li>
             <li>
                 <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-caiwu left"></i>顾客管理</a>
-                <dl>
+
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/customer/customer_list.jsp',this)">顾客信息</a></dt>
                 </dl>
             </li>

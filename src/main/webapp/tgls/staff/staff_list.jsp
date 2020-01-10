@@ -70,7 +70,7 @@
         <script>
             //jquery代码都必须写在ready方法中
             $(document).ready(function () {
-                $.get("${ctx}/staff/getStaff",function(data,status){
+                $.get("${ctx}/staff/getStaffList",function(data,status){
                     console.log(data);
                     console.log("数据: " + data + "\n状态: " + status);
                     $.each(data, function (index, item) {
@@ -88,12 +88,15 @@
                         td3.innerText = item.staffPassword;
                         tr.append(td3);
 
+                        const url = "window.location.href='${ctx}/staff/update?staffId=" +item.staffId+"'";
+                        console.log(url);
+
                         var btn1=document.createElement("input");
                         btn1.setAttribute("type","button");
                         btn1.setAttribute("name","update");
                         btn1.setAttribute("value","修改密码/姓名");
                         btn1.setAttribute("class","layui-btn layui-btn-sm");
-                        btn1.setAttribute("onclick","window.location.href='${ctx}/orderList/update'");
+                        btn1.setAttribute("onclick",url);
 
 
                         var btn2=document.createElement("input");

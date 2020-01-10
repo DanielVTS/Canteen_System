@@ -84,10 +84,10 @@
                         var table = $("table");
                         var tr = document.createElement("tr");
                         var td1 = document.createElement("td");
-                        td1.innerText = item.CustomerId;
+                        td1.innerText = item.customerId;
                         tr.append(td1);
                         var td2 = document.createElement("td");
-                        td2.innerText = item.CustomerName;
+                        td2.innerText = item.customerName;
                         tr.append(td2);
                         var td3 = document.createElement("td");
                         td3.innerText = item.phone;
