@@ -1,3 +1,4 @@
+<%@ page import="cn.lingnan.pojo.Staff" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" isErrorPage="true" %>
 <% pageContext.setAttribute("ctx", request.getContextPath()); %>
 <!DOCTYPE html>
@@ -49,11 +50,11 @@
 
 <body>
 <div class="cBody">
-    <form id="addForm" class="layui-form" action="">
+    <form id="updateForm" class="layui-form" action="${ctx}/staff/updateForm" method="get">
         <div class="layui-form-item">
             <label class="layui-form-label">员工号</label>
             <div class="layui-input-block">
-                <input type="text" name="menuId" required lay-verify="required" autocomplete="off" class="layui-input">
+                <input type="text" name="staffId" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
 <%--        <div class="layui-form-item">--%>
@@ -66,13 +67,13 @@
         <div class="layui-form-item">
             <label class="layui-form-label">员工名</label>
             <div class="layui-input-block">
-                <input type="text" name="menuName" required lay-verify="required" autocomplete="off" class="layui-input">
+                <input type="text" name="staffName" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">员工密码</label>
             <div class="layui-input-block">
-                <input type="text" name="price" required lay-verify="required|number" autocomplete="off" class="layui-input">
+                <input type="text" name="staffPassword" required lay-verify="required|number" autocomplete="off" class="layui-input">
             </div>
         </div>
         <%--        <div class="layui-form-item">--%>
@@ -128,35 +129,63 @@
     </form>
 
 
-    <script>
-        layui.use(['upload','form'], function() {
-            var form = layui.form;
-            var upload = layui.upload;
-            var layer = layui.layer;
-            //监听提交
-            form.on('submit(submitBut)', function(data) {
-                return false;
-            });
-            form.verify({
-                //数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]
-                ZHCheck: [
-                    /^[\u0391-\uFFE5]+$/
-                    ,'只允许输入中文'
-                ]
-            });
-            //拖拽上传
-            // upload.render({
-            //     elem: '#goodsPic',
-            //     url: '/upload/',
-            //     done: function(res) {
-            //         console.log(res)
-            //     }
-            // });
-        });
-    </script>
+<%--    <script>--%>
+<%--        layui.use(['upload','form'], function() {--%>
+<%--            var form = layui.form;--%>
+<%--            var upload = layui.upload;--%>
+<%--            var layer = layui.layer;--%>
+<%--            //监听提交--%>
+<%--            form.on('submit(submitBut)', function(data) {--%>
+<%--                return false;--%>
+<%--            });--%>
+<%--            form.verify({--%>
+<%--                //数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]--%>
+<%--                ZHCheck: [--%>
+<%--                    /^[\u0391-\uFFE5]+$/--%>
+<%--                    ,'只允许输入中文'--%>
+<%--                ]--%>
+<%--            });--%>
+<%--            //拖拽上传--%>
+<%--            // upload.render({--%>
+<%--            //     elem: '#goodsPic',--%>
+<%--            //     url: '/upload/',--%>
+<%--            //     done: function(res) {--%>
+<%--            //         console.log(res)--%>
+<%--            //     }--%>
+<%--            // });--%>
+<%--        });--%>
+<%--    </script>--%>
 
 </div>
 </body>
+
+<script>
+
+    $(document).ready(function () {
+        let staffId = "${requestScope.staffId}";
+
+        $.get("${ctx}/staff/getstaffList", function (data, status) {
+            // console.log(data);
+            // console.log("数据: " + data + "\n状态: " + status);
+            $.each(data, function (index, item) {
+                // console.log(index);
+                // console.log(item);
+
+                if (item.staffId != staffId) return true;
+                console.log(item);
+
+                //$("#orderNo").prop("value",orderNo);
+                $("#staffId").prop("readonly",staffId);
+                $("#staffId").prop("value",staffId);
+                $("#staffName").prop("value",item.staffName);
+                $("#password").prop("value",item.staffPassword);
+            });
+        });
+        // Map data-->
+
+    });
+</script>
+
 
 </html>
 

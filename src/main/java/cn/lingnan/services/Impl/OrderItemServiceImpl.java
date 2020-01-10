@@ -1,14 +1,17 @@
 package cn.lingnan.services.Impl;
 
 import cn.lingnan.mapper.OrderItemMapper;
+import cn.lingnan.mapper.OrderListMapper;
 import cn.lingnan.pojo.OrderItem;
 import cn.lingnan.services.OrderItemService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service("orderItemService")
 public class OrderItemServiceImpl implements OrderItemService {
+    @Autowired
     private OrderItemMapper orderItemMapper;
     @Override
     public boolean update(OrderItem orderItem) {

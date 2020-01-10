@@ -89,7 +89,7 @@
         <script>
             //jquery代码都必须写在ready方法中
             $(document).ready(function () {
-                $.get("${ctx}/menu/getMenu",function(data,status){
+                $.get("${ctx}/menu/getMenuList",function(data,status){
                     console.log(data);
                     console.log("数据: " + data + "\n状态: " + status);
                     $.each(data, function (index, item) {
