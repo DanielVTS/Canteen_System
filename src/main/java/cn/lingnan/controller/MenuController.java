@@ -15,7 +15,7 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/Menu")
+@RequestMapping("/menu")
 public class MenuController {
 
     private MenuService menuService;
@@ -65,7 +65,7 @@ public class MenuController {
         else return "forward:../update.jsp";
     }
 
-    @GetMapping("/getListJson")
+    @GetMapping("/getMenu")
     @ResponseBody
     public List<Menu> getListJson () {
         System.out.println("getListJson");

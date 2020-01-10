@@ -57,11 +57,12 @@
                 <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-liuliangyunpingtaitubiao03 left"></i>分管管理<i class="iconfont icon-dajiantouyou right"></i></a>
                 <dl>
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/orderlist_add.jsp',this)">添加分管</a></dt>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/order_list.jsp',this)">分管列表</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/order_list.jsp',this)">订单总表</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/order_item.jsp',this)">订单明细</a></dt>
                 </dl>
             </li>
             <li>
-                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-shangpin left"></i>商品管理<i class="iconfont icon-dajiantouyou right"></i></a>
+                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-shangpin left"></i>菜品管理<i class="iconfont icon-dajiantouyou right"></i></a>
                 <dl>
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/goodsManage/goodsType_list.html',this)">分类列表</a></dt>
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/goodsManage/menu_list.jsp',this)">菜品库</a></dt>

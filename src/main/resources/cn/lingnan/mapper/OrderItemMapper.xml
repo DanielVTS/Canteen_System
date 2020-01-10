@@ -28,7 +28,7 @@
 
         </trim>
     </select>
-    <select id="queryAll" resultType="OrderList">
+    <select id="queryAll" resultType="OrderItem">
         select * from order_item
     </select>
 
