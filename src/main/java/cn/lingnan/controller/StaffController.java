@@ -76,7 +76,7 @@ public class StaffController {
 
 
     @GetMapping("/update")
-    public String update (String staffId, Model model){
+    public String update (Integer staffId, Model model){
         System.out.println("staff,staffId:"+staffId);
         model.addAttribute("staffId",staffId);
         return "forward:../tgls/staff/staff_add.jsp";

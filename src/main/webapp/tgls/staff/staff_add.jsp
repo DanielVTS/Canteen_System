@@ -50,7 +50,7 @@
 
 <body>
 <div class="cBody">
-    <form id="addForm" class="layui-form" action="">
+    <form id="updateForm" class="layui-form" action="${ctx}/staff/updateForm" method="get">
         <div class="layui-form-item">
             <label class="layui-form-label">员工号</label>
             <div class="layui-input-block">

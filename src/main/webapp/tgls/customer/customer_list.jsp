@@ -108,13 +108,16 @@
                         td8.innerText = item.customerPassword;
                         tr.append(td8);
 
+                        const url = "window.location.href='${ctx}/customer/update?customerId=" +item.customerId+"'";
+                        console.log(url);
+
 
                         var btn1=document.createElement("input");
                         btn1.setAttribute("type","button");
                         btn1.setAttribute("name","update");
                         btn1.setAttribute("value","修改信息");
                         btn1.setAttribute("class","layui-btn layui-btn-sm");
-                        btn1.setAttribute("onclick","window.location.href='${ctx}/orderList/update'");
+                        btn1.setAttribute("onclick",url);
 
 
                         var btn2=document.createElement("input");
