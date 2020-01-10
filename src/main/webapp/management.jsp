@@ -17,27 +17,27 @@
     <title>穷在闹市出品</title>
 
     <!-- 公共样式 开始 -->
-    <link rel="shortcut icon" href="images/favicon.ico"/>
-    <link rel="bookmark" href="images/favicon.ico"/>
-    <link rel="stylesheet" type="text/css" href="css/base.css">
-    <link rel="stylesheet" type="text/css" href="css/iconfont.css">
-    <script type="text/javascript" src="framework/jquery-1.11.3.min.js" ></script>
-    <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+    <link rel="shortcut icon" href="${ctx}/images/favicon.ico"/>
+    <link rel="bookmark" href="${ctx}/images/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/base.css">
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/iconfont.css">
+    <script type="text/javascript" src="${ctx}/framework/jquery-1.11.3.min.js" ></script>
+    <link rel="stylesheet" type="text/css" href="${ctx}/layui/css/layui.css">
     <!--[if lt IE 9]>
     <script src="framework/html5shiv.min.js"></script>
     <script src="framework/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="layui/layui.js"></script>
+    <script type="text/javascript" src="${ctx}/layui/layui.js"></script>
     <!-- 滚动条插件 -->
-    <link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.css">
-    <script src="framework/jquery-ui-1.10.4.min.js"></script>
-    <script src="framework/jquery.mousewheel.min.js"></script>
-    <script src="framework/jquery.mCustomScrollbar.min.js"></script>
-    <script src="framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/jquery.mCustomScrollbar.css">
+    <script src="${ctx}/framework/jquery-ui-1.10.4.min.js"></script>
+    <script src="${ctx}/framework/jquery.mousewheel.min.js"></script>
+    <script src="${ctx}/framework/jquery.mCustomScrollbar.min.js"></script>
+    <script src="${ctx}/framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
     <!-- 公共样式 结束 -->
 
-    <link rel="stylesheet" type="text/css" href="css/frameStyle.css">
-    <script type="text/javascript" src="framework/frame.js" ></script>
+    <link rel="stylesheet" type="text/css" href="${ctx}/css/frameStyle.css">
+    <script type="text/javascript" src="${ctx}/framework/frame.js" ></script>
 
 </head>
 
@@ -87,9 +87,10 @@
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/staff/staff_add.jsp',this)">添加新苦力</a></dt>
                 </dl>
             </li>
-<%--            <li>--%>
-<%--                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-caiwu left"></i>财务管理</a>--%>
-<%--            </li>--%>
+            <li>
+                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-caiwu left"></i>顾客管理</a>
+                <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/customer/customer_list.jsp',this)">顾客信息</a></dt>
+            </li>
 <%--            <li>--%>
 <%--                <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-icon left"></i>报表模块<i class="iconfont icon-dajiantouyou right"></i></a>--%>
 <%--                <dl>--%>
