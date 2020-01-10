@@ -92,9 +92,6 @@
 <update id="update">
     update order_item set
     <trim suffixOverrides=",">
-        <if test="id!=null">
-            id=#{id},
-        </if>
         <if test="orderNo!=null">
             order_no=#{orderNo},
         </if>

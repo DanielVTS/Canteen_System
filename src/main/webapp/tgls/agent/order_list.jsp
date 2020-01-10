@@ -119,8 +119,8 @@
                         td9.innerText = item.endTime;
                         tr.append(td9);
 
-                        const url = "window.location.href='${ctx}/orderList/update?orderNo=" +item.orderNo+"'";
-                        console.log(url);
+                        const url1 = "window.location.href='${ctx}/orderList/update?orderNo=" +item.orderNo+"'";
+                        console.log(url1);
 
                         var btn1=document.createElement("input");
                         btn1.setAttribute("type","button");
@@ -128,7 +128,8 @@
                         // btn1.setAttribute("id","btn"+id.toString());
                         btn1.setAttribute("value","更新");
                         btn1.setAttribute("class","layui-btn layui-btn-sm");
-                        btn1.setAttribute("onclick",url);
+                        btn1.setAttribute("onclick",url1);
+
 
 
                         var btn2=document.createElement("input");
@@ -137,11 +138,14 @@
                         btn2.setAttribute("value","基本信息");
                         btn2.setAttribute("class","layui-btn layui-btn-sm");
 
+                        const url3 = "window.location.href='${ctx}/orderList/finish?orderNo=" +item.orderNo+"'";
+                        console.log(url3);
                         var btn3=document.createElement("input");
                         btn3.setAttribute("type","button");
                         btn3.setAttribute("name","over");
                         btn3.setAttribute("value","订单完成");
                         btn3.setAttribute("class","layui-btn layui-btn-sm");
+                        btn3.setAttribute("onclick",url3);
                         tr.append(btn1,btn2,btn3);
 
                         table.append(tr);

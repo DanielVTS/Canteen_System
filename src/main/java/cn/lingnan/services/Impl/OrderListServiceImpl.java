@@ -15,8 +15,9 @@ public class OrderListServiceImpl implements OrderListService {
 
     @Override
     public boolean update(OrderList orderList) {
-        return orderListMapper.add(orderList);
+        return orderListMapper.update(orderList);
     }
+
 
     @Override
     public boolean delete(Integer orderId) {
@@ -36,5 +37,10 @@ public class OrderListServiceImpl implements OrderListService {
     @Override
     public List<OrderList> query(OrderList orderList) {
         return orderListMapper.query(orderList);
+    }
+
+    @Override
+    public OrderList queryNo(String OrderNo) {
+        return orderListMapper.queryNo(OrderNo);
     }
 }

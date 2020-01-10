@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.lingnan.mapper.OrderListMapper">
+    <select id="queryNo" resultType="OrderList">
+        select * from order_list where order_no=#{orderNo}
+    </select>
     <select id="query" resultType="OrderList">
         select * from order_list where
 <trim suffixOverrides="and">
@@ -127,9 +130,6 @@
     <update id="update">
         update order_list set
         <trim suffixOverrides=",">
-            <if test="orderNo!=null">
-                order_no=#{orderNo},
-            </if>
             <if test="customerId!=null">
                 customer_id=#{customerId},
             </if>
@@ -162,7 +162,7 @@
                 ps=#{ps},
             </if>
         </trim>
-                where  order_id=#{orderId}
+                where  order_no=#{orderNo}
     </update>
     <delete id="delete">
         delete from order_list where order_id=#{orderId}

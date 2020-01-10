@@ -10,4 +10,5 @@ public interface OrderListService {
     boolean add (OrderList orderList);
     List<OrderList> queryAll();
     List<OrderList> query(OrderList orderList);
+    OrderList queryNo(String OrderNo);
 }
