@@ -42,7 +42,16 @@
                 </div>
                 <button class="layui-btn" lay-submit lay-filter="formDemo">检索</button>
             </div>
+
         </form>
+        <form action="${ctx}/orderList/getStatus1" method="post">
+        <button class="layui-btn"  href="${ctx}/orderList/getStatus1">已付款</button>
+
+        </form>
+        <form action="${ctx}/orderList/getStatus2" method="post">
+            <button class="layui-btn">未付款</button>
+        </form>
+
 
         <script>
             layui.use('form', function() {
@@ -118,7 +127,7 @@
                         btn1.setAttribute("name","update");
                         btn1.setAttribute("value","更新");
                         btn1.setAttribute("class","layui-btn layui-btn-sm");
-                        btn1.setAttribute("onclick","window.location.href='${ctx}/orderList/update'");
+                        btn1.setAttribute("onclick","window.location.href='${ctx}/orderList/update?orderNo=item.orderNo'");
 
 
                         var btn2=document.createElement("input");
