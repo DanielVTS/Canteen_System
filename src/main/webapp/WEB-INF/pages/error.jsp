@@ -27,6 +27,9 @@
         if(msg=="login error!") {
             alert("用户名或密码有误!请确认信息！")
         }
+        if(msg=="not login"){
+            alert("请先登录!");
+        }
         window.history.back(-1);
     }
 </script>

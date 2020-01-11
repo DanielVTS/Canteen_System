@@ -88,7 +88,6 @@
             });
             //拿数据
             function getListData() {
-
                 $.ajaxSettings.async = false;
                 $.get("${ctx}/orderList/getOrderList",function(data){
                     //调试用
@@ -184,6 +183,7 @@
             }
 
             function setOrderStatus1() {
+                orderNo=document.getElementsByName("input1").values()
                 localStorage.setItem("orderStatus","1")
             }
             function setOrderStatus2() {
