@@ -5,6 +5,7 @@ import cn.lingnan.mapper.TableMapper;
 import cn.lingnan.pojo.Menu;
 import cn.lingnan.pojo.Table;
 import cn.lingnan.services.TableService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +14,11 @@ import java.util.List;
 public class TableServiceImpl implements TableService {
 
     private TableMapper tableMapper;
+
+    @Autowired
+    public void TableMapper(TableMapper tableMapper) {
+        this.tableMapper = tableMapper;
+    }
 
     @Override
     public Table getById(Integer tableId) {

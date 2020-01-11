@@ -124,7 +124,13 @@
                         btn3.setAttribute("name","over");
                         btn3.setAttribute("value","订单完成");
                         btn3.setAttribute("class","layui-btn layui-btn-sm");
-                        tr.append(btn1,btn2,btn3);
+
+                        var btn4=document.createElement("input");
+                        btn4.setAttribute("type","button");
+                        btn4.setAttribute("name","over");
+                        btn4.setAttribute("value","删除");
+                        btn4.setAttribute("class","layui-btn layui-btn-sm");
+                        tr.append(btn1,btn2,btn3,btn4);
 
                         table.append(tr);
 
