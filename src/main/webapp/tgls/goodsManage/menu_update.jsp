@@ -11,12 +11,7 @@
     <!--国产浏览器高速模式-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="穷在闹市" />
-    <!-- 作者 -->
-    <meta name="revised" content="穷在闹市.v3, 2019/05/01" />
-    <!-- 定义页面的最新版本 -->
-    <meta name="description" content="网站简介" />
-    <!-- 网站简介 -->
-    <meta name="keywords" content="搜索关键字，以半角英文逗号隔开" />
+
     <title>穷在闹市出品</title>
 
     <!-- 公共样式 开始 -->
@@ -49,11 +44,11 @@
 
 <body>
 <div class="cBody">
-    <form id="addForm" class="layui-form" action="${ctx}/menu/updateForm">
+    <form id="updateForm" class="layui-form" action="">
         <div class="layui-form-item">
             <label class="layui-form-label">菜号</label>
             <div class="layui-input-block">
-                <input type="text" name="menuId" required lay-verify="required" autocomplete="off" class="layui-input">
+                <input type="text" name="menuId" required lay-verify="required" autocomplete="off" class="layui-input" readonly="readonly">
             </div>
         </div>
         <div class="layui-form-item">
@@ -135,5 +130,37 @@
 
 </div>
 </body>
+<script>
+
+    $(document).ready(function () {
+        let customerId = "${requestScope.customerId}";
+
+        $.get("${ctx}/menu/getMenuList",function(data,status) {
+
+            $.each(data, function (index, item) {
+
+
+                if (item.MenuId != MenuId) return true;
+                console.log(item);
+                //$("#orderNo").prop("value",orderNo);
+                $("#menuName").prop("value",item.menuName);
+                // $("#customerName").prop("readonly",customerName);
+
+                $("#menuCategory").prop("value",item.menuCategory);
+                // $("#phone").prop("readonly",phone);
+
+                $("#menuStatus").prop("value",item.menuStatus);
+                // $("#email").prop("readonly",email);
+
+                $("#price").prop("value",item.price);
+
+                $("#picture").prop("value",item.picture);
+
+            });
+        });
+        // Map data-->
+
+    });
+</script>
 
 </html>

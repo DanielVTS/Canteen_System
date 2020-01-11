@@ -46,113 +46,48 @@
 <div class="cBody">
     <form id="updateForm" class="layui-form" action="${ctx}/customer/updateForm" method="get">
         <div class="layui-form-item">
-            <label class="layui-form-label">用户号</label>
-            <div class="layui-input-inline shortInput">
-                <input type="text" id="customerId" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
             <label class="layui-form-label">用户名</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="customerName"  autocomplete="off" class="layui-input">
+                <input type="text" id="customerName"  autocomplete="off" class="layui-input" name="customerName">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">电话</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="phone" autocomplete="off" class="layui-input" >
+                <input type="text" id="phone" autocomplete="off" class="layui-input" name="phone">
             </div>
             <i class="iconfont icon-huaban bt"></i>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">邮箱</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="email" autocomplete="off" class="layui-input">
+                <input type="text" id="email" autocomplete="off" class="layui-input" name="email">
             </div>
             <i class="iconfont icon-huaban bt"></i>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">用户生日</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="birthday" autocomplete="off" class="layui-input">
-            </div>
-            <i class="iconfont icon-huaban bt"></i>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">注册时间</label>
-            <div class="layui-input-inline shortInput">
-                <input type="text" id="registerTime" autocomplete="off" class="layui-input">
-            </div>
-            <i class="iconfont icon-huaban bt"></i>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">登录时间</label>
-            <div class="layui-input-inline shortInput">
-                <input type="text" id="loginTime" autocomplete="off" class="layui-input" >
+                <input type="date" id="birthday" autocomplete="off" class="layui-input" name="birthday">
             </div>
             <i class="iconfont icon-huaban bt"></i>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">账户密码</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="customerPassword" autocomplete="off" class="layui-input" >
+                <input type="text" id="customerPassword" autocomplete="off" class="layui-input" name="customerPassword">
             </div>
             <i class="iconfont icon-huaban bt"></i>
         </div>
-<%--        <div class="layui-form-item">--%>
-<%--            <label class="layui-form-label">台号</label>--%>
-<%--            <div class="layui-input-inline">--%>
-<%--                <select name="tableId" id="tableId" lay-filter="orderStatus">--%>
-<%--                    <option value="1">1</option>--%>
-<%--                    <option value="2">2</option>--%>
-<%--                    <option value="3">3</option>--%>
-<%--                    <option value="4">4</option>--%>
-<%--                    <option value="5">5</option>--%>
-<%--                    <option value="6">6</option>--%>
-<%--                    <option value="7">7</option>--%>
-<%--                </select>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="layui-form-item">--%>
-<%--            <label class="layui-form-label">台号名</label>--%>
-<%--            <div class="layui-input-inline shortInput">--%>
-<%--                <input type="text" id="tableName" autocomplete="off" class="layui-input">--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="layui-form-item">--%>
-<%--            <label class="layui-form-label">订单状态</label>--%>
-<%--            <div class="layui-input-inline">--%>
-<%--                <select name="orderStatus" id="orderStatus" lay-filter="orderStatus">--%>
-<%--                    <option value=1>1</option>--%>
-<%--                    <option value=2>2</option>--%>
-<%--                    <option value=3>3</option>--%>
-<%--                </select>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="layui-form-item">--%>
-<%--            <label class="layui-form-label">订单金额</label>--%>
-<%--            <div class="layui-input-inline shortInput">--%>
-<%--                <input type="text" id="orderPrice" autocomplete="off" class="layui-input" >--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="layui-form-item layui-form-text">--%>
-<%--            <label class="layui-form-label">备注</label>--%>
-<%--            <div class="layui-input-block">--%>
-<%--                <textarea id="ps" placeholder="请输入内容" class="layui-textarea"></textarea>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-
-<%--        <div class="layui-form-item">--%>
-<%--            <div class="layui-input-block">--%>
-<%--                <button class="layui-btn" lay-submit lay-filter="submitBut">立即提交</button>--%>
-<%--                <button type="reset" class="layui-btn layui-btn-primary">重置</button>--%>
-<%--            </div>--%>
-<%--        </div>--%>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="submitBut" type="submit">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
     </form>
 
-    <!-- 三级省市 插件 -->
-    <%--    <script src="../../framework/area.js"></script>--%>
-    <%--    <script src="../../framework/province.js"></script>--%>
+
 </div>
 
 
@@ -162,28 +97,29 @@
 <script>
 
     $(document).ready(function () {
-        let orderNo = "${requestScope.orderNo}";
+        let customerId = "${requestScope.customerId}";
 
-        $.get("${ctx}/orderList/getOrderList", function (data, status) {
-            // console.log(data);
-            // console.log("数据: " + data + "\n状态: " + status);
+        $.get("${ctx}/customer/getCustomerList",function(data,status) {
+
             $.each(data, function (index, item) {
-                // console.log(index);
-                // console.log(item);
+
 
                 if (item.customerId != customerId) return true;
                 console.log(item);
-
                 //$("#orderNo").prop("value",orderNo);
-                $("#customerId").prop("readonly",customerId);
-                $("#customerId").prop("value",customerId);
                 $("#customerName").prop("value",item.customerName);
+                // $("#customerName").prop("readonly",customerName);
+
                 $("#phone").prop("value",item.phone);
+                // $("#phone").prop("readonly",phone);
+
                 $("#email").prop("value",item.email);
+                // $("#email").prop("readonly",email);
+
                 $("#birthday").prop("value",item.birthday);
-                $("#registerTime").prop("value",item.registerTime);
-                $("#loginTime").prop("value",item.loginTime);
+
                 $("#customerPassword").prop("value",item.customerPassword);
+
             });
         });
         // Map data-->

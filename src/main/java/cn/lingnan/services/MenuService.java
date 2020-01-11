@@ -10,6 +10,6 @@ public interface MenuService {
     List<Menu> queryAll();
     List<Menu> query(Menu menu);
     boolean add(Menu menu);
-    boolean delete(Menu menu);
+    boolean delete(Integer menuId);
     boolean update(Menu menu);
 }

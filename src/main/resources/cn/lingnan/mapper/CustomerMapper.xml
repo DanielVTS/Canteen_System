@@ -55,9 +55,7 @@
     <select id="check" resultType="customer">
         select * from customer where
         <trim suffixOverrides="or">
-            <if test="customerId!=null">
-                customer_id=#{customerId} or
-            </if>
+
             <if test="customerName!=null">
                 customer_name=#{customerName} or
             </if>
@@ -66,15 +64,6 @@
             </if>
             <if test="email!=null">
                 email=#{email} or
-            </if>
-            <if test="birthday!=null">
-                birthday=#{birthday} or
-            </if>
-            <if test="registerTime!=null">
-                register_time=#{registerTime} or
-            </if>
-            <if test="loginTime!=null">
-                login_time=#{loginTime} or
             </if>
         </trim>
     </select>

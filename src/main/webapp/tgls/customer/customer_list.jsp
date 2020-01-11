@@ -73,11 +73,13 @@
         <tbody>
 
         <script>
+            let id=0;
             //jquery代码都必须写在ready方法中
             $(document).ready(function () {
                 $.get("${ctx}/customer/getCustomerList",function(data,status){
                     console.log(data);
                     console.log("数据: " + data + "\n状态: " + status);
+                    var id=0
                     $.each(data, function (index, item) {
                         console.log(index);
                         console.log(item);
@@ -95,12 +97,18 @@
                         var td4 = document.createElement("td");
                         td4.innerText = item.email;
                         tr.append(td4);
+
+
+
                         var td5 = document.createElement("td");
-                        td5.innerText = item.birthday;
+                        var date =getDate(item.birthday);
+                        td5.innerText =date;
                         tr.append(td5);
+
                         var td6 = document.createElement("td");
                         td6.innerText = item.registerTime;
                         tr.append(td6);
+
                         var td7 = document.createElement("td");
                         td7.innerText = item.loginTime;
                         tr.append(td7);
@@ -108,23 +116,24 @@
                         td8.innerText = item.customerPassword;
                         tr.append(td8);
 
-                        const url = "window.location.href='${ctx}/customer/update?customerId=" +item.customerId+"'";
-                        console.log(url);
-
-
+                        const url1 = "window.location.href='${ctx}/customer/update?customerId=" +item.customerId+"'";
+                        console.log(url1);
                         var btn1=document.createElement("input");
                         btn1.setAttribute("type","button");
                         btn1.setAttribute("name","update");
                         btn1.setAttribute("value","修改信息");
                         btn1.setAttribute("class","layui-btn layui-btn-sm");
-                        btn1.setAttribute("onclick",url);
+                        btn1.setAttribute("onclick",url1);
 
-
+                        const url2 = "window.location.href='${ctx}/customer/delete?customerId=" +item.customerId+"'";
+                        console.log(url2);
                         var btn2=document.createElement("input");
                         btn2.setAttribute("type","button");
                         btn2.setAttribute("name","more");
                         btn2.setAttribute("value","删除用户");
                         btn2.setAttribute("class","layui-btn layui-btn-sm");
+                        btn2.setAttribute("onclick",url2);
+
                         tr.append(btn1,btn2);
 
                         table.append(tr);
@@ -157,6 +166,57 @@
                 }
             });
         });
+    </script>
+    <script>
+        function getTime(second,getDateType) {
+            var date =new Date(second);
+            if(getDateType==0){
+                return date.getFullYear();
+            }else if(getDateType==1){
+                if((date.getMonth()+1)<=9){
+                    return "0"+(date.getMonth()+1);
+                }else {
+                    return date.getMonth()+1;
+                }
+            }else if(getDateType==2){
+                if(date.getDate()<=9){
+                    return "0"+date.getDate();
+                }else {
+                    return date.getDate();
+                }
+            }else if(getDateType==3){
+                if(date.getHours()<=9){
+                    return "0"+date.getHours();
+                }else {
+                    return date.getHours();
+                }
+            }else if(getDateType==4){
+                if(date.getMinutes()<=9){
+                    return "0"+date.getMinutes();
+                }else {
+                    return date.getMinutes();
+                }
+            }else if(getDateType==5){
+                return date.getSeconds ();
+            }else {
+                alert("输入时间格式有误!");
+                return;
+            }
+
+
+        }
+    </script>
+    <script>
+        function getDate(second)
+        {
+            var time=second;
+            console.log(getTime(second,0));
+            console.log(getTime(second,1));
+            console.log(getTime(second,2));
+            var day=getTime(second,0)+"-"+getTime(second,1)+"-"+getTime(second,2);
+            return day;
+
+        }
     </script>
 </div>
 </body>

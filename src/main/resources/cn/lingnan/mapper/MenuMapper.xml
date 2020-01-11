@@ -34,6 +34,14 @@
             </if>
         </trim>
     </select>
+    <select id="check" resultType="Menu">
+        select * from menu where
+        <trim suffixOverrides="or">
+            <if test="menuName!=null">
+                menu_name=#{menuName} or
+            </if>
+        </trim>
+    </select>
 
 
     <update id="update">
