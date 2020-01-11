@@ -11,12 +11,7 @@
     <!--国产浏览器高速模式-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="穷在闹市" />
-    <!-- 作者 -->
-    <meta name="revised" content="穷在闹市.v3, 2019/05/01" />
-    <!-- 定义页面的最新版本 -->
-    <meta name="description" content="网站简介" />
-    <!-- 网站简介 -->
-    <meta name="keywords" content="搜索关键字，以半角英文逗号隔开" />
+
     <title>穷在闹市出品</title>
 
     <!-- 公共样式 开始 -->
@@ -49,13 +44,14 @@
 
 <body>
 <div class="cBody">
-    <form id="addForm" class="layui-form" action="${ctx}/menu/updateForm">
+    <form id="updateForm" class="layui-form" action="${ctx}/menu/updateForm" method="get">
         <div class="layui-form-item">
             <label class="layui-form-label">菜号</label>
             <div class="layui-input-block">
-                <input type="text" name="menuId" required lay-verify="required" autocomplete="off" class="layui-input">
+                <input type="text" name="menuId" id="menuId"  autocomplete="off" class="layui-input" readonly="readonly" >
             </div>
         </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label">菜品图片</label>
             <div class="layui-upload-drag" id="goodsPic">
@@ -63,77 +59,115 @@
                 <p>点击上传，或将文件拖拽到此处</p>
             </div>
         </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label">菜名</label>
             <div class="layui-input-block">
-                <input type="text" name="menuName" required lay-verify="required" autocomplete="off" class="layui-input">
+                <input type="text" name="menuName" id="menuName" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label">单价</label>
             <div class="layui-input-block">
-                <input type="text" name="price" required lay-verify="required|number" autocomplete="off" class="layui-input">
+                <input type="text" name="price" id="price" required lay-verify="required|number" autocomplete="off" class="layui-input">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">状态（库存）</label>
+            <label class="layui-form-label">状态</label>
             <div class="layui-input-block">
-                <input type="password" name="password2" autocomplete="off" class="layui-input">
+                <input type="text" name="menuStatus" id="menuStatus" autocomplete="off" class="layui-input">
             </div>
         </div>
+
         <div class="layui-form-item">
             <label class="layui-form-label">种类</label>
             <div class="layui-input-inline">
-                <select name="provid" id="provid" lay-filter="provid">
+                <select name="menuCategory" lay-filter="provid" id="menuCategory">
                     <option value="">种类</option>
-                    <option value="0">荤菜</option>
-                    <option value="1">素菜</option>
-                    <option value="2">水果</option>
-                    <option value="3">汤类</option>
-                    <option value="4">火锅</option>
-                    <option value="4">饮品</option>
+                    <option value="荤菜">荤菜</option>
+                    <option value="素菜">素菜</option>
+                    <option value="水果">水果</option>
+                    <option value="汤类">汤类</option>
+                    <option value="火锅">火锅</option>
+                    <option value="饮品">饮品</option>
                 </select>
             </div>
-
-        </div>
+    </div>
 
 
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="submitBut">立即添加</button>
+                <button class="layui-btn" lay-submit lay-filter="submitBut" type="submit">立即更改</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
     </form>
+    </div>
 
 
-    <script>
-        layui.use(['upload','form'], function() {
-            var form = layui.form;
-            var upload = layui.upload;
-            var layer = layui.layer;
-            //监听提交
-            form.on('submit(submitBut)', function(data) {
-                return false;
-            });
-            form.verify({
-                ZHCheck: [
-                    /^[\u0391-\uFFE5]+$/
-                    ,'只允许输入中文'
-                ]
-            });
-            upload.render({
-                elem: '#goodsPic',
-                url: '/upload/',
-                done: function(res) {
-                    console.log(res)
-                }
+
+
+</body>
+
+<%--        <script>--%>
+<%--            layui.use(['upload','form'], function() {--%>
+<%--                var form = layui.form;--%>
+<%--                var upload = layui.upload;--%>
+<%--                var layer = layui.layer;--%>
+<%--                //监听提交--%>
+<%--                form.on('submit(submitBut)', function(data) {--%>
+<%--                    return false;--%>
+<%--                });--%>
+<%--                form.verify({--%>
+<%--                    ZHCheck: [--%>
+<%--                        /^[\u0391-\uFFE5]+$/--%>
+<%--                        ,'只允许输入中文'--%>
+<%--                    ]--%>
+<%--                });--%>
+<%--                upload.render({--%>
+<%--                    elem: '#goodsPic',--%>
+<%--                    url: '/upload/',--%>
+<%--                    done: function(res) {--%>
+<%--                        console.log(res)--%>
+<%--                    }--%>
+<%--                });--%>
+<%--            });--%>
+<%--        </script>--%>
+<script>
+
+    $(document).ready(function () {
+        let menuId = "${requestScope.menuId}";
+
+        $.get("${ctx}/menu/getMenuList",function(data,status) {
+
+            $.each(data, function (index, item) {
+
+
+                if (item.menuId != menuId) return true;
+
+                    console.log(item);
+                $("#menuId").prop("value",item.menuId);
+                //$("#orderNo").prop("value",orderNo);
+                $("#menuName").prop("value",item.menuName);
+                // $("#customerName").prop("readonly",customerName);
+
+                $("#menuCategory").prop("value",item.menuCategory);
+                // $("#phone").prop("readonly",phone);
+
+                $("#menuStatus").prop("value",item.menuStatus);
+                // $("#email").prop("readonly",email);
+
+                $("#price").prop("value",item.price);
+
+                $("#picture").prop("value",item.picture);
+
             });
         });
-    </script>
+        // Map data-->
 
-</div>
-</body>
+    });
+</script>
 
 </html>

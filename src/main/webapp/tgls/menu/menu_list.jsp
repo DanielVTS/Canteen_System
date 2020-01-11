@@ -10,13 +10,7 @@
     <meta name="renderer" content="webkit">
     <!--国产浏览器高速模式-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="穷在闹市" />
-    <!-- 作者 -->
-    <meta name="revised" content="穷在闹市.v3, 2019/05/01" />
-    <!-- 定义页面的最新版本 -->
-    <meta name="description" content="网站简介" />
-    <!-- 网站简介 -->
-    <meta name="keywords" content="搜索关键字，以半角英文逗号隔开" />
+
     <title>穷在闹市出品</title>
 
     <!-- 公共样式 开始 -->
@@ -87,11 +81,13 @@
         <tbody>
 
         <script>
+            let id=0;
             //jquery代码都必须写在ready方法中
             $(document).ready(function () {
                 $.get("${ctx}/menu/getMenuList",function(data,status){
                     console.log(data);
                     console.log("数据: " + data + "\n状态: " + status);
+                    var id=0;
                     $.each(data, function (index, item) {
                         console.log(index);
                         console.log(item);
@@ -117,18 +113,35 @@
                         td6.innerText = item.menuStatus;
                         tr.append(td6);
 
+
+                        const url1 = "window.location.href='${ctx}/menu/update?menuId=" +item.menuId+"'";
+                        console.log(url1)
                         var btn1=document.createElement("input");
                         btn1.setAttribute("type","submit");
                         btn1.setAttribute("name","update");
                         btn1.setAttribute("value","更新");
                         btn1.setAttribute("class","layui-btn layui-btn-sm");
+                        btn1.setAttribute("onclick",url1);
 
+                        const url2 = "window.location.href='${ctx}/menu/down?menuId=" +item.menuId+"'";
+                        console.log(url2)
                         var btn2=document.createElement("input");
                         btn2.setAttribute("type","submit");
                         btn2.setAttribute("name","delete");
-                        btn2.setAttribute("value","删除");
+                        btn2.setAttribute("value","下架");
                         btn2.setAttribute("class","layui-btn layui-btn-sm");
-                        tr.append(btn1,btn2);
+                        btn2.setAttribute("onclick",url2);
+                        
+                        const url3 = "window.location.href='${ctx}/menu/up?menuId=" +item.menuId+"'";
+                        console.log(url3)
+                        var btn3=document.createElement("input");
+                        btn3.setAttribute("type","submit");
+                        btn3.setAttribute("name","delete");
+                        btn3.setAttribute("value","上架");
+                        btn3.setAttribute("class","layui-btn layui-btn-sm");
+                        btn3.setAttribute("onclick",url3);
+
+                        tr.append(btn1,btn2,btn3);
                         table.append(tr);
 
                     })
