@@ -74,18 +74,21 @@
         <script>
             //jquery代码都必须写在ready方法中
             $(document).ready(function () {
-                let orderNo = "${requestScope.orderNo}";
+                let id = "${requestScope.id}";
                 $.get("${ctx}/orderItem/getOrderItem",function(data,status){
                     console.log(data);
                     console.log("数据: " + data + "\n状态: " + status);
                     var id=0;
-                        if(orderNo!=orderNo) return true;
+                        if(id!=id) return true;
 
                     $.each(data, function (index, item) {
                         console.log(index);
                         console.log(item);
                         var table = $("table");
                         var tr = document.createElement("tr");
+                        var td0 = document.createElement("td");
+                        td0.innerText = item.id;
+                        tr.append(td0);
                         var td1 = document.createElement("td");
                         td1.innerText = item.orderNo;
                         tr.append(td1);
@@ -105,12 +108,13 @@
                         td6.innerText = item.totalPrice;
                         tr.append(td6);
 
+                        const url1 = "window.location.href='${ctx}/orderItem/update?id=" +item.id+"'";
                         var btn1=document.createElement("input");
                         btn1.setAttribute("type","button");
                         btn1.setAttribute("name","update");
                         btn1.setAttribute("value","更新");
                         btn1.setAttribute("class","layui-btn layui-btn-sm");
-                        btn1.setAttribute("onclick","window.location.href='${ctx}/orderItem/update'");
+                        btn1.setAttribute("onclick",url1);
 
 
                         var btn2=document.createElement("input");

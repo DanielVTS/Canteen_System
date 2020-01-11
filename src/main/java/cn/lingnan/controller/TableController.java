@@ -36,7 +36,7 @@ public class TableController {
     public String update (Integer tableId, Model model){
         System.out.println("table,tableId:"+tableId);
         model.addAttribute("tableId",tableId);
-        return "forward:../tgls/table/table_add.jsp";
+        return "forward:../tgls/table/table_update.jsp";
     }
 
     @GetMapping("/dalete")
@@ -61,7 +61,7 @@ public class TableController {
         System.out.println(tableId);
         System.out.println(table.toString());
         String tableName=table.getTableName();
-        if(tableService.getByName(tableName).equals(""))
+        if(tableService.getByName(tableName)==null)
         {
 
             System.out.println(tableService.add(table));

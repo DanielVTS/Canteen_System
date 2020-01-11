@@ -23,5 +23,6 @@ public interface CustomerMapper {
     Customer getByEmail(String email);
     Customer getByPhone(String phone);
     boolean register (Customer customer);
+    boolean add(Customer customer);
 
 }

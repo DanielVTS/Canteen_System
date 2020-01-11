@@ -35,12 +35,6 @@
     <!-- 公共样式 结束 -->
 
     <style>
-        .layui-form-label{
-            width: 100px;
-        }
-        .layui-input-block{
-            margin-left: 130px;
-        }
         .layui-form{
             margin-right: 30%;
         }
@@ -50,7 +44,7 @@
 
 <body>
 <div class="cBody">
-    <form id="updateForm" class="layui-form" action="${ctx}/staff/addForm" method="get">
+    <form id="updateForm" class="layui-form" action="${ctx}/staff/updateForm" method="get">
         <div class="layui-form-item">
             <label class="layui-form-label">员工号</label>
             <div class="layui-input-block">
@@ -80,35 +74,34 @@
 
 
 </div>
+
+
+
 </body>
 
-<%--<script>--%>
+<script>
 
-    <%--$(document).ready(function () {--%>
-    <%--    let staffId = "${requestScope.staffId}";--%>
+    $(document).ready(function () {
+        let staffId = "${requestScope.staffId}";
 
-    <%--    $.get("${ctx}/staff/getstaffList", function (data, status) {--%>
-    <%--        // console.log(data);--%>
-    <%--        // console.log("数据: " + data + "\n状态: " + status);--%>
-    <%--        $.each(data, function (index, item) {--%>
-    <%--            // console.log(index);--%>
-    <%--            // console.log(item);--%>
+        $.get("${ctx}/staff/getStaffList",function(data,status) {
 
-    <%--            if (item.staffId != staffId) return true;--%>
-    <%--            console.log(item);--%>
+            $.each(data, function (index, item) {
 
-    <%--            //$("#orderNo").prop("value",orderNo);--%>
-    <%--            $("#staffId").prop("readonly",staffId);--%>
-    <%--            $("#staffId").prop("value",staffId);--%>
-    <%--            $("#staffName").prop("value",item.staffName);--%>
-    <%--            $("#password").prop("value",item.staffPassword);--%>
-    <%--        });--%>
-    <%--    });--%>
-    <%--    // Map data-->--%>
+                if (item.staffId != staffId) return true;
 
-    <%--});--%>
-<%--// </script>--%>
+                console.log(item);
+                $("#staffId").prop("value",item.staffId);
+                $("#staffName").prop("value",item.staffName);
 
+                $("#staffPassword").prop("value",item.staffPassword);
+
+
+            });
+        });
+        // Map data-->
+
+    });
+</script>
 
 </html>
-

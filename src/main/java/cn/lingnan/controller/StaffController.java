@@ -2,6 +2,7 @@ package cn.lingnan.controller;
 
 
 import cn.lingnan.pojo.Customer;
+import cn.lingnan.pojo.Menu;
 import cn.lingnan.pojo.Staff;
 import cn.lingnan.services.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,15 +80,34 @@ public class StaffController {
     public String update (Integer staffId, Model model){
         System.out.println("staff,staffId:"+staffId);
         model.addAttribute("staffId",staffId);
-        return "forward:../tgls/staff/staff_add.jsp";
+        return "forward:../tgls/staff/staff_update.jsp";
     }
     @RequestMapping(value = "/updateForm",method = RequestMethod.GET)
     public String updateForm (Staff staff,String staffId,Model model){
         System.out.println("updateFrom");
         System.out.println(staffId);
         System.out.println(staff.toString());
-        return "success";
+        System.out.println(staffService.update(staff));
+        return "forward:../tgls/staff/staff_list.jsp";
     }
 
+    @RequestMapping(value = "/addForm", method = RequestMethod.GET)
+    public String addForm (Staff staff, Integer staffId, Model model) {
+        System.out.println("addForm");
+        System.out.println(staffId);
+        System.out.println(staff.toString());
+        String staffName=staff.getStaffName();
+        if(staffService.getByName(staffName)==null)
+        {
+
+            System.out.println(staffService.add(staff));
+        }
+        else {
+            model.addAttribute("msg", "information error!");
+        }
+
+        return "forward:../tgls/staff/staff_list.jsp";
+
+    }
 
 }

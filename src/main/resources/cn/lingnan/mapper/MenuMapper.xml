@@ -110,7 +110,7 @@
                 #{price},
             </if>
             <if test="picture!=null">
-                {picture},
+                #{picture},
             </if>
 
         </trim>

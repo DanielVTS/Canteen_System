@@ -6,6 +6,10 @@
         select * from table_information
     </select>
 
+    <select id="getByName" resultType="Table">
+        select * from table_information where table_name =#{tableName}
+    </select>
+
     <select id="query" resultType="Table">
         select * from table_information where
         <trim suffixOverrides="and">

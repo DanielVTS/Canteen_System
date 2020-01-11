@@ -46,35 +46,41 @@
 
 <body>
 <div class="cBody">
-    <form id="addForm" class="layui-form" action="">
+    <form id="addForm" class="layui-form" action="${ctx}/customer/updateForm" method="get">
+        <div class="layui-form-item">
+            <label class="layui-form-label">顾客号</label>
+            <div class="layui-input-block">
+                <input type="text" name="customerId" id="customerId"  autocomplete="off" class="layui-input" readonly="readonly" >
+            </div>
+        </div>
         <div class="layui-form-item">
             <label class="layui-form-label">用户名</label>
             <div class="layui-input-block">
-                <input type="text" name="customerName" required lay-verify="required" autocomplete="off" class="layui-input">
+                <input type="text" name="customerName" id="customerName" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">电话</label>
             <div class="layui-input-block">
-                <input type="text" name="phone" required lay-verify="required" autocomplete="off" class="layui-input">
+                <input type="text" name="phone" id="phone" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">邮箱</label>
             <div class="layui-input-block">
-                <input type="text" name="email" required lay-verify="required|number" autocomplete="off" class="layui-input">
+                <input type="text" name="email" id="email" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">生日</label>
             <div class="layui-input-block">
-                <input type="password" name="birthday" autocomplete="off" class="layui-input">
+                <input type="text" name="birthday" id="birthday" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">密码</label>
             <div class="layui-input-block">
-                <input type="password" name="password2" autocomplete="off" class="layui-input">
+                <input type="text" name="customerPassword" id="customerPassword" autocomplete="off" class="layui-input">
             </div>
         </div>
 
@@ -86,37 +92,72 @@
         </div>
     </form>
 
+</div>
+</body>
+
+
+<%--    <script>--%>
+<%--        layui.use(['upload','form'], function() {--%>
+<%--            var form = layui.form;--%>
+<%--            var upload = layui.upload;--%>
+<%--            var layer = layui.layer;--%>
+<%--            //监听提交--%>
+<%--            //解决了layui.open弹窗从内部关闭这个弹窗的问题--%>
+<%--            form.on('submit(submitBut)', function(data) {--%>
+<%--                var updateFrame = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引--%>
+<%--                parent.layer.close(updateFrame);  //再改变当前层的标题--%>
+<%--            });--%>
+<%--            form.verify({--%>
+<%--                //数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]--%>
+<%--                ZHCheck: [--%>
+<%--                    /^[\u0391-\uFFE5]+$/--%>
+<%--                    ,'只允许输入中文'--%>
+<%--                ]--%>
+<%--            });--%>
+<%--            //拖拽上传--%>
+<%--            upload.render({--%>
+<%--                elem: '#goodsPic',--%>
+<%--                url: '/upload/',--%>
+<%--                done: function(res) {--%>
+<%--                    console.log(res)--%>
+<%--                }--%>
+<%--            });--%>
+<%--        });--%>
+<%--    </script>--%>
+
 
     <script>
-        layui.use(['upload','form'], function() {
-            var form = layui.form;
-            var upload = layui.upload;
-            var layer = layui.layer;
-            //监听提交
-            //解决了layui.open弹窗从内部关闭这个弹窗的问题
-            form.on('submit(submitBut)', function(data) {
-                var updateFrame = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-                parent.layer.close(updateFrame);  //再改变当前层的标题
+
+        $(document).ready(function () {
+            let customerId = "${requestScope.customerId}";
+
+            $.get("${ctx}/customer/getCustomerList",function(data,status) {
+
+                $.each(data, function (index, item) {
+
+
+                    if (item.customerId != customerId) return true;
+                    console.log(item);
+                    $("#customerId").prop("value",item.customerId);
+
+                    $("#customerName").prop("value",item.customerName);
+
+                    $("#phone").prop("value",item.phone);
+
+                    $("#email").prop("value",item.email);
+
+                    $("#birthday").prop("value",item.birthday);
+
+                    $("#customerPassword").prop("value",item.customerPassword);
+
+                });
             });
-            form.verify({
-                //数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]
-                ZHCheck: [
-                    /^[\u0391-\uFFE5]+$/
-                    ,'只允许输入中文'
-                ]
-            });
-            //拖拽上传
-            upload.render({
-                elem: '#goodsPic',
-                url: '/upload/',
-                done: function(res) {
-                    console.log(res)
-                }
-            });
+            // Map data-->
+
         });
     </script>
 
-</div>
-</body>
+
+
 
 </html>

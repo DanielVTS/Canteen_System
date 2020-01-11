@@ -1,4 +1,3 @@
-<%@ page import="cn.lingnan.pojo.Customer" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" isErrorPage="true" %>
 <% pageContext.setAttribute("ctx", request.getContextPath()); %>
 <!DOCTYPE html>
@@ -44,91 +43,92 @@
 
 <body>
 <div class="cBody">
-    <form id="updateForm" class="layui-form" action="${ctx}/customer/addForm" method="get">
+    <form id="updateForm" class="layui-form" action="${ctx}/orderItem/updateForm" method="get">
         <div class="layui-form-item">
-            <label class="layui-form-label">用户名</label>
-            <div class="layui-input-inline shortInput">
-                <input type="text" id="customerName"  autocomplete="off" class="layui-input" name="customerName">
+            <label class="layui-form-label">明细号</label>
+            <div class="layui-input-block">
+                <input type="text" name="id" id="id"  autocomplete="off" class="layui-input" readonly="readonly" >
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">电话</label>
+            <label class="layui-form-label">订单号</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="phone" autocomplete="off" class="layui-input" name="phone">
+                <input type="text" name="orderNo" id="orderNo" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">菜色号</label>
+            <div class="layui-input-inline shortInput">
+                <input type="text" name="menuId" id="menuId"  autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">菜色名</label>
+            <div class="layui-input-inline shortInput">
+                <input type="text" name="menuName" id="menuName" autocomplete="off" class="layui-input" value="112233">
             </div>
             <i class="iconfont icon-huaban bt"></i>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">邮箱</label>
+            <label class="layui-form-label">价格</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="email" autocomplete="off" class="layui-input" name="email">
+                <input type="text" name="price" id="price" autocomplete="off" class="layui-input">
             </div>
-            <i class="iconfont icon-huaban bt"></i>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">用户生日</label>
+            <label class="layui-form-label">数量</label>
             <div class="layui-input-inline shortInput">
-                <input type="date" id="birthday" autocomplete="off" class="layui-input" name="birthday">
+                <input type="text" name="quantity" id="quantity" autocomplete="off" class="layui-input">
             </div>
-            <i class="iconfont icon-huaban bt"></i>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">账户密码</label>
+            <label class="layui-form-label">总价</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="customerPassword" autocomplete="off" class="layui-input" name="customerPassword">
+                <input type="text" name="totalPrice" id="totalPrice" autocomplete="off" class="layui-input" >
             </div>
-            <i class="iconfont icon-huaban bt"></i>
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="submitBut" type="submit">立即提交</button>
+                <button class="layui-btn" lay-submit lay-filter="submitBut">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
     </form>
 
-
+    <!-- 三级省市 插件 -->
+    <%--    <script src="../../framework/area.js"></script>--%>
+    <%--    <script src="../../framework/province.js"></script>--%>
 </div>
 
 
 
 </body>
 
-<%--<script>--%>
+<script>
 
-<%--    $(document).ready(function () {--%>
-<%--        let customerId = "${requestScope.customerId}";--%>
+    $(document).ready(function () {
+        let id = "${requestScope.id}";
 
-<%--        $.get("${ctx}/customer/getCustomerList",function(data,status) {--%>
+        $.get("${ctx}/orderItem/getOrderItem", function (data, status) {
 
-<%--            $.each(data, function (index, item) {--%>
+            $.each(data, function (index, item) {
 
 
-<%--                if (item.customerId != customerId) return true;--%>
-<%--                console.log(item);--%>
-<%--                //$("#orderNo").prop("value",orderNo);--%>
-<%--                $("#customerName").prop("value",item.customerName);--%>
-<%--                // $("#customerName").prop("readonly",customerName);--%>
+                if (item.id != id) return true;
+                console.log(item);
 
-<%--                $("#phone").prop("value",item.phone);--%>
-<%--                // $("#phone").prop("readonly",phone);--%>
+                $("#id").prop("value",item.id);
+                $("#orderNo").prop("value",item.orderNo);
+                $("#menuId").prop("value",item.menuId);
+                $("#menuName").prop("value",item.menuName);
+                $("#price").prop("value",item.price);
+                $("#quantity").prop("value",item.quantity);
+                $("#totalPrice").prop("value",item.totalPrice);
+            });
+        });
+        // Map data-->
 
-<%--                $("#email").prop("value",item.email);--%>
-<%--                // $("#email").prop("readonly",email);--%>
-
-<%--                $("#birthday").prop("value",item.birthday);--%>
-
-<%--                $("#customerPassword").prop("value",item.customerPassword);--%>
-
-<%--            });--%>
-<%--        });--%>
-<%--        // Map data-->--%>
-
-<%--    });--%>
-<%--</script>--%>
+    });
+</script>
 
 </html>
-
-
-
-

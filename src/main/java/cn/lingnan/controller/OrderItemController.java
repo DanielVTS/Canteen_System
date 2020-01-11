@@ -51,5 +51,21 @@ public class OrderItemController {
         return orderItemService.query(orderItem);
     }
 
+    @GetMapping("/update")
+//    @ResponseBody
+    public String update (Integer id,Model model) {
+        System.out.println("orderItem,id:"+id);
+        model.addAttribute("id", id);
+        return "forward:../tgls/agent/order_item_update.jsp";
+    }
 
+    @RequestMapping(value = "/updateForm", method = RequestMethod.GET)
+    public String updateForm (OrderItem orderItem, Integer id,Model model) {
+        System.out.println("updateForm");
+        System.out.println(id);
+        System.out.println(orderItem.toString());
+        System.out.println(orderItemService.update(orderItem));
+
+        return "forward:../tgls/agent/order_item.jsp";
+    }
 }

@@ -52,11 +52,18 @@
             </div>
         </div>
 
+<%--        <div class="layui-form-item">--%>
+<%--            <label class="layui-form-label">菜品图片</label>--%>
+<%--            <div class="layui-upload-drag" id="goodsPic">--%>
+<%--                <i class="layui-icon"></i>--%>
+<%--                <p>点击上传，或将文件拖拽到此处</p>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+
         <div class="layui-form-item">
-            <label class="layui-form-label">菜品图片</label>
-            <div class="layui-upload-drag" id="goodsPic">
-                <i class="layui-icon"></i>
-                <p>点击上传，或将文件拖拽到此处</p>
+            <label class="layui-form-label">图片地址</label>
+            <div class="layui-input-block">
+                <input type="text" name="picture" id="picture" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
 
@@ -76,8 +83,11 @@
 
         <div class="layui-form-item">
             <label class="layui-form-label">状态</label>
-            <div class="layui-input-block">
-                <input type="text" name="menuStatus" id="menuStatus" autocomplete="off" class="layui-input">
+            <div class="layui-input-inline">
+                <select name="menuStatus" lay-filter="provid" id="menuStatus">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
             </div>
         </div>
 

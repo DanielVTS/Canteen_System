@@ -46,41 +46,44 @@
 
 <body>
 <div class="cBody">
-    <form id="addForm" class="layui-form" action="">
+    <form id="updateForm" class="layui-form" action="${ctx}/table/updateForm" method="get">
         <div class="layui-form-item">
             <label class="layui-form-label">台号</label>
             <div class="layui-input-block">
-                <input type="text" name="customerName" required lay-verify="required" autocomplete="off" class="layui-input">
+                <input type="text" name="tableId" id="tableId"  autocomplete="off" class="layui-input" readonly="readonly" >
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">台名</label>
             <div class="layui-input-block">
-                <input type="text" name="phone" required lay-verify="required" autocomplete="off" class="layui-input">
+                <input type="text" name="tableName" id="tableName" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">座位数</label>
             <div class="layui-input-block">
-                <input type="text" name="email" required lay-verify="required|number" autocomplete="off" class="layui-input">
+                <input type="text" name="tableSeat" id="tableSeat" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">状态</label>
-            <div class="layui-input-block">
-                <input type="password" name="birthday" autocomplete="off" class="layui-input">
+            <div class="layui-input-inline">
+                <select name="tableStatus" lay-filter="provid" id="menuStatus">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">用户电话</label>
             <div class="layui-input-block">
-                <input type="password" name="password2" autocomplete="off" class="layui-input">
+                <input type="text" name="phone" id="phone" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">预定时间</label>
             <div class="layui-input-block">
-                <input type="password" name="password2" autocomplete="off" class="layui-input">
+                <input type="text" name="tableTime" id="tableTime" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
 
@@ -93,36 +96,44 @@
     </form>
 
 
-    <script>
-        layui.use(['upload','form'], function() {
-            var form = layui.form;
-            var upload = layui.upload;
-            var layer = layui.layer;
-            //监听提交
-            //解决了layui.open弹窗从内部关闭这个弹窗的问题
-            form.on('submit(submitBut)', function(data) {
-                var updateFrame = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-                parent.layer.close(updateFrame);  //再改变当前层的标题
-            });
-            form.verify({
-                //数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]
-                ZHCheck: [
-                    /^[\u0391-\uFFE5]+$/
-                    ,'只允许输入中文'
-                ]
-            });
-            //拖拽上传
-            upload.render({
-                elem: '#goodsPic',
-                url: '/upload/',
-                done: function(res) {
-                    console.log(res)
-                }
-            });
-        });
-    </script>
+
 
 </div>
 </body>
+
+
+    <script>
+
+
+        $(document).ready(function () {
+            let tableId = "${requestScope.tableId}";
+
+            $.get("${ctx}/table/getTableList",function(data,status) {
+
+                $.each(data, function (index, item) {
+
+
+                    if (item.tableId != tableId) return true;
+                    console.log(item);
+                    $("#tableId").prop("value",item.tableId)
+
+                    $("#tableName").prop("value",item.tableName);
+
+                    $("#tableSeat").prop("value",item.tableSeat);
+
+                    $("#tableStatus").prop("value",item.tableStatus);
+
+                    $("#phone").prop("value",item.phone);
+
+                    $("#tableTime").prop("value",item.tableTime);
+
+                });
+            });
+            // Map data-->
+
+        });
+    </script>
+
+
 
 </html>

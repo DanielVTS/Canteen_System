@@ -1,6 +1,7 @@
 package cn.lingnan.controller;
 
 import cn.lingnan.pojo.Customer;
+import cn.lingnan.pojo.Menu;
 import cn.lingnan.pojo.OrderList;
 import cn.lingnan.pojo.Staff;
 import cn.lingnan.services.CustomerService;
@@ -121,7 +122,7 @@ public class CustomerController {
     public String update (Integer customerId,Model model) {
         System.out.println("customer,customerId:"+customerId);
         model.addAttribute("customerId", customerId);
-        return "forward:../tgls/customer/customer_add.jsp";
+        return "forward:../tgls/customer/customer_update.jsp";
     }
 
 
@@ -147,6 +148,24 @@ public class CustomerController {
 
     }
 
+    @RequestMapping(value = "/addForm", method = RequestMethod.GET)
+    public String addForm (Customer customer, Integer customerId, Model model) {
+        System.out.println("addForm");
+        System.out.println(customerId);
+        System.out.println(customer.toString());
+        String email=customer.getEmail();
+        if(customerService.getByEmail(email)==null)
+        {
+
+            System.out.println(customerService.register(customer));
+        }
+        else {
+            model.addAttribute("msg", "information error!");
+        }
+
+        return "forward:../tgls/customer/customer_list.jsp";
+
+    }
 
 
 

@@ -18,6 +18,7 @@ public class Customer {
     private String phone;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Past(message = "生日日期不对")
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     private Date birthday;
     @Email(message = "邮箱格式不对")
     private String email;

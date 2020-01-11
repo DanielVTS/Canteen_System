@@ -66,9 +66,9 @@
             <li>
                 <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-shangpin left"></i>菜品管理<i class="iconfont icon-dajiantouyou right"></i></a>
                 <dl>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/goodsManage/menuType_list.jsp',this)">分类列表</a></dt>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/goodsManage/menu_list.jsp',this)">菜品库</a></dt>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/goodsManage/menu_add.jsp',this)">添加菜色</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/menu/menuType_list.jsp',this)">分类列表</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/menu/menu_list.jsp',this)">菜品库</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/menu/menu_add.jsp',this)">添加菜色</a></dt>
                 </dl>
             </li>
             <li>

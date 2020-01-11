@@ -44,93 +44,56 @@
 
 <body>
 <div class="cBody">
-    <form id="updateForm" class="layui-form" action="${ctx}/customer/updateForm" method="get">
-<%--        <div class="layui-form-item">--%>
-<%--            <label class="layui-form-label">台号</label>--%>
-<%--            <div class="layui-input-inline shortInput">--%>
-<%--                <input type="text" id="tableId" autocomplete="off" class="layui-input">--%>
-<%--            </div>--%>
-<%--        </div>--%>
+    <form id="updateForm" class="layui-form" action="${ctx}/table/addForm" method="get">
+        <div class="layui-form-item">
+            <label class="layui-form-label">台号</label>
+            <div class="layui-input-block">
+                <input type="text" name="tableId" id="tableId"  autocomplete="off" class="layui-input" readonly="readonly" >
+            </div>
+        </div>
         <div class="layui-form-item">
             <label class="layui-form-label">台名</label>
-            <div class="layui-input-inline shortInput">
-                <input type="text" id="tableName"  autocomplete="off" class="layui-input">
+            <div class="layui-input-block">
+                <input type="text" name="tableName" id="tableName" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">座位数</label>
-            <div class="layui-input-inline shortInput">
-                <input type="text" id="tableSeat" autocomplete="off" class="layui-input" >
+            <div class="layui-input-block">
+                <input type="text" name="tableSeat" id="tableSeat" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
-            <i class="iconfont icon-huaban bt"></i>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">状态</label>
-            <div class="layui-input-inline shortInput">
-                <input type="text" id="tableStatus" autocomplete="off" class="layui-input">
+            <div class="layui-input-inline">
+                <select name="tableStatus" lay-filter="provid" id="menuStatus">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
             </div>
-            <i class="iconfont icon-huaban bt"></i>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">用户电话</label>
-            <div class="layui-input-inline shortInput">
-                <input type="text" id="phone" autocomplete="off" class="layui-input">
+            <div class="layui-input-block">
+                <input type="text" name="phone" id="phone" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
-            <i class="iconfont icon-huaban bt"></i>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">预定时间</label>
-            <div class="layui-input-inline shortInput">
-                <input type="text" id="registerTime" autocomplete="off" class="layui-input">
+            <div class="layui-input-block">
+                <input type="text" name="tableTime" id="tableTime" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
-            <i class="iconfont icon-huaban bt"></i>
         </div>
 
-
-                <div class="layui-form-item">
-                    <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit lay-filter="submitBut">立即提交</button>
-                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                    </div>
-                </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="submitBut">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
     </form>
 
-    <!-- 三级省市 插件 -->
-    <%--    <script src="../../framework/area.js"></script>--%>
-    <%--    <script src="../../framework/province.js"></script>--%>
 </div>
 
-
-
 </body>
-
-<script>
-
-    $(document).ready(function () {
-        let tableId = "${requestScope.tableId}";
-
-        $.get("${ctx}/table/getTableList",function(data,status) {
-
-            $.each(data, function (index, item) {
-
-
-                if (item.tableId != tableId) return true;
-                console.log(item);
-                $("#tableName").prop("value",item.tableName);
-
-                $("#tableSeat").prop("value",item.tableSeat);
-
-                $("#tableStatus").prop("value",item.tableStatus);
-
-                $("#phone").prop("value",item.phone);
-
-                $("#tableTime").prop("value",item.tableTime);
-
-            });
-        });
-        // Map data-->
-
-    });
-</script>
-
 </html>
