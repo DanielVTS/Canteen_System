@@ -40,7 +40,7 @@ public class MenuController {
     public String update (Integer menuId, Model model) {
         System.out.println("menu,menuId:"+menuId);
         model.addAttribute("menuId", menuId);
-        return "forward:../tgls/customer/menu_update.jsp";
+        return "forward:../tgls/menu/menu_update.jsp";
     }
 
 
@@ -50,7 +50,29 @@ public class MenuController {
         System.out.println("menu,menuId:"+menuId);
         model.addAttribute("menuId", menuId);
         menuService.delete(menuId);
-        return "forward:../tgls/customer/customer_list.jsp";
+        return "forward:../tgls/menu/menu_list.jsp";
+    }
+
+    @GetMapping("/up")
+//    @ResponseBody
+    public String up (Integer menuId,Model model) {
+        System.out.println("menu,menuId:"+menuId);
+        model.addAttribute("menuId", menuId);
+        Menu menu=menuService.getById(menuId);
+        menu.setMenuStatus(1);
+        menuService.update(menu);
+        return "forward:../tgls/menu/menu_list.jsp";
+
+    }
+    @GetMapping("/down")
+//    @ResponseBody
+    public String down (Integer menuId,Model model) {
+        System.out.println("menu,menuId:"+menuId);
+        model.addAttribute("menuId", menuId);
+        Menu menu=menuService.getById(menuId);
+        menu.setMenuStatus(2);
+        menuService.update(menu);
+        return "forward:../tgls/menu/menu_list.jsp";
     }
 
 
@@ -61,7 +83,7 @@ public class MenuController {
         System.out.println(menuId);
         System.out.println(menu.toString());
         System.out.println(menuService.update(menu));
-        return "forward:../tgls/customer/customer_list.jsp";
+        return "forward:../tgls/menu/menu_list.jsp";
 
     }
 
@@ -71,7 +93,7 @@ public class MenuController {
         System.out.println(menuId);
         System.out.println(menu.toString());
         String menuName=menu.getMenuName();
-        if(menuService.getByName(menuName).equals(""))
+        if(menuService.getByName(menuName)==null)
         {
 
             System.out.println(menuService.add(menu));
@@ -79,8 +101,8 @@ public class MenuController {
         else {
             model.addAttribute("msg", "information error!");
         }
-        
-        return "forward:../tgls/customer/customer_list.jsp";
+
+        return "forward:../tgls/menu/menu_list.jsp";
 
     }
 

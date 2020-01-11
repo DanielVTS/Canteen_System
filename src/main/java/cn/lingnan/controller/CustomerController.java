@@ -141,17 +141,9 @@ public class CustomerController {
         System.out.println("updateForm");
         System.out.println(customerId);
         System.out.println(customer.toString());
-        if(customerService.query(customer).isEmpty()) {
-
-            System.out.println(customerService.update(customer));
-            return "forward:../tgls/customer/customer_list.jsp";
-        }
-        else
-        {
-            model.addAttribute("msg", "information error!");
-        }
-
+        System.out.println(customerService.update(customer));
         return "forward:../tgls/customer/customer_list.jsp";
+
 
     }
 
