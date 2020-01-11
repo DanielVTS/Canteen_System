@@ -36,7 +36,7 @@ public class TableController {
     public String update (Integer tableId, Model model){
         System.out.println("table,tableId:"+tableId);
         model.addAttribute("tableId",tableId);
-        return "forward:../tgls/table/table_update.jsp";
+        return "forward:../tgls/table/table_add.jsp";
     }
 
     @GetMapping("/dalete")

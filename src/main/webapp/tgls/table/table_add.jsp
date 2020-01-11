@@ -45,36 +45,36 @@
 <body>
 <div class="cBody">
     <form id="updateForm" class="layui-form" action="${ctx}/customer/updateForm" method="get">
-        <div class="layui-form-item">
-            <label class="layui-form-label">台号</label>
-            <div class="layui-input-inline shortInput">
-                <input type="text" id="customerId" autocomplete="off" class="layui-input">
-            </div>
-        </div>
+<%--        <div class="layui-form-item">--%>
+<%--            <label class="layui-form-label">台号</label>--%>
+<%--            <div class="layui-input-inline shortInput">--%>
+<%--                <input type="text" id="tableId" autocomplete="off" class="layui-input">--%>
+<%--            </div>--%>
+<%--        </div>--%>
         <div class="layui-form-item">
             <label class="layui-form-label">台名</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="customerName"  autocomplete="off" class="layui-input">
+                <input type="text" id="tableName"  autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">座位数</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="phone" autocomplete="off" class="layui-input" >
+                <input type="text" id="tableSeat" autocomplete="off" class="layui-input" >
             </div>
             <i class="iconfont icon-huaban bt"></i>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">状态</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="email" autocomplete="off" class="layui-input">
+                <input type="text" id="tableStatus" autocomplete="off" class="layui-input">
             </div>
             <i class="iconfont icon-huaban bt"></i>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">用户电话</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="birthday" autocomplete="off" class="layui-input">
+                <input type="text" id="phone" autocomplete="off" class="layui-input">
             </div>
             <i class="iconfont icon-huaban bt"></i>
         </div>
@@ -86,48 +86,6 @@
             <i class="iconfont icon-huaban bt"></i>
         </div>
 
-        <%--        <div class="layui-form-item">--%>
-        <%--            <label class="layui-form-label">台号</label>--%>
-        <%--            <div class="layui-input-inline">--%>
-        <%--                <select name="tableId" id="tableId" lay-filter="orderStatus">--%>
-        <%--                    <option value="1">1</option>--%>
-        <%--                    <option value="2">2</option>--%>
-        <%--                    <option value="3">3</option>--%>
-        <%--                    <option value="4">4</option>--%>
-        <%--                    <option value="5">5</option>--%>
-        <%--                    <option value="6">6</option>--%>
-        <%--                    <option value="7">7</option>--%>
-        <%--                </select>--%>
-        <%--            </div>--%>
-        <%--        </div>--%>
-        <%--        <div class="layui-form-item">--%>
-        <%--            <label class="layui-form-label">台号名</label>--%>
-        <%--            <div class="layui-input-inline shortInput">--%>
-        <%--                <input type="text" id="tableName" autocomplete="off" class="layui-input">--%>
-        <%--            </div>--%>
-        <%--        </div>--%>
-        <%--        <div class="layui-form-item">--%>
-        <%--            <label class="layui-form-label">订单状态</label>--%>
-        <%--            <div class="layui-input-inline">--%>
-        <%--                <select name="orderStatus" id="orderStatus" lay-filter="orderStatus">--%>
-        <%--                    <option value=1>1</option>--%>
-        <%--                    <option value=2>2</option>--%>
-        <%--                    <option value=3>3</option>--%>
-        <%--                </select>--%>
-        <%--            </div>--%>
-        <%--        </div>--%>
-        <%--        <div class="layui-form-item">--%>
-        <%--            <label class="layui-form-label">订单金额</label>--%>
-        <%--            <div class="layui-input-inline shortInput">--%>
-        <%--                <input type="text" id="orderPrice" autocomplete="off" class="layui-input" >--%>
-        <%--            </div>--%>
-        <%--        </div>--%>
-        <%--        <div class="layui-form-item layui-form-text">--%>
-        <%--            <label class="layui-form-label">备注</label>--%>
-        <%--            <div class="layui-input-block">--%>
-        <%--                <textarea id="ps" placeholder="请输入内容" class="layui-textarea"></textarea>--%>
-        <%--            </div>--%>
-        <%--        </div>--%>
 
                 <div class="layui-form-item">
                     <div class="layui-input-block">
@@ -146,36 +104,33 @@
 
 </body>
 
-<%--<script>--%>
+<script>
 
-<%--    $(document).ready(function () {--%>
-<%--        let orderNo = "${requestScope.orderNo}";--%>
+    $(document).ready(function () {
+        let tableId = "${requestScope.tableId}";
 
-<%--        $.get("${ctx}/orderList/getOrderList", function (data, status) {--%>
-<%--            // console.log(data);--%>
-<%--            // console.log("数据: " + data + "\n状态: " + status);--%>
-<%--            $.each(data, function (index, item) {--%>
-<%--                // console.log(index);--%>
-<%--                // console.log(item);--%>
+        $.get("${ctx}/table/getTableList",function(data,status) {
 
-<%--                if (item.customerId != customerId) return true;--%>
-<%--                console.log(item);--%>
+            $.each(data, function (index, item) {
 
-<%--                //$("#orderNo").prop("value",orderNo);--%>
-<%--                $("#customerId").prop("readonly",customerId);--%>
-<%--                $("#customerId").prop("value",customerId);--%>
-<%--                $("#customerName").prop("value",item.customerName);--%>
-<%--                $("#phone").prop("value",item.phone);--%>
-<%--                $("#email").prop("value",item.email);--%>
-<%--                $("#birthday").prop("value",item.birthday);--%>
-<%--                $("#registerTime").prop("value",item.registerTime);--%>
-<%--                $("#loginTime").prop("value",item.loginTime);--%>
-<%--                $("#customerPassword").prop("value",item.customerPassword);--%>
-<%--            });--%>
-<%--        });--%>
-<%--        // Map data-->--%>
 
-<%--    });--%>
-<%--</script>--%>
+                if (item.tableId != tableId) return true;
+                console.log(item);
+                $("#tableName").prop("value",item.tableName);
+
+                $("#tableSeat").prop("value",item.tableSeat);
+
+                $("#tableStatus").prop("value",item.tableStatus);
+
+                $("#phone").prop("value",item.phone);
+
+                $("#tableTime").prop("value",item.tableTime);
+
+            });
+        });
+        // Map data-->
+
+    });
+</script>
 
 </html>

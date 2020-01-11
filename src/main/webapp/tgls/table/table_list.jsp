@@ -103,20 +103,21 @@
                         <%--const url = "window.location.href='${ctx}/customer/update?customerId=" +item.customerId+"'";--%>
                         <%--console.log(url);--%>
 
-
+                        const url1 = "window.location.href='${ctx}/table/update?tableId=" +item.tableId+"'";
                         var btn1=document.createElement("input");
                         btn1.setAttribute("type","button");
                         btn1.setAttribute("name","update");
                         btn1.setAttribute("value","修改");
                         btn1.setAttribute("class","layui-btn layui-btn-sm");
-                        // btn1.setAttribute("onclick",url);
+                        btn1.setAttribute("onclick",url1);
 
-
+                        const url2 = "window.location.href='${ctx}/table/delete?tableId=" +item.tableId+"'";
                         var btn2=document.createElement("input");
                         btn2.setAttribute("type","button");
                         btn2.setAttribute("name","more");
                         btn2.setAttribute("value","删除");
                         btn2.setAttribute("class","layui-btn layui-btn-sm");
+                        btn2.setAttribute("onclick",url2);
                         tr.append(btn1,btn2);
 
                         table.append(tr);
