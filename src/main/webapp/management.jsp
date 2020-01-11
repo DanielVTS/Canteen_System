@@ -57,7 +57,7 @@
                 <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-liuliangyunpingtaitubiao03 left"></i>订单管理<i class="iconfont icon-dajiantouyou right"></i></a>
                 <dl>
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/orderlist_add.jsp',this)">添加订单</a></dt>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/order_list.jsp',this)">修改订单</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/order_list.jsp',this);reset()">修改订单</a></dt>
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/order_item_add.jsp',this)">添加订单明细</a></dt>
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/order_item.jsp',this)">修改订单明细</a></dt>
 
@@ -141,6 +141,6 @@
 </div>
 </body>
 <script>
-    window.localStorage.setItem("orderStatus","0");
+    function reset(){window.localStorage.setItem("orderStatus","0");}
 </script>
 </html>
