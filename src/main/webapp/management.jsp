@@ -140,5 +140,7 @@
     <!-- 核心区域 - 结束 -->
 </div>
 </body>
-
+<script>
+    window.localStorage.setItem("orderStatus","0");
+</script>
 </html>

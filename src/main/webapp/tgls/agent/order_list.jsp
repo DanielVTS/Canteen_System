@@ -35,26 +35,27 @@
 <body>
 <div class="cBody">
     <div class="console">
-        <form class="layui-form" action="">
+        <form class="layui-form" >
             <div class="layui-form-item">
-                <div class="layui-input-inline">
-                    <input type="text" name="name" required lay-verify="required" placeholder="输入订单状态" autocomplete="off" class="layui-input">
-                </div>
-                <button class="layui-btn" lay-submit lay-filter="formDemo">检索</button>
+<%--                <div class="layui-input-inline">--%>
+<%--                    <input type="text" name="name" required lay-verify="required" placeholder="输入订单状态" autocomplete="off" class="layui-input">--%>
+<%--                </div>--%>
+<%--                <button class="layui-btn" lay-submit lay-filter="formDemo">检索</button>--%>
+                <button class="layui-btn" onclick="setOrderStatus1()">查看未完成订单</button>
+                <button class="layui-btn" onclick="setOrderStatus2()">查看已完成订单</button>
             </div>
         </form>
 
-        <script>
-            layui.use('form', function() {
-                var form = layui.form;
-
-                //监听提交
-                form.on('submit(formDemo)', function(data) {
-                    layer.msg(JSON.stringify(data.field));
-                    return false;
-                });
-            });
-        </script>
+<%--        <script>--%>
+<%--            layui.use('form', function() {--%>
+<%--                var form = layui.form;--%>
+<%--                //监听提交--%>
+<%--                form.on('submit(formDemo)', function(data) {--%>
+<%--                    layer.msg(JSON.stringify(data.field));--%>
+<%--                    return false;--%>
+<%--                });--%>
+<%--            });--%>
+<%--        </script>--%>
     </div>
 
     <table class="layui-table">
@@ -75,95 +76,119 @@
         <tbody>
 
         <script>
-            let id = 0;
+            let listData;
+            //let orderStatus=0;
+            let orderStatus = Number(localStorage.getItem("orderStatus"));
             //jquery代码都必须写在ready方法中
             $(document).ready(function () {
-                $.get("${ctx}/orderList/getOrderList",function(data,status){
-                    console.log(data);
-                    console.log("数据: " + data + "\n状态: " + status);
-                    var id=0
-                    $.each(data, function (index, item) {
-                        console.log(index);
-                        console.log(item);
-
-                        var table = $("table");
-                        var tr = document.createElement("tr");
-                        var td1 = document.createElement("td");
-                        td1.innerText = item.orderNo;
-                        id=item.orderNo;
-                        tr.append(td1);
-                        var td2 = document.createElement("td");
-                        td2.innerText = item.customerName;
-                        tr.append(td2);
-                        var td3 = document.createElement("td");
-                        td3.innerText = item.phone;
-                        tr.append(td3);
-                        var td4 = document.createElement("td");
-                        td4.innerText = item.tableId;
-                        tr.append(td4);
-                        var td5 = document.createElement("td");
-                        td5.innerText = item.tableName;
-                        tr.append(td5);
-                        var td6 = document.createElement("td");
-                        td6.innerText = item.orderStatus;
-                        tr.append(td6);
-                        var td7 = document.createElement("td");
-                        td7.innerText = item.orderPrice;
-                        tr.append(td7);
-                        var td8 = document.createElement("td");
-                        td8.innerText = item.tableTime;
-                        tr.append(td8);
-                        var td9 = document.createElement("td");
-                        td9.innerText = item.endTime;
-                        tr.append(td9);
-
-                        const url1 = "window.location.href='${ctx}/orderList/update?orderNo=" +item.orderNo+"'";
-                        console.log(url1);
-
-                        var btn1=document.createElement("input");
-                        btn1.setAttribute("type","button");
-                        btn1.setAttribute("name","update");
-                        // btn1.setAttribute("id","btn"+id.toString());
-                        btn1.setAttribute("value","更新");
-                        btn1.setAttribute("class","layui-btn layui-btn-sm");
-                        btn1.setAttribute("onclick",url1);
-
-
-                        const url2 = "window.location.href='${ctx}/orderList/showList?orderNo=" +item.orderNo+"'";
-                        console.log(url2);
-                        var btn2=document.createElement("input");
-                        btn2.setAttribute("type","button");
-                        btn2.setAttribute("name","more");
-                        btn2.setAttribute("value","基本信息");
-                        btn2.setAttribute("class","layui-btn layui-btn-sm");
-                        btn2.setAttribute("onclick",url2);
-
-
-                        const url3 = "window.location.href='${ctx}/orderList/finish?orderNo=" +item.orderNo+"'";
-                        console.log(url3);
-                        var btn3=document.createElement("input");
-                        btn3.setAttribute("type","button");
-                        btn3.setAttribute("name","over");
-                        btn3.setAttribute("value","订单完成");
-                        btn3.setAttribute("class","layui-btn layui-btn-sm");
-                        btn3.setAttribute("onclick",url3);
-                        tr.append(btn1,btn2,btn3);
-
-                        var btn4=document.createElement("input");
-                        btn4.setAttribute("type","button");
-                        btn4.setAttribute("name","over");
-                        btn4.setAttribute("value","删除");
-                        btn4.setAttribute("class","layui-btn layui-btn-sm");
-                        tr.append(btn1,btn2,btn3,btn4);
-
-                        table.append(tr);
-
-                    })
-                });
+                getListData();
+                console.log(orderStatus);
+                //console.log(listData);
+                filter(orderStatus);
             });
+            //拿数据
+            function getListData() {
+
+                $.ajaxSettings.async = false;
+                $.get("${ctx}/orderList/getOrderList",function(data){
+                    //调试用
+                    // console.log(data);
+                    listData=data;
+
+                    // console.log("数据: " + data + "\n状态: " + status);
+                });
+
+                $.ajaxSettings.async = true;
+            }
+            //根据status筛选
+            function filter(orderStatus) {
+                // console.log(orderStatus);
+                //console.log(listData[1]);
+                for(let item of listData){
+                    if(orderStatus==0||item.orderStatus==orderStatus){
+                        //console.log(i);
+                        // console.log(listData[i]);
+                        loadList(item);
+                    }
+                }
+            }
+            //加载List
+            function loadList(item) {
+                    var table = $("table");
+                    var tr = document.createElement("tr");
+                    var td1 = document.createElement("td");
+                    td1.innerText = item.orderNo;
+
+                    tr.append(td1);
+                    var td2 = document.createElement("td");
+                    td2.innerText = item.customerName;
+                    tr.append(td2);
+                    var td3 = document.createElement("td");
+                    td3.innerText = item.phone;
+                    tr.append(td3);
+                    var td4 = document.createElement("td");
+                    td4.innerText = item.tableId;
+                    tr.append(td4);
+                    var td5 = document.createElement("td");
+                    td5.innerText = item.tableName;
+                    tr.append(td5);
+                    var td6 = document.createElement("td");
+                    td6.innerText = item.orderStatus;
+                    tr.append(td6);
+                    var td7 = document.createElement("td");
+                    td7.innerText = item.orderPrice;
+                    tr.append(td7);
+                    var td8 = document.createElement("td");
+                    td8.innerText = item.tableTime;
+                    tr.append(td8);
+                    var td9 = document.createElement("td");
+                    td9.innerText = item.endTime;
+                    tr.append(td9);
+
+                    const url1 = "window.location.href='${ctx}/orderList/update?orderNo=" +item.orderNo+"'";
+                    console.log(url1);
+
+                    var btn1=document.createElement("input");
+                    btn1.setAttribute("type","button");
+                    btn1.setAttribute("name","update");
+                    // btn1.setAttribute("id","btn"+id.toString());
+                    btn1.setAttribute("value","更新");
+                    btn1.setAttribute("class","layui-btn layui-btn-sm");
+                    btn1.setAttribute("onclick",url1);
+
+
+                    const url2 = "window.location.href='${ctx}/orderList/showList?orderNo=" +item.orderNo+"'";
+                    console.log(url2);
+                    var btn2=document.createElement("input");
+                    btn2.setAttribute("type","button");
+                    btn2.setAttribute("name","more");
+                    btn2.setAttribute("value","基本信息");
+                    btn2.setAttribute("class","layui-btn layui-btn-sm");
+                    btn2.setAttribute("onclick",url2);
+
+
+                    const url3 = "window.location.href='${ctx}/orderList/finish?orderNo=" +item.orderNo+"'";
+                    console.log(url3);
+                    var btn3=document.createElement("input");
+                    btn3.setAttribute("type","button");
+                    btn3.setAttribute("name","over");
+                    btn3.setAttribute("value","订单完成");
+                    btn3.setAttribute("class","layui-btn layui-btn-sm");
+                    btn3.setAttribute("onclick",url3);
+                    tr.append(btn1,btn2,btn3);
+
+                    table.append(tr);
 
 
 
+            }
+
+            function setOrderStatus1() {
+                localStorage.setItem("orderStatus","1")
+            }
+            function setOrderStatus2() {
+                localStorage.setItem("orderStatus","2")
+            }
         </script>
         </tbody>
     </table>
