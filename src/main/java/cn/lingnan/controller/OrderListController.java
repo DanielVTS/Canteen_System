@@ -106,6 +106,8 @@ public class OrderListController {
         return url;
     }
 
+
+
     @RequestMapping(value = "/updateForm", method = RequestMethod.GET)
     public String updateForm (OrderList orderList, String orderId,Model model) {
         System.out.println("updateForm");
@@ -115,6 +117,18 @@ public class OrderListController {
 
         return "forward:../tgls/agent/order_list.jsp";
     }
+
+    @RequestMapping(value = "/getOrderNo", method = RequestMethod.GET)
+    public String getOrderNo (OrderList orderList, String orderId,Model model) {
+        System.out.println("updateForm");
+        System.out.println(orderId);
+        System.out.println(orderList.toString());
+        System.out.println(orderListService.update(orderList));
+
+        return "forward:../tgls/agent/order_list.jsp";
+    }
+
+
 
 
 }

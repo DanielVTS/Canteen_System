@@ -105,10 +105,12 @@
 
 <script>
 
+
     $(document).ready(function () {
         let orderNo = "${requestScope.orderNo}";
-
-        $.get("${ctx}/orderItem/getOrderItem", function (data, status) {
+        let url="'${ctx}/orderItem/getOrderItem?orderNo="+orderNo+"'"
+        console.log(url);
+        $.post(, function (data, status) {
             // console.log(data);
             // console.log("数据: " + data + "\n状态: " + status);
             $.each(data, function (index, item) {

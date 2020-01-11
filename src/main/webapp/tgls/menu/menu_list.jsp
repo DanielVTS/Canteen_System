@@ -38,32 +38,40 @@
 <body>
 <div class="cBody">
     <div class="console">
-        <form class="layui-form" action="">
+        <form class="layui-form" action="search">
             <div class="layui-form-item">
                 <div class="layui-input-inline">
-                    <input type="text" name="name" required lay-verify="required" placeholder="输入菜品名称" autocomplete="off" class="layui-input">
+                    <input type="text" name="menuName" placeholder="输入菜品名称" autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-input-inline">
-                    <select name="provid" id="provid" lay-filter="provid">
+                    <select name="menuCategory" id="provid">
                         <option value="">种类</option>
+                        <option value="荤菜">荤菜</option>
+                        <option value="素菜">素菜</option>
+                        <option value="水果">水果</option>
+                        <option value="汤类">汤类</option>
+                        <option value="火锅">火锅</option>
+                        <option value="饮品">饮品</option>
                     </select>
+
                 </div>
-                <button class="layui-btn" lay-submit lay-filter="formDemo">检索</button>
-                <a class="layui-btn">导入商品</a>
+                <button class="layui-btn" type="submit">检索</button>
+
+                <a href="${ctx}/menu/menu_add.jsp" class="layui-btn">导入商品</a>
             </div>
         </form>
 
-        <script>
-            layui.use('form', function() {
-                var form = layui.form;
+<%--        <script>--%>
+<%--            layui.use('form', function() {--%>
+<%--                var form = layui.form;--%>
 
-                //监听提交
-                form.on('submit(formDemo)', function(data) {
-                    layer.msg(JSON.stringify(data.field));
-                    return false;
-                });
-            });
-        </script>
+<%--                //监听提交--%>
+<%--                form.on('submit(formDemo)', function(data) {--%>
+<%--                    layer.msg(JSON.stringify(data.field));--%>
+<%--                    return false;--%>
+<%--                });--%>
+<%--            });--%>
+<%--        </script>--%>
     </div>
 
     <table class="layui-table">
@@ -81,12 +89,20 @@
         <tbody>
 
         <script>
-            let id=0;
-            //jquery代码都必须写在ready方法中
+     let menuCategory = "${requestScope.menuCategory}";
+    localStorage.setItem("menuCategory",menuCategory);
+    console.log(menuCategory);
+     let menuName = "${requestScope.menuName}";
+    localStorage.setItem("menuName",menuName);
+    console.log(menuName);
+
+
+
+    //jquery代码都必须写在ready方法中
             $(document).ready(function () {
-                $.get("${ctx}/menu/getMenuList",function(data,status){
-                    console.log(data);
-                    console.log("数据: " + data + "\n状态: " + status);
+                $.post("${ctx}/menu/getMenuList",{menuCategory:menuCategory,menuName:menuName}function(data,status){
+                    //console.log(data);
+                    //console.log("数据: " + data + "\n状态: " + status);
                     var id=0;
                     $.each(data, function (index, item) {
                         console.log(index);
@@ -131,7 +147,7 @@
                         btn2.setAttribute("value","下架");
                         btn2.setAttribute("class","layui-btn layui-btn-sm");
                         btn2.setAttribute("onclick",url2);
-                        
+
                         const url3 = "window.location.href='${ctx}/menu/up?menuId=" +item.menuId+"'";
                         console.log(url3)
                         var btn3=document.createElement("input");

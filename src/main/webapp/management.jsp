@@ -141,6 +141,9 @@
 </div>
 </body>
 <script>
-    function reset(){window.localStorage.setItem("orderStatus","0");}
+    function reset(){
+        window.localStorage.setItem("orderStatus","0");
+        window.localStorage.setItem("orderNo","");
+    }
 </script>
 </html>
