@@ -125,7 +125,6 @@
 </body>
 
 <script>
-
     $(document).ready(function () {
             let orderNo = "${requestScope.orderNo}";
 
@@ -138,7 +137,6 @@
 
                     if (item.orderNo != orderNo) return true;
                     console.log(item);
-
                     //$("#orderNo").prop("value",orderNo);
                     $("#orderNo").prop("readonly",orderNo);
                     $("#orderNo").prop("value",orderNo);
