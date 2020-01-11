@@ -59,25 +59,7 @@ public class OrderListController {
         else return "forward:../delete.jsp";
     }
 
-//    @RequestMapping(value = "/update", method = RequestMethod.GET)
-//    public String updateOrderList(String orderNo, Integer customerId, String customerName, String phone, Integer tableId, String tableName, Integer orderStatus, Integer orderPrice, Date tableTime, Date endTime, String ps){
-//        System.out.println("update a orderList:::orderNo:::" + orderNo + ", customerId" + customerId + ", customerName" + customerName + ", phone" + phone + ", tableId" + tableId + ", tableName" + tableName + ", orderStatus" + orderStatus + ", tableTime" + tableTime + ", endTime" + endTime + ", ps" + ps);
-//        OrderList orderList=new OrderList();
-//        orderList.setOrderNo(orderNo);
-//        orderList.setCustomerId(customerId);
-//        orderList.setCustomerName(customerName);
-//        orderList.setPhone(phone);
-//        orderList.setTableId(tableId);
-//        orderList.setTableName(tableName);
-//        orderList.setOrderStatus(orderStatus);
-//        orderList.setOrderPrice(orderPrice);
-//        orderList.setTableTime(tableTime);
-//        orderList.setEndTime(endTime);
-//        if(orderListService.update(orderList)){
-//            return "success";
-//        }
-//        else return "forward:../update.jsp";
-//    }
+
 
     @GetMapping("/getOrderList")
     @ResponseBody

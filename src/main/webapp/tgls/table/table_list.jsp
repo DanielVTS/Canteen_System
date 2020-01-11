@@ -38,7 +38,7 @@
         <form class="layui-form" action="">
             <div class="layui-form-item">
                 <div class="layui-input-inline">
-                    <input type="text" name="name" required lay-verify="required" placeholder="输入姓名" autocomplete="off" class="layui-input">
+                    <input type="text" name="name" required lay-verify="required" placeholder="输入桌名" autocomplete="off" class="layui-input">
                 </div>
                 <button class="layui-btn" lay-submit lay-filter="formDemo">检索</button>
             </div>
@@ -59,81 +59,65 @@
     <table class="layui-table">
         <thead>
         <tr>
-            <th>顾客号</th>
-            <th>顾客名</th>
-            <th>顾客电话</th>
-            <th>顾客邮箱</th>
-            <th>顾客生日</th>
-            <th>注册时间</th>
-            <th>登录时间</th>
-            <th>账号密码</th>
+            <th>桌号</th>
+            <th>桌名</th>
+            <th>座位数</th>
+            <th>状态</th>
+            <th>客户电话</th>
+            <th>预定时间</th>
             <th>操作</th>
         </tr>
         </thead>
         <tbody>
 
         <script>
-            let id=0;
             //jquery代码都必须写在ready方法中
             $(document).ready(function () {
-                $.get("${ctx}/customer/getCustomerList",function(data,status){
+                $.get("${ctx}/table/getTableList",function(data,status){
                     console.log(data);
                     console.log("数据: " + data + "\n状态: " + status);
-                    var id=0
                     $.each(data, function (index, item) {
                         console.log(index);
                         console.log(item);
                         var table = $("table");
                         var tr = document.createElement("tr");
                         var td1 = document.createElement("td");
-                        td1.innerText = item.customerId;
+                        td1.innerText = item.tableId;
                         tr.append(td1);
                         var td2 = document.createElement("td");
-                        td2.innerText = item.customerName;
+                        td2.innerText = item.tableName;
                         tr.append(td2);
                         var td3 = document.createElement("td");
-                        td3.innerText = item.phone;
+                        td3.innerText = item.tableSeat;
                         tr.append(td3);
                         var td4 = document.createElement("td");
-                        td4.innerText = item.email;
+                        td4.innerText = item.tableStatus;
                         tr.append(td4);
-
-
-
                         var td5 = document.createElement("td");
-                        var date =getDate(item.birthday);
-                        td5.innerText =date;
+                        td5.innerText = item.phone;
                         tr.append(td5);
-
                         var td6 = document.createElement("td");
-                        td6.innerText = item.registerTime;
+                        td6.innerText = item.tableTime;
                         tr.append(td6);
 
-                        var td7 = document.createElement("td");
-                        td7.innerText = item.loginTime;
-                        tr.append(td7);
-                        var td8 = document.createElement("td");
-                        td8.innerText = item.customerPassword;
-                        tr.append(td8);
+                        <%--const url = "window.location.href='${ctx}/customer/update?customerId=" +item.customerId+"'";--%>
+                        <%--console.log(url);--%>
 
-                        const url1 = "window.location.href='${ctx}/customer/update?customerId=" +item.customerId+"'";
-                        console.log(url1);
+                        const url1 = "window.location.href='${ctx}/table/update?tableId=" +item.tableId+"'";
                         var btn1=document.createElement("input");
                         btn1.setAttribute("type","button");
                         btn1.setAttribute("name","update");
-                        btn1.setAttribute("value","修改信息");
+                        btn1.setAttribute("value","修改");
                         btn1.setAttribute("class","layui-btn layui-btn-sm");
                         btn1.setAttribute("onclick",url1);
 
-                        const url2 = "window.location.href='${ctx}/customer/delete?customerId=" +item.customerId+"'";
-                        console.log(url2);
+                        const url2 = "window.location.href='${ctx}/table/delete?tableId=" +item.tableId+"'";
                         var btn2=document.createElement("input");
                         btn2.setAttribute("type","button");
                         btn2.setAttribute("name","more");
-                        btn2.setAttribute("value","删除用户");
+                        btn2.setAttribute("value","删除");
                         btn2.setAttribute("class","layui-btn layui-btn-sm");
                         btn2.setAttribute("onclick",url2);
-
                         tr.append(btn1,btn2);
 
                         table.append(tr);
@@ -166,57 +150,6 @@
                 }
             });
         });
-    </script>
-    <script>
-        function getTime(second,getDateType) {
-            var date =new Date(second);
-            if(getDateType==0){
-                return date.getFullYear();
-            }else if(getDateType==1){
-                if((date.getMonth()+1)<=9){
-                    return "0"+(date.getMonth()+1);
-                }else {
-                    return date.getMonth()+1;
-                }
-            }else if(getDateType==2){
-                if(date.getDate()<=9){
-                    return "0"+date.getDate();
-                }else {
-                    return date.getDate();
-                }
-            }else if(getDateType==3){
-                if(date.getHours()<=9){
-                    return "0"+date.getHours();
-                }else {
-                    return date.getHours();
-                }
-            }else if(getDateType==4){
-                if(date.getMinutes()<=9){
-                    return "0"+date.getMinutes();
-                }else {
-                    return date.getMinutes();
-                }
-            }else if(getDateType==5){
-                return date.getSeconds ();
-            }else {
-                alert("输入时间格式有误!");
-                return;
-            }
-
-
-        }
-    </script>
-    <script>
-        function getDate(second)
-        {
-            var time=second;
-            console.log(getTime(second,0));
-            console.log(getTime(second,1));
-            console.log(getTime(second,2));
-            var day=getTime(second,0)+"-"+getTime(second,1)+"-"+getTime(second,2);
-            return day;
-
-        }
     </script>
 </div>
 </body>

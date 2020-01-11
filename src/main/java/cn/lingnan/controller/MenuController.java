@@ -1,11 +1,13 @@
 package cn.lingnan.controller;
 
+import cn.lingnan.pojo.Customer;
 import cn.lingnan.pojo.Menu;
 import cn.lingnan.pojo.Staff;
 import cn.lingnan.services.MenuService;
 import cn.lingnan.services.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,46 +26,7 @@ public class MenuController {
         this.menuService = menuService;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addMenu(String name, String category, Integer status,Integer price, String picture){
-        System.out.println("add a menu:::name:::" + name + ", category" + category + ", staus" + status + ", price" + price + ", picture" + picture);
-        Menu menu=new Menu();
-        menu.setMenuName(name);
-        menu.setMenuCategory(category);
-        menu.setMenuStatus(status);
-        menu.setPrice(price);
-        menu.setPicture(picture);
-        if(menuService.add(menu)){
-            return "success";
-        }
-        else return "forward:../add.jsp";
-    }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public String deleteMenu(Integer id){
-        System.out.println("delete a menu:::id:::" + id);
-        Menu menu=new Menu();
-        menu.setMenuId(id);
-        if(menuService.delete(menu)){
-            return "success";
-        }
-        else return "forward:../delete.jsp";
-    }
-
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public String updateMenu(String name, String category, Integer status,Integer price, String picture){
-        System.out.println("update a menu:::name:::" + name + ", category" + category + ", staus" + status + ", price" + price + ", picture" + picture);
-        Menu menu=new Menu();
-        menu.setMenuName(name);
-        menu.setMenuCategory(category);
-        menu.setMenuStatus(status);
-        menu.setPrice(price);
-        menu.setPicture(picture);
-        if(menuService.update(menu)){
-            return "success";
-        }
-        else return "forward:../update.jsp";
-    }
 
     @GetMapping("/getMenuList")
     @ResponseBody
@@ -71,4 +34,56 @@ public class MenuController {
         System.out.println("getListJson");
         return menuService.queryAll();
     }
+
+    @GetMapping("/update")
+//    @ResponseBodyp
+    public String update (Integer menuId, Model model) {
+        System.out.println("menu,menuId:"+menuId);
+        model.addAttribute("menuId", menuId);
+        return "forward:../tgls/customer/menu_update.jsp";
+    }
+
+
+    @GetMapping("/delete")
+//    @ResponseBody
+    public String delete (Integer menuId,Model model) {
+        System.out.println("menu,menuId:"+menuId);
+        model.addAttribute("menuId", menuId);
+        menuService.delete(menuId);
+        return "forward:../tgls/customer/customer_list.jsp";
+    }
+
+
+
+    @RequestMapping(value = "/updateForm", method = RequestMethod.GET)
+    public String updateForm (Menu menu, Integer menuId, Model model) {
+        System.out.println("updateForm");
+        System.out.println(menuId);
+        System.out.println(menu.toString());
+        System.out.println(menuService.update(menu));
+        return "forward:../tgls/customer/customer_list.jsp";
+
+    }
+
+    @RequestMapping(value = "/addForm", method = RequestMethod.GET)
+    public String addForm (Menu menu, Integer menuId, Model model) {
+        System.out.println("addForm");
+        System.out.println(menuId);
+        System.out.println(menu.toString());
+        String menuName=menu.getMenuName();
+        if(menuService.getByName(menuName).equals(""))
+        {
+
+            System.out.println(menuService.add(menu));
+        }
+        else {
+            model.addAttribute("msg", "information error!");
+        }
+        
+        return "forward:../tgls/customer/customer_list.jsp";
+
+    }
+
+
+
 }

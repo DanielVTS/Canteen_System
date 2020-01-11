@@ -115,6 +115,7 @@ public class CustomerController {
         return customerService.queryAll();
     }
 
+
     @GetMapping("/update")
 //    @ResponseBody
     public String update (Integer customerId,Model model) {
@@ -122,16 +123,39 @@ public class CustomerController {
         model.addAttribute("customerId", customerId);
         return "forward:../tgls/customer/customer_add.jsp";
     }
+
+
+    @GetMapping("/delete")
+//    @ResponseBody
+    public String delete (Integer customerId,Model model) {
+        System.out.println("customer,customerId:"+customerId);
+        model.addAttribute("customerId", customerId);
+        customerService.delete(customerId);
+        return "forward:../tgls/customer/customer_list.jsp";
+    }
+
+
+
     @RequestMapping(value = "/updateForm", method = RequestMethod.GET)
     public String updateForm (Customer customer, Integer customerId, Model model) {
         System.out.println("updateForm");
         System.out.println(customerId);
         System.out.println(customer.toString());
-        return "success";
-//
-////        orderListService.update(orderList);
-////        return "error";
+        if(customerService.query(customer).isEmpty()) {
+
+            System.out.println(customerService.update(customer));
+            return "forward:../tgls/customer/customer_list.jsp";
+        }
+        else
+        {
+            model.addAttribute("msg", "information error!");
+        }
+
+        return "forward:../tgls/customer/customer_list.jsp";
+
     }
+
+
 
 
 

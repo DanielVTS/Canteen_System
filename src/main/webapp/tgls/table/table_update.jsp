@@ -40,68 +40,53 @@
         .layui-input-block{
             margin-left: 130px;
         }
-        .layui-form{
-            margin-right: 30%;
-        }
     </style>
 
 </head>
 
 <body>
 <div class="cBody">
-    <form id="addForm" class="layui-form" action="${ctx}/menu/updateForm">
+    <form id="addForm" class="layui-form" action="">
         <div class="layui-form-item">
-            <label class="layui-form-label">菜号</label>
+            <label class="layui-form-label">台号</label>
             <div class="layui-input-block">
-                <input type="text" name="menuId" required lay-verify="required" autocomplete="off" class="layui-input">
+                <input type="text" name="customerName" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">菜品图片</label>
-            <div class="layui-upload-drag" id="goodsPic">
-                <i class="layui-icon"></i>
-                <p>点击上传，或将文件拖拽到此处</p>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">菜名</label>
+            <label class="layui-form-label">台名</label>
             <div class="layui-input-block">
-                <input type="text" name="menuName" required lay-verify="required" autocomplete="off" class="layui-input">
+                <input type="text" name="phone" required lay-verify="required" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">单价</label>
+            <label class="layui-form-label">座位数</label>
             <div class="layui-input-block">
-                <input type="text" name="price" required lay-verify="required|number" autocomplete="off" class="layui-input">
+                <input type="text" name="email" required lay-verify="required|number" autocomplete="off" class="layui-input">
             </div>
         </div>
-
         <div class="layui-form-item">
-            <label class="layui-form-label">状态（库存）</label>
+            <label class="layui-form-label">状态</label>
+            <div class="layui-input-block">
+                <input type="password" name="birthday" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户电话</label>
             <div class="layui-input-block">
                 <input type="password" name="password2" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">种类</label>
-            <div class="layui-input-inline">
-                <select name="provid" id="provid" lay-filter="provid">
-                    <option value="">种类</option>
-                    <option value="0">荤菜</option>
-                    <option value="1">素菜</option>
-                    <option value="2">水果</option>
-                    <option value="3">汤类</option>
-                    <option value="4">火锅</option>
-                    <option value="4">饮品</option>
-                </select>
+            <label class="layui-form-label">预定时间</label>
+            <div class="layui-input-block">
+                <input type="password" name="password2" autocomplete="off" class="layui-input">
             </div>
-
         </div>
-
 
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="submitBut">立即添加</button>
+                <button class="layui-btn" lay-submit lay-filter="submitBut">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
@@ -114,15 +99,19 @@
             var upload = layui.upload;
             var layer = layui.layer;
             //监听提交
+            //解决了layui.open弹窗从内部关闭这个弹窗的问题
             form.on('submit(submitBut)', function(data) {
-                return false;
+                var updateFrame = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                parent.layer.close(updateFrame);  //再改变当前层的标题
             });
             form.verify({
+                //数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]
                 ZHCheck: [
                     /^[\u0391-\uFFE5]+$/
                     ,'只允许输入中文'
                 ]
             });
+            //拖拽上传
             upload.render({
                 elem: '#goodsPic',
                 url: '/upload/',
