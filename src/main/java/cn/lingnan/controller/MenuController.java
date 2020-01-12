@@ -8,10 +8,7 @@ import cn.lingnan.services.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,33 +25,56 @@ public class MenuController {
 
 
 
-    @GetMapping("/search")
+    @RequestMapping(value = "/search",method = RequestMethod.POST)
 //    @ResponseBody
     public String search (Menu menu,Model model) {
         System.out.println(menu);
-        model.addAttribute("menu", menu);
+        String menuName=menu.getMenuName();
+        String menuCategory=menu.getMenuCategory();
+
+        System.out.println(menuName);
+        System.out.println(menuCategory);
+        model.addAttribute("locationurl","/menu/searchList");
+        model.addAttribute("menuName",menuName);
+        model.addAttribute("menuCategory",menuCategory);
+
         return "forward:../tgls/menu/menu_list.jsp";
     }
 
 
 
-    @RequestMapping(value="/getMenuList",method = RequestMethod.POST)
-    @ResponseBody
-    public List<Menu> getMenuList (String menuName,String menuCategory, Model model) {
-        System.out.println("getMenuList");
-        System.out.println(menuName);
-        System.out.println(menuCategory);
-        if(menuName.equals("") && menuCategory.equals(""))
-        {
-            return menuService.queryAll();
-        }
-        Menu menu=new Menu();
-        menu.setMenuName(menuName);
-        menu.setMenuCategory(menuCategory);
-        return menuService.query(menu);
+
+
+    @RequestMapping(value = "/getMenuList",method = RequestMethod.POST)
+        @ResponseBody
+
+    public List<Menu> getMenuList () {
+        System.out.println("queryMenu");
+       return menuService.queryAll();
 
 
     }
+
+    @RequestMapping(value = "/searchList",method = RequestMethod.POST)
+        @ResponseBody
+    public List<Menu> searchList (String menuName,String menuCategory,Model model) {
+        if(menuName.equals("")) {
+            menuName = null;
+        }
+        if(menuCategory.equals("")) {
+            menuCategory = null;
+        }
+        System.out.println("searchList");
+        Menu menu=new Menu();
+        menu.setMenuName(menuName);
+        menu.setMenuCategory(menuCategory);
+        System.out.println(menu);
+       return menuService.query(menu);
+
+
+    }
+
+
 
 //    @GetMapping("/getMenuList")
 //    @ResponseBody

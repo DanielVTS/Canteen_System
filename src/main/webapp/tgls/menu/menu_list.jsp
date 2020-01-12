@@ -38,13 +38,13 @@
 <body>
 <div class="cBody">
     <div class="console">
-        <form class="layui-form" action="search">
+        <form class="layui-form" action="${ctx}/menu/search" method="post">
             <div class="layui-form-item">
                 <div class="layui-input-inline">
                     <input type="text" name="menuName" placeholder="输入菜品名称" autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-input-inline">
-                    <select name="menuCategory" id="provid">
+                    <select name="menuCategory" id="menuCategory">
                         <option value="">种类</option>
                         <option value="荤菜">荤菜</option>
                         <option value="素菜">素菜</option>
@@ -57,7 +57,7 @@
                 </div>
                 <button class="layui-btn" type="submit">检索</button>
 
-                <a href="${ctx}/menu/menu_add.jsp" class="layui-btn">导入商品</a>
+                <a href="${ctx}/tgls/menu/menu_add.jsp" class="layui-btn">导入商品</a>
             </div>
         </form>
 
@@ -88,22 +88,36 @@
         </thead>
         <tbody>
 
+
         <script>
-     let menuCategory = "${requestScope.menuCategory}";
-    localStorage.setItem("menuCategory",menuCategory);
-    console.log(menuCategory);
-     let menuName = "${requestScope.menuName}";
+    let locationurl="${requestScope.locationurl}"
+    localStorage.setItem("locationurl",locationurl);
+    console.log(locationurl);
+
+    let menuName = "${requestScope.menuName}";
     localStorage.setItem("menuName",menuName);
     console.log(menuName);
+
+    let menuCategory = "${requestScope.menuCategory}";
+    localStorage.setItem("menuName",menuCategory);
+    console.log(menuCategory);
+
+
+    let locationURL="";
+
+   if(locationurl=="")
+    {
+    locationURL="${ctx}/menu/getMenuList";
+    }
+    else locationURL="${ctx}"+locationurl;
 
 
 
     //jquery代码都必须写在ready方法中
             $(document).ready(function () {
-                $.post("${ctx}/menu/getMenuList",{menuCategory:menuCategory,menuName:menuName}function(data,status){
-                    //console.log(data);
-                    //console.log("数据: " + data + "\n状态: " + status);
-                    var id=0;
+                //let locationURL=locationurl ||"${ctx}/menu/getMenuList";
+                console.log(locationURL);
+                $.post(locationURL,{menuName:menuName,menuCategory:menuCategory},function(data){
                     $.each(data, function (index, item) {
                         console.log(index);
                         console.log(item);
@@ -190,40 +204,8 @@
                 }
             });
         });
-        //修改规格
-        function specificationsBut(){
-            layui.use('layer', function() {
-                var layer = layui.layer;
 
-                //iframe层-父子操作
-                layer.open({
-                    type: 2,
-                    area: ['70%', '60%'],
-                    fixed: false, //不固定
-                    maxmin: true,
-                    content: 'specifications_list.html'
-                });
-            });
 
-        }
-        //修改按钮
-        var updateFrame = null;
-        function updateBut(){
-            layui.use('layer', function() {
-                var layer = layui.layer;
-
-                //iframe层-父子操作
-                updateFrame = layer.open({
-                    title: "商品信息修改",
-                    type: 2,
-                    area: ['70%', '60%'],
-                    scrollbar: false,	//默认：true,默认允许浏览器滚动，如果设定scrollbar: false，则屏蔽
-                    maxmin: true,
-                    content: 'goods_update.html'
-                });
-            });
-
-        }
     </script>
 </div>
 </body>
