@@ -11,6 +11,6 @@
     <title>success</title>
 </head>
 <body>
-success!
+admin success!
 </body>
 </html>

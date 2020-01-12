@@ -25,9 +25,8 @@
 <!--    </mvc:annotation-driven>-->
 
     <mvc:annotation-driven validator="validator" />
-
-    <mvc:resources location="/" mapping="/*"/>
-    <!--注册拦截器-->
+<!--拦截器-->
+<!--    <mvc:resources location="/" mapping="/*"/>-->
 <!--    <mvc:interceptors>-->
 <!--        <mvc:interceptor>-->
 <!--            <mvc:mapping path="/**"/>-->
