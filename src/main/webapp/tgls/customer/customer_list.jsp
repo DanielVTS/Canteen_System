@@ -121,8 +121,6 @@
                         td4.innerText = item.email;
                         tr.append(td4);
 
-
-
                         var td5 = document.createElement("td");
                         var date =getDate(item.birthday);
                         td5.innerText =date;

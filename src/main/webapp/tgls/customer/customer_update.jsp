@@ -46,7 +46,7 @@
 
 <body>
 <div class="cBody">
-    <form id="addForm" class="layui-form" action="${ctx}/customer/updateForm" method="get">
+    <form id="updateForm" class="layui-form" action="${ctx}/customer/updateForm" method="get">
         <div class="layui-form-item">
             <label class="layui-form-label">顾客号</label>
             <div class="layui-input-block">
@@ -80,7 +80,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">密码</label>
             <div class="layui-input-block">
-                <input type="text" name="customerPassword" id="customerPassword" autocomplete="off" class="layui-input">
+                <input type="date" name="customerPassword" id="customerPassword" autocomplete="off" class="layui-input">
             </div>
         </div>
 
@@ -131,13 +131,14 @@
         $(document).ready(function () {
             let customerId = "${requestScope.customerId}";
 
-            $.get("${ctx}/customer/getCustomerList",function(data,status) {
+            $.post("${ctx}/customer/getCustomerList",function(data,status) {
 
                 $.each(data, function (index, item) {
 
 
                     if (item.customerId != customerId) return true;
                     console.log(item);
+                    $("#customerId").prop("readonly",customerId);
                     $("#customerId").prop("value",item.customerId);
 
                     $("#customerName").prop("value",item.customerName);

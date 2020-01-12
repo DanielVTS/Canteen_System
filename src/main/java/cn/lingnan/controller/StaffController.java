@@ -73,6 +73,14 @@ public class StaffController {
     }
 
 
+    @GetMapping("/delete")
+//    @ResponseBody
+    public String delete (Integer staffId,Model model) {
+        System.out.println("staff,staffId:"+staffId);
+        model.addAttribute("staffId", staffId);
+        staffService.delete(staffId);
+        return "forward:../tgls/staff/staff_list.jsp";
+    }
 
 
     @GetMapping("/update")

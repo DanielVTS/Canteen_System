@@ -5,7 +5,7 @@
 </select>
 
 <select id="getByName" resultType="Staff">
-    select * from staff where staff_name like '%#{staffName}%'
+    select * from staff where staff_name =#{staffName};
 </select>
 
 <select id="login" resultType="Staff">
@@ -75,5 +75,7 @@
 <delete id="delete">
     delete from staff where staff_id=#{staffId}
 </delete>
+
+
 
 </mapper>

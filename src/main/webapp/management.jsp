@@ -56,17 +56,17 @@
             <li>
                 <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-liuliangyunpingtaitubiao03 left"></i>订单管理<i class="iconfont icon-dajiantouyou right"></i></a>
                 <dl>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/orderlist_add.jsp',this)">添加订单</a></dt>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/order_list.jsp',this);reset()">修改订单</a></dt>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/order_item_add.jsp',this)">添加订单明细</a></dt>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/order_item.jsp',this)">修改订单明细</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/orderlist_add.jsp',this)">订单添加</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/order_list.jsp',this);reset()">订单信息</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/order_item_add.jsp',this)">录入明细</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/order_item.jsp',this)">订单明细</a></dt>
 
                 </dl>
             </li>
             <li>
                 <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-shangpin left"></i>菜品管理<i class="iconfont icon-dajiantouyou right"></i></a>
                 <dl>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/menu/menuType_list.jsp',this)">分类列表</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/menu/menuType_list.jsp',this)">菜品种类</a></dt>
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/menu/menu_list.jsp',this)">菜品库</a></dt>
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/menu/menu_add.jsp',this)">添加菜色</a></dt>
                 </dl>
@@ -74,7 +74,7 @@
             <li>
                 <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-shangpin left"></i>菜桌管理<i class="iconfont icon-dajiantouyou right"></i></a>
                 <dl>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/table/table_list.jsp',this);reset()">修改菜桌信息</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/table/table_list.jsp',this);reset()">菜桌信息</a></dt>
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/table/table_add.jsp',this)">新增菜桌</a></dt>
                 </dl>
             </li>
@@ -93,7 +93,7 @@
                 <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-icon left"></i>员工管理<i class="iconfont icon-dajiantouyou right"></i></a>
                 <dl>
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/staff/staff_list.jsp',this)">员工信息</a></dt>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/staff/staff_add.jsp',this)">添加新苦力</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/staff/staff_add.jsp',this)">员工录入</a></dt>
                 </dl>
             </li>
             <li>

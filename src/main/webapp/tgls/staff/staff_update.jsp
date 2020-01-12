@@ -54,13 +54,13 @@
         <div class="layui-form-item">
             <label class="layui-form-label">员工名</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" name="staffName" id="staffName"  autocomplete="off" class="layui-input" name="customerName">
+                <input type="text" name="staffName" id="staffName"  autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">密码</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" name="staffPassword" id="staffPassword" autocomplete="off" class="layui-input" name="phone">
+                <input type="text" name="staffPassword" id="staffPassword" autocomplete="off" class="layui-input">
             </div>
             <i class="iconfont icon-huaban bt"></i>
         </div>
@@ -84,7 +84,7 @@
     $(document).ready(function () {
         let staffId = "${requestScope.staffId}";
 
-        $.get("${ctx}/staff/getStaffList",function(data,status) {
+        $.post("${ctx}/staff/getStaffList",function(data,status) {
 
             $.each(data, function (index, item) {
 

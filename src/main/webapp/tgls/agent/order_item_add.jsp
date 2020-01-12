@@ -44,17 +44,17 @@
 
 <body>
 <div class="cBody">
-    <form id="updateForm" class="layui-form" action="${ctx}/orderList/updateForm" method="get">
+    <form id="addForm" class="layui-form" action="${ctx}/orderList/addForm" method="get">
         <div class="layui-form-item">
             <label class="layui-form-label">订单号</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="orderNo" autocomplete="off" class="layui-input" readonly="readonly">
+                <input type="text" id="orderNo" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">菜色号</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="customerName"  autocomplete="off" class="layui-input" readonly="readonly">
+                <input type="text" id="customerName"  autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -67,7 +67,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">价格</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="tableName" autocomplete="off" class="layui-input" readonly="readonly">
+                <input type="text" id="tableName" autocomplete="off" class="layui-input" >
             </div>
         </div>
         <div class="layui-form-item">
@@ -82,7 +82,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">总价</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="orderPrice" autocomplete="off" class="layui-input" readonly="readonly">
+                <input type="text" id="orderPrice" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">

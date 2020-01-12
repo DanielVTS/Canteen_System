@@ -138,7 +138,7 @@
 
 
 
-                const url1 = "window.location.href='${ctx}/menu/update?menuId=" +item.tableId+"'";
+                const url1 = "window.location.href='${ctx}/table/update?tableId=" +item.tableId+"'";
                 console.log(url1)
                 var btn1=document.createElement("input");
                 btn1.setAttribute("type","submit");
