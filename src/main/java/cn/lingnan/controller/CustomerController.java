@@ -71,8 +71,6 @@ public class CustomerController {
         System.out.println(customer.toString());
         System.out.println(customerService.update(customer));
         return "forward:../tgls/customer/customer_list.jsp";
-
-
     }
 
     @RequestMapping(value = "/addForm", method = RequestMethod.GET)
