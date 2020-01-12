@@ -134,7 +134,7 @@
             <span><i class="iconfont icon-xianshiqi"></i>后台首页</span>
         </div>
         <div class="con">
-            <iframe id="mainIframe" src="tgls/qdAPI.html" scrolling="no"></iframe>
+            <iframe id="mainIframe" src="tgls/qdAPI.jsp" scrolling="no"></iframe>
         </div>
     </div>
     <!-- 核心区域 - 结束 -->
