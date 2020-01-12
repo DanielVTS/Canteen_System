@@ -53,7 +53,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">订单号</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" name="orderNo" id="orderNo" autocomplete="off" class="layui-input">
+                <input type="text" name="orderNo" id="orderNo" autocomplete="off" class="layui-input" readonly="readonly">
             </div>
         </div>
         <div class="layui-form-item">
@@ -89,7 +89,7 @@
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="submitBut">立即提交</button>
+                <button class="layui-btn" type="submit">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
@@ -108,8 +108,9 @@
 
     $(document).ready(function () {
         let id = "${requestScope.id}";
+        console.log(id);
 
-        $.get("${ctx}/orderItem/getOrderItem", function (data, status) {
+        $.post("${ctx}/orderItem/getOrderItem",{orderNo:""}, function (data) {
 
             $.each(data, function (index, item) {
 
@@ -117,7 +118,7 @@
                 if (item.id != id) return true;
                 console.log(item);
 
-                $("#id").prop("value",item.id);
+                $("#id").prop("value",id);
                 $("#orderNo").prop("value",item.orderNo);
                 $("#menuId").prop("value",item.menuId);
                 $("#menuName").prop("value",item.menuName);

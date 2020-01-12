@@ -154,13 +154,16 @@
             //加载List
             function loadList(item) {
                     var table = $("table");
+
                     var tr = document.createElement("tr");
+
                     var td1 = document.createElement("td");
                     td1.innerText = item.orderNo;
-
                     tr.append(td1);
+
                     var td2 = document.createElement("td");
                     td2.innerText = item.customerName;
+
                     tr.append(td2);
                     var td3 = document.createElement("td");
                     td3.innerText = item.phone;
@@ -215,6 +218,15 @@
                     btn3.setAttribute("value","订单完成");
                     btn3.setAttribute("class","layui-btn layui-btn-sm");
                     btn3.setAttribute("onclick",url3);
+                    
+                    <%--const url4 = "window.location.href='${ctx}/orderList/finish?orderNo=" +item.orderNo+"'";--%>
+                    <%--//console.log(url4);--%>
+                    <%--var btn4=document.createElement("input");--%>
+                    <%--btn4.setAttribute("type","button");--%>
+                    <%--btn4.setAttribute("name","over");--%>
+                    <%--btn4.setAttribute("value","增加新订单");--%>
+                    <%--btn4.setAttribute("class","layui-btn layui-btn-sm");--%>
+                    <%--btn3.setAttribute("onclick",url4);--%>
                     tr.append(btn1,btn2,btn3);
 
                     table.append(tr);
