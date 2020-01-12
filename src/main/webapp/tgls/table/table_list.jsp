@@ -35,25 +35,28 @@
 <body>
 <div class="cBody">
     <div class="console">
-        <form class="layui-form" action="">
+        <form class="layui-form" >
             <div class="layui-form-item">
                 <div class="layui-input-inline">
-                    <input type="text" name="name" required lay-verify="required" placeholder="输入桌名" autocomplete="off" class="layui-input">
+                    <input type="text" id="getTableName"  placeholder="输入桌名" autocomplete="off" class="layui-input">
                 </div>
-                <button class="layui-btn" lay-submit lay-filter="formDemo">检索</button>
+                <button class="layui-btn" onclick="setTableStatus0()" lay-submit lay-filter="formDemo">检索</button>
+                <button class="layui-btn" onclick="setTableStatus2()">查看订单未完成的桌子</button>
+                <button class="layui-btn" onclick="setTableStatus1()">查看订单已完成的桌子</button>
             </div>
         </form>
 
-        <script>            layui.use('form', function() {
-            var form = layui.form;
+<%--        <script>            --%>
+<%--            layui.use('form', function() {--%>
+<%--            var form = layui.form;--%>
 
-            //监听提交
-            form.on('submit(formDemo)', function(data) {
-                layer.msg(JSON.stringify(data.field));
-                return false;
-            });
-        });
-        </script>
+<%--            //监听提交--%>
+<%--            form.on('submit(formDemo)', function(data) {--%>
+<%--                layer.msg(JSON.stringify(data.field));--%>
+<%--                return false;--%>
+<%--            });--%>
+<%--        });--%>
+<%--        </script>--%>
     </div>
 
     <table class="layui-table">
@@ -71,63 +74,114 @@
         <tbody>
 
         <script>
+            let listData;
+            //let orderStatus=0;
+            let tableName=sessionStorage.getItem("tableName");
+            let tableStatus = Number(sessionStorage.getItem("tableStatus"));
+            console.log(tableStatus);
+            console.log(tableName);
             //jquery代码都必须写在ready方法中
             $(document).ready(function () {
-                $.get("${ctx}/table/getTableList",function(data,status){
-                    console.log(data);
-                    console.log("数据: " + data + "\n状态: " + status);
-                    $.each(data, function (index, item) {
-                        console.log(index);
-                        console.log(item);
-                        var table = $("table");
-                        var tr = document.createElement("tr");
-                        var td1 = document.createElement("td");
-                        td1.innerText = item.tableId;
-                        tr.append(td1);
-                        var td2 = document.createElement("td");
-                        td2.innerText = item.tableName;
-                        tr.append(td2);
-                        var td3 = document.createElement("td");
-                        td3.innerText = item.tableSeat;
-                        tr.append(td3);
-                        var td4 = document.createElement("td");
-                        td4.innerText = item.tableStatus;
-                        tr.append(td4);
-                        var td5 = document.createElement("td");
-                        td5.innerText = item.phone;
-                        tr.append(td5);
-                        var td6 = document.createElement("td");
-                        td6.innerText = item.tableTime;
-                        tr.append(td6);
-
-                        <%--const url = "window.location.href='${ctx}/customer/update?customerId=" +item.customerId+"'";--%>
-                        <%--console.log(url);--%>
-
-                        const url1 = "window.location.href='${ctx}/table/update?tableId=" +item.tableId+"'";
-                        var btn1=document.createElement("input");
-                        btn1.setAttribute("type","button");
-                        btn1.setAttribute("name","update");
-                        btn1.setAttribute("value","修改");
-                        btn1.setAttribute("class","layui-btn layui-btn-sm");
-                        btn1.setAttribute("onclick",url1);
-
-                        const url2 = "window.location.href='${ctx}/table/delete?tableId=" +item.tableId+"'";
-                        var btn2=document.createElement("input");
-                        btn2.setAttribute("type","button");
-                        btn2.setAttribute("name","more");
-                        btn2.setAttribute("value","删除");
-                        btn2.setAttribute("class","layui-btn layui-btn-sm");
-                        btn2.setAttribute("onclick",url2);
-                        tr.append(btn1,btn2);
-
-                        table.append(tr);
-
-                    })
-                });
+                getListData();
+                //console.log(orderStatus);
+                //console.log(listData);
+                filter(tableStatus,tableName);
             });
 
+            function getListData() {
+                $.ajaxSettings.async = false;
+                $.get("${ctx}/table/getTableList",function(data){
+                    //调试用
+                    //console.log(data);
+                    //console.log("数据: " + data + "\n状态: " + status);
+                    listData=data;
+                });
+                $.ajaxSettings.async = true;
+            }
+            function filter(tableStatus,tableName) {
+                console.log(listData);
+                if(tableName==null && tableStatus==0){
+                    for(let item of listData) {
+                        loadList(item);
+                    }
+                }else{
+                    for(let item of listData) {
+                        if(tableName==item.tableName||tableStatus==item.tableStatus){
+                            loadList(item);
+                        }
+                    }
+                }
+
+            }
+            function loadList(item) {
+                var table = $("table");
+                var tr = document.createElement("tr");
+                var td1 = document.createElement("td");
+                td1.innerText = item.tableId;
+                tr.append(td1);
+                var td2 = document.createElement("td");
+                //图片？？？？
+                td2.innerText = item.tableName;
+                tr.append(td2);
+                var td3 = document.createElement("td");
+                td3.innerText = item.tableSeat;
+                tr.append(td3);
+                var td4 = document.createElement("td");
+                td4.innerText = item.tableStatus;
+                tr.append(td4);
+                var td5 = document.createElement("td");
+                td5.innerText = item.phone;
+                tr.append(td5);
+                var td6 = document.createElement("td");
+                td6.innerText = item.tableTime;
+                tr.append(td6);
 
 
+
+                const url1 = "window.location.href='${ctx}/menu/update?menuId=" +item.menuId+"'";
+                console.log(url1)
+                var btn1=document.createElement("input");
+                btn1.setAttribute("type","submit");
+                btn1.setAttribute("name","update");
+                btn1.setAttribute("value","更新");
+                btn1.setAttribute("class","layui-btn layui-btn-sm");
+                btn1.setAttribute("onclick",url1);
+
+                const url2 = "window.location.href='${ctx}/menu/down?menuId=" +item.menuId+"'";
+                console.log(url2)
+                var btn2=document.createElement("input");
+                btn2.setAttribute("type","submit");
+                btn2.setAttribute("name","delete");
+                btn2.setAttribute("value","下架");
+                btn2.setAttribute("class","layui-btn layui-btn-sm");
+                btn2.setAttribute("onclick",url2);
+
+                const url3 = "window.location.href='${ctx}/menu/up?menuId=" +item.menuId+"'";
+                console.log(url3)
+                var btn3=document.createElement("input");
+                btn3.setAttribute("type","submit");
+                btn3.setAttribute("name","delete");
+                btn3.setAttribute("value","上架");
+                btn3.setAttribute("class","layui-btn layui-btn-sm");
+                btn3.setAttribute("onclick",url3);
+
+                tr.append(btn1,btn2,btn3);
+                table.append(tr);
+
+            }
+            function setTableStatus0() {
+                sessionStorage.setItem("tableStatus","0");
+                var Name=$("#getTableName").val();
+                console.log(Name);
+                sessionStorage.setItem("tableName",Name);
+            }
+
+            function setTableStatus1() {
+                sessionStorage.setItem("tableStatus","1");
+            }
+            function setTableStatus2() {
+                sessionStorage.setItem("tableStatus","2");
+            }
         </script>
         </tbody>
     </table>

@@ -88,7 +88,7 @@
         <script>
             let listData;
             //let orderStatus=0;
-            let orderNo=Number(localStorage.getItem("orderNo"));
+            let orderNo=localStorage.getItem("orderNo");
             let orderStatus = Number(localStorage.getItem("orderStatus"));
             console.log(orderNo);
             //jquery代码都必须写在ready方法中
