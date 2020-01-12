@@ -11,8 +11,8 @@
     </select>
 
     <select id="query" resultType="Table">
-        select * from table_information where
-        <trim suffixOverrides="and">
+        select * from table_information
+        <trim prefix="where" suffixOverrides="and">
             <if test="tableId!=null">
                 table_id=#{tableId} and
             </if>
