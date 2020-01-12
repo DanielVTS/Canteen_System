@@ -41,4 +41,15 @@ public class OrderItemServiceImpl implements OrderItemService {
         }
         return orderItemMapper.query(orderItem);
     }
+
+    @Override
+    public OrderItem getById(Integer id) {
+        return orderItemMapper.getById(id);
+    }
+
+    @Override
+    public List<OrderItem> getByNo(String orderNo) {
+        return orderItemMapper.getByNo(orderNo);
+    }
+
 }

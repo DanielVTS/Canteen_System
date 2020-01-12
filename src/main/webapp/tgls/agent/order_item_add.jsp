@@ -48,13 +48,13 @@
         <div class="layui-form-item">
             <label class="layui-form-label">订单号</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="orderNo" autocomplete="off" class="layui-input">
+                <input type="text" id="orderNo" autocomplete="off" class="layui-input" readonly="readonly">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">菜色号</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="customerName"  autocomplete="off" class="layui-input">
+                <input type="text" id="customerName"  autocomplete="off" class="layui-input" readonly="readonly">
             </div>
         </div>
         <div class="layui-form-item">
@@ -67,28 +67,27 @@
         <div class="layui-form-item">
             <label class="layui-form-label">价格</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="tableName" autocomplete="off" class="layui-input">
+                <input type="text" id="tableName" autocomplete="off" class="layui-input" readonly="readonly">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">数量</label>
             <div class="layui-input-inline">
-                <select name="orderStatus" id="orderStatus" lay-filter="orderStatus">
+                <select name="orderStatus" id="orderStatus" lay-filter="orderStatus" >
                     <option value=1>1</option>
-                    <option value=2>2</option>
-                    <option value=3>3</option>
+
                 </select>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">总价</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="orderPrice" autocomplete="off" class="layui-input" >
+                <input type="text" id="orderPrice" autocomplete="off" class="layui-input" readonly="readonly">
             </div>
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="submitBut">立即提交</button>
+                <button class="layui-btn" type="submit">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
@@ -103,36 +102,5 @@
 
 </body>
 
-<script>
-
-
-    $(document).ready(function () {
-        let orderNo = "${requestScope.orderNo}";
-        let url="'${ctx}/orderItem/getOrderItem?orderNo="+orderNo+"'"
-        console.log(url);
-        $.post(, function (data, status) {
-            // console.log(data);
-            // console.log("数据: " + data + "\n状态: " + status);
-            $.each(data, function (index, item) {
-                // console.log(index);
-                // console.log(item);
-
-                if (item.orderNo != orderNo) return true;
-                console.log(item);
-
-                //$("#orderNo").prop("value",orderNo);
-                $("#orderNo").prop("readonly",orderNo);
-                $("#orderNo").prop("value",orderNo);
-                $("#menuId").prop("value",item.menuId);
-                $("#menuName").prop("value",item.menuName);
-                $("#price").prop("value",item.price);
-                $("#quantity").prop("value",item.quantity);
-                $("#totalPrice").prop("value",item.totalPrice);
-            });
-        });
-        // Map data-->
-
-    });
-</script>
 
 </html>

@@ -121,6 +121,8 @@ public class OrderListController {
         System.out.println("updateForm");
         System.out.println(orderId);
         System.out.println(orderList.toString());
+
+
         System.out.println(orderListService.update(orderList));
 
         return "forward:../tgls/agent/order_list.jsp";

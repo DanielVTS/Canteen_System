@@ -60,6 +60,7 @@
     <table class="layui-table">
         <thead>
         <tr>
+            <th>订单Id</th>
             <th>订单号</th>
             <th>菜号</th>
             <th>菜名</th>
@@ -118,41 +119,66 @@
                 console.log(index);
                 console.log(item);
                 var table = $("table");
+
                 var tr = document.createElement("tr");
+
                 var td1 = document.createElement("td");
-                td1.innerText = item.orderNo;
+                td1.innerText = item.id;
                 tr.append(td1);
+
                 var td2 = document.createElement("td");
-                td2.innerText = item.menuId;
+                td2.innerText = item.orderNo;
                 tr.append(td2);
+
                 var td3 = document.createElement("td");
-                td3.innerText = item.menuName;
+                td3.innerText = item.menuId;
                 tr.append(td3);
+
                 var td4 = document.createElement("td");
-                td4.innerText = item.price;
+                td4.innerText = item.menuName;
                 tr.append(td4);
+
                 var td5 = document.createElement("td");
-                td5.innerText = item.quantity;
+                td5.innerText = item.price;
                 tr.append(td5);
+
                 var td6 = document.createElement("td");
-                td6.innerText = item.totalPrice;
+                td6.innerText = item.quantity;
                 tr.append(td6);
+
+                var td7 = document.createElement("td");
+                td7.innerText = item.totalPrice;
+                tr.append(td7);
+
+
+
+                const url1 = "window.location.href='${ctx}/orderItem/update?id=" +item.id+"'";
+                //console.log(url1);
 
                 var btn1=document.createElement("input");
                 btn1.setAttribute("type","button");
                 btn1.setAttribute("name","update");
+                // btn1.setAttribute("id","btn"+id.toString());
                 btn1.setAttribute("value","更新");
                 btn1.setAttribute("class","layui-btn layui-btn-sm");
-                btn1.setAttribute("onclick","window.location.href='${ctx}/orderItem/update'");
+                btn1.setAttribute("onclick",url1);
 
 
+                const url2 = "window.location.href='${ctx}/orderItem/delete?id=" +item.id+"'";
 
+                //console.log(url2);
                 var btn2=document.createElement("input");
                 btn2.setAttribute("type","button");
-                btn2.setAttribute("name","over");
+                btn2.setAttribute("name","more");
                 btn2.setAttribute("value","删除");
                 btn2.setAttribute("class","layui-btn layui-btn-sm");
+                btn2.setAttribute("onclick",url2);
                 tr.append(btn1,btn2);
+
+
+
+
+
 
                 table.append(tr);
 
