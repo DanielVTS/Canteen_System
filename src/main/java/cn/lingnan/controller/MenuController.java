@@ -28,12 +28,40 @@ public class MenuController {
 
 
 
-    @GetMapping("/getMenuList")
-    @ResponseBody
-    public List<Menu> getListJson () {
-        System.out.println("getListJson");
-        return menuService.queryAll();
+    @GetMapping("/search")
+//    @ResponseBody
+    public String search (Menu menu,Model model) {
+        System.out.println(menu);
+        model.addAttribute("menu", menu);
+        return "forward:../tgls/menu/menu_list.jsp";
     }
+
+
+
+    @RequestMapping(value="/getMenuList",method = RequestMethod.POST)
+    @ResponseBody
+    public List<Menu> getMenuList (String menuName,String menuCategory, Model model) {
+        System.out.println("getMenuList");
+        System.out.println(menuName);
+        System.out.println(menuCategory);
+        if(menuName.equals("") && menuCategory.equals(""))
+        {
+            return menuService.queryAll();
+        }
+        Menu menu=new Menu();
+        menu.setMenuName(menuName);
+        menu.setMenuCategory(menuCategory);
+        return menuService.query(menu);
+
+
+    }
+
+//    @GetMapping("/getMenuList")
+//    @ResponseBody
+//    public List<Menu> getListJson () {
+//        System.out.println("getListJson");
+//        return menuService.queryAll();
+//    }
 
     @GetMapping("/update")
 //    @ResponseBodyp

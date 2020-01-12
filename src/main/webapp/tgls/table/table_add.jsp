@@ -59,8 +59,16 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">座位数</label>
-            <div class="layui-input-block">
-                <input type="text" name="tableSeat" id="tableSeat" required lay-verify="required" autocomplete="off" class="layui-input">
+            <div class="layui-input-inline">
+                <select name="tableSeat" lay-filter="provid" id="tableSeat">
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                    <option value="10">10</option>
+                    <option value="12">12</option>
+                    <option value="20">20</option>
+                </select>
             </div>
         </div>
         <div class="layui-form-item">

@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.lingnan.mapper.OrderItemMapper">
     <select id="query" resultType="OrderItem">
-        select * from order_item where
-        <trim suffixOverrides="and">
+        select * from order_item
+        <trim prefix="where" suffixOverrides="and">
             <if test="id!=null">
                 id=#{id} and
             </if>

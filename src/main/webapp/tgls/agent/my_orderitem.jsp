@@ -38,30 +38,34 @@
         <form class="layui-form" action="">
             <div class="layui-form-item">
                 <div class="layui-input-inline">
-                    <input type="text" name="name" required lay-verify="required" placeholder="输入姓名" autocomplete="off" class="layui-input">
+                    <input type="text" name="name" required lay-verify="required" placeholder="输入订单号" autocomplete="off" class="layui-input">
                 </div>
                 <button class="layui-btn" lay-submit lay-filter="formDemo">检索</button>
             </div>
         </form>
 
-        <script>            layui.use('form', function() {
-                var form = layui.form;
+        <%--        <script>--%>
+        <%--            layui.use('form', function() {--%>
+        <%--                var form = layui.form;--%>
 
-                //监听提交
-                form.on('submit(formDemo)', function(data) {
-                    layer.msg(JSON.stringify(data.field));
-                    return false;
-                });
-            });
-        </script>
+        <%--                //监听提交--%>
+        <%--                form.on('submit(formDemo)', function(data) {--%>
+        <%--                    layer.msg(JSON.stringify(data.field));--%>
+        <%--                    return false;--%>
+        <%--                });--%>
+        <%--            });--%>
+        <%--        </script>--%>
     </div>
 
     <table class="layui-table">
         <thead>
         <tr>
-            <th>员工号</th>
-            <th>员工名</th>
-            <th>员工密码</th>
+            <th>订单号</th>
+            <th>菜号</th>
+            <th>菜名</th>
+            <th>单价</th>
+            <th>数量</th>
+            <th>总价</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -70,45 +74,44 @@
         <script>
             //jquery代码都必须写在ready方法中
             $(document).ready(function () {
-                $.get("${ctx}/staff/getStaffList",function(data,status){
+                let id = "${requestScope.id}";
+                $.get("${ctx}/orderItem/getOrderItem",function(data,status){
                     console.log(data);
                     console.log("数据: " + data + "\n状态: " + status);
+                    var id=0;
+                    if(id!=id) return true;
+
                     $.each(data, function (index, item) {
                         console.log(index);
                         console.log(item);
                         var table = $("table");
                         var tr = document.createElement("tr");
+                        var td0 = document.createElement("td");
+                        td0.innerText = item.id;
+                        tr.append(td0);
                         var td1 = document.createElement("td");
-                        td1.innerText = item.staffId;
+                        td1.innerText = item.orderNo;
                         tr.append(td1);
                         var td2 = document.createElement("td");
-                        td2.innerText = item.staffName;
+                        td2.innerText = item.menuId;
                         tr.append(td2);
                         var td3 = document.createElement("td");
-                        td3.innerText = item.staffPassword;
+                        td3.innerText = item.menuName;
                         tr.append(td3);
+                        var td4 = document.createElement("td");
+                        td4.innerText = item.price;
+                        tr.append(td4);
+                        var td5 = document.createElement("td");
+                        td5.innerText = item.quantity;
+                        tr.append(td5);
+                        var td6 = document.createElement("td");
+                        td6.innerText = item.totalPrice;
+                        tr.append(td6);
 
-                        const url = "window.location.href='${ctx}/staff/update?staffId=" +item.staffId+"'";
-                        console.log(url);
 
-                        var btn1=document.createElement("input");
-                        btn1.setAttribute("type","button");
-                        btn1.setAttribute("name","update");
-                        btn1.setAttribute("value","修改密码/姓名");
-                        btn1.setAttribute("class","layui-btn layui-btn-sm");
-                        btn1.setAttribute("onclick",url);
-
-                        const url2 = "window.location.href='${ctx}/staff/delete?staffId=" +item.staffId+"'";
-                        var btn2=document.createElement("input");
-                        btn2.setAttribute("type","button");
-                        btn2.setAttribute("name","more");
-                        btn2.setAttribute("value","删除");
-                        btn2.setAttribute("class","layui-btn layui-btn-sm");
-                        btn2.setAttribute("onclick",url2);
-
-                        tr.append(btn1,btn2);
 
                         table.append(tr);
+
 
                     })
                 });
@@ -117,6 +120,7 @@
 
 
         </script>
+
         </tbody>
     </table>
     <script type="text/javascript" src="${ctx}/js/jquery-2.1.4.min.js"></script>
@@ -138,45 +142,10 @@
                 }
             });
         });
-
-        //修改规格
-        function specificationsBut(){
-            layui.use('layer', function() {
-                var layer = layui.layer;
-
-                //iframe层-父子操作
-                layer.open({
-                    type: 2,
-                    area: ['70%', '60%'],
-                    fixed: false, //不固定
-                    maxmin: true,
-                    content: 'specifications_list.html'
-                });
-            });
-
-        }
-        //修改按钮
-        var updateFrame = null;
-        function updateBut(){
-            layui.use('layer', function() {
-                var layer = layui.layer;
-
-                //iframe层-父子操作
-                updateFrame = layer.open({
-                    title: "商品信息修改",
-                    type: 2,
-                    area: ['70%', '60%'],
-                    scrollbar: false,	//默认：true,默认允许浏览器滚动，如果设定scrollbar: false，则屏蔽
-                    maxmin: true,
-                    content: 'goods_update.html'
-                });
-            });
-
-        }
-
-
     </script>
 </div>
 </body>
+
+
 
 </html>

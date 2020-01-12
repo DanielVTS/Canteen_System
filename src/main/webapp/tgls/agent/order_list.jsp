@@ -35,6 +35,16 @@
 <body>
 <div class="cBody">
     <div class="console">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <div class="layui-input-inline">
+                    <input type="text" id="getOrderNo" placeholder="输入订单号" autocomplete="off" class="layui-input">
+                </div>
+                <button class="layui-btn"  onclick="setOrderNo()">检索</button>
+            </div>
+        </form>
+
+
         <form class="layui-form" >
             <div class="layui-form-item">
 <%--                <div class="layui-input-inline">--%>
@@ -78,16 +88,21 @@
         <script>
             let listData;
             //let orderStatus=0;
+            let orderNo=Number(localStorage.getItem("orderNo"));
             let orderStatus = Number(localStorage.getItem("orderStatus"));
+            console.log(orderNo);
             //jquery代码都必须写在ready方法中
             $(document).ready(function () {
                 getListData();
-                console.log(orderStatus);
+                //console.log(orderStatus);
                 //console.log(listData);
-                filter(orderStatus);
+                filter(orderStatus,orderNo);
+
             });
+
             //拿数据
             function getListData() {
+
                 $.ajaxSettings.async = false;
                 $.get("${ctx}/orderList/getOrderList",function(data){
                     //调试用
@@ -99,17 +114,42 @@
 
                 $.ajaxSettings.async = true;
             }
+
+            // function filterOrderNo(orderNo) {
+            //     for(let item of listData)
+            //     {
+            //         if(item.orderNo==orderNo)
+            //         {
+            //             loadList(item);
+            //         }
+            //     }
+            //
+            // }
+
             //根据status筛选
-            function filter(orderStatus) {
-                // console.log(orderStatus);
+            function filter(orderStatus,orderNo) {
+                console.log(orderNo);
                 //console.log(listData[1]);
-                for(let item of listData){
-                    if(orderStatus==0||item.orderStatus==orderStatus){
-                        //console.log(i);
-                        // console.log(listData[i]);
-                        loadList(item);
+                for(let item of listData) {
+                    if (orderStatus == 0 || item.orderStatus == orderStatus) {
+                        if (orderNo=="" || item.orderNo==orderNo) {
+                            //console.log(i);
+                            // console.log(listData[i]);
+                            loadList(item);
+                        }
                     }
+
+                    // if(item.orderNo!=orderNo)
+                    // {
+                    //     if (orderStatus == 0 || item.orderStatus == orderStatus) {
+                    //         //console.log(i);
+                    //         // console.log(listData[i]);
+                    //         loadList(item);
+                    //     }
+                    // }
+
                 }
+
             }
             //加载List
             function loadList(item) {
@@ -145,7 +185,7 @@
                     tr.append(td9);
 
                     const url1 = "window.location.href='${ctx}/orderList/update?orderNo=" +item.orderNo+"'";
-                    console.log(url1);
+                    //console.log(url1);
 
                     var btn1=document.createElement("input");
                     btn1.setAttribute("type","button");
@@ -156,8 +196,9 @@
                     btn1.setAttribute("onclick",url1);
 
 
-                    const url2 = "window.location.href='${ctx}/orderList/showList?orderNo=" +item.orderNo+"'";
-                    console.log(url2);
+                    const url2 = "window.location.href='${ctx}/orderItem/showOrderItem?orderNo=" +item.orderNo+"'";
+
+                    //console.log(url2);
                     var btn2=document.createElement("input");
                     btn2.setAttribute("type","button");
                     btn2.setAttribute("name","more");
@@ -167,7 +208,7 @@
 
 
                     const url3 = "window.location.href='${ctx}/orderList/finish?orderNo=" +item.orderNo+"'";
-                    console.log(url3);
+                    //console.log(url3);
                     var btn3=document.createElement("input");
                     btn3.setAttribute("type","button");
                     btn3.setAttribute("name","over");
@@ -183,12 +224,20 @@
             }
 
             function setOrderStatus1() {
-                orderNo=document.getElementsByName("input1").values()
-                localStorage.setItem("orderStatus","1")
+                localStorage.setItem("orderStatus","1");
             }
             function setOrderStatus2() {
-                localStorage.setItem("orderStatus","2")
+                localStorage.setItem("orderStatus","2");
             }
+
+            function setOrderNo() {
+                // var input = document.getElementById("getOrderNo");
+                // console.log(input);
+                var No=$("#getOrderNo").val();
+                console.log(No);
+                localStorage.setItem("orderNo",No);
+            }
+
         </script>
         </tbody>
     </table>

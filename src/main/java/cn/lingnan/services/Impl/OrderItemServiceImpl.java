@@ -35,6 +35,10 @@ public class OrderItemServiceImpl implements OrderItemService {
 
     @Override
     public List<OrderItem> query(OrderItem orderItem) {
+        if(orderItem.equals(" "))
+        {
+            return orderItemMapper.queryAll();
+        }
         return orderItemMapper.query(orderItem);
     }
 }
