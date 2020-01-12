@@ -97,4 +97,14 @@ public class TableController {
         return "forward:../tgls/table/table_list.jsp";
 
     }
+    @GetMapping("/chooseTable")
+    public String chooseTable (Integer tableId,Integer tableTime, Model model){
+        System.out.println("table,tableId:"+tableId);
+        System.out.println("table,tableTime:"+tableTime);
+
+        model.addAttribute("tableId",tableId);
+        model.addAttribute("tableTime",tableTime);
+        return "forward:../tgls/table/table_update.jsp";
+    }
+
 }

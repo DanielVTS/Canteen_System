@@ -110,7 +110,7 @@
         let id = "${requestScope.id}";
         console.log(id);
 
-        $.post("${ctx}/orderItem/getOrderItem",{orderNo:""}, function (data) {
+        $.post("${ctx}/orderItem/getOrderItem", function (data) {
 
             $.each(data, function (index, item) {
 

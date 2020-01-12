@@ -58,7 +58,7 @@ public class CustomerManagementController {
     @RequestMapping("/bookTable")
     public String bookTablePage(){
         System.out.println("bookTablePage");
-        return "book_table";
+        return "CustomerManagement/bookTable";
     }
 
     @RequestMapping("/bookMenu")
@@ -72,6 +72,7 @@ public class CustomerManagementController {
         System.out.println("personalInformationPage");
         return "CustomerManagement/personalInformation";
     }
+
 
 
 

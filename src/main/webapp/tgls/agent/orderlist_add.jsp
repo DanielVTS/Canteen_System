@@ -87,7 +87,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">订单状态</label>
             <div class="layui-input-inline">
-                <select name="orderStatus" id="orderStatus" lay-filter="orderStatus" name="orderStatus">
+                <select name="orderStatus" id="orderStatus">
                     <option value=1>1</option>
                     <option value=2>2</option>
                     <option value=3>3</option>
