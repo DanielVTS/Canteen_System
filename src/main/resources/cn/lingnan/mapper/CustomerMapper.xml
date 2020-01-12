@@ -29,7 +29,7 @@
                 customer_id=#{customerId} and
             </if>
             <if test="customerName!=null">
-                customer_name=#{customerName} and
+                customer_name like '%${customerName}%' and
             </if>
             <if test="phone!=null">
                 phone=#{phone} and

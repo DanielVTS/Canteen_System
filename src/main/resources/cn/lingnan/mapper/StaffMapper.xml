@@ -5,7 +5,7 @@
 </select>
 
 <select id="getByName" resultType="Staff">
-    select * from staff where staff_name =#{staffName}
+    select * from staff where staff_name like '%#{staffName}%'
 </select>
 
 <select id="login" resultType="Staff">
@@ -15,13 +15,13 @@
 
 
 <select id="query" resultType="Staff">
-    select * from staff where
-    <trim suffixOverrides="and">
+    select * from staff
+    <trim prefix="where" suffixOverrides="and">
         <if test="staffId!=null">
             staff_id=#{staffId} and
         </if>
         <if test="staffName!=null">
-            staff_name=#{staffName} and
+            staff_name like '%${staffName}%' and
         </if>
         <if test="staffPassword!=null">
             staff_password=#{staffPassword} and
