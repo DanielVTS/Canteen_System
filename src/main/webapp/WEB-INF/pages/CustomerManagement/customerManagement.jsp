@@ -57,7 +57,7 @@
                 <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-liuliangyunpingtaitubiao03 left"></i>我的订单<i class="iconfont icon-dajiantouyou right"></i></a>
                 <dl>
                     <dt><a href="javascript:void(0)" onclick="reset();menuCAClick('${ctx}/CustomerManagement/OrderList',this)">查看订单</a></dt>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/agent/my_orderitem.jsp',this);reset()">查看订单明细</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('${ctx}/CustomerManagement/showOrderItem',this);reset()">查看订单明细</a></dt>
                 </dl>
             </li>
             <li>

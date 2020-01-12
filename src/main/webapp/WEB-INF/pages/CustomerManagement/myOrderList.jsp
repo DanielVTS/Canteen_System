@@ -145,7 +145,7 @@
                 td9.innerText = item.endTime;
                 tr.append(td9);
 
-                const url2 = "window.location.href='${ctx}/orderList/showList?orderNo=" +item.orderNo+"'";
+                const url2 = "window.location.href='${ctx}/CustomerManagement/showOrderItem?orderNo=" +item.orderNo+"'";
                 console.log(url2);
                 var btn2=document.createElement("input");
                 btn2.setAttribute("type","button");

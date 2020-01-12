@@ -2,12 +2,12 @@ package cn.lingnan.controller;
 
 
 import cn.lingnan.pojo.Customer;
-import cn.lingnan.pojo.OrderList;
 import cn.lingnan.services.CustomerService;
 import cn.lingnan.services.OrderListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -37,12 +37,23 @@ public class CustomerManagementController {
         return "/CustomerManagement/myOrderList";
     }
 
-    @RequestMapping(value = "/orderItem")
 
-    public String orderItemPage(){
-        System.out.println("orderItemPage");
-        return "my_orderitem";
+
+    @GetMapping("/showOrderItem")
+    public String showOrderItem (String orderNo,Model model) {
+        System.out.println("orderList,orderNo:"+orderNo);
+        model.addAttribute("orderNo", orderNo);
+        return "/CustomerManagement/myOrderItem";
     }
+
+    @GetMapping("/CustomerEditOrderItem")
+//    @ResponseBody
+    public String CustomerEditOrderItem (String orderNo,Model model) {
+        System.out.println("orderList,orderNo:"+orderNo);
+        model.addAttribute("orderNo", orderNo);
+        return "/CustomerManagement/myOrderItem";
+    }
+
 
     @RequestMapping("/bookTable")
     public String bookTablePage(){
