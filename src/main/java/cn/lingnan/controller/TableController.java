@@ -1,6 +1,7 @@
 package cn.lingnan.controller;
 
 
+import cn.lingnan.pojo.Menu;
 import cn.lingnan.pojo.Table;
 import cn.lingnan.services.TableService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,29 @@ public class TableController {
         model.addAttribute("tableId",tableId);
         return "forward:../tgls/table/table_list.jsp";
     }
+
+    @GetMapping("/up")
+//    @ResponseBody
+    public String up (Integer tableId,Model model) {
+        System.out.println("table,tableId:"+tableId);
+        model.addAttribute("tableId", tableId);
+        Table table=tableService.getById(tableId);
+        table.setTableStatus(1);
+        tableService.update(table);
+        return "forward:../tgls/table/table_list.jsp";
+
+    }
+    @GetMapping("/down")
+//    @ResponseBody
+    public String down (Integer tableId,Model model) {
+        System.out.println("table,tableId:"+tableId);
+        model.addAttribute("tableId", tableId);
+        Table table=tableService.getById(tableId);
+        table.setTableStatus(2);
+        tableService.update(table);
+        return "forward:../tgls/table/table_list.jsp";
+    }
+
 
     @RequestMapping(value = "/updateForm", method = RequestMethod.GET)
     public String updateForm (Table table, Integer tableId, Model model) {

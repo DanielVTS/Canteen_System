@@ -138,7 +138,7 @@
 
 
 
-                const url1 = "window.location.href='${ctx}/menu/update?menuId=" +item.menuId+"'";
+                const url1 = "window.location.href='${ctx}/menu/update?menuId=" +item.tableId+"'";
                 console.log(url1)
                 var btn1=document.createElement("input");
                 btn1.setAttribute("type","submit");
@@ -147,7 +147,7 @@
                 btn1.setAttribute("class","layui-btn layui-btn-sm");
                 btn1.setAttribute("onclick",url1);
 
-                const url2 = "window.location.href='${ctx}/menu/down?menuId=" +item.menuId+"'";
+                const url2 = "window.location.href='${ctx}/table/down?tableId=" +item.tableId+"'";
                 console.log(url2)
                 var btn2=document.createElement("input");
                 btn2.setAttribute("type","submit");
@@ -156,7 +156,7 @@
                 btn2.setAttribute("class","layui-btn layui-btn-sm");
                 btn2.setAttribute("onclick",url2);
 
-                const url3 = "window.location.href='${ctx}/menu/up?menuId=" +item.menuId+"'";
+                const url3 = "window.location.href='${ctx}/table/up?tableId=" +item.tableId+"'";
                 console.log(url3)
                 var btn3=document.createElement("input");
                 btn3.setAttribute("type","submit");

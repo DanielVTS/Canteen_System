@@ -10,6 +10,10 @@
         select * from table_information where table_name =#{tableName}
     </select>
 
+    <select id="getById" resultType="Table">
+        select * from table_information where table_id =#{tableId}
+    </select>
+
     <select id="query" resultType="Table">
         select * from table_information
         <trim prefix="where" suffixOverrides="and">
