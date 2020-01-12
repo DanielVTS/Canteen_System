@@ -17,6 +17,7 @@
 
 <script>
     function PopMsg(){
+        console.log("execute error page");
         let msg ="${requestScope.msg}";
         if(msg=='information error!'){
             alert("个人信息有误！请检查！")

@@ -11,7 +11,7 @@
     <!--国产浏览器高速模式-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>混吃等死</title>
+    <title>穷在闹市出品</title>
 
     <!-- 公共样式 开始 -->
     <link rel="stylesheet" type="text/css" href="${ctx}/css/base.css">
@@ -26,10 +26,13 @@
     <script src="${ctx}/framework/jquery.mCustomScrollbar.min.js"></script>
     <script src="${ctx}/framework/cframe.js"></script><!-- 仅供所有子页面使用 -->
     <!-- 公共样式 结束 -->
-    <style type="text/css">
-        td{text-align: center;vertical-align:middle;}
 
+    <style>
+        .layui-table img {
+            max-width: none;
+        }
     </style>
+
 </head>
 
 <body>
@@ -38,13 +41,20 @@
         <form class="layui-form" action="">
             <div class="layui-form-item">
                 <div class="layui-input-inline">
-                    <input type="text" name="name" required lay-verify="required" placeholder="输入姓名" autocomplete="off" class="layui-input">
+                    <input type="text" name="name" required lay-verify="required" placeholder="输入菜品名称" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-input-inline">
+                    <select name="provid" id="provid" lay-filter="provid">
+                        <option value="">种类</option>
+                    </select>
                 </div>
                 <button class="layui-btn" lay-submit lay-filter="formDemo">检索</button>
+                <a class="layui-btn">导入商品</a>
             </div>
         </form>
 
-        <script>            layui.use('form', function() {
+        <script>
+            layui.use('form', function() {
                 var form = layui.form;
 
                 //监听提交
@@ -59,74 +69,91 @@
     <table class="layui-table">
         <thead>
         <tr>
-            <th>员工号</th>
-            <th>员工名</th>
-            <th>员工密码</th>
+            <th>菜号</th>
+            <th>菜图</th>
+            <th>菜名</th>
+            <th>单价</th>
+            <th>种类</th>
+            <th>状态</th>
             <th>操作</th>
         </tr>
         </thead>
         <tbody>
 
         <script>
+            let id=0;
             //jquery代码都必须写在ready方法中
             $(document).ready(function () {
-                $.get("${ctx}/staff/getStaffList",function(data,status){
+                $.get("${ctx}/menu/getMenuList",function(data,status){
                     console.log(data);
                     console.log("数据: " + data + "\n状态: " + status);
+                    var id=0;
                     $.each(data, function (index, item) {
                         console.log(index);
                         console.log(item);
                         var table = $("table");
                         var tr = document.createElement("tr");
                         var td1 = document.createElement("td");
-                        td1.innerText = item.staffId;
+                        td1.innerText = item.menuId;
                         tr.append(td1);
                         var td2 = document.createElement("td");
-                        td2.innerText = item.staffName;
+                        //图片？？？？
+                        td2.innerText = item.picture;
                         tr.append(td2);
                         var td3 = document.createElement("td");
-                        td3.innerText = item.staffPassword;
+                        td3.innerText = item.menuName;
                         tr.append(td3);
+                        var td4 = document.createElement("td");
+                        td4.innerText = item.price;
+                        tr.append(td4);
+                        var td5 = document.createElement("td");
+                        td5.innerText = item.menuCategory;
+                        tr.append(td5);
+                        var td6 = document.createElement("td");
+                        td6.innerText = item.menuStatus;
+                        tr.append(td6);
 
-                        const url = "window.location.href='${ctx}/staff/update?staffId=" +item.staffId+"'";
-                        console.log(url);
 
+                        <%--const url1 = "window.location.href='${ctx}/menu/update?menuId=" +item.menuId+"'";--%>
+                        // console.log(url1)
                         var btn1=document.createElement("input");
-                        btn1.setAttribute("type","button");
+                        btn1.setAttribute("type","submit");
                         btn1.setAttribute("name","update");
-                        btn1.setAttribute("value","修改密码/姓名");
+                        btn1.setAttribute("value","加入购物车");
                         btn1.setAttribute("class","layui-btn layui-btn-sm");
-                        btn1.setAttribute("onclick",url);
+                        // btn1.setAttribute("onclick",url1);
 
-                        const url2 = "window.location.href='${ctx}/staff/delete?staffId=" +item.staffId+"'";
+                        <%--const url2 = "window.location.href='${ctx}/menu/down?menuId=" +item.menuId+"'";--%>
+                        console.log(url2)
                         var btn2=document.createElement("input");
-                        btn2.setAttribute("type","button");
-                        btn2.setAttribute("name","more");
-                        btn2.setAttribute("value","删除");
+                        btn2.setAttribute("type","submit");
+                        btn2.setAttribute("name","delete");
+                        btn2.setAttribute("value","取消");
                         btn2.setAttribute("class","layui-btn layui-btn-sm");
-                        btn2.setAttribute("onclick",url2);
+                        // btn2.setAttribute("onclick",url2);
 
                         tr.append(btn1,btn2);
-
                         table.append(tr);
 
                     })
                 });
             });
 
-
-
         </script>
         </tbody>
     </table>
+
     <script type="text/javascript" src="${ctx}/js/jquery-2.1.4.min.js"></script>
+
+
+
+
 
     <!-- layUI 分页模块 -->
     <div id="pages"></div>
     <script>
-        layui.use(['laypage', 'layer'], function() {
-            var laypage = layui.laypage,
-                layer = layui.layer;
+        layui.use('laypage', function() {
+            var laypage = layui.laypage;
 
             //总页数大于页码总数
             laypage.render({
@@ -134,11 +161,10 @@
                 ,count: 100
                 ,layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
                 ,jump: function(obj){
-                    console.log(obj)
+//					      console.log(obj)
                 }
             });
         });
-
         //修改规格
         function specificationsBut(){
             layui.use('layer', function() {
@@ -173,8 +199,6 @@
             });
 
         }
-
-
     </script>
 </div>
 </body>

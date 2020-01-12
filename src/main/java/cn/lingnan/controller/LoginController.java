@@ -15,13 +15,12 @@ import java.util.Date;
 @Controller
 public class LoginController {
 
-
+    private StaffService staffService;
     private CustomerService customerService;
     @Autowired
     public void setCustomerService(CustomerService customerService) {
         this.customerService = customerService;
     }
-    private StaffService staffService;
     @Autowired
     public void setStaffService(StaffService staffService) {
         this.staffService = staffService;
@@ -47,7 +46,6 @@ public class LoginController {
                 //return "forward:login.jsp";//http://localhost:8080/ssm-02/user/login.jsp
                 return "error";
             }
-
         }
         else {
             System.out.println("login:::name:::" + username + ", password:" + password);
@@ -67,7 +65,6 @@ public class LoginController {
                 System.out.println("登陆成功");
                 return "customer/success";
                 //记住密码，使用Cookie
-
             } else {
                 //登录失败
                 //model.addAttribute("msg", "用户名或密码错误");
@@ -98,7 +95,23 @@ public class LoginController {
             model.addAttribute("msg", "information error!");
             return "error";
         }
-
-
     }
+
+    @RequestMapping(value="/logout")
+    public String logoutHandle(Model model, HttpSession session){
+        session.removeAttribute("loginUser");
+        System.out.println("receive logout request");
+        model.addAttribute("msg", "logout success!");
+        //其实按道理应该改一下页面的名字的（
+        return "error";
+    }
+
+
+    @RequestMapping(value = "/error")
+    public String errorHandle(){
+        return "error";
+    }
+
+
+
 }

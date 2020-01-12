@@ -14,7 +14,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         System.out.println("preHandle:::" + request.getRequestURL());
         StringBuffer url = request.getRequestURL();
-        if(url.toString().endsWith("Canteen_System_war/")){
+        if(url.toString().endsWith("Canteen_System_war/")||url.toString().endsWith("/error")){
             return true;
         }
         if (url.toString().endsWith("/login") || url.toString().endsWith("/register")) {
