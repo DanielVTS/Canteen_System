@@ -31,8 +31,8 @@ create table table_information
 ;
 
 insert into table_information(table_id,table_name,table_seat,table_status)values(1,'天字一号','10',1);
-insert into table_information(table_id,table_name,table_seat,table_status,phone,table_time)values(2,'天字二号','8',0,'18925329817','1983-11-23 00:00:00');
-insert into table_information(table_id,table_name,table_seat,table_status,phone,table_time)values(3,'天字三号','6',0,'18925329818','1983-11-23 00:00:00');
+insert into table_information(table_id,table_name,table_seat,table_status,phone,table_time)values(2,'天字二号','8',2,'18925329817','1983-11-23 00:00:00');
+insert into table_information(table_id,table_name,table_seat,table_status,phone,table_time)values(3,'天字三号','6',2,'18925329818','1983-11-23 00:00:00');
 
 
 create table customer
@@ -66,7 +66,7 @@ create table order_list(
                            ps varchar(50) default null
 );
 
-insert into order_list(order_id, order_no, customer_id, customer_name, phone, table_id, table_name, order_status, order_price, table_time, end_time, ps) VALUES(1,'001',1,'蔡老板','18925329819',1,'天字一号',2,1000000,'2019-12-25 00:00:00','2019-12-26 00:00:00','太便宜了');
+insert into order_list(order_id, order_no, customer_id, customer_name, phone, table_id, table_name, order_status, order_price, table_time, end_time, ps) VALUES(1,'1',1,'蔡老板','18925329819',1,'天字一号',2,1000000,'2019-12-25 00:00:00','2019-12-26 00:00:00','太便宜了');
 
 create table order_item
 (

@@ -42,17 +42,12 @@ public class MenuController {
     }
 
 
-
-
-
     @RequestMapping(value = "/getMenuList",method = RequestMethod.POST)
         @ResponseBody
 
     public List<Menu> getMenuList () {
         System.out.println("queryMenu");
-       return menuService.queryAll();
-
-
+        return menuService.queryAll();
     }
 
     @RequestMapping(value = "/searchList",method = RequestMethod.POST)
@@ -143,7 +138,6 @@ public class MenuController {
         String menuName=menu.getMenuName();
         if(menuService.getByName(menuName)==null)
         {
-
             System.out.println(menuService.add(menu));
         }
         else {

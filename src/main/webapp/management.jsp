@@ -74,7 +74,7 @@
             <li>
                 <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-shangpin left"></i>菜桌管理<i class="iconfont icon-dajiantouyou right"></i></a>
                 <dl>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/table/table_list.jsp',this)">修改菜桌信息</a></dt>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/table/table_list.jsp',this);reset()">修改菜桌信息</a></dt>
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/table/table_add.jsp',this)">新增菜桌</a></dt>
                 </dl>
             </li>
@@ -144,6 +144,9 @@
     function reset(){
         window.localStorage.setItem("orderStatus","0");
         window.localStorage.setItem("orderNo","");
+
+        sessionStorage.removeItem("tableName");
+        sessionStorage.setItem("tableStatus","0");
     }
 </script>
 </html>
