@@ -103,6 +103,7 @@
     localStorage.setItem("orderNo",orderNo);
     console.log(orderNo);
 
+
     //jquery代码都必须写在ready方法中
     $(document).ready(function () {
 
