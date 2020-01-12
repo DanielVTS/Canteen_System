@@ -24,8 +24,8 @@
     <script type="text/javascript" src="${ctx}/framework/jquery-1.11.3.min.js" ></script>
     <link rel="stylesheet" type="text/css" href="${ctx}/layui/css/layui.css">
     <!--[if lt IE 9]>
-    <script src="framework/html5shiv.min.js"></script>
-    <script src="framework/respond.min.js"></script>
+    <script src="${ctx}framework/html5shiv.min.js"></script>
+    <script src="${ctx}framework/respond.min.js"></script>
     <![endif]-->
     <script type="text/javascript" src="${ctx}/layui/layui.js"></script>
     <!-- 滚动条插件 -->
@@ -71,7 +71,7 @@
                 <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-shangpin left"></i>个人信息<i class="iconfont icon-dajiantouyou right"></i></a>
                 <dl>
                     <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/customer/personal_information.jsp',this)">查看我的信息</a></dt>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('customerment.jsp',this)">返回首页</a></dt>
+<%--                    <dt><a href="javascript:void(0)" onclick="menuCAClick('CustomerManagement.jsp',this)">返回首页</a></dt>--%>
                 </dl>
             </li>
 
@@ -86,8 +86,8 @@
         <img class="jt" src="images/top_jt.png"/>
         <div class="topMenu">
             <ul>
-                <li><a href="javascript:void(0)" onclick="menuCAClick('tgls/modify_password.html',this)"><i class="iconfont icon-yonghu1"></i>管理员</a></li>
-                <li><a href="javascript:void(0)" onclick="menuCAClick('tgls/modify_password.html',this)"><i class="iconfont icon-xiugaimima"></i>修改密码</a></li>
+                <li><a href="javascript:void(0)"><i class="iconfont icon-yonghu1"></i>客户</a></li>
+<%--                <li><a href="javascript:void(0)" onclick="menuCAClick('tgls/modify_password.html',this)"><i class="iconfont icon-xiugaimima"></i>修改密码</a></li>--%>
                 <li><a href="login.jsp"><i class="iconfont icon-084tuichu"></i>注销</a></li>
             </ul>
         </div>
