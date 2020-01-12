@@ -125,36 +125,36 @@
 <%--    </script>--%>
 
 
-<%--<script>--%>
+<script>
 
-<%--    $(document).ready(function () {--%>
-<%--        let customerId = "${requestScope.customerId}";--%>
+    $(document).ready(function () {
+        let customerId = "${requestScope.customerId}";
 
-<%--        $.get("${ctx}/customer/getCustomerList",function(data,status) {--%>
+        $.get("${ctx}/customer/getCustomerById",function(data,status) {
 
-<%--            $.each(data, function (index, item) {--%>
+            $.each(data, function (index, item) {
 
 
-<%--                if (item.customerId != customerId) return true;--%>
-<%--                console.log(item);--%>
-<%--                $("#customerId").prop("value",item.customerId);--%>
+                if (item.customerId != customerId) return true;
+                console.log(item);
+                $("#customerId").prop("value",item.customerId);
 
-<%--                $("#customerName").prop("value",item.customerName);--%>
+                $("#customerName").prop("value",item.customerName);
 
-<%--                $("#phone").prop("value",item.phone);--%>
+                $("#phone").prop("value",item.phone);
 
-<%--                $("#email").prop("value",item.email);--%>
+                $("#email").prop("value",item.email);
 
-<%--                $("#birthday").prop("value",item.birthday);--%>
+                $("#birthday").prop("value",item.birthday);
 
-<%--                $("#customerPassword").prop("value",item.customerPassword);--%>
+                $("#customerPassword").prop("value",item.customerPassword);
 
-<%--            });--%>
-<%--        });--%>
-<%--        // Map data-->--%>
+            });
+        });
+        // Map data-->
 
-<%--    });--%>
-<%--</script>--%>
+    });
+</script>
 
 
 

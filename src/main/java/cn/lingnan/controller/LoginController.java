@@ -37,7 +37,7 @@ public class LoginController {
             if (bean != null) {
                 System.out.println("管理员登陆成功");
                 session.setAttribute("loginUser",bean);
-                return "admin/success";
+                return "AdminManagement/success";
 
             } else {
 
@@ -61,9 +61,10 @@ public class LoginController {
                 //session保存
                 bean.setLoginTime(new java.sql.Date(new Date().getTime()));
                 customerService.update(bean);
-                session.setAttribute("loginUser", bean);
+                model.addAttribute("loginUser", bean);
+                model.addAttribute("customer",bean.getCustomerId());
                 System.out.println("登陆成功");
-                return "customer/success";
+                return "CustomerManagement/success";
                 //记住密码，使用Cookie
             } else {
                 //登录失败
@@ -107,10 +108,6 @@ public class LoginController {
     }
 
 
-    @RequestMapping(value = "/error")
-    public String errorHandle(){
-        return "error";
-    }
 
 
 

@@ -67,6 +67,14 @@ public class OrderListController {
         System.out.println("getOrderList");
         return orderListService.queryAll();
     }
+    @RequestMapping(value ="/getCustomerOrderList",method = RequestMethod.POST)
+    @ResponseBody
+    public List<OrderList> CustomerGetOrderList () {
+        System.out.println("getOrderList");
+        return orderListService.queryAll();
+    }
+
+
 
     @GetMapping("/getStatus")
     @ResponseBody

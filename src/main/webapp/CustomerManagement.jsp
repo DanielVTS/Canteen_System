@@ -70,8 +70,8 @@
             <li>
                 <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-shangpin left"></i>个人信息<i class="iconfont icon-dajiantouyou right"></i></a>
                 <dl>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/customer/personal_information.jsp',this)">查看我的信息</a></dt>
-<%--                    <dt><a href="javascript:void(0)" onclick="menuCAClick('CustomerManagement.jsp',this)">返回首页</a></dt>--%>
+                    <dt><a href="javascript:void(0)" onclick="menuCAClick('tgls/customer/personalInformation.jsp',this)">查看我的信息</a></dt>
+<%--                    <dt><a href="javascript:void(0)" onclick="menuCAClick('customerManagement.jsp',this)">返回首页</a></dt>--%>
                 </dl>
             </li>
 

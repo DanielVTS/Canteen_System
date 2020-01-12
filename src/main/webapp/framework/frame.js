@@ -60,10 +60,7 @@ function menuCAClick(url,_this){
 		$("#frameMainTitle span").html('<i class="iconfont icon-xianshiqi"></i>个人资料');
 		return;
 	}
-	if($(_this).text() == "修改密码"){
-		$("#frameMainTitle span").html('<i class="iconfont icon-xianshiqi"></i>'+$(_this).text());
-		return;
-	}
+
 	if($(_this).attr("class") == "menuFA"){
 		$("#frameMainTitle span").html('<i class="iconfont icon-xianshiqi"></i>'+$(_this).text());
 	}else{

@@ -16,10 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/customer")
@@ -67,9 +64,18 @@ public class CustomerController {
     public List<Customer> getcustomerList () {
         System.out.println("querycustomer");
         return customerService.queryAll();
-
-
     }
+
+    @RequestMapping(value = "/getCustomerById",method = RequestMethod.POST)
+    @ResponseBody
+    public List<Customer> getCustomerById (Integer id) {
+
+        System.out.println("getCustomerById:::"+id);
+        List<Customer> list=new ArrayList<>();
+        list.add(customerService.getById(id));
+        return list;
+    }
+
 
     @RequestMapping(value = "/searchList",method = RequestMethod.POST)
     @ResponseBody
