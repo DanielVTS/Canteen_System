@@ -13,5 +13,6 @@ public interface StaffService {
     boolean add(Staff staff);
     boolean delete(Staff staff);
     boolean update(Staff staff);
+    boolean delete(Integer staffId);
 
 }

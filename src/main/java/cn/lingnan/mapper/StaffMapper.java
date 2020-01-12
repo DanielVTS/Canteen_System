@@ -14,6 +14,7 @@ public interface StaffMapper {
     List<Staff> queryAll();
     boolean add(Staff staff);
     boolean delete(Staff staff);
+    boolean delete(Integer staffId);
     boolean update(Staff staff);
     Staff login(Staff staff);
 

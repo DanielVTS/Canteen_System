@@ -57,4 +57,9 @@ public class StaffServiceImpl implements StaffService {
     public boolean update(Staff staff) {
         return staffMapper.update(staff);
     }
+
+    @Override
+    public boolean delete(Integer staffId) {
+        return staffMapper.delete(staffId);
+    }
 }

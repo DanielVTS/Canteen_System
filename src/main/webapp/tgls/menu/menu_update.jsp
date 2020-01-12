@@ -150,7 +150,7 @@
     $(document).ready(function () {
         let menuId = "${requestScope.menuId}";
 
-        $.get("${ctx}/menu/getMenuList",function(data,status) {
+        $.post("${ctx}/menu/getMenuList",function(data,status) {
 
             $.each(data, function (index, item) {
 

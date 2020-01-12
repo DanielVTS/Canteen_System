@@ -1,4 +1,3 @@
-<%@ page import="cn.lingnan.pojo.Staff" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" isErrorPage="true" %>
 <% pageContext.setAttribute("ctx", request.getContextPath()); %>
 <!DOCTYPE html>
@@ -50,7 +49,7 @@
 
 <body>
 <div class="cBody">
-    <form id="updateForm" class="layui-form" action="${ctx}/staff/addForm" method="get">
+    <form id="addForm" class="layui-form" action="${ctx}/staff/addForm" method="get">
         <div class="layui-form-item">
             <label class="layui-form-label">员工号</label>
             <div class="layui-input-block">
@@ -60,13 +59,13 @@
         <div class="layui-form-item">
             <label class="layui-form-label">员工名</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" name="staffName" id="staffName"  autocomplete="off" class="layui-input" name="customerName">
+                <input type="text" name="staffName" id="staffName"  autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">密码</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" name="staffPassword" id="staffPassword" autocomplete="off" class="layui-input" name="phone">
+                <input type="text" name="staffPassword" id="staffPassword" autocomplete="off" class="layui-input">
             </div>
             <i class="iconfont icon-huaban bt"></i>
         </div>
