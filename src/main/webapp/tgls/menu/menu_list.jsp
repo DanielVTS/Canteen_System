@@ -119,6 +119,7 @@
                 console.log(locationURL);
                 $.post(locationURL,{menuName:menuName,menuCategory:menuCategory},function(data){
                     $.each(data, function (index, item) {
+                        //if(item.menuStatus!=1) return;
                         console.log(index);
                         console.log(item);
                         var table = $("table");
@@ -139,6 +140,7 @@
                         var td5 = document.createElement("td");
                         td5.innerText = item.menuCategory;
                         tr.append(td5);
+
                         var td6 = document.createElement("td");
                         td6.innerText = item.menuStatus;
                         tr.append(td6);

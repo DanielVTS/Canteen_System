@@ -107,9 +107,6 @@
                         var td6 = document.createElement("td");
                         td6.innerText = item.totalPrice;
                         tr.append(td6);
-
-
-
                         table.append(tr);
 
 
