@@ -35,25 +35,21 @@
 <body>
 <div class="cBody">
     <div class="console">
-        <form class="layui-form" action="">
+        <form class="layui-form" action="${ctx}/customer/search" method="post">
             <div class="layui-form-item">
                 <div class="layui-input-inline">
-                    <input type="text" name="name" required lay-verify="required" placeholder="输入姓名" autocomplete="off" class="layui-input">
+                    <input type="text" name="customerName"  placeholder="输入姓名" autocomplete="off" class="layui-input">
                 </div>
-                <button class="layui-btn" lay-submit lay-filter="formDemo">检索</button>
+                <div class="layui-input-inline">
+                <input type="text" name="phone"  placeholder="电话" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-input-inline">
+                <input type="text" name="email"  placeholder="邮箱" autocomplete="off" class="layui-input">
+                </div>
+                <button class="layui-btn">检索</button>
             </div>
         </form>
 
-        <script>            layui.use('form', function() {
-            var form = layui.form;
-
-            //监听提交
-            form.on('submit(formDemo)', function(data) {
-                layer.msg(JSON.stringify(data.field));
-                return false;
-            });
-        });
-        </script>
     </div>
 
     <table class="layui-table">
@@ -73,10 +69,37 @@
         <tbody>
 
         <script>
-            let id=0;
+            let locationurl="${requestScope.locationurl}"
+            localStorage.setItem("locationurl",locationurl);
+            console.log(locationurl);
+
+            let customerName = "${requestScope.customerName}";
+            localStorage.setItem("customerName",customerName);
+            console.log(customerName);
+
+            let email = "${requestScope.email}";
+            localStorage.setItem("email",email);
+            console.log(email);
+            
+            let phone = "${requestScope.phone}";
+            localStorage.setItem("phone",phone);
+            console.log(phone);
+
+
+            let locationURL="";
+
+            if(locationurl=="")
+            {
+                locationURL="${ctx}/customer/getCustomerList";
+            }
+            else locationURL="${ctx}"+locationurl;
+
+
+            
             //jquery代码都必须写在ready方法中
             $(document).ready(function () {
-                $.get("${ctx}/customer/getCustomerList",function(data,status){
+                console.log(locationURL);
+                $.post(locationURL,{customerName: customerName,email:email,phone:phone},function(data){
                     console.log(data);
                     console.log("数据: " + data + "\n状态: " + status);
                     var id=0

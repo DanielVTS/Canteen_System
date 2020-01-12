@@ -35,25 +35,16 @@
 <body>
 <div class="cBody">
     <div class="console">
-        <form class="layui-form" action="">
+            <form class="layui-form" action="${ctx}/staff/search" method="post">
             <div class="layui-form-item">
                 <div class="layui-input-inline">
-                    <input type="text" name="name" required lay-verify="required" placeholder="输入姓名" autocomplete="off" class="layui-input">
+                    <input type="text" name="staffName" placeholder="输入姓名" autocomplete="off" class="layui-input">
                 </div>
-                <button class="layui-btn" lay-submit lay-filter="formDemo">检索</button>
+                <button class="layui-btn" >检索</button>
             </div>
         </form>
 
-        <script>            layui.use('form', function() {
-                var form = layui.form;
 
-                //监听提交
-                form.on('submit(formDemo)', function(data) {
-                    layer.msg(JSON.stringify(data.field));
-                    return false;
-                });
-            });
-        </script>
     </div>
 
     <table class="layui-table">
@@ -68,11 +59,30 @@
         <tbody>
 
         <script>
-            //jquery代码都必须写在ready方法中
+            let locationurl="${requestScope.locationurl}"
+            localStorage.setItem("locationurl",locationurl);
+            console.log(locationurl);
+
+            let staffName = "${requestScope.staffName}";
+            localStorage.setItem("staffName",staffName);
+            console.log(staffName);
+
+            let locationURL="";
+
+
+            if(locationurl=="")
+            {
+                locationURL="${ctx}/staff/getStaffList";
+            }
+
+            else locationURL="${ctx}"+locationurl;
+
+            console.log(locationURL);
+
             $(document).ready(function () {
-                $.get("${ctx}/staff/getStaffList",function(data,status){
-                    console.log(data);
-                    console.log("数据: " + data + "\n状态: " + status);
+
+                $.post(locationURL,{staffName:staffName},function(data){
+
                     $.each(data, function (index, item) {
                         console.log(index);
                         console.log(item);

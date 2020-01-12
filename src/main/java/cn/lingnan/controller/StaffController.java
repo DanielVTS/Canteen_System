@@ -25,52 +25,51 @@ public class StaffController {
         this.staffService = staffService;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addStaff(String name, String password){
-        System.out.println("add a staff:::name:::" + name + ", password" + password);
-        Staff staff=new Staff();
-        staff.setStaffName(name);
-        staff.setStaffPassword(password);
-        if(staffService.add(staff)){
-            return "success";
-        }
-        else return "forward:../add.jsp";
+
+    @RequestMapping(value = "/search",method = RequestMethod.POST)
+//    @ResponseBody
+    public String search (Staff staff,Model model) {
+        System.out.println(staff);
+        String staffName=staff.getStaffName();
+//        String StaffCategory=staff.getStaffCategory();
+
+        System.out.println(staffName);
+//        System.out.println(s);
+        model.addAttribute("locationurl","/staff/searchList");
+        model.addAttribute("staffName",staffName);
+//        model.addAttribute("StaffCategory",StaffCategory);
+        return "forward:../tgls/staff/staff_list.jsp";
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    public String deleteStaff(Integer id){
-        System.out.println("delete a staff:::id:::" + id);
-        Staff staff=new Staff();
-        staff.setStaffId(id);
-        if(staffService.delete(staff)){
-            return "success";
-        }
-        else return "forward:../delete.jsp";
-    }
 
-//    @RequestMapping(value = "/update", method = RequestMethod.POST)
-//    public String updateStaff(String name, String password){
-//        System.out.println("update a staff:::name:::" + name +",password:::" + password);
-//        Staff staff=new Staff();
-//        staff.setStaffName(name);
-//        staff.setStaffPassword(password);
-//        if(staffService.update(staff)){
-//            return "success";
-//        }
-//        else return "forward:../update.jsp";
-//    }
 
-//    @RequestMapping(value = "/queryAll")
-//    public String queryAllStaff(){
-//        System.out.println("queryAll staff");
-//        staffService.queryAll();
-//    }
-
-    @GetMapping("/getStaffList")
+    @RequestMapping(value = "/searchList",method = RequestMethod.POST)
     @ResponseBody
-    public List<Staff> getStaff () {
-        System.out.println("getStaff");
+    public List<Staff> searchList (String staffName,Model model) {
+        System.out.println(staffName);
+        if(staffName.equals("")) {
+            staffName = null;
+        }
+        System.out.println("searchList");
+        Staff staff=new Staff();
+        staff.setStaffName(staffName);
+        System.out.println(staff);
+        return staffService.query(staff);
+
+
+    }
+
+
+
+
+    @RequestMapping(value = "/getStaffList",method = RequestMethod.POST)
+    @ResponseBody
+
+    public List<Staff> getStaffList () {
+        System.out.println("queryStaff");
         return staffService.queryAll();
+
+
     }
 
 

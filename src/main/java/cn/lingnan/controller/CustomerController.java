@@ -35,12 +35,63 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
+    
 
-    @GetMapping("/getCustomerList")
+    @RequestMapping(value = "/search",method = RequestMethod.POST)
+//    @ResponseBody
+    public String search (Customer customer,Model model) {
+        System.out.println(customer);
+        String customerName=customer.getCustomerName();
+        String email=customer.getEmail();
+        String phone=customer.getPhone();
+
+        System.out.println(customerName);
+        System.out.println(email);
+        System.out.println(phone);
+        
+        model.addAttribute("locationurl","/customer/searchList");
+        model.addAttribute("customerName",customerName);
+        model.addAttribute("email",email);
+        model.addAttribute("phone",phone);
+
+        return "forward:../tgls/customer/customer_list.jsp";
+    }
+
+
+
+
+
+    @RequestMapping(value = "/getCustomerList",method = RequestMethod.POST)
     @ResponseBody
-    public List<Customer> getCustomerList () {
-        System.out.println("getCustomerList");
+
+    public List<Customer> getcustomerList () {
+        System.out.println("querycustomer");
         return customerService.queryAll();
+
+
+    }
+
+    @RequestMapping(value = "/searchList",method = RequestMethod.POST)
+    @ResponseBody
+    public List<Customer> searchList (String customerName,String email,String phone,Model model) {
+        if(customerName.equals("")) {
+            customerName = null;
+        }
+        if(email.equals("")) {
+            email = null;
+        }
+        if(phone.equals("")) {
+            phone = null;
+        }
+        System.out.println("searchList");
+        Customer customer=new Customer();
+        customer.setCustomerName(customerName);
+        customer.setEmail(email);
+        customer.setPhone(phone);
+        System.out.println(customer);
+        return customerService.query(customer);
+
+
     }
 
 

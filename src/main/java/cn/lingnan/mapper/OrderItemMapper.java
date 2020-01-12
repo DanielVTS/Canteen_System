@@ -15,5 +15,5 @@ public interface OrderItemMapper {
     boolean add (OrderItem orderItem);
     List<OrderItem> queryAll();
     List<OrderItem> query(OrderItem orderItem);
-
+    List<Integer> querymoney(Integer order_no);
 }

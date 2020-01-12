@@ -99,7 +99,7 @@
     console.log(menuName);
 
     let menuCategory = "${requestScope.menuCategory}";
-    localStorage.setItem("menuName",menuCategory);
+    localStorage.setItem("menuCategory",menuCategory);
     console.log(menuCategory);
 
 
