@@ -38,7 +38,7 @@
 <body>
 <div class="cBody">
     <div class="console">
-        <form class="layui-form" action="${ctx}/menu/search" method="post">
+        <form class="layui-form" action="${ctx}/menu/customerSearch" method="post">
             <div class="layui-form-item">
                 <div class="layui-input-inline">
                     <input type="text" name="menuName" placeholder="输入菜品名称" autocomplete="off" class="layui-input">
@@ -56,10 +56,9 @@
 
                 </div>
                 <button class="layui-btn" type="submit">检索</button>
-
-                <a href="${ctx}/tgls/menu/menu_add.jsp" class="layui-btn">导入商品</a>
             </div>
         </form>
+        <button class="layui-btn">添加购物车</button>
 
 <%--        <script>--%>
 <%--            layui.use('form', function() {--%>
@@ -77,14 +76,13 @@
     <table class="layui-table">
         <thead>
         <tr>
-            <th>勾选框</th>
             <th>菜号</th>
             <th>菜图</th>
             <th>菜名</th>
             <th>单价</th>
+            <th>数量</th>
             <th>种类</th>
-            <th>状态</th>
-            <th>操作</th>
+<%--            <th>勾选框</th>--%>
         </tr>
         </thead>
         <tbody>
@@ -124,43 +122,49 @@
                         var table = $("table");
                         var tr = document.createElement("tr");
 
-                        //勾选框
-                        var td1=document.createElement("td");
-                        td1.setAttribute("type","checkbox");
-                        td1.setAttribute("value",item.menuId);
-                        tr.append(td1);
-
                         var td2 = document.createElement("td");
                         td2.innerText = item.menuId;
                         tr.append(td2);
+
                         var td3 = document.createElement("td");
                         //图片？？？？
                         td3.innerText = item.picture;
                         tr.append(td3);
+
                         var td4 = document.createElement("td");
                         td4.innerText = item.menuName;
                         tr.append(td4);
+
                         var td5 = document.createElement("td");
                         td5.innerText = item.price;
                         tr.append(td5);
-                        var td6 = document.createElement("td");
-                        td6.innerText = item.menuCategory;
-                        tr.append(td6);
-
 
                         var td6 = document.createElement("td");
-                        td6.innerText = item.menuStatus;
+                        td6.innerHTML="<input type='number' id='itemValue' max='99' min='0'>";
                         tr.append(td6);
 
+                        var td7 = document.createElement("td");
+                        td7.innerText = item.menuCategory;
+                        tr.append(td7);
 
-                        const url1 = "window.location.href='${ctx}/menu/update?menuId=" +item.menuId+"'";
-                        console.log(url1)
-                        var btn1=document.createElement("input");
-                        btn1.setAttribute("type","submit");
-                        btn1.setAttribute("name","update");
-                        btn1.setAttribute("value","添加");
-                        btn1.setAttribute("class","layui-btn layui-btn-sm");
-                        btn1.setAttribute("onclick",url1);
+                        //勾选框
+                        // var td1=document.createElement("td");
+                        // td1.innerHTML="" +
+                        //     // "<div class=\"layui-input-block all\" >" +
+                        //     "<input type='checkbox' name='check' value="+item.menuId+">" //+
+                        // //"</div>"
+                        // ;
+                        // tr.append(td1);
+
+
+                        <%--const url1 = "window.location.href='${ctx}/menu/update?menuId=" +item.menuId+"'";--%>
+                        <%--console.log(url1)--%>
+                        <%--var btn1=document.createElement("input");--%>
+                        <%--btn1.setAttribute("type","submit");--%>
+                        <%--btn1.setAttribute("name","update");--%>
+                        <%--btn1.setAttribute("value","添加");--%>
+                        <%--btn1.setAttribute("class","layui-btn layui-btn-sm");--%>
+                        <%--btn1.setAttribute("onclick",url1);--%>
 
                         <%--const url2 = "window.location.href='${ctx}/menu/down?menuId=" +item.menuId+"'";--%>
                         <%--console.log(url2)--%>
@@ -180,7 +184,7 @@
                         <%--btn3.setAttribute("class","layui-btn layui-btn-sm");--%>
                         <%--btn3.setAttribute("onclick",url3);--%>
 
-                        tr.append(btn1);
+                        // tr.append(btn1);
                         table.append(tr);
 
                     })

@@ -41,6 +41,22 @@ public class MenuController {
         return "forward:../tgls/menu/menu_list.jsp";
     }
 
+    @RequestMapping(value = "/customerSearch",method = RequestMethod.POST)
+//    @ResponseBody
+    public String customerSearch (Menu menu,Model model) {
+        System.out.println(menu);
+        String menuName=menu.getMenuName();
+        String menuCategory=menu.getMenuCategory();
+
+        System.out.println(menuName);
+        System.out.println(menuCategory);
+        model.addAttribute("locationurl","/menu/searchList");
+        model.addAttribute("menuName",menuName);
+        model.addAttribute("menuCategory",menuCategory);
+
+        return "/CustomerManagement/menuList";
+    }
+
 
     @RequestMapping(value = "/getMenuList",method = RequestMethod.POST)
         @ResponseBody
