@@ -178,7 +178,7 @@
                         <%--btn3.setAttribute("class","layui-btn layui-btn-sm");--%>
                         <%--btn3.setAttribute("onclick",url3);--%>
 
-                        tr.append(btn1,btn2,btn3);
+                        tr.append(btn1);
                         table.append(tr);
 
                     })
