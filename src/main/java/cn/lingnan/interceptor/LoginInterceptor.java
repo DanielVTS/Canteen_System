@@ -22,6 +22,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
         else {
             Object o = request.getSession().getAttribute("loginUser");
+
             if (o == null) {
                 request.setAttribute("msg", "not login");
                 request.getRequestDispatcher("error").forward(request, response);

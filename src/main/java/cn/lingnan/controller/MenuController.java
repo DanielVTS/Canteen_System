@@ -34,6 +34,7 @@ public class MenuController {
 
         System.out.println(menuName);
         System.out.println(menuCategory);
+
         model.addAttribute("locationurl","/menu/searchList");
         model.addAttribute("menuName",menuName);
         model.addAttribute("menuCategory",menuCategory);

@@ -2,6 +2,7 @@ import cn.lingnan.mapper.MenuMapper;
 import cn.lingnan.mapper.TableMapper;
 import cn.lingnan.pojo.Menu;
 import cn.lingnan.pojo.Table;
+import cn.lingnan.services.OrderItemService;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -75,4 +76,6 @@ public class Apptest02 {
         System.out.println(tableMapper.update(table));
         System.out.println(tableMapper.queryAll());
     }
+
+
 }
