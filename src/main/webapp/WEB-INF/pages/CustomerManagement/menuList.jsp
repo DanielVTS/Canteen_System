@@ -90,6 +90,70 @@
 
 
         <script>
+            function addItem(){
+                const table = document.getElementById("table");
+                console.log(table);
+
+                let CustomerId=sessionStorage.getItem("customerId");
+                var json = {
+                    "id":"1",
+                    "ShoppingCar":[]
+                };
+                var data1={menuId: "1", price: "200", count: "1"};
+                var data2= {menuId: "3", price: "20", count: "2"};
+                json.ShoppingCar.push(data1);
+                json.ShoppingCar.push(data2);
+                // json['id']=1;
+
+                // let tr=table.getElementsByTagName("tr");
+                // for (var i=1;i<tr.length;i++){
+                //     let target=tr[i].querySelectorAll("[name]");
+                //     console.log(target);
+                //     for (var j=0;j<target.length;j++){
+                //         if(target[j].getAttribute("name")=="menuId"){
+                //             let cell=target[j].childNodes.item(0);
+                //
+                //             json['ShoppingCar[' + i +'].menuId']=cell.data;
+                //         }else if(target[j].getAttribute("name")=="price"){
+                //             let cell=target[j].childNodes.item(0);
+                //             json['ShoppingCar[' + i +'].price']=cell.data;
+                //         }else{
+                //             let inputElement=target[j].childNodes.item(0);
+                //             json['ShoppingCar[' + i +'].count']=inputElement.value;
+                //         }
+                //     }
+                //
+                // }
+
+
+
+                //提交数据，处理回传data(总价)，跳转至确认订单页
+
+                <%--$.post("${ctx}/shoppingCar/getTotalPrice",list);           --%>
+
+                console.log(json);
+                console.log(JSON.stringify(json));
+                $.ajaxSettings.async = false;
+                $.ajax({
+                    headers:{'Content-Type':'application/json'},
+                    url:"${ctx}/shoppingCar/getTotalPrice",
+                    method: 'POST',
+                    //dataType:"json",
+                    data:JSON.stringify(json),
+                    //data:json,
+                    //contentType: 'application/x-www-form-urlencoded;charset=utf-8',
+                    contentType: 'application/json;charset=utf-8',
+                    //traditional:true,
+                    success:function(data){
+                        console.log(data);
+                        },
+                    error:function (error) {
+                        console.log(error);
+                    }
+                });
+                $.ajaxSettings.async = true;
+
+            }
     let locationurl="${requestScope.locationurl}"
     localStorage.setItem("locationurl",locationurl);
     console.log(locationurl);
@@ -163,53 +227,7 @@
     </table>
 
     <script type="text/javascript" src="${ctx}/js/jquery-2.1.4.min.js"></script>
-    <script>
-        function addItem(){
-            const table = document.getElementById("table");
-            console.log(table);
-            var list=[];
-            let tr=table.getElementsByTagName("tr");
-            for (var i=1;i<tr.length;i++){
-                let target=tr[i].querySelectorAll("[name]"),obj={};
-                console.log(target);
-                for (var j=0;j<target.length;j++){
-                    if(target[j].getAttribute("name")=="menuId"){
-                        let cell=target[j].childNodes.item(0);
-                        obj[target[j].getAttribute("name")]=cell.data;
-                    }else if(target[j].getAttribute("name")=="price"){
-                        let cell=target[j].childNodes.item(0);
-                        obj[target[j].getAttribute("name")]=cell.data;
-                    }else{
-                        let inputElement=target[j].childNodes.item(0);
-                        obj[target[j].getAttribute("name")]=inputElement.value;
-                    }
-                }
-                list.push(obj);
-            }
-            let CustomerId=sessionStorage.getItem("customerId");
-            obj={"id":CustomerId};
-            list.push(obj);
-            console.log(list);
 
-            //提交数据，处理回传data(总价)，跳转至确认订单页
-
-            $.ajax({
-                url:"${ctx}/shoppingCar/getTotalPrice",
-                success:function(data){console.log(data);},
-                type: 'POST',
-                dataType:"json"
-
-
-            })
-
-
-
-
-
-            
-
-        }
-    </script>
 
 
 

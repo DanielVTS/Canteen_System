@@ -24,6 +24,7 @@
 
 <!--    </mvc:annotation-driven>-->
 
+
     <mvc:annotation-driven validator="validator" />
 <!--拦截器-->
 <!--    <mvc:resources location="/" mapping="/*"/>-->
