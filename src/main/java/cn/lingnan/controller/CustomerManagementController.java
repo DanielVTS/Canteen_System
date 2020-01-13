@@ -86,6 +86,12 @@ public class CustomerManagementController {
         return "book_menu";
     }
 
+    @RequestMapping("/orderTable")
+    public String orderTable(){
+        System.out.println("orderTable");
+        return "CustomerManagement/tableList";
+    }
+
     @RequestMapping("/personalInformation")
     public String personalInformationPage(){
         System.out.println("personalInformationPage");
