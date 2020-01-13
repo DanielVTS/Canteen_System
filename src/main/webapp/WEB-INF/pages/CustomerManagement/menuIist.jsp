@@ -146,32 +146,32 @@
                         tr.append(td6);
 
 
-                        const url1 = "window.location.href='${ctx}/menu/update?menuId=" +item.menuId+"'";
-                        console.log(url1)
-                        var btn1=document.createElement("input");
-                        btn1.setAttribute("type","submit");
-                        btn1.setAttribute("name","update");
-                        btn1.setAttribute("value","更新");
-                        btn1.setAttribute("class","layui-btn layui-btn-sm");
-                        btn1.setAttribute("onclick",url1);
+                        <%--const url1 = "window.location.href='${ctx}/menu/update?menuId=" +item.menuId+"'";--%>
+                        <%--console.log(url1)--%>
+                        <%--var btn1=document.createElement("input");--%>
+                        <%--btn1.setAttribute("type","submit");--%>
+                        <%--btn1.setAttribute("name","update");--%>
+                        <%--btn1.setAttribute("value","更新");--%>
+                        <%--btn1.setAttribute("class","layui-btn layui-btn-sm");--%>
+                        <%--btn1.setAttribute("onclick",url1);--%>
 
-                        const url2 = "window.location.href='${ctx}/menu/down?menuId=" +item.menuId+"'";
-                        console.log(url2)
-                        var btn2=document.createElement("input");
-                        btn2.setAttribute("type","submit");
-                        btn2.setAttribute("name","delete");
-                        btn2.setAttribute("value","下架");
-                        btn2.setAttribute("class","layui-btn layui-btn-sm");
-                        btn2.setAttribute("onclick",url2);
+                        <%--const url2 = "window.location.href='${ctx}/menu/down?menuId=" +item.menuId+"'";--%>
+                        <%--console.log(url2)--%>
+                        <%--var btn2=document.createElement("input");--%>
+                        <%--btn2.setAttribute("type","submit");--%>
+                        <%--btn2.setAttribute("name","delete");--%>
+                        <%--btn2.setAttribute("value","下架");--%>
+                        <%--btn2.setAttribute("class","layui-btn layui-btn-sm");--%>
+                        <%--btn2.setAttribute("onclick",url2);--%>
 
-                        const url3 = "window.location.href='${ctx}/menu/up?menuId=" +item.menuId+"'";
-                        console.log(url3)
-                        var btn3=document.createElement("input");
-                        btn3.setAttribute("type","submit");
-                        btn3.setAttribute("name","delete");
-                        btn3.setAttribute("value","上架");
-                        btn3.setAttribute("class","layui-btn layui-btn-sm");
-                        btn3.setAttribute("onclick",url3);
+                        <%--const url3 = "window.location.href='${ctx}/menu/up?menuId=" +item.menuId+"'";--%>
+                        <%--console.log(url3)--%>
+                        <%--var btn3=document.createElement("input");--%>
+                        <%--btn3.setAttribute("type","submit");--%>
+                        <%--btn3.setAttribute("name","delete");--%>
+                        <%--btn3.setAttribute("value","上架");--%>
+                        <%--btn3.setAttribute("class","layui-btn layui-btn-sm");--%>
+                        <%--btn3.setAttribute("onclick",url3);--%>
 
                         tr.append(btn1,btn2,btn3);
                         table.append(tr);

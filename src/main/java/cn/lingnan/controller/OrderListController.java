@@ -1,8 +1,10 @@
 package cn.lingnan.controller;
 
 import cn.lingnan.pojo.Menu;
+import cn.lingnan.pojo.OrderItem;
 import cn.lingnan.pojo.OrderList;
 import cn.lingnan.services.MenuService;
+import cn.lingnan.services.OrderItemService;
 import cn.lingnan.services.OrderListService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,7 +29,13 @@ public class OrderListController {
     public void setOrderListService(OrderListService orderListService) {
         this.orderListService = orderListService;
     }
-//
+
+    private OrderItemService orderItemService;
+    @Autowired
+    public void setOrderItemService(OrderItemService orderItemService) {
+        this.orderItemService = orderItemService;
+    }
+    //
 //    @RequestMapping(value = "/add", method = RequestMethod.POST)
 //    public String addOrderList(String orderNo, Integer customerId, String customerName, String phone, Integer tableId, String tableName, Integer orderStatus, Integer orderPrice, Date tableTime, Date endTime, String ps){
 //        System.out.println("add a orderList:::orderNo:::" + orderNo + ", customerId" + customerId + ", customerName" + customerName + ", phone" + phone + ", tableId" + tableId + ", tableName" + tableName + ", orderStatus" + orderStatus + ", tableTime" + tableTime + ", endTime" + endTime + ", ps" + ps);
@@ -127,6 +136,31 @@ public class OrderListController {
 
         return "forward:../tgls/agent/order_list.jsp";
     }
+
+
+    // TODO: 2020/1/13
+    @RequestMapping(value = "/customerAddForm", method = RequestMethod.GET)
+    public String customerAddForm (OrderList orderList, String orderId,Model model) {
+//        System.out.println("customerAddForm");
+//        System.out.println(orderId);
+//        System.out.println(orderList.toString());
+
+
+        //前端数据解析
+
+        
+        //后端传值
+        List<OrderItem> cart=new ArrayList<>();
+        OrderList order=new OrderList();
+        System.out.println(orderListService.add(orderList));
+        for(OrderItem item:cart){
+            System.out.println(orderItemService.add(item));
+        }
+        return "/CustomerManagement/myOrderList";
+    }
+
+
+
 
     @RequestMapping(value = "/getOrderNo", method = RequestMethod.GET)
     public String getOrderNo (OrderList orderList, String orderId,Model model) {
