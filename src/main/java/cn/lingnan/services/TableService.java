@@ -9,7 +9,7 @@ public interface TableService {
     Table getById(Integer tableId);
     Table getByName(String tableName);
     Table getBySeat(String tableSeat);
-    Table getByStaus(String tableStaus);
+    List<Table> getByStaus(Integer tableStaus);
     List<Table> query(Table table);
     List<Table> queryAll();
     boolean add(Table table);
