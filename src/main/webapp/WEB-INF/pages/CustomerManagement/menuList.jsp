@@ -59,6 +59,7 @@
             </div>
         </form>
         <button class="layui-btn" onclick="addItem()">添加购物车</button>
+        <button class="layui-btn" onclick="">下一步，确认订单</button>
 
 <%--        <script>--%>
 <%--            layui.use('form', function() {--%>
@@ -197,6 +198,8 @@
                 success:function(data){console.log(data);},
                 dataType:"json"
             })
+
+
 
 
 
