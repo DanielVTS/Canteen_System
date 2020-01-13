@@ -63,28 +63,28 @@ public class CustomerManagementController {
 
 
     @RequestMapping("/addOrder")
-    public String bookTablePage(Model model){
+    public String bookTablePage(){
         System.out.println("bookTablePage");
 
-        List<Table> list=tableService.getByStatus(1);
-        List tableIdList=new ArrayList();
-        int length=list.size();
-        int[] tableArray=new int[length];
-        for(int i=0;i<list.size();i++)
-        {
-            tableArray[i]=list.get(i).getTableId();
-        }
-        model.addAttribute("tableArray",tableArray);
+//        List<Table> list=tableService.getByStatus(1);
+//        List tableIdList=new ArrayList();
+//        int length=list.size();
+//        int[] tableArray=new int[length];
+//        for(int i=0;i<list.size();i++)
+//        {
+//            tableArray[i]=list.get(i).getTableId();
+//        }
+//        model.addAttribute("tableArray",tableArray);
 
 
         return "CustomerManagement/addOrder";
     }
 
-    @RequestMapping("/bookMenu")
-    public String bookMenuPage(){
-        System.out.println("bookMenuPage");
-        return "book_menu";
-    }
+//    @RequestMapping("/bookMenu")
+//    public String bookMenuPage(){
+//        System.out.println("bookMenuPage");
+//        return "book_menu";
+//    }
 
     @RequestMapping("/personalInformation")
     public String personalInformationPage(){

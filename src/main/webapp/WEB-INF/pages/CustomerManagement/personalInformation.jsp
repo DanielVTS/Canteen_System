@@ -130,12 +130,8 @@
 
     $(document).ready(function () {
         let customerId = Number(sessionStorage.getItem("customerId"));
-
         console.log(customerId);
-
-
-        $.post("${ctx}/customer/getCustomerById",{id:customerId},function(data,status) {
-
+        $.post("${ctx}/customer/getCustomerById",{Id:customerId},function(data,status) {
             $.each(data, function (index, item) {
 
 

@@ -68,11 +68,10 @@ public class CustomerController {
 
     @RequestMapping(value = "/getCustomerById",method = RequestMethod.POST)
     @ResponseBody
-    public List<Customer> getCustomerById (Integer id) {
-
-        System.out.println("getCustomerById:::"+id);
+    public List<Customer> getCustomerById (Integer Id) {
+        System.out.println("getCustomerById:::"+Id);
         List<Customer> list=new ArrayList<>();
-        list.add(customerService.getById(id));
+        list.add(customerService.getById(Id));
         return list;
     }
 

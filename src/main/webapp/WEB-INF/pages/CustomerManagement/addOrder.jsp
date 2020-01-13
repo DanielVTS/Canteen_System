@@ -52,13 +52,13 @@
 
 </script>
 <div class="cBody">
-    <form id="updateForm" class="layui-form" action="${ctx}/shoppingCar/setList" method="post">
-        <div class="layui-form-item">
-            <label class="layui-form-label">订单号</label>
-            <div class="layui-input-inline shortInput">
-                <input type="text" id="orderNo" name="orderNo" autocomplete="off" class="layui-input" readonly="readonly">
-            </div>
-        </div>
+    <form id="updateForm" class="layui-form" action="${ctx}/orderList/addForm" method="post">
+<%--        <div class="layui-form-item">--%>
+<%--            <label class="layui-form-label">订单号</label>--%>
+<%--            <div class="layui-input-inline shortInput">--%>
+<%--                <input type="text" id="orderNo" name="orderNo" autocomplete="off" class="layui-input" readonly="readonly">--%>
+<%--            </div>--%>
+<%--        </div>--%>
         <div class="layui-form-item">
             <label class="layui-form-label">客户名</label>
             <div class="layui-input-inline shortInput">
@@ -73,55 +73,35 @@
             <i class="iconfont icon-huaban bt"></i>
         </div>
         <div class="layui-form-item">
-
-
             <label class="layui-form-label">台号</label>
             <div class="layui-input-inline">
-
                 <select name="tableId" id="tableId" lay-filter="orderStatus">
                 </select>
-
-
-
-
             </div>
         </div>
-        <script>
-
-            let tableArray = "${requestScope.tableArray}";
-            console.log(tableArray);
-            for(var i=0;i<tableArray.lengthl;i++)
-            {
-                var option=document.createElement("option");
-                $(option).val(tableArray[i]);
-                $(option).text(tableArray[i]);
-                $('#select').append(option);
-
-            }
-        </script>
         <div class="layui-form-item">
             <label class="layui-form-label">台号名</label>
             <div class="layui-input-inline shortInput">
                 <input type="text" id="tableName" name="tableName" autocomplete="off" class="layui-input" readonly="readonly">
             </div>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">订单状态</label>
-            <div class="layui-input-inline">
-                <select name="orderStatus" id="orderStatus">
-                    <option value=1>1</option>
+<%--        <div class="layui-form-item">--%>
+<%--            <label class="layui-form-label">订单状态</label>--%>
+<%--            <div class="layui-input-inline">--%>
+<%--                <select name="orderStatus" id="orderStatus">--%>
+<%--                    <option value=1>1</option>--%>
 
-                </select>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">订单金额</label>
-            <div class="layui-input-inline shortInput">
-                <input type="text" id="orderPrice" name="orderPrice" autocomplete="off" class="layui-input" readonly="readonly" value=${totalPrice}>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">订单时间</label>
+<%--                </select>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <div class="layui-form-item">--%>
+<%--            <label class="layui-form-label">订单金额</label>--%>
+<%--            <div class="layui-input-inline shortInput">--%>
+<%--                <input type="text" id="orderPrice" name="orderPrice" autocomplete="off" class="layui-input" readonly="readonly" value=${totalPrice}>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+        <div class="layui-form-item" >
+            <label class="layui-form-label">就餐时间</label>
             <div class="layui-input-inline shortInput">
                 <input  id="tableTime" name="tableTime" autocomplete="off" class="layui-input" type=datetime-local>
             </div>
@@ -136,7 +116,7 @@
 
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="submitBut" type="submit">立即提交</button>
+                <button class="layui-btn" lay-submit lay-filter="submitBut" type="submit">下一步，选择菜式</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
@@ -153,29 +133,55 @@
 
 <script>
     $(document).ready(function () {
-            let customerId = sessionStorage.getItem("customerId");
-
-            $.post("${ctx}/orderList/getOrderList", {customerId:customerId},function (data, status) {
-                // console.log(data);
+            let customerId = Number(sessionStorage.getItem("customerId"));
+            console.log(customerId);
+            $.post("${ctx}/customer/getCustomerById", {Id:customerId},function (data, status) {
+                console.log(data);
                 // console.log("数据: " + data + "\n状态: " + status);
                 $.each(data, function (index, item) {
                     // console.log(index);
                     // console.log(item);
 
-                    if (item.orderNo != orderNo) return true;
+                    // if (item.orderNo != orderNo) return true;
                     console.log(item);
                     //$("#orderNo").prop("value",orderNo);
-                    $("#orderNo").prop("readonly",orderNo);
-                    $("#orderNo").prop("value",orderNo);
+                    // $("#orderNo").prop("readonly",orderNo);
+                    // $("#orderNo").prop("value",orderNo);
                     $("#customerName").prop("value",item.customerName);
                     $("#phone").prop("value",item.phone);
-                    $("#tableId").prop("value",item.tableId);
-                    $("#tableName").prop("value",item.tableName);
-                    $("#orderStatus").prop("value",item.orderStatus);
-                    $("#orderPrice").prop("value",item.orderPrice);
-                    $("#ps").prop("value",item.ps);
+                    // $("#tableId").prop("value",item.tableId);
+                    // $("#tableName").prop("value",item.tableName);
+                    // $("#orderStatus").prop("value",item.orderStatus);
+                    // $("#orderPrice").prop("value",item.orderPrice);
+                    // $("#ps").prop("value",item.ps);
                 });
             });
+
+            let tableId=sessionStorage.getItem("tableId");
+        $.post("${ctx}/table/customerGetTable", {tableId:tableId},function (data, status) {
+            // console.log(data);
+            // console.log("数据: " + data + "\n状态: " + status);
+            $.each(data, function (index, item) {
+                // console.log(index);
+                // console.log(item);
+
+                // if (item.orderNo != orderNo) return true;
+                console.log(item);
+                //$("#orderNo").prop("value",orderNo);
+                // $("#orderNo").prop("readonly",orderNo);
+                //
+                // $("#orderNo").prop("value",new Date().getTime());
+                // $("#customerName").prop("value",item.customerName);
+                // $("#phone").prop("value",item.phone);
+                $("#tableId").prop("value",item.tableId);
+                $("#tableName").prop("value",item.tableName);
+                // $("#orderStatus").prop("value",item.orderStatus);
+                // $("#orderPrice").prop("value",item.orderPrice);
+                // $("#ps").prop("value",item.ps);
+            });
+        });
+
+
             // Map data-->
 
     });

@@ -142,6 +142,18 @@ public class OrderListController {
         return "forward:../tgls/agent/order_list.jsp";
     }
 
+    @RequestMapping(value = "/addForm", method = RequestMethod.POST)
+    public String addForm (OrderList orderList, String orderId,Model model) {
+        System.out.println("addForm");
+        System.out.println(orderId);
+        System.out.println(orderList.toString());
+
+
+        System.out.println(orderListService.update(orderList));
+
+        return "CustomerManagement/menuList";
+    }
+
 
     // TODO: 2020/1/13
     @RequestMapping(value = "/customerAddForm", method = RequestMethod.GET)
