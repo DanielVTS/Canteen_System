@@ -196,7 +196,10 @@
             $.ajax({
                 url:"${ctx}/shoppingCar/getTotalPrice",
                 success:function(data){console.log(data);},
+                type: 'POST',
                 dataType:"json"
+
+
             })
 
 
