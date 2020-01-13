@@ -1,4 +1,4 @@
-<%@ page import="cn.lingnan.pojo.OrderList" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" isErrorPage="true" %>
 <% pageContext.setAttribute("ctx", request.getContextPath()); %>
 <!DOCTYPE html>
@@ -44,13 +44,11 @@
 
 
 <body>
-<script>
-    let orderPrice = 0;
-    localStorage.setItem("orderPrice",orderPrice);
-    console.log(orderPrice);
-
-
-</script>
+<%--<script>--%>
+<%--    let orderPrice = 0;--%>
+<%--    localStorage.setItem("orderPrice",orderPrice);--%>
+<%--    console.log(orderPrice);--%>
+<%--</script>--%>
 <div class="cBody">
     <form id="updateForm" class="layui-form" action="${ctx}/orderList/addForm" method="post">
 <%--        <div class="layui-form-item">--%>
@@ -75,8 +73,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">台号</label>
             <div class="layui-input-inline">
-                <select name="tableId" id="tableId" lay-filter="orderStatus">
-                </select>
+                <input type="text" id="tableId" name="tableId" autocomplete="off" class="layui-input" readonly="readonly">
+
             </div>
         </div>
         <div class="layui-form-item">

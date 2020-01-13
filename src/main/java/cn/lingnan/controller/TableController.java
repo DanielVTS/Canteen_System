@@ -107,9 +107,10 @@ public class TableController {
 
 
     @PostMapping("/customerGetTable")
+    @ResponseBody
     public List<Table> customerGetTable(Integer tableId){
-        tableService.getById(tableId);
         List<Table> list=new ArrayList<>();
+        list.add(tableService.getById(tableId));
         return list;
     }
 

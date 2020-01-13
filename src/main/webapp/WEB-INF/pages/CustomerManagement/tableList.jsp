@@ -118,22 +118,26 @@
                 var td3 = document.createElement("td");
                 td3.innerText = item.tableSeat;
                 tr.append(td3);
-                var td4 = document.createElement("td");
-                td4.innerText = item.tableStatus;
-                tr.append(td4);
+                // var td4 = document.createElement("td");
+                // td4.innerText = item.tableStatus;
+                // tr.append(td4);
 
 
 
 
-                const url1 = "window.location.href='${ctx}/table/update?tableId=" +item.tableId+"'";
-                console.log(url1)
+                <%--const url1 = "window.location.href='${ctx}/table/update?tableId=" +item.tableId+"'";--%>
+                <%--console.log(url1)--%>
+                // var td4 = document.createElement("td");
                 var btn1=document.createElement("input");
                 btn1.setAttribute("type","submit");
                 btn1.setAttribute("name","update");
                 btn1.setAttribute("value","订台");
                 btn1.setAttribute("class","layui-btn layui-btn-sm");
-                btn1.setAttribute("onclick",setTableId(item.tableId));
-                
+                btn1.setAttribute("onclick","setTableId("+item.tableId+");window.location.href='${ctx}/CustomerManagement/addOrder'");
+                <%--td4.innerHTML=--%>
+                <%--    "<button type='submit' name='update' value='订台' class='layui-btn layui-btn-sm' " +--%>
+                <%--    "onclick='setTableId(item.tableId);window.location.href='${ctx}/CustomerManagement/addOrder'>";--%>
+                <%--tr.append(td4);--%>
 
 
 
@@ -156,6 +160,7 @@
             // }
 
             function setTableId(id) {
+                console.log(id);
                 if (sessionStorage.getItem("tableId")!=null) sessionStorage.removeItem("tableId")
                 sessionStorage.setItem("tableId",id);
 
