@@ -77,6 +77,7 @@
     <table class="layui-table">
         <thead>
         <tr>
+            <th>勾选框</th>
             <th>菜号</th>
             <th>菜图</th>
             <th>菜名</th>
@@ -127,9 +128,10 @@
                         var td1=document.createElement("td");
                         td1.setAttribute("type","checkbox");
                         td1.setAttribute("value",item.menuId);
+                        tr.append(td1);
 
                         var td2 = document.createElement("td");
-                        td1.innerText = item.menuId;
+                        td2.innerText = item.menuId;
                         tr.append(td2);
                         var td3 = document.createElement("td");
                         //图片？？？？
