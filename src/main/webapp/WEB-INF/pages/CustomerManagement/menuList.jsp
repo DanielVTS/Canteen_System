@@ -185,14 +185,20 @@
                 }
                 list.push(obj);
             }
+            let CustomerId=sessionStorage.getItem("customerId");
+            obj={"id":CustomerId};
+            list.push(obj);
             console.log(list);
 
             //提交数据，处理回传data(总价)，跳转至确认订单页
-            $.post("${ctx}/shoppingCar/getTotalPrice",list,function (data) {
 
-
-
+            $.ajax({
+                url:"${ctx}/shoppingCar/getTotalPrice",
+                success:function(data){console.log(data);},
+                dataType:"json"
             })
+
+
 
             
 
