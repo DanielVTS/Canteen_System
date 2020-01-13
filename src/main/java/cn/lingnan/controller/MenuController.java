@@ -50,6 +50,14 @@ public class MenuController {
         return menuService.queryAll();
     }
 
+    @RequestMapping(value = "/customerGetMenuList",method = RequestMethod.POST)
+    @ResponseBody
+
+    public List<Menu> customerGetMenuList () {
+        System.out.println("queryMenu");
+        return menuService.queryAll();
+    }
+
     @RequestMapping(value = "/searchList",method = RequestMethod.POST)
         @ResponseBody
     public List<Menu> searchList (String menuName,String menuCategory,Model model) {

@@ -106,18 +106,18 @@
     let locationURL="";
 
     if (locationurl == "") {
-        locationURL = "${ctx}/menu/getMenuList";
+        locationURL = "${ctx}/menu/customerGetMenuList";
     } else locationURL = "${ctx}" + locationurl;
 
 
 
     //jquery代码都必须写在ready方法中
             $(document).ready(function () {
-                //let locationURL=locationurl ||"${ctx}/menu/getMenuList";
+
                 console.log(locationURL);
                 $.post(locationURL,{menuName:menuName,menuCategory:menuCategory},function(data){
                     $.each(data, function (index, item) {
-                        //if(item.menuStatus!=1) return;
+                        if(item.menuStatus!=1) return true;
                         console.log(index);
                         console.log(item);
                         var table = $("table");
@@ -139,19 +139,20 @@
                         td5.innerText = item.menuCategory;
                         tr.append(td5);
 
+
                         var td6 = document.createElement("td");
                         td6.innerText = item.menuStatus;
                         tr.append(td6);
 
 
-                        <%--const url1 = "window.location.href='${ctx}/menu/update?menuId=" +item.menuId+"'";--%>
-                        <%--console.log(url1)--%>
-                        <%--var btn1=document.createElement("input");--%>
-                        <%--btn1.setAttribute("type","submit");--%>
-                        <%--btn1.setAttribute("name","update");--%>
-                        <%--btn1.setAttribute("value","更新");--%>
-                        <%--btn1.setAttribute("class","layui-btn layui-btn-sm");--%>
-                        <%--btn1.setAttribute("onclick",url1);--%>
+                        const url1 = "window.location.href='${ctx}/menu/update?menuId=" +item.menuId+"'";
+                        console.log(url1)
+                        var btn1=document.createElement("input");
+                        btn1.setAttribute("type","submit");
+                        btn1.setAttribute("name","update");
+                        btn1.setAttribute("value","添加");
+                        btn1.setAttribute("class","layui-btn layui-btn-sm");
+                        btn1.setAttribute("onclick",url1);
 
                         <%--const url2 = "window.location.href='${ctx}/menu/down?menuId=" +item.menuId+"'";--%>
                         <%--console.log(url2)--%>
