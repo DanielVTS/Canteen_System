@@ -126,9 +126,9 @@
 
 <script>
     $(document).ready(function () {
-            let orderNo = "${requestScope.orderNo}";
+            let id = sessionStorage.getItem("customerId");
 
-            $.get("${ctx}/orderList/getOrderList", function (data, status) {
+            $.post("${ctx}/orderList/getOrderList", {customerId:customerId},function (data, status) {
                 // console.log(data);
                 // console.log("数据: " + data + "\n状态: " + status);
                 $.each(data, function (index, item) {
