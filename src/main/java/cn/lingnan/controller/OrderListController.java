@@ -107,7 +107,12 @@ public class OrderListController {
         model.addAttribute("orderNo", orderNo);
         OrderList orderList=new OrderList();
         orderList=orderListService.queryNo(orderNo);
+        if (orderList.getOrderStatus()==2)
+        {
+            return  "forward:../tgls/agent/order_list.jsp";
+        }
         orderList.setOrderStatus(2);
+        orderList.setEndTime(new java.sql.Date(new Date().getTime()));
         System.out.println(orderListService.update(orderList));
         return "forward:../tgls/agent/order_list.jsp";
     }

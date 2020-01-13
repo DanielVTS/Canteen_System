@@ -52,4 +52,9 @@ public class OrderItemServiceImpl implements OrderItemService {
         return orderItemMapper.getByNo(orderNo);
     }
 
+    @Override
+    public boolean addOrderItem(List<OrderItem> orderItemList) {
+        return orderItemMapper.addOrderItem(orderItemList);
+    }
+
 }

@@ -12,5 +12,7 @@ public interface OrderItemService {
     List<OrderItem> query(OrderItem orderItem);
     OrderItem getById(Integer id);
     List<OrderItem> getByNo(String orderNo);
+    boolean addOrderItem (List<OrderItem> orderItemList);
+
 
 }

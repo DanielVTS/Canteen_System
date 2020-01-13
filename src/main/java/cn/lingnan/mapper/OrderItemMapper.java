@@ -3,6 +3,7 @@ package cn.lingnan.mapper;
 import cn.lingnan.pojo.OrderItem;
 import cn.lingnan.pojo.OrderList;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -17,5 +18,6 @@ public interface OrderItemMapper {
     List<OrderItem> query(OrderItem orderItem);
     OrderItem getById(Integer id);
     List<OrderItem> getByNo(String orderNo);
+    boolean addOrderItem (List<OrderItem> orderItemList);
 
 }

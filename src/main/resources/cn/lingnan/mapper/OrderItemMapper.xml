@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.lingnan.mapper.OrderItemMapper">
+
+<!--    <resultMap id="additem" type="OrderItem">-->
+<!--        <id column="id" property="id"/>-->
+<!--        <result column="orderNo" property="orderNo"/>-->
+<!--        <result column="menuId" property="menuId"/>-->
+<!--        <result column="menuName" property="menuName"/>-->
+<!--        <result column="price" property="price"/>-->
+<!--        <result column="quantity" property="quantity"/>-->
+<!--        <result column="totalPrice" property="totalPrice"/>-->
+<!--    </resultMap>-->
+
+    <insert id="addOrderItem" parameterType="OrderItem">
+        insert into order_item values
+        <foreach collection="list" item="orderItem" separator="," close=";">
+        (#{orderItem.id},#{orderItem.orderNo},#{orderItem.menuId},#{orderItem.menuName},#{orderItem.price},#{orderItem.quantity},#{orderItem.totalPrice})
+        </foreach>
+    </insert>
+
     <select id="getByNo" resultType="OrderItem">
         select * from order_item where order_no=#{orderNo}
     </select>
