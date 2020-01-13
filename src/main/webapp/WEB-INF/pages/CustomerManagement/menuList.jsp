@@ -58,7 +58,7 @@
                 <button class="layui-btn" type="submit">检索</button>
             </div>
         </form>
-        <button class="layui-btn">添加购物车</button>
+        <button class="layui-btn" onclick="addItem()">添加购物车</button>
 
 <%--        <script>--%>
 <%--            layui.use('form', function() {--%>
@@ -73,7 +73,7 @@
 <%--        </script>--%>
     </div>
 
-    <table class="layui-table">
+    <table class="layui-table" id="table">
         <thead>
         <tr>
             <th>菜号</th>
@@ -117,18 +117,20 @@
                 $.post(locationURL,{menuName:menuName,menuCategory:menuCategory},function(data){
                     $.each(data, function (index, item) {
                         if(item.menuStatus!=1) return true;
-                        console.log(index);
-                        console.log(item);
+                        // console.log(index);
+                        // console.log(item);
                         var table = $("table");
                         var tr = document.createElement("tr");
 
                         var td2 = document.createElement("td");
                         td2.innerText = item.menuId;
+                        td2.setAttribute("name","menuId");
                         tr.append(td2);
 
                         var td3 = document.createElement("td");
                         //图片？？？？
                         td3.innerText = item.picture;
+
                         tr.append(td3);
 
                         var td4 = document.createElement("td");
@@ -137,54 +139,18 @@
 
                         var td5 = document.createElement("td");
                         td5.innerText = item.price;
+                        td5.setAttribute("name","price");
                         tr.append(td5);
 
                         var td6 = document.createElement("td");
                         td6.innerHTML="<input type='number' id='itemValue' max='99' min='0'>";
+                        td6.setAttribute("name","count");
                         tr.append(td6);
 
                         var td7 = document.createElement("td");
                         td7.innerText = item.menuCategory;
                         tr.append(td7);
 
-                        //勾选框
-                        // var td1=document.createElement("td");
-                        // td1.innerHTML="" +
-                        //     // "<div class=\"layui-input-block all\" >" +
-                        //     "<input type='checkbox' name='check' value="+item.menuId+">" //+
-                        // //"</div>"
-                        // ;
-                        // tr.append(td1);
-
-
-                        <%--const url1 = "window.location.href='${ctx}/menu/update?menuId=" +item.menuId+"'";--%>
-                        <%--console.log(url1)--%>
-                        <%--var btn1=document.createElement("input");--%>
-                        <%--btn1.setAttribute("type","submit");--%>
-                        <%--btn1.setAttribute("name","update");--%>
-                        <%--btn1.setAttribute("value","添加");--%>
-                        <%--btn1.setAttribute("class","layui-btn layui-btn-sm");--%>
-                        <%--btn1.setAttribute("onclick",url1);--%>
-
-                        <%--const url2 = "window.location.href='${ctx}/menu/down?menuId=" +item.menuId+"'";--%>
-                        <%--console.log(url2)--%>
-                        <%--var btn2=document.createElement("input");--%>
-                        <%--btn2.setAttribute("type","submit");--%>
-                        <%--btn2.setAttribute("name","delete");--%>
-                        <%--btn2.setAttribute("value","下架");--%>
-                        <%--btn2.setAttribute("class","layui-btn layui-btn-sm");--%>
-                        <%--btn2.setAttribute("onclick",url2);--%>
-
-                        <%--const url3 = "window.location.href='${ctx}/menu/up?menuId=" +item.menuId+"'";--%>
-                        <%--console.log(url3)--%>
-                        <%--var btn3=document.createElement("input");--%>
-                        <%--btn3.setAttribute("type","submit");--%>
-                        <%--btn3.setAttribute("name","delete");--%>
-                        <%--btn3.setAttribute("value","上架");--%>
-                        <%--btn3.setAttribute("class","layui-btn layui-btn-sm");--%>
-                        <%--btn3.setAttribute("onclick",url3);--%>
-
-                        // tr.append(btn1);
                         table.append(tr);
 
                     })
@@ -196,6 +162,42 @@
     </table>
 
     <script type="text/javascript" src="${ctx}/js/jquery-2.1.4.min.js"></script>
+    <script>
+        function addItem(){
+            const table = document.getElementById("table");
+            console.log(table);
+            var list=[];
+            let tr=table.getElementsByTagName("tr");
+            for (var i=1;i<tr.length;i++){
+                let target=tr[i].querySelectorAll("[name]"),obj={};
+                console.log(target);
+                for (var j=0;j<target.length;j++){
+                    if(target[j].getAttribute("name")=="menuId"){
+                        let cell=target[j].childNodes.item(0);
+                        obj[target[j].getAttribute("name")]=cell.data;
+                    }else if(target[j].getAttribute("name")=="price"){
+                        let cell=target[j].childNodes.item(0);
+                        obj[target[j].getAttribute("name")]=cell.data;
+                    }else{
+                        let inputElement=target[j].childNodes.item(0);
+                        obj[target[j].getAttribute("name")]=inputElement.value;
+                    }
+                }
+                list.push(obj);
+            }
+            console.log(list);
+
+            //提交数据，处理回传data(总价)，跳转至确认订单页
+            $.post("${ctx}/shoppingCar/getTotalPrice",list,function (data) {
+
+
+
+            })
+
+            
+
+        }
+    </script>
 
 
 
