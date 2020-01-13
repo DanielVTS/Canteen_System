@@ -3,9 +3,11 @@ package cn.lingnan.controller;
 import cn.lingnan.pojo.Menu;
 import cn.lingnan.pojo.OrderItem;
 import cn.lingnan.pojo.OrderList;
+import cn.lingnan.pojo.Table;
 import cn.lingnan.services.MenuService;
 import cn.lingnan.services.OrderItemService;
 import cn.lingnan.services.OrderListService;
+import cn.lingnan.services.TableService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +37,9 @@ public class OrderListController {
     public void setOrderItemService(OrderItemService orderItemService) {
         this.orderItemService = orderItemService;
     }
+
+    @Autowired
+    private TableService tableService;
     //
 //    @RequestMapping(value = "/add", method = RequestMethod.POST)
 //    public String addOrderList(String orderNo, Integer customerId, String customerName, String phone, Integer tableId, String tableName, Integer orderStatus, Integer orderPrice, Date tableTime, Date endTime, String ps){
@@ -107,6 +112,11 @@ public class OrderListController {
         model.addAttribute("orderNo", orderNo);
         OrderList orderList=new OrderList();
         orderList=orderListService.queryNo(orderNo);
+        Integer tableId=orderList.getTableId();
+        Table table=new Table();
+        table.setTableStatus(1);
+        table.setTableId(tableId);
+        tableService.update(table);
         if (orderList.getOrderStatus()==2)
         {
             return  "forward:../tgls/agent/order_list.jsp";
