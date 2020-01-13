@@ -42,13 +42,21 @@
 
 </head>
 
+
 <body>
+<script>
+    let orderPrice = 0;
+    localStorage.setItem("orderPrice",orderPrice);
+    console.log(orderPrice);
+
+
+</script>
 <div class="cBody">
-    <form id="updateForm" class="layui-form" action="${ctx}/orderList/updateForm" method="get">
+    <form id="updateForm" class="layui-form" action="${ctx}/shoppingCar/setList" method="post">
         <div class="layui-form-item">
             <label class="layui-form-label">订单号</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="orderNo" name="orderNo" autocomplete="off" class="layui-input">
+                <input type="text" id="orderNo" name="orderNo" autocomplete="off" class="layui-input" readonly="readonly">
             </div>
         </div>
         <div class="layui-form-item">
@@ -65,23 +73,39 @@
             <i class="iconfont icon-huaban bt"></i>
         </div>
         <div class="layui-form-item">
+
+
             <label class="layui-form-label">台号</label>
             <div class="layui-input-inline">
+
                 <select name="tableId" id="tableId" lay-filter="orderStatus">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
                 </select>
+
+
+
+
             </div>
         </div>
+        <script>
+
+
+            let tableArray = "${requestScope.tableArray}";
+            console.log(tableArray);
+            for(var i=0;i<list.lengthl;i++)
+            {
+                var option=document.createElement("option");
+                $(option).val(tableArray[i]);
+                $(option).text(tableArray[i]);
+                $('#select').append(option);
+
+
+
+            }
+        </script>
         <div class="layui-form-item">
             <label class="layui-form-label">台号名</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="tableName" name="tableName" autocomplete="off" class="layui-input">
+                <input type="text" id="tableName" name="tableName" autocomplete="off" class="layui-input" readonly="readonly">
             </div>
         </div>
         <div class="layui-form-item">
@@ -89,17 +113,23 @@
             <div class="layui-input-inline">
                 <select name="orderStatus" id="orderStatus">
                     <option value=1>1</option>
-                    <option value=2>2</option>
-                    <option value=3>3</option>
+
                 </select>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">订单金额</label>
             <div class="layui-input-inline shortInput">
-                <input type="text" id="orderPrice" name="orderPrice" autocomplete="off" class="layui-input" >
+                <input type="text" id="orderPrice" name="orderPrice" autocomplete="off" class="layui-input" readonly="readonly" value=${totalPrice}>
             </div>
         </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">订单时间</label>
+            <div class="layui-input-inline shortInput">
+                <input  id="tableTime" name="tableTime" autocomplete="off" class="layui-input" type=datetime-local>
+            </div>
+        </div>
+
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">备注</label>
             <div class="layui-input-block">

@@ -1,17 +1,21 @@
 package cn.lingnan.controller;
 
 import cn.lingnan.pojo.Menu;
-import cn.lingnan.pojo.ShoppingCar;
+import cn.lingnan.pojo.OrderList;
+import cn.lingnan.pojo.Table;
 import cn.lingnan.services.MenuService;
 import cn.lingnan.services.OrderItemService;
 import cn.lingnan.services.OrderListService;
+import cn.lingnan.services.TableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/shoppingCar")
@@ -22,63 +26,59 @@ public class ShoppingCarController {
     @Autowired
     private OrderItemService orderItemService;
     @Autowired
-    private MenuService service;
+    private MenuService menuService;
     @Autowired
-    private OrderListService listService;
+    private OrderListService orderListService;
+    @Autowired
+    private TableService tableService;
 
     @RequestMapping(value = "/getTotalPrice", method = RequestMethod.POST)
-    @ResponseBody
-    public String getTotalPrice(@RequestBody List<ShoppingCar> items, @RequestBody String id, Model model) {
-        System.out.println(" receive getTotalPrice request");
+    public String deleteOrderList(List menuList, Model model) {
 
-        if(id!=null) System.out.println("id::"+id);
-        if(items!=null){
-            for(ShoppingCar item:items){
-                System.out.println(item.toString());
-            }
-            return "success";
-        }else return "error";
+        List<Table> list=tableService.getByStaus(1);
+        List tableIdList=new ArrayList();
+        int length=list.size();
+        int[] tableArray=new int[length];
+        for(int i=0;i<list.size();i++)
+        {
+            tableArray[i]=list.get(i).getTableId();
+        }
+        model.addAttribute("tableArray",tableArray);
 
+
+
+        System.out.println("MenuList" + menuList);
+        return "success";
     }
 
-//    public String getTotalPrice(@RequestBody Map<String,String> items,@RequestBody String id, Model model) {
-//        System.out.println(" receive getTotalPrice request");
-//        if(id!=null) System.out.println("id::"+id);
-//        System.out.println(items.isEmpty());
-//        return "success";
-//    }
+    @RequestMapping(value = "setList",method =RequestMethod.POST)
+            public String setList(Integer customerId)
+    {
 
-//    public String getTotalPrice(String[] items) {
-//        System.out.println(" receive getTotalPrice ");
-//        if(items!=null){
-//            for(String item:items){
-//                System.out.println(item);
-//            }
-//            return "success";
-//        }else return "error";
-//    }
-//    public String getTotalPrice(@RequestBody String id) {
-//        System.out.println(" receive getTotalPrice ");
-//        if(id!=null){
-//            System.out.println(id);
-//            return "success";
-//        }else return "error";
-//    }
-//    public String getTotalPrice(@RequestBody String id,@RequestBody String ShoppingCar) {
-//        System.out.println(" receive getTotalPrice ");
-//        if (id != null) {
-//            System.out.println(id);
-//        }
-//        if (ShoppingCar != null) {
-//            System.out.println(ShoppingCar);
-//        }
-//        return "sth";
-//    }
-//    public String getTotalPrice(@RequestBody Map item) {
-//        if(item!=null){
-//            System.out.println(item.toString());
-//            return "success";
-//        }else return "error";
-//    }
+            return "${ctx}/CustomerManagement/addOrder";
+    }
+
+
+
+
+
+
+
+
+
+    @RequestMapping(value = "addList" ,method =RequestMethod.POST)
+    public String addList(OrderList orderList)
+    {
+        Long time=System.currentTimeMillis();
+        String orderNo=time.toString();
+        orderList.setOrderNo(orderNo);
+        String tableName=orderList.getTableName();
+        Table table=new Table();
+        table=tableService.getByName(tableName);
+        orderList.setTableId(table.getTableId());
+        orderListService.update(orderList);
+        return "${ctx}/CustomerManagement/OrderList";
+
+    }
 
 }

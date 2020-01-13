@@ -55,10 +55,10 @@ public class CustomerManagementController {
     }
 
 
-    @RequestMapping("/bookTable")
+    @RequestMapping("/addOrder")
     public String bookTablePage(){
         System.out.println("bookTablePage");
-        return "CustomerManagement/bookTable";
+        return "CustomerManagement/addOrder";
     }
 
     @RequestMapping("/bookMenu")
