@@ -73,6 +73,12 @@ public class CustomerManagementController {
         return "CustomerManagement/personalInformation";
     }
 
+    @RequestMapping("/menuList")
+    public String menuList(){
+        System.out.println("personalInformationPage");
+        return "CustomerManagement/menuList";
+    }
+
 
 
 

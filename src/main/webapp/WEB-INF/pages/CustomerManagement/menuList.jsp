@@ -122,22 +122,28 @@
                         console.log(item);
                         var table = $("table");
                         var tr = document.createElement("tr");
-                        var td1 = document.createElement("td");
-                        td1.innerText = item.menuId;
-                        tr.append(td1);
+
+                        //勾选框
+                        var td1=document.createElement("td");
+                        td1.setAttribute("type","checkbox");
+                        td1.setAttribute("value",item.menuId);
+
                         var td2 = document.createElement("td");
-                        //图片？？？？
-                        td2.innerText = item.picture;
+                        td1.innerText = item.menuId;
                         tr.append(td2);
                         var td3 = document.createElement("td");
-                        td3.innerText = item.menuName;
+                        //图片？？？？
+                        td3.innerText = item.picture;
                         tr.append(td3);
                         var td4 = document.createElement("td");
-                        td4.innerText = item.price;
+                        td4.innerText = item.menuName;
                         tr.append(td4);
                         var td5 = document.createElement("td");
-                        td5.innerText = item.menuCategory;
+                        td5.innerText = item.price;
                         tr.append(td5);
+                        var td6 = document.createElement("td");
+                        td6.innerText = item.menuCategory;
+                        tr.append(td6);
 
 
                         var td6 = document.createElement("td");
