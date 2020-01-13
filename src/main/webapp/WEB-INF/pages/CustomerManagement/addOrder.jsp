@@ -153,7 +153,7 @@
 
 <script>
     $(document).ready(function () {
-            let id = sessionStorage.getItem("customerId");
+            let customerId = sessionStorage.getItem("customerId");
 
             $.post("${ctx}/orderList/getOrderList", {customerId:customerId},function (data, status) {
                 // console.log(data);
