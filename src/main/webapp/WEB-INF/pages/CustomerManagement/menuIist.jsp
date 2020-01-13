@@ -105,11 +105,9 @@
 
     let locationURL="";
 
-   if(locationurl=="")
-    {
-    locationURL="${ctx}/menu/getMenuList";
-    }
-    else locationURL="${ctx}"+locationurl;
+    if (locationurl == "") {
+        locationURL = "${ctx}/menu/getMenuList";
+    } else locationURL = "${ctx}" + locationurl;
 
 
 

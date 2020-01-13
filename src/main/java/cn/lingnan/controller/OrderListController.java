@@ -140,7 +140,7 @@ public class OrderListController {
 
     // TODO: 2020/1/13
     @RequestMapping(value = "/customerAddForm", method = RequestMethod.GET)
-    public String customerAddForm (OrderList orderList, String orderId,Model model) {
+    public String customerAddForm (                     String orderId,Model model) {
 //        System.out.println("customerAddForm");
 //        System.out.println(orderId);
 //        System.out.println(orderList.toString());
@@ -148,11 +148,12 @@ public class OrderListController {
 
         //前端数据解析
 
+
         
         //后端传值
         List<OrderItem> cart=new ArrayList<>();
         OrderList order=new OrderList();
-        System.out.println(orderListService.add(orderList));
+        System.out.println(orderListService.add(order));
         for(OrderItem item:cart){
             System.out.println(orderItemService.add(item));
         }
