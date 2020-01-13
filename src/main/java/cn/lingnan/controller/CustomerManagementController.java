@@ -2,14 +2,19 @@ package cn.lingnan.controller;
 
 
 import cn.lingnan.pojo.Customer;
+import cn.lingnan.pojo.Table;
 import cn.lingnan.services.CustomerService;
 import cn.lingnan.services.OrderListService;
+import cn.lingnan.services.TableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/CustomerManagement")
@@ -23,6 +28,8 @@ public class CustomerManagementController {
     private CustomerService customerService;
     @Autowired
     private OrderListService orderListService;
+    @Autowired
+    private TableService tableService;
 
 
     @RequestMapping("/")
@@ -56,8 +63,20 @@ public class CustomerManagementController {
 
 
     @RequestMapping("/addOrder")
-    public String bookTablePage(){
+    public String bookTablePage(Model model){
         System.out.println("bookTablePage");
+
+        List<Table> list=tableService.getByStatus(1);
+        List tableIdList=new ArrayList();
+        int length=list.size();
+        int[] tableArray=new int[length];
+        for(int i=0;i<list.size();i++)
+        {
+            tableArray[i]=list.get(i).getTableId();
+        }
+        model.addAttribute("tableArray",tableArray);
+
+
         return "CustomerManagement/addOrder";
     }
 

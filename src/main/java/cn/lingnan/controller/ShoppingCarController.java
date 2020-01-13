@@ -32,24 +32,24 @@ public class ShoppingCarController {
     @Autowired
     private TableService tableService;
 
-    @RequestMapping(value = "/getTotalPrice", method = RequestMethod.POST)
-    public String deleteOrderList(List menuList, Model model) {
-
-        List<Table> list=tableService.getByStaus(1);
-        List tableIdList=new ArrayList();
-        int length=list.size();
-        int[] tableArray=new int[length];
-        for(int i=0;i<list.size();i++)
-        {
-            tableArray[i]=list.get(i).getTableId();
-        }
-        model.addAttribute("tableArray",tableArray);
-
-
-
-        System.out.println("MenuList" + menuList);
-        return "success";
-    }
+//    @RequestMapping(value = "/getTotalPrice", method = RequestMethod.POST)
+//    public String deleteOrderList(List menuList, Model model) {
+//
+//        List<Table> list=tableService.getByStaus(1);
+//        List tableIdList=new ArrayList();
+//        int length=list.size();
+//        int[] tableArray=new int[length];
+//        for(int i=0;i<list.size();i++)
+//        {
+//            tableArray[i]=list.get(i).getTableId();
+//        }
+//        model.addAttribute("tableArray",tableArray);
+//
+//
+//
+//        System.out.println("MenuList" + menuList);
+//        return "success";
+//    }
 
     @RequestMapping(value = "setList",method =RequestMethod.POST)
             public String setList(Integer customerId)

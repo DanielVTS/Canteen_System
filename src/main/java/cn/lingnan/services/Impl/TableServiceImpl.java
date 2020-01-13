@@ -36,8 +36,8 @@ public class TableServiceImpl implements TableService {
     }
 
     @Override
-    public List<Table> getByStaus(Integer tableStaus) {
-        return tableMapper.getByStaus(tableStaus);
+    public List<Table> getByStatus(Integer tableStaus) {
+        return tableMapper.getByStatus(tableStaus);
     }
 
     @Override

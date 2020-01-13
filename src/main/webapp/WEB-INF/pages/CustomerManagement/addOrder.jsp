@@ -88,17 +88,14 @@
         </div>
         <script>
 
-
             let tableArray = "${requestScope.tableArray}";
             console.log(tableArray);
-            for(var i=0;i<list.lengthl;i++)
+            for(var i=0;i<tableArray.lengthl;i++)
             {
                 var option=document.createElement("option");
                 $(option).val(tableArray[i]);
                 $(option).text(tableArray[i]);
                 $('#select').append(option);
-
-
 
             }
         </script>

@@ -13,7 +13,7 @@ public interface TableMapper {
     Table getById(Integer tableId);
     Table getByName(String tableName);
     Table getBySeat(String tableSeat);
-    List<Table> getByStaus(Integer tableStaus);
+    List<Table> getByStatus(Integer tableStatus);
     List<Table> query(Table table);
     List<Table> queryAll();
     boolean add(Table table);
