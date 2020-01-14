@@ -87,7 +87,7 @@ public class LoginController {
             bean.setRegisterTime(new java.sql.Date(new Date().getTime()));
             if (customerService.register(bean)) {
                 model.addAttribute("msg", "success");
-                return "success";
+                return "forward:login.jsp";
             } else {
                 model.addAttribute("msg", "server error!");
                 return "error";

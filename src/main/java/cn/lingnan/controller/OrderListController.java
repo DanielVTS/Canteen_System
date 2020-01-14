@@ -114,16 +114,21 @@ public class OrderListController {
         orderList=orderListService.queryNo(orderNo);
         Integer tableId=orderList.getTableId();
         Table table=new Table();
+
         table.setTableStatus(1);
         table.setTableId(tableId);
         table.setTableTime(null);
         table.setPhone(null);
+        System.out.println(tableId);
         tableService.update(table);
+
+        System.out.println(table);
         if (orderList.getOrderStatus()==2)
         {
             return  "forward:../tgls/agent/order_list.jsp";
         }
         orderList.setOrderStatus(2);
+
         orderList.setEndTime(new java.sql.Date(new Date().getTime()));
         System.out.println(orderListService.update(orderList));
         return "forward:../tgls/agent/order_list.jsp";
