@@ -122,7 +122,7 @@
             <ul>
 <%--                <li><a href="javascript:void(0)" onclick="menuCAClick('tgls/modify_password.html',this)"><i class="iconfont icon-yonghu1"></i>管理员</a></li>--%>
 <%--                <li><a href="javascript:void(0)" onclick="menuCAClick('tgls/modify_password.html',this)"><i class="iconfont icon-xiugaimima"></i>修改密码</a></li>--%>
-                <li><a href="${ctx}/logout"><i class="iconfont icon-084tuichu"></i>注销</a></li>
+                <li><a onclick="logout()" href="#"><i class="iconfont icon-084tuichu"></i>注销</a></li>
             </ul>
         </div>
     </div>
@@ -141,6 +141,12 @@
 </div>
 </body>
 <script>
+    function logout() {
+        sessionStorage.clear();
+        localStorage.clear();
+        alert("logout success!");
+        window.location.href="${ctx}";
+    }
     function reset(){
         window.localStorage.setItem("orderStatus","0");
         window.localStorage.setItem("orderNo","");
