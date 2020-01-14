@@ -37,7 +37,7 @@ public class LoginController {
             if (bean != null) {
                 System.out.println("管理员登陆成功");
                 session.setAttribute("loginUser",bean);
-                return "AdminManagement/success";
+                return "forward:management.jsp";
 
             } else {
 
@@ -61,6 +61,7 @@ public class LoginController {
                 //session保存
                 bean.setLoginTime(new java.sql.Date(new Date().getTime()));
                 customerService.update(bean);
+                session.setAttribute("loginUser",bean);
                 model.addAttribute("loginUser", bean);
                 model.addAttribute("customer",bean.getCustomerId());
                 System.out.println("登陆成功");

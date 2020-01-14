@@ -1,5 +1,6 @@
 import cn.lingnan.mapper.CustomerMapper;
 
+import cn.lingnan.mapper.OrderItemMapper;
 import cn.lingnan.mapper.OrderListMapper;
 import cn.lingnan.mapper.StaffMapper;
 import cn.lingnan.pojo.Customer;
@@ -150,7 +151,7 @@ public class AppTest01 {
     public void t08() throws IOException {
         SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        OrderListMapper orderListMapper = sqlSession.getMapper(OrderListMapper.class);
-        System.out.println(orderListMapper.queryAll());
+        OrderItemMapper OrderItemMapper = sqlSession.getMapper(OrderItemMapper.class);
+        System.out.println(OrderItemMapper.queryAll());
     }
 }
