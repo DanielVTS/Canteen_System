@@ -55,10 +55,10 @@
             <if test="tableStatus!=null">
                 table_status=#{tableStatus},
             </if>
-            <if test="phone!=null">
+            <if test="phone!=1">
                 phone=#{phone},
             </if>
-            <if test="tableTime!=null">
+            <if test="tableTime!=1">
                 table_time=#{tableTime},
             </if>
 
