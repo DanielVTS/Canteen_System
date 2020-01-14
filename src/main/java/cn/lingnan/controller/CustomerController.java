@@ -135,6 +135,7 @@ public class CustomerController {
         System.out.println(customerId);
         System.out.println(customer.toString());
         String email=customer.getEmail();
+        customer.setRegisterTime(new java.sql.Date(new Date().getTime()));
         if(customerService.getByEmail(email)==null)
         {
 

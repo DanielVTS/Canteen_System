@@ -80,7 +80,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">密码</label>
             <div class="layui-input-block">
-                <input type="date" name="customerPassword" id="customerPassword" autocomplete="off" class="layui-input">
+                <input type="text" name="customerPassword" id="customerPassword" autocomplete="off" class="layui-input">
             </div>
         </div>
 
