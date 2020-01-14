@@ -116,6 +116,8 @@ public class OrderListController {
         Table table=new Table();
         table.setTableStatus(1);
         table.setTableId(tableId);
+        table.setTableTime(null);
+        table.setPhone(null);
         tableService.update(table);
         if (orderList.getOrderStatus()==2)
         {
