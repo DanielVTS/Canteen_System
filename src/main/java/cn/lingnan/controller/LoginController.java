@@ -54,6 +54,8 @@ public class LoginController {
             bean.setCustomerName(username);
             bean.setPhone(username);
             bean.setCustomerPassword(password);
+            bean.setCustomerPassword(password);
+
 //        bean = customerService.login(loginname, password);
             bean = customerService.login(bean);
             if (bean != null) {
