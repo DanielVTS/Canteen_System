@@ -102,7 +102,7 @@
             <span><i class="iconfont icon-xianshiqi"></i>欢迎使用混吃等死订餐系统</span>
         </div>
         <div class="con">
-            <iframe id="mainIframe" src="tgls/qdAPI.html" scrolling="no"></iframe>
+            <iframe id="mainIframe" src="${ctx}/qdAPI.jsp" scrolling="no"></iframe>
         </div>
     </div>
     <!-- 核心区域 - 结束 -->
