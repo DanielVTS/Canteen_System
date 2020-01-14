@@ -1,6 +1,8 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" isErrorPage="true" %>
 <% pageContext.setAttribute("ctx", request.getContextPath()); %>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -44,19 +46,10 @@
 
 
 <body>
-<%--<script>--%>
-<%--    let orderPrice = 0;--%>
-<%--    localStorage.setItem("orderPrice",orderPrice);--%>
-<%--    console.log(orderPrice);--%>
-<%--</script>--%>
+
 <div class="cBody">
     <form id="updateForm" class="layui-form" action="${ctx}/orderList/addForm" method="post">
-<%--        <div class="layui-form-item">--%>
-<%--            <label class="layui-form-label">订单号</label>--%>
-<%--            <div class="layui-input-inline shortInput">--%>
-<%--                <input type="text" id="orderNo" name="orderNo" autocomplete="off" class="layui-input" readonly="readonly">--%>
-<%--            </div>--%>
-<%--        </div>--%>
+<%--        <form id="updateForm" class="layui-form">--%>
         <div class="layui-form-item">
             <label class="layui-form-label">客户名</label>
             <div class="layui-input-inline shortInput">
@@ -83,27 +76,13 @@
                 <input type="text" id="tableName" name="tableName" autocomplete="off" class="layui-input" readonly="readonly">
             </div>
         </div>
-<%--        <div class="layui-form-item">--%>
-<%--            <label class="layui-form-label">订单状态</label>--%>
-<%--            <div class="layui-input-inline">--%>
-<%--                <select name="orderStatus" id="orderStatus">--%>
-<%--                    <option value=1>1</option>--%>
-
-<%--                </select>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <div class="layui-form-item">--%>
-<%--            <label class="layui-form-label">订单金额</label>--%>
+<%--        <div class="layui-form-item" >--%>
+<%--            <label class="layui-form-label">就餐时间</label>--%>
 <%--            <div class="layui-input-inline shortInput">--%>
-<%--                <input type="text" id="orderPrice" name="orderPrice" autocomplete="off" class="layui-input" readonly="readonly" value=${totalPrice}>--%>
+<%--                <input  id="tableTime" name="tableTime" autocomplete="off" class="layui-input" type=datetime-local>--%>
+
 <%--            </div>--%>
 <%--        </div>--%>
-        <div class="layui-form-item" >
-            <label class="layui-form-label">就餐时间</label>
-            <div class="layui-input-inline shortInput">
-                <input  id="tableTime" name="tableTime" autocomplete="off" class="layui-input" type=datetime-local>
-            </div>
-        </div>
 
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">备注</label>
@@ -114,8 +93,9 @@
 
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="submitBut" type="submit">下一步，选择菜式</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <button class="layui-btn" lay-submit lay-filter="submitBut" type="submit" onclick="orderSubmit()">下一步，选择菜式</button>
+<%--                <button class="layui-btn"onclick="orderSubmit()">下一步，选择菜式</button>--%>
+                <button type="reset" class="layui-btn layui-btn-primary" onclick="window.history.back(-1);">重置</button>
             </div>
         </div>
     </form>
@@ -129,7 +109,29 @@
 
 </body>
 
-<script>
+<%--<script src="${ctx}/js/moment.min.js"></script>--%>
+<%--<script>--%>
+<%--    function orderSubmit(){--%>
+<%--        let order={--%>
+<%--            "customerName":$('#customerName').val(),--%>
+<%--            "phone":$('#phone').val(),--%>
+<%--            "tableId":$('#tableId').val(),--%>
+<%--            "tableName":$('#tableName').val(),--%>
+<%--            "tableTime":moment($('#tableTime').val()).format("YYYY-MM-DD HH:mm:ss"),--%>
+
+
+<%--            "ps":$('#ps').val()--%>
+<%--        };--%>
+<%--        console.log(order);--%>
+<%--        $.post("${ctx}/orderList/addForm", order);--%>
+<%--    }--%>
+<%--</script>--%>
+    <script>
+
+
+
+
+
     $(document).ready(function () {
             let customerId = Number(sessionStorage.getItem("customerId"));
             console.log(customerId);

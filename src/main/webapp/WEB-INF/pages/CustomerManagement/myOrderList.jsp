@@ -92,7 +92,7 @@
                 $.ajaxSettings.async = false;
                 $.post("${ctx}/orderList/getCustomerOrderList",{id:customerId},function(data){
                     //调试用
-                    // console.log(data);
+                    console.log(data);
                     listData=data;
 
                     // console.log("数据: " + data + "\n状态: " + status);
@@ -104,6 +104,7 @@
             function filter(orderStatus) {
                 // console.log(orderStatus);
                 //console.log(listData[1]);
+                if(listData==null) return;
                 for(let item of listData){
                     if(orderStatus==0||item.orderStatus==orderStatus){
                         //console.log(i);

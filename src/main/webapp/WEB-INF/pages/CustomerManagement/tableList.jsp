@@ -34,30 +34,7 @@
 
 <body>
 <div class="cBody">
-    <div class="console">
-<%--        <form class="layui-form" >--%>
-<%--            <div class="layui-form-item">--%>
-<%--                <div class="layui-input-inline">--%>
-<%--                    <input type="text" id="getTableName"  placeholder="输入桌名" autocomplete="off" class="layui-input">--%>
-<%--                </div>--%>
-<%--                <button class="layui-btn" onclick="setTableStatus0()" lay-submit lay-filter="formDemo">检索</button>--%>
-<%--                <button class="layui-btn" onclick="setTableStatus2()">查看订单未完成的桌子</button>--%>
-<%--                <button class="layui-btn" onclick="setTableStatus1()">查看订单已完成的桌子</button>--%>
-<%--            </div>--%>
-<%--        </form>--%>
-
-<%--        <script>            --%>
-<%--            layui.use('form', function() {--%>
-<%--            var form = layui.form;--%>
-
-<%--            //监听提交--%>
-<%--            form.on('submit(formDemo)', function(data) {--%>
-<%--                layer.msg(JSON.stringify(data.field));--%>
-<%--                return false;--%>
-<%--            });--%>
-<%--        });--%>
-<%--        </script>--%>
-    </div>
+    <div class="console"></div>
 
     <table class="layui-table">
         <thead>
@@ -73,8 +50,6 @@
         <script>
             let listData;
             let tableStatus=1;
-            // let tableName=sessionStorage.getItem("tableName");
-            // let tableStatus = Number(sessionStorage.getItem("tableStatus"));
             console.log(tableStatus);
             //console.log(tableName);
             //jquery代码都必须写在ready方法中
@@ -118,46 +93,17 @@
                 var td3 = document.createElement("td");
                 td3.innerText = item.tableSeat;
                 tr.append(td3);
-                // var td4 = document.createElement("td");
-                // td4.innerText = item.tableStatus;
-                // tr.append(td4);
-
-
-
-
-                <%--const url1 = "window.location.href='${ctx}/table/update?tableId=" +item.tableId+"'";--%>
-                <%--console.log(url1)--%>
-                // var td4 = document.createElement("td");
                 var btn1=document.createElement("input");
                 btn1.setAttribute("type","submit");
                 btn1.setAttribute("name","update");
                 btn1.setAttribute("value","订台");
                 btn1.setAttribute("class","layui-btn layui-btn-sm");
                 btn1.setAttribute("onclick","setTableId("+item.tableId+");window.location.href='${ctx}/CustomerManagement/addOrder'");
-                <%--td4.innerHTML=--%>
-                <%--    "<button type='submit' name='update' value='订台' class='layui-btn layui-btn-sm' " +--%>
-                <%--    "onclick='setTableId(item.tableId);window.location.href='${ctx}/CustomerManagement/addOrder'>";--%>
-                <%--tr.append(td4);--%>
-
-
-
                 tr.append(btn1);
                 table.append(tr);
 
             }
-            // function setTableStatus0() {
-            //     sessionStorage.setItem("tableStatus","0");
-            //     var Name=$("#getTableName").val();
-            //     console.log(Name);
-            //     sessionStorage.setItem("tableName",Name);
-            // }
-            //
-            // function setTableStatus1() {
-            //     sessionStorage.setItem("tableStatus","1");
-            // }
-            // function setTableStatus2() {
-            //     sessionStorage.setItem("tableStatus","2");
-            // }
+
 
             function setTableId(id) {
                 console.log(id);

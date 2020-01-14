@@ -64,9 +64,10 @@
                 <a class="menuFA" href="javascript:void(0)"><i class="iconfont icon-shangpin left"></i>预定就餐<i class="iconfont icon-dajiantouyou right"></i></a>
                 <dl>
 
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('${ctx}/CustomerManagement/orderTable',this)">选择桌子</a></dt>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('${ctx}/CustomerManagement/addOrder',this)">预定座位时间</a></dt>
-                    <dt><a href="javascript:void(0)" onclick="menuCAClick('${ctx}/CustomerManagement/menuList',this)">预定菜品</a></dt>
+                    <dt>
+                        <a href="javascript:void(0)" onclick="menuCAClick('${ctx}/CustomerManagement/orderTable',this)">开始预约</a></dt>
+<%--                    <dt><a href="javascript:void(0)" onclick="menuCAClick('${ctx}/CustomerManagement/addOrder',this)">预定座位时间</a></dt>--%>
+<%--                    <dt><a href="javascript:void(0)" onclick="menuCAClick('${ctx}/CustomerManagement/menuList',this)">预定菜品</a></dt>--%>
                 </dl>
             </li>
             <li>

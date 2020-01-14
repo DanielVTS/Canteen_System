@@ -10,14 +10,14 @@ import cn.lingnan.services.OrderListService;
 import cn.lingnan.services.TableService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -83,9 +83,14 @@ public class OrderListController {
     }
     @RequestMapping(value ="/getCustomerOrderList",method = RequestMethod.POST)
     @ResponseBody
-    public List<OrderList> CustomerGetOrderList () {
+    public List<OrderList> CustomerGetOrderList (Integer id) {
+        List<OrderList> list=orderListService.queryAll();
+        System.out.println(id);
+        for(OrderList item: list){
+            if(item.getCustomerId()!=id) list.remove(item);
+        }
         System.out.println("getOrderList");
-        return orderListService.queryAll();
+        return list;
     }
 
 
@@ -154,16 +159,23 @@ public class OrderListController {
         return "forward:../tgls/agent/order_list.jsp";
     }
 
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
+
     @RequestMapping(value = "/addForm", method = RequestMethod.POST)
-    public String addForm (OrderList orderList, String orderId,Model model) {
+    public String addForm (OrderList orderList,String orderId,Model model) {
+        //public void addForm (OrderList orderList,String orderId,Model model) {
         System.out.println("addForm");
         System.out.println(orderId);
+        //System.out.println(tableTime);
         System.out.println(orderList.toString());
-
-
-        System.out.println(orderListService.update(orderList));
-
+        System.out.println(orderListService.add(orderList));
         return "CustomerManagement/menuList";
+//        return ;
     }
 
 
